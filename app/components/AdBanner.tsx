@@ -1,7 +1,6 @@
 'use client';
 
 import { FC, useEffect } from 'react';
-import Script from 'next/script';
 
 interface AdBannerProps {
   position: 'sidebar' | 'content' | 'top' | 'bottom';
@@ -89,7 +88,7 @@ const AdBanner: FC<AdBannerProps> = ({ position, className = '' }) => {
 // Añadir tipos para window.adsbygoogle
 declare global {
   interface Window {
-    adsbygoogle: any[];
+    adsbygoogle: Array<Record<string, unknown>>;
   }
 }
 
