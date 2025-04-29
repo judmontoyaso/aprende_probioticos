@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import Script from 'next/script';
 
 interface AdBannerProps {
@@ -10,34 +10,48 @@ const AdBanner: FC<AdBannerProps> = ({ position, className = '' }) => {
   // Tamaños diferentes según la posición
   const sizes = {
     sidebar: 'h-[600px] w-[300px]',
-    content: 'h-[250px] w-full',
-    top: 'h-[90px] w-full',
-    bottom: 'h-[90px] w-full',
+    content: 'h-[250px] w-full max-w-[728px] mx-auto',
+    top: 'h-[90px] w-full max-w-[728px] mx-auto',
+    bottom: 'h-[90px] w-full max-w-[728px] mx-auto',
   };
 
   // Mapear las posiciones a formatos de anuncio de AdSense
   const adFormats: Record<string, { adSlot: string, format?: string, responsive?: boolean }> = {
     sidebar: { 
-      adSlot: "1234567890", 
+      adSlot: "3567637954", 
       format: "auto", 
     },
     content: { 
-      adSlot: "0987654321", 
+      adSlot: "8878301084", 
       responsive: true 
     },
     top: { 
-      adSlot: "5678901234", 
+      adSlot: "2842874175", 
       format: "auto", 
       responsive: true 
     },
     bottom: { 
-      adSlot: "5432109876", 
+      adSlot: "1165928091", 
       format: "auto", 
       responsive: true 
     },
   };
 
   const adData = adFormats[position];
+
+  // Asegurarse de que los anuncios se inicializan después de que el DOM esté listo
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'production') {
+      try {
+        // Solo ejecutar cuando adsbygoogle esté disponible
+        if (window.adsbygoogle) {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        }
+      } catch (error) {
+        console.error('Error al inicializar AdSense:', error);
+      }
+    }
+  }, []);
 
   return (
     <div className={`bg-white border border-gray-100 flex items-center justify-center rounded shadow-sm overflow-hidden ${sizes[position]} ${className}`}>
@@ -53,26 +67,28 @@ const AdBanner: FC<AdBannerProps> = ({ position, className = '' }) => {
 
       {/* En producción, mostrar el anuncio real */}
       {process.env.NODE_ENV === 'production' && (
-        <>
-          <div 
-            className={`my-ad ad-${position}`}
-          >
-            <ins
-              className="adsbygoogle"
-              style={{ display: "block" }}
-              data-ad-client="ca-pub-4689214255850199"
-              data-ad-slot={adData.adSlot}
-              data-ad-format={adData.format || undefined}
-              data-full-width-responsive={adData.responsive || undefined}
-            ></ins>
-          </div>
-          <Script id={`ad-script-${position}`}>
-            {`(adsbygoogle = window.adsbygoogle || []).push({});`}
-          </Script>
-        </>
+        <div 
+          className={`my-ad ad-${position} w-full h-full`}
+        >
+          <ins
+            className="adsbygoogle"
+            style={{ display: "block", width: "100%", height: "100%" }}
+            data-ad-client="ca-pub-4689214255850199"
+            data-ad-slot={adData.adSlot}
+            data-ad-format={adData.format || undefined}
+            data-full-width-responsive={adData.responsive || undefined}
+          ></ins>
+        </div>
       )}
     </div>
   );
 };
+
+// Añadir tipos para window.adsbygoogle
+declare global {
+  interface Window {
+    adsbygoogle: any[];
+  }
+}
 
 export default AdBanner; 
