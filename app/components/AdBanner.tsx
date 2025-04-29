@@ -1,3 +1,5 @@
+'use client';
+
 import { FC, useEffect } from 'react';
 import Script from 'next/script';
 
