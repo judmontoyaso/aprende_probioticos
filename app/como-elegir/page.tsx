@@ -28,6 +28,19 @@ export default function ComoElegir() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Main Content Area */}
           <div className="md:col-span-2">
+            {/* Imagen de cabecera */}
+            <div className="mb-8">
+              <div className="relative w-full h-[250px] sm:h-[300px]">
+                <Image 
+                  src="/images/elegir-probioticos.png" 
+                  alt="Guía para elegir el probiótico adecuado"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 800px"
+                  className="rounded-lg shadow-md object-contain"
+                />
+              </div>
+            </div>
+            
             <section className="bg-white p-8 rounded-lg shadow-sm mb-8">
               <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">Factores clave para elegir probióticos</h2>
               

@@ -56,7 +56,15 @@ export default function Home() {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
             <div className="bg-green-50 p-5 sm:p-6 rounded-lg shadow-sm border border-green-100">
-              <div className="text-2xl sm:text-3xl mb-3 sm:mb-4 text-green-500">🔬</div>
+              <div className="h-12 w-12 mb-3 sm:mb-4">
+                <Image 
+                  src="/icons/investigacion_ciencia.png" 
+                  alt="Ícono de investigación científica"
+                  width={48}
+                  height={48}
+                  className="object-contain"
+                />
+              </div>
               <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-gray-800">Respaldados por la Ciencia</h3>
               <p className="text-sm sm:text-base text-gray-600">
                 Investigaciones científicas han demostrado sus efectos positivos en el sistema digestivo, inmunológico y más.
@@ -64,7 +72,15 @@ export default function Home() {
             </div>
             
             <div className="bg-green-50 p-5 sm:p-6 rounded-lg shadow-sm border border-green-100">
-              <div className="text-2xl sm:text-3xl mb-3 sm:mb-4 text-green-500">🦠</div>
+              <div className="h-12 w-12 mb-3 sm:mb-4">
+                <Image 
+                  src="/icons/bacterias_probioticos.png" 
+                  alt="Ícono de bacterias probióticas"
+                  width={48}
+                  height={48}
+                  className="object-contain"
+                />
+              </div>
               <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-gray-800">Microorganismos Beneficiosos</h3>
               <p className="text-sm sm:text-base text-gray-600">
                 Principalmente bacterias de los géneros Lactobacillus y Bifidobacterium, pero también algunas levaduras como Saccharomyces.
@@ -72,7 +88,15 @@ export default function Home() {
             </div>
             
             <div className="bg-green-50 p-5 sm:p-6 rounded-lg shadow-sm border border-green-100 sm:col-span-2 md:col-span-1">
-              <div className="text-2xl sm:text-3xl mb-3 sm:mb-4 text-green-500">🥗</div>
+              <div className="h-12 w-12 mb-3 sm:mb-4">
+                <Image 
+                  src="/icons/alimentos_fermentados.png" 
+                  alt="Ícono de alimentos fermentados"
+                  width={48}
+                  height={48}
+                  className="object-contain"
+                />
+              </div>
               <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-gray-800">Fuentes Naturales</h3>
               <p className="text-sm sm:text-base text-gray-600">
                 Presentes en alimentos fermentados como yogur, kéfir, chucrut, kimchi y también disponibles como suplementos.
@@ -143,24 +167,63 @@ export default function Home() {
               
               <div className="space-y-4 sm:space-y-6">
                 <div className="bg-white p-5 sm:p-6 rounded-lg shadow-sm">
-                  <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-green-600">Mejora la salud digestiva</h3>
-                  <p className="text-sm sm:text-base text-gray-700">
-                    Los probióticos pueden ayudar a restaurar el equilibrio de la flora intestinal, especialmente después de alteraciones como el uso de antibióticos. Contribuyen a reducir síntomas de trastornos digestivos como el síndrome del intestino irritable.
-                  </p>
+                  <div className="flex items-start">
+                    <div className="h-10 w-10 mr-3 flex-shrink-0">
+                      <Image 
+                        src="/icons/sistema_digestivo.png" 
+                        alt="Ícono de sistema digestivo"
+                        width={40}
+                        height={40}
+                        className="object-contain"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-green-600">Mejora la salud digestiva</h3>
+                      <p className="text-sm sm:text-base text-gray-700">
+                        Los probióticos pueden ayudar a restaurar el equilibrio de la flora intestinal, especialmente después de alteraciones como el uso de antibióticos. Contribuyen a reducir síntomas de trastornos digestivos como el síndrome del intestino irritable.
+                      </p>
+                    </div>
+                  </div>
                 </div>
                 
                 <div className="bg-white p-5 sm:p-6 rounded-lg shadow-sm">
-                  <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-green-600">Fortalece el sistema inmunológico</h3>
-                  <p className="text-sm sm:text-base text-gray-700">
-                    Aproximadamente el 70% de nuestro sistema inmunológico reside en el intestino. Los probióticos pueden estimular la producción de anticuerpos naturales y mejorar la actividad de las células inmunitarias.
-                  </p>
+                  <div className="flex items-start">
+                    <div className="h-10 w-10 mr-3 flex-shrink-0">
+                      <Image 
+                        src="/icons/sistema_inmunologico.png" 
+                        alt="Ícono de sistema inmunológico"
+                        width={40}
+                        height={40}
+                        className="object-contain"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-green-600">Fortalece el sistema inmunológico</h3>
+                      <p className="text-sm sm:text-base text-gray-700">
+                        Aproximadamente el 70% de nuestro sistema inmunológico reside en el intestino. Los probióticos pueden estimular la producción de anticuerpos naturales y mejorar la actividad de las células inmunitarias.
+                      </p>
+                    </div>
+                  </div>
                 </div>
                 
                 <div className="bg-white p-5 sm:p-6 rounded-lg shadow-sm">
-                  <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-green-600">Mejora la salud mental</h3>
-                  <p className="text-sm sm:text-base text-gray-700">
-                    Estudios recientes han mostrado conexiones entre la salud intestinal y la salud cerebral (eje intestino-cerebro), sugiriendo que los probióticos podrían tener efectos positivos en condiciones como la ansiedad y la depresión.
-                  </p>
+                  <div className="flex items-start">
+                    <div className="h-10 w-10 mr-3 flex-shrink-0">
+                      <Image 
+                        src="/icons/conexion_intestino_cerebro.png" 
+                        alt="Ícono de conexión intestino-cerebro"
+                        width={40}
+                        height={40}
+                        className="object-contain"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-green-600">Mejora la salud mental</h3>
+                      <p className="text-sm sm:text-base text-gray-700">
+                        Estudios recientes han mostrado conexiones entre la salud intestinal y la salud cerebral (eje intestino-cerebro), sugiriendo que los probióticos podrían tener efectos positivos en condiciones como la ansiedad y la depresión.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
               
@@ -184,6 +247,17 @@ export default function Home() {
       {/* Call to Action */}
       <section className="py-8 sm:py-12 bg-green-600 text-white">
         <div className="container mx-auto px-4 text-center">
+          <div className="flex justify-center mb-4">
+            <div className="h-16 w-16">
+              <Image 
+                src="/icons/suplementos_capsulas.png" 
+                alt="Ícono de suplementos probióticos"
+                width={64}
+                height={64}
+                className="object-contain"
+              />
+            </div>
+          </div>
           <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">¿Quieres aprender a elegir el probiótico adecuado?</h2>
           <p className="text-base sm:text-xl mb-6 sm:mb-8 max-w-3xl mx-auto">
             No todos los probióticos son iguales. Descubre cómo seleccionar el más adecuado para tus necesidades específicas.

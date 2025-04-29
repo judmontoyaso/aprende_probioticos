@@ -31,6 +31,18 @@ export default function Beneficios() {
             <section className="bg-white p-8 rounded-lg shadow-sm mb-8">
               <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">Salud Digestiva</h2>
               
+              <div className="mb-6">
+                <div className="relative w-full h-[200px] sm:h-[250px]">
+                  <Image 
+                    src="/images/beneficios-digestivos.png" 
+                    alt="Beneficios digestivos de los probióticos"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 700px"
+                    className="rounded-lg shadow-md object-contain"
+                  />
+                </div>
+              </div>
+              
               <div className="space-y-6">
                 <div>
                   <h3 className="text-xl font-semibold mb-3 text-green-600">Mejora del equilibrio de la microbiota intestinal</h3>
@@ -67,6 +79,18 @@ export default function Beneficios() {
             <section className="bg-white p-8 rounded-lg shadow-sm mb-8">
               <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">Sistema Inmunológico</h2>
               
+              <div className="mb-6">
+                <div className="relative w-full h-[200px] sm:h-[250px]">
+                  <Image 
+                    src="/images/sistema-inmune.png" 
+                    alt="Probióticos y sistema inmunológico"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 700px"
+                    className="rounded-lg shadow-md object-contain"
+                  />
+                </div>
+              </div>
+              
               <div className="space-y-6">
                 <div>
                   <h3 className="text-xl font-semibold mb-3 text-green-600">Fortalecimiento de las defensas</h3>
@@ -93,6 +117,18 @@ export default function Beneficios() {
             <section className="bg-white p-8 rounded-lg shadow-sm mb-8">
               <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">Salud Mental</h2>
               
+              <div className="mb-6">
+                <div className="relative w-full h-[200px] sm:h-[250px]">
+                  <Image 
+                    src="/images/intestino-cerebro.png" 
+                    alt="Conexión intestino-cerebro y probióticos"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 700px"
+                    className="rounded-lg shadow-md object-contain"
+                  />
+                </div>
+              </div>
+              
               <div className="space-y-6">
                 <div>
                   <h3 className="text-xl font-semibold mb-3 text-green-600">Eje intestino-cerebro</h3>
@@ -118,6 +154,18 @@ export default function Beneficios() {
             
             <section className="bg-white p-8 rounded-lg shadow-sm mb-8">
               <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">Otros Beneficios</h2>
+              
+              <div className="flex justify-center mb-6">
+                <div className="h-16 w-16">
+                  <Image 
+                    src="/icons/salud_bienestar.png" 
+                    alt="Icono de salud y bienestar"
+                    width={64}
+                    height={64}
+                    className="object-contain"
+                  />
+                </div>
+              </div>
               
               <div className="space-y-6">
                 <div>
