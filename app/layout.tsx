@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ProbióticosCiencia - Información científica sobre probióticos",
+  title: "Aprende de Probióticos",
   description: "Sitio informativo sobre probióticos basado en evidencia científica. Aprende sobre sus beneficios, cómo elegirlos y su impacto en la salud.",
   keywords: "probióticos, salud intestinal, microbiota, bacterias beneficiosas, suplementos probióticos",
 };
