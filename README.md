@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ProbióticosCiencia - Sitio Web de Nicho sobre Probióticos
 
-## Getting Started
+Este es un sitio web informativo sobre probióticos, creado con Next.js, TypeScript y Tailwind CSS. La página está diseñada para proporcionar información científica sobre probióticos y monetizar a través de anuncios.
 
-First, run the development server:
+## Características
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Diseño Responsive**: Totalmente adaptable a dispositivos móviles, tablets y escritorio
+- **Diseño Moderno**: Interfaz limpia y atractiva con estilo profesional
+- **Optimizado para SEO**: Metadatos y estructura adecuada para mejorar el posicionamiento
+- **Monetización**: Espacios preparados para anuncios en ubicaciones estratégicas
+- **Información Científica**: Contenido basado en investigaciones y estudios actualizados
+
+## Requisitos
+
+- Node.js 16.x o superior
+- npm o yarn
+
+## Instalación
+
+1. Clona este repositorio:
+```
+git clone <URL-del-repositorio>
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Instala las dependencias:
+```
+npm install
+# o
+yarn install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Ejecuta el servidor de desarrollo:
+```
+npm run dev
+# o
+yarn dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver el sitio.
 
-## Learn More
+## Estructura del Proyecto
 
-To learn more about Next.js, take a look at the following resources:
+- `/app`: Contiene las páginas y componentes de la aplicación
+- `/app/components`: Componentes reutilizables (Navbar, Footer, AdBanner)
+- `/public`: Archivos estáticos como imágenes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Imágenes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+El sitio requiere algunas imágenes para funcionar correctamente. Debes añadir las siguientes imágenes:
 
-## Deploy on Vercel
+1. `/public/images/probiotics-hero.png` - Imagen principal para la página de inicio
+2. Otras imágenes ilustrativas sobre probióticos y salud intestinal según sea necesario
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Puedes usar imágenes libres de derechos de sitios como Unsplash, Pexels o crear tus propias ilustraciones.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Monetización
+
+El sitio incluye componentes `AdBanner` en diferentes posiciones estratégicas:
+- Parte superior de cada página
+- Barra lateral
+- Parte inferior de cada página
+
+Para implementar anuncios reales, debes reemplazar el contenido del componente `AdBanner.tsx` con el código proporcionado por tu red de publicidad (Google AdSense, Mediavine, etc.).
+
+## Despliegue
+
+Para construir la versión de producción:
+
+```
+npm run build
+# o
+yarn build
+```
+
+Luego puedes desplegar el sitio en plataformas como Vercel, Netlify o cualquier servicio que soporte aplicaciones Next.js.
+
+## Personalización
+
+Puedes personalizar varios aspectos del sitio:
+
+- Colores: Modifica los colores en los archivos CSS o clases de Tailwind
+- Contenido: Actualiza el texto en los archivos de página
+- Estructura: Añade o modifica componentes según sea necesario
+
+## Licencia
+
+Este proyecto está bajo la licencia MIT. Consulta el archivo LICENSE para más detalles.
