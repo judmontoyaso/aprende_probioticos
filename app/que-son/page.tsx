@@ -31,13 +31,13 @@ export default function QueSon() {
             <section className="bg-white p-5 sm:p-8 rounded-lg shadow-sm mb-6 sm:mb-8">
               <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-800 border-b pb-2">Definición científica</h2>
               <p className="text-sm sm:text-base text-gray-700 mb-3 sm:mb-4">
-                Según la definición de la Organización Mundial de la Salud (OMS) y la Organización de las Naciones Unidas para la Alimentación y la Agricultura (FAO), los probióticos son "microorganismos vivos que, cuando se administran en cantidades adecuadas, confieren un beneficio a la salud del huésped".
+                Según la definición de la Organización Mundial de la Salud (OMS) y la Organización de las Naciones Unidas para la Alimentación y la Agricultura (FAO), los probióticos son &ldquo;microorganismos vivos que, cuando se administran en cantidades adecuadas, confieren un beneficio a la salud del huésped&rdquo;.
               </p>
               <p className="text-sm sm:text-base text-gray-700 mb-3 sm:mb-4">
                 En términos más simples, los probióticos son bacterias y levaduras beneficiosas que residen naturalmente en nuestro cuerpo o que pueden ser consumidas a través de alimentos fermentados o suplementos específicos.
               </p>
               <blockquote className="border-l-4 border-green-500 pl-4 italic text-gray-600 my-4 sm:my-6 text-sm sm:text-base">
-                "La palabra 'probiótico' proviene del latín 'pro' que significa 'a favor de' y del griego 'bios' que significa 'vida'."
+                &ldquo;La palabra &apos;probiótico&apos; proviene del latín &apos;pro&apos; que significa &apos;a favor de&apos; y del griego &apos;bios&apos; que significa &apos;vida&apos;.&rdquo;
               </blockquote>
               <p className="text-sm sm:text-base text-gray-700">
                 Estos microorganismos beneficiosos coexisten con nosotros en una relación simbiótica, principalmente en el tracto digestivo, aunque también se encuentran en otras partes del cuerpo como la piel, la boca y el sistema urogenital.

@@ -171,7 +171,7 @@ export default function Beneficios() {
                 <div>
                   <h3 className="text-xl font-semibold mb-3 text-green-600">Salud cardiovascular</h3>
                   <p className="text-gray-700 mb-3">
-                    Ciertas cepas probióticas pueden ayudar a reducir el colesterol LDL ("malo") y la presión arterial, factores de riesgo para enfermedades cardiovasculares.
+                    Ciertas cepas probióticas pueden ayudar a reducir el colesterol LDL (&ldquo;malo&rdquo;) y la presión arterial, factores de riesgo para enfermedades cardiovasculares.
                   </p>
                   <p className="text-gray-700 mb-3">
                     <strong>Evidencia científica:</strong> Un metaanálisis en el <em>Journal of Clinical Lipidology</em> (2017) encontró que los probióticos pueden reducir el colesterol total y el colesterol LDL.

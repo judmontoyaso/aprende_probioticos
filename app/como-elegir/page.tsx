@@ -52,7 +52,7 @@ export default function ComoElegir() {
                   </p>
                   <div className="bg-green-50 p-4 rounded-lg">
                     <p className="text-sm text-gray-700">
-                      <strong className="text-green-700">Consejo profesional:</strong> No todos los productos que dicen contener "probióticos" son iguales. Un suplemento etiquetado simplemente como "contiene Lactobacillus" no proporciona información suficiente sobre qué efectos específicos puede tener.
+                      <strong className="text-green-700">Consejo profesional:</strong> No todos los productos que dicen contener &ldquo;probióticos&rdquo; son iguales. Un suplemento etiquetado simplemente como &ldquo;contiene Lactobacillus&rdquo; no proporciona información suficiente sobre qué efectos específicos puede tener.
                     </p>
                   </div>
                 </div>
@@ -159,7 +159,7 @@ export default function ComoElegir() {
                     </div>
                   </div>
                   <p className="text-gray-700">
-                    <strong className="text-green-700">Consejo:</strong> Busca yogures y otros productos fermentados que especifiquen "cultivos vivos y activos" y mencionen las cepas específicas que contienen.
+                    <strong className="text-green-700">Consejo:</strong> Busca yogures y otros productos fermentados que especifiquen &ldquo;cultivos vivos y activos&rdquo; y mencionen las cepas específicas que contienen.
                   </p>
                 </div>
               </div>
