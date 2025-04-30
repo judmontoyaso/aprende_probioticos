@@ -1,8 +1,6 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import AdBanner from '../components/AdBanner';
 import SEOSchema from '../components/SEOSchema';
-import { Metadata } from 'next';
 
 export default function ComoElegir() {
   // Datos estructurados para el esquema de artículo

@@ -1,39 +1,34 @@
 import React from 'react';
-import { Metadata } from 'next';
 
 interface VerificationProps {
-  // Añadir IDs de verificación según sea necesario
   googleSiteVerification?: string;
   bingSiteVerification?: string;
   yandexVerification?: string;
+  baiduVerification?: string;
 }
 
 export default function Verification({
-  googleSiteVerification = "",
-  bingSiteVerification = "",
-  yandexVerification = "",
+  googleSiteVerification,
+  bingSiteVerification,
+  yandexVerification,
+  baiduVerification
 }: VerificationProps) {
   return (
     <>
       {googleSiteVerification && (
-        <meta 
-          name="google-site-verification" 
-          content={googleSiteVerification} 
-        />
+        <meta name="google-site-verification" content={googleSiteVerification} />
       )}
       
       {bingSiteVerification && (
-        <meta 
-          name="msvalidate.01" 
-          content={bingSiteVerification} 
-        />
+        <meta name="msvalidate.01" content={bingSiteVerification} />
       )}
       
       {yandexVerification && (
-        <meta 
-          name="yandex-verification" 
-          content={yandexVerification} 
-        />
+        <meta name="yandex-verification" content={yandexVerification} />
+      )}
+      
+      {baiduVerification && (
+        <meta name="baidu-site-verification" content={baiduVerification} />
       )}
     </>
   );

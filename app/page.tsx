@@ -2,6 +2,7 @@ import Link from "next/link";
 import AdBanner from "./components/AdBanner";
 import OptimizedImage from "./components/OptimizedImage";
 import SEOSchema from "./components/SEOSchema";
+import AlimentosImageWithModal from "./components/AlimentosImageWithModal";
 
 export default function Home() {
   // Datos estructurados para el esquema del sitio web como homePage
@@ -123,15 +124,7 @@ export default function Home() {
           
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="w-full md:w-1/2">
-              <div className="relative w-full h-[300px] sm:h-[400px]">
-                <OptimizedImage 
-                  src="/images/alimentos-probioticos.png" 
-                  alt="Alimentos ricos en probióticos como yogur, kéfir, chucrut y kimchi"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-contain rounded-lg shadow-md"
-                />
-              </div>
+              <AlimentosImageWithModal />
             </div>
             
             <div className="w-full md:w-1/2">

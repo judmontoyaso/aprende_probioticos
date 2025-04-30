@@ -96,7 +96,7 @@ export default function PoliticaCookies() {
             
             <h3>3.2. Banner de consentimiento</h3>
             <p>
-              Cuando visitas nuestro sitio web por primera vez, verás un banner de cookies que te permite aceptar o rechazar las cookies no esenciales. Puedes cambiar tus preferencias en cualquier momento a través del enlace "Configuración de cookies" en el pie de página de nuestro sitio.
+              Cuando visitas nuestro sitio web por primera vez, verás un banner de cookies que te permite aceptar o rechazar las cookies no esenciales. Puedes cambiar tus preferencias en cualquier momento a través del enlace &quot;Configuración de cookies&quot; en el pie de página de nuestro sitio.
             </p>
             
             <h3>3.3. Desactivación de Google Analytics</h3>
