@@ -16,6 +16,9 @@ const Navbar = () => {
     { path: '/', label: 'Inicio' },
     { path: '/que-son', label: '¿Qué son?' },
     { path: '/beneficios', label: 'Beneficios' },
+    { path: '/condiciones', label: 'Condiciones' },
+    { path: '/tipos', label: 'Tipos de Probióticos' },
+    { path: '/recetas', label: 'Recetas' },
     { path: '/como-elegir', label: 'Cómo elegir' },
     { path: '/referencias', label: 'Referencias' },
   ];
