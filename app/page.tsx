@@ -26,14 +26,14 @@ export default function Home() {
           </div>
           <div className="w-full md:w-1/2 flex justify-center">
             <div className="relative w-64 h-64 sm:w-80 sm:h-80">
-              <Image 
+        <Image
                 src="/images/probiotics-hero.png" 
                 alt="Ilustración de probióticos"
                 fill
                 sizes="(max-width: 640px) 256px, 400px"
                 className="object-contain"
-                priority
-              />
+          priority
+        />
             </div>
           </div>
         </div>
@@ -141,13 +141,13 @@ export default function Home() {
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2 font-bold">•</span>
                   <p className="text-sm sm:text-base"><strong>Kimchi:</strong> Plato coreano fermentado que contiene múltiples cepas de bacterias beneficiosas.</p>
-                </li>
+          </li>
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2 font-bold">•</span>
                   <p className="text-sm sm:text-base"><strong>Kombucha:</strong> Té fermentado con propiedades probióticas y antioxidantes.</p>
-                </li>
+          </li>
               </ul>
-              
+
               <div className="mt-4 px-4 py-3 bg-green-50 rounded-lg border border-green-100">
                 <p className="text-xs sm:text-sm text-gray-700">
                   <strong className="text-green-700">Consejo:</strong> Para obtener el máximo beneficio, consume estos alimentos regularmente como parte de una dieta equilibrada.
@@ -189,7 +189,7 @@ export default function Home() {
                 <div className="bg-white p-5 sm:p-6 rounded-lg shadow-sm">
                   <div className="flex items-start">
                     <div className="h-10 w-10 mr-3 flex-shrink-0">
-                      <Image 
+          <Image
                         src="/icons/sistema_inmunologico.png" 
                         alt="Ícono de sistema inmunológico"
                         width={40}
@@ -209,7 +209,7 @@ export default function Home() {
                 <div className="bg-white p-5 sm:p-6 rounded-lg shadow-sm">
                   <div className="flex items-start">
                     <div className="h-10 w-10 mr-3 flex-shrink-0">
-                      <Image 
+          <Image
                         src="/icons/conexion_intestino_cerebro.png" 
                         alt="Ícono de conexión intestino-cerebro"
                         width={40}
@@ -249,7 +249,7 @@ export default function Home() {
         <div className="container mx-auto px-4 text-center">
           <div className="flex justify-center mb-4">
             <div className="h-16 w-16">
-              <Image 
+          <Image
                 src="/icons/suplementos_capsulas.png" 
                 alt="Ícono de suplementos probióticos"
                 width={64}
