@@ -5,7 +5,7 @@ const Navbar = () => {
     <nav className="bg-green-600 text-white shadow-md">
       <div className="container mx-auto px-4 py-3 flex flex-wrap items-center justify-between">
         <Link href="/" className="text-2xl font-bold flex items-center">
-          <span className="mr-2">🦠</span> ProbióticosCiencia
+          <span className="mr-2">🦠</span> Probióticos Para Todos
         </Link>
         
         <div className="hidden md:flex space-x-6">
