@@ -43,8 +43,8 @@ export default function Home() {
                 fill
                 sizes="(max-width: 640px) 256px, 400px"
                 className="object-contain"
-                priority
-              />
+          priority
+        />
             </div>
           </div>
         </div>
@@ -144,11 +144,11 @@ export default function Home() {
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2 font-bold">•</span>
                   <p className="text-sm sm:text-base"><strong>Kimchi:</strong> Plato coreano fermentado que contiene múltiples cepas de bacterias beneficiosas.</p>
-                </li>
+          </li>
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2 font-bold">•</span>
                   <p className="text-sm sm:text-base"><strong>Kombucha:</strong> Té fermentado con propiedades probióticas y antioxidantes.</p>
-                </li>
+          </li>
               </ul>
 
               <div className="mt-4 px-4 py-3 bg-green-50 rounded-lg border border-green-100">
@@ -274,7 +274,7 @@ export default function Home() {
       {/* Bottom Ad */}
       <div className="container mx-auto px-4 py-6">
         <AdBanner position="bottom" />
-      </div>
+    </div>
     </>
   );
 }

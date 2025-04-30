@@ -24,14 +24,14 @@ const Navbar = () => {
   ];
 
   const resourceRoutes = [
-    { path: '/condiciones', label: 'Condiciones de Salud' },
-    { path: '/tipos', label: 'Tipos de Probióticos' },
+    { path: '/recursos', label: 'Todos los recursos' },
+    { path: '/recursos/articulos', label: 'Artículos' },
     { path: '/recetas', label: 'Recetas' },
+    { path: '/referencias', label: 'Referencias' },
   ];
 
   const otherRoutes = [
     { path: '/como-elegir', label: 'Cómo elegir' },
-    { path: '/referencias', label: 'Referencias' },
   ];
 
   return (
@@ -57,22 +57,30 @@ const Navbar = () => {
             </Link>
           ))}
           
-          {/* Recursos Prácticos Dropdown */}
+          {/* Recursos Prácticos Link/Dropdown */}
           <div className="relative group">
-            <button 
-              onClick={() => setIsResourcesOpen(!isResourcesOpen)}
-              onMouseEnter={() => setIsResourcesOpen(true)}
-              className={`flex items-center transition-colors ${
-                isActiveGroup(['/condiciones', '/tipos', '/recetas']) 
-                  ? 'text-white font-semibold bg-green-700 px-3 py-1 rounded-md'
-                  : 'hover:text-green-200'
-              }`}
-            >
-              Recursos Prácticos
-              <svg className={`w-4 h-4 ml-1 transition-transform ${isResourcesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
+            <div className="flex items-center">
+              <Link 
+                href="/recursos"
+                className={`transition-colors mr-1 ${
+                  isActiveRoute('/recursos') || pathname.startsWith('/recursos/') || pathname.startsWith('/recetas') || pathname.startsWith('/referencias')
+                    ? 'text-white font-semibold bg-green-700 px-3 py-1 rounded-md'
+                    : 'hover:text-green-200'
+                }`}
+              >
+                Recursos Prácticos
+              </Link>
+              <button 
+                onClick={() => setIsResourcesOpen(!isResourcesOpen)}
+                onMouseEnter={() => setIsResourcesOpen(true)}
+                className="text-white p-1 hover:text-green-200"
+                aria-label="Expandir menú de recursos"
+              >
+                <svg className={`w-4 h-4 transition-transform ${isResourcesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+            </div>
             
             <div 
               className={`absolute left-0 mt-2 w-64 bg-white text-gray-800 rounded-md shadow-lg z-10 transition-all duration-200 ${
@@ -139,17 +147,26 @@ const Navbar = () => {
               </Link>
             ))}
             
+            {/* Mobile Resources Link */}
+            <Link
+              href="/recursos"
+              className={`block px-3 py-2 rounded-md transition-colors ${
+                isActiveRoute('/recursos')
+                  ? 'bg-green-800 font-semibold'
+                  : 'hover:bg-green-600'
+              }`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Recursos Prácticos
+            </Link>
+            
             {/* Mobile Resources Dropdown */}
             <div>
               <button 
                 onClick={() => setIsResourcesOpen(!isResourcesOpen)}
-                className={`w-full flex justify-between items-center px-3 py-2 rounded-md transition-colors ${
-                  isActiveGroup(['/condiciones', '/tipos', '/recetas'])
-                    ? 'bg-green-800 font-semibold'
-                    : 'hover:bg-green-600'
-                }`}
+                className="w-full flex justify-between items-center px-3 py-2 rounded-md transition-colors hover:bg-green-600"
               >
-                Recursos Prácticos
+                Categorías de recursos
                 <svg className={`w-4 h-4 transition-transform ${isResourcesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -157,7 +174,7 @@ const Navbar = () => {
               
               {isResourcesOpen && (
                 <div className="ml-4 mt-2 space-y-2 border-l-2 border-green-500 pl-2">
-                  {resourceRoutes.map(route => (
+                  {resourceRoutes.slice(1).map(route => (
                     <Link
                       key={route.path}
                       href={route.path}

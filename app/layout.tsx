@@ -103,7 +103,7 @@ export default function RootLayout({
           <Navbar />
           <Breadcrumbs />
           <main className="flex-grow">
-            {children}
+        {children}
           </main>
           <Footer />
         </div>
