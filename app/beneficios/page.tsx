@@ -1,9 +1,23 @@
 import Image from 'next/image';
 import AdBanner from '../components/AdBanner';
+import SEOSchema from '../components/SEOSchema';
 
 export default function Beneficios() {
+  // Datos estructurados para el esquema de artículo
+  const articleData = {
+    title: "Beneficios de los Probióticos: Evidencia Científica Actualizada",
+    description: "Descubre los múltiples beneficios que los probióticos ofrecen para tu salud, respaldados por evidencia científica reciente. Incluye mejoras para la salud digestiva, inmunológica, mental y metabólica.",
+    publishDate: "2024-06-01T08:00:00+00:00",
+    author: "Probióticos Para Todos",
+    image: "https://www.probioticosparatodos.com/images/beneficios-digestivos.png",
+    url: "https://www.probioticosparatodos.com/beneficios"
+  };
+
   return (
     <>
+      {/* Schema.org estructurado */}
+      <SEOSchema type="article" data={articleData} />
+      
       {/* Header */}
       <header className="bg-green-600 text-white py-12">
         <div className="container mx-auto px-4">

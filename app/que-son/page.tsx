@@ -1,10 +1,34 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import AdBanner from '../components/AdBanner';
+import SEOSchema from '../components/SEOSchema';
+import OptimizedImage from '../components/OptimizedImage';
 
 export default function QueSon() {
+  // Datos estructurados para el esquema FAQ
+  const faqData = [
+    {
+      question: "¿Qué son los probióticos?",
+      answer: "Los probióticos son microorganismos vivos —principalmente bacterias y algunas levaduras— que, cuando se administran en cantidades adecuadas, proporcionan beneficios a la salud del huésped, según la definición establecida por la Organización Mundial de la Salud (OMS) y la FAO."
+    },
+    {
+      question: "¿Cuáles son los principales tipos de probióticos?",
+      answer: "Los principales tipos incluyen bacterias de los géneros Lactobacillus (L. acidophilus, L. rhamnosus, L. casei, L. plantarum), Bifidobacterium (B. bifidum, B. longum, B. breve, B. infantis), levaduras como Saccharomyces boulardii y bacterias como Streptococcus thermophilus."
+    },
+    {
+      question: "¿Cómo funcionan los probióticos?",
+      answer: "Los probióticos funcionan a través de varios mecanismos: compiten por receptores de adhesión intestinal bloqueando bacterias patógenas, producen sustancias antimicrobianas, modulan el sistema inmunológico, mantienen la barrera intestinal y sintetizan nutrientes esenciales como vitaminas del complejo B y ácidos grasos de cadena corta."
+    },
+    {
+      question: "¿Por qué es importante la especificidad de cepa en los probióticos?",
+      answer: "La eficacia de los probióticos es cepa-específica, lo que significa que no todas las cepas de una misma especie producen los mismos efectos. Por ello, es importante elegir productos con cepas documentadas clínicamente según el objetivo deseado."
+    }
+  ];
+
   return (
     <>
+      {/* Schema.org estructurado */}
+      <SEOSchema type="faq" data={faqData} />
+      
       {/* Header */}
       <header className="bg-green-600 text-white py-8 sm:py-12">
         <div className="container mx-auto px-4">
@@ -43,7 +67,7 @@ export default function QueSon() {
               
               <div className="flex justify-center mb-6 sm:mb-8">
                 <div className="relative w-full max-w-[700px] h-[200px] sm:h-[300px] md:h-[400px]">
-                  <Image 
+                  <OptimizedImage 
                     src="/images/tipos-probioticos.png" 
                     alt="Diferentes tipos de bacterias probióticas"
                     fill
@@ -61,7 +85,7 @@ export default function QueSon() {
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold mb-2 text-green-600 flex items-center">
                     <div className="h-6 w-6 mr-2">
-                      <Image 
+                      <OptimizedImage 
                         src="/icons/bacterias_probioticos.png" 
                         alt="Ícono de Lactobacillus"
                         width={24}
@@ -82,7 +106,7 @@ export default function QueSon() {
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold mb-2 text-green-600 flex items-center">
                     <div className="h-6 w-6 mr-2">
-                      <Image 
+                      <OptimizedImage 
                         src="/icons/bacterias_probioticos.png" 
                         alt="Ícono de Bifidobacterium"
                         width={24}
@@ -103,7 +127,7 @@ export default function QueSon() {
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold mb-2 text-green-600 flex items-center">
                     <div className="h-6 w-6 mr-2">
-                      <Image 
+                      <OptimizedImage 
                         src="/icons/bacterias_probioticos.png" 
                         alt="Ícono de Saccharomyces"
                         width={24}
@@ -121,7 +145,7 @@ export default function QueSon() {
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold mb-2 text-green-600 flex items-center">
                     <div className="h-6 w-6 mr-2">
-                      <Image 
+                      <OptimizedImage 
                         src="/icons/bacterias_probioticos.png" 
                         alt="Ícono de Streptococcus"
                         width={24}

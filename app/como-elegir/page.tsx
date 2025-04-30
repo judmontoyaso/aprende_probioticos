@@ -1,10 +1,47 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import AdBanner from '../components/AdBanner';
+import SEOSchema from '../components/SEOSchema';
 
 export default function ComoElegir() {
+  // Datos estructurados para el esquema de artículo
+  const articleData = {
+    title: "Cómo Elegir el Probiótico Adecuado: Guía Completa",
+    description: "Guía basada en evidencia para seleccionar los probióticos adecuados según tus necesidades específicas. Aprende a identificar cepas, verificar potencia y elegir entre suplementos y alimentos.",
+    publishDate: "2024-05-15T10:00:00+00:00",
+    author: "Probióticos Para Todos",
+    image: "https://www.probioticosparatodos.com/images/elegir-probioticos.png",
+    url: "https://www.probioticosparatodos.com/como-elegir"
+  };
+
+  // Datos estructurados para el esquema FAQ
+  const faqData = [
+    {
+      question: "¿Cómo identificar un buen probiótico?",
+      answer: "Un buen probiótico debe especificar las cepas completas (género, especie y designación), garantizar la potencia en UFC hasta la fecha de caducidad, y contar con estudios clínicos que respalden su eficacia para la condición específica que quieres tratar."
+    },
+    {
+      question: "¿Qué cantidad de UFC debe tener un probiótico?",
+      answer: "La mayoría de los estudios han utilizado dosis entre 1 y 10 mil millones de UFC por día. La dosis adecuada depende de la condición específica a tratar y de las cepas utilizadas."
+    },
+    {
+      question: "¿Son mejores los suplementos o los alimentos fermentados?",
+      answer: "Ambos tienen ventajas. Los suplementos suelen tener dosis más altas y cepas específicas para diferentes necesidades. Los alimentos fermentados (yogur, kéfir, chucrut) ofrecen probióticos junto con otros nutrientes beneficiosos, aunque en dosis generalmente menores."
+    },
+    {
+      question: "¿Quién debe consultar a un médico antes de tomar probióticos?",
+      answer: "Personas con sistema inmunológico comprometido, enfermedades graves, post-cirugía reciente, o con alergias graves a componentes que puedan estar en los probióticos deben consultar con un profesional de la salud antes de comenzar un régimen probiótico."
+    }
+  ];
+
   return (
     <>
+      {/* Schema.org estructurado - article */}
+      <SEOSchema type="article" data={articleData} />
+      
+      {/* Schema.org estructurado - FAQ */}
+      <SEOSchema type="faq" data={faqData} />
+      
       {/* Header */}
       <header className="bg-green-600 text-white py-8 sm:py-12">
         <div className="container mx-auto px-4">

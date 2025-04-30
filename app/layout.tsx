@@ -1,20 +1,24 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import CookieConsent from "./components/CookieConsent";
 import Navbar from "./components/Navbar";
 import Breadcrumbs from "./components/Breadcrumbs";
 import Footer from "./components/Footer";
+import Analytics from "./components/Analytics";
+import Verification from "./components/Verification";
+import GlobalSchema from "./components/GlobalSchema";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap", // Optimización para Core Web Vitals
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap", // Optimización para Core Web Vitals
 });
 
 export const metadata: Metadata = {
@@ -59,6 +63,7 @@ export const metadata: Metadata = {
     shortcut: '/las-bacterias-intestinales.ico',
     apple: '/las-bacterias-intestinales.ico',
   },
+  metadataBase: new URL('https://www.probioticosparatodos.com'),
 };
 
 export default function RootLayout({
@@ -69,6 +74,21 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
+        {/* Esquemas globales de Schema.org */}
+        <GlobalSchema />
+        
+        {/* Verificación de sitios */}
+        <Verification 
+          googleSiteVerification="YOUR_GOOGLE_VERIFICATION_ID"
+          bingSiteVerification="YOUR_BING_VERIFICATION_ID"
+        />
+        
+        {/* Preconectar con dominios importantes */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        
         {/* Google AdSense */}
         <script
           async
@@ -89,19 +109,8 @@ export default function RootLayout({
         </div>
         <CookieConsent />
         
-        {/* Google Analytics */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-TGGM0S4G83"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-TGGM0S4G83');
-          `}
-        </Script>
+        {/* Usar nuestro componente de Analytics mejorado */}
+        <Analytics />
       </body>
     </html>
   );

@@ -1,10 +1,24 @@
-import Image from "next/image";
 import Link from "next/link";
 import AdBanner from "./components/AdBanner";
+import OptimizedImage from "./components/OptimizedImage";
+import SEOSchema from "./components/SEOSchema";
 
 export default function Home() {
+  // Datos estructurados para el esquema del sitio web como homePage
+  const homeSchema = {
+    title: "Probióticos Para Todos - Información basada en evidencia científica",
+    description: "Sitio informativo sobre probióticos basado en evidencia científica. Aprende sobre sus beneficios, cómo elegirlos y su impacto en la salud.",
+    publishDate: "2024-05-01T00:00:00+00:00",
+    author: "Probióticos Para Todos",
+    image: "https://www.probioticosparatodos.com/images/probiotics-hero.png",
+    url: "https://www.probioticosparatodos.com"
+  };
+
   return (
     <>
+      {/* Schema.org estructurado */}
+      <SEOSchema type="article" data={homeSchema} />
+      
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-green-500 to-green-700 text-white py-12 md:py-16">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
@@ -22,7 +36,7 @@ export default function Home() {
           </div>
           <div className="w-full md:w-1/2 flex justify-center">
             <div className="relative w-64 h-64 sm:w-80 sm:h-80">
-              <Image
+              <OptimizedImage
                 src="/images/probiotics-hero.png" 
                 alt="Ilustración de probióticos"
                 fill
@@ -53,7 +67,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
             <div className="bg-green-50 p-5 sm:p-6 rounded-lg shadow-sm border border-green-100">
               <div className="h-12 w-12 mb-3 sm:mb-4">
-                <Image 
+                <OptimizedImage 
                   src="/icons/investigacion_ciencia.png" 
                   alt="Ícono de investigación científica"
                   width={48}
@@ -69,7 +83,7 @@ export default function Home() {
             
             <div className="bg-green-50 p-5 sm:p-6 rounded-lg shadow-sm border border-green-100">
               <div className="h-12 w-12 mb-3 sm:mb-4">
-                <Image 
+                <OptimizedImage 
                   src="/icons/bacterias_probioticos.png" 
                   alt="Ícono de bacterias probióticas"
                   width={48}
@@ -85,7 +99,7 @@ export default function Home() {
             
             <div className="bg-green-50 p-5 sm:p-6 rounded-lg shadow-sm border border-green-100 sm:col-span-2 md:col-span-1">
               <div className="h-12 w-12 mb-3 sm:mb-4">
-                <Image 
+                <OptimizedImage 
                   src="/icons/alimentos_fermentados.png" 
                   alt="Ícono de alimentos fermentados"
                   width={48}
@@ -110,7 +124,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="w-full md:w-1/2">
               <div className="relative w-full h-[300px] sm:h-[400px]">
-                <Image 
+                <OptimizedImage 
                   src="/images/alimentos-probioticos.png" 
                   alt="Alimentos ricos en probióticos como yogur, kéfir, chucrut y kimchi"
                   fill
@@ -165,7 +179,7 @@ export default function Home() {
                 <div className="bg-white p-5 sm:p-6 rounded-lg shadow-sm">
                   <div className="flex items-start">
                     <div className="h-10 w-10 mr-3 flex-shrink-0">
-                      <Image 
+                      <OptimizedImage 
                         src="/icons/sistema_digestivo.png" 
                         alt="Ícono de sistema digestivo"
                         width={40}
@@ -185,7 +199,7 @@ export default function Home() {
                 <div className="bg-white p-5 sm:p-6 rounded-lg shadow-sm">
                   <div className="flex items-start">
                     <div className="h-10 w-10 mr-3 flex-shrink-0">
-                      <Image 
+                      <OptimizedImage 
                         src="/icons/sistema_inmunologico.png" 
                         alt="Ícono de sistema inmunológico"
                         width={40}
@@ -205,7 +219,7 @@ export default function Home() {
                 <div className="bg-white p-5 sm:p-6 rounded-lg shadow-sm">
                   <div className="flex items-start">
                     <div className="h-10 w-10 mr-3 flex-shrink-0">
-                      <Image 
+                      <OptimizedImage 
                         src="/icons/conexion_intestino_cerebro.png" 
                         alt="Ícono de conexión intestino-cerebro"
                         width={40}
@@ -245,7 +259,7 @@ export default function Home() {
         <div className="container mx-auto px-4 text-center">
           <div className="flex justify-center mb-4">
             <div className="h-16 w-16">
-              <Image
+              <OptimizedImage
                 src="/icons/suplementos_capsulas.png" 
                 alt="Ícono de suplementos probióticos"
                 width={64}

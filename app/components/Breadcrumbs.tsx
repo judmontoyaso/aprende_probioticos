@@ -1,61 +1,80 @@
 'use client';
 
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
-const Breadcrumbs = () => {
+export default function Breadcrumbs() {
   const pathname = usePathname();
   
   // No mostrar breadcrumbs en la página principal
-  if (pathname === '/') return null;
-  
-  // Obtener rutas y nombres
-  const getPathSegments = () => {
-    const segments = pathname.split('/').filter(Boolean);
-    
-    const breadcrumbMap: { [key: string]: string } = {
-      'que-son': '¿Qué son?',
-      'beneficios': 'Beneficios',
-      'como-elegir': 'Cómo elegir',
-      'referencias': 'Referencias',
-      'politica-privacidad': 'Política de Privacidad',
-    };
-    
-    return segments.map(segment => ({
-      href: `/${segment}`,
-      label: breadcrumbMap[segment] || segment.charAt(0).toUpperCase() + segment.slice(1),
-    }));
-  };
-  
-  const segments = getPathSegments();
-  
-  return (
-    <div className="bg-green-600 text-white">
-      <div className="container mx-auto px-4 py-2 text-sm">
-        <div className="flex items-center">
-          <Link href="/" className="text-white hover:text-green-200">
-            Inicio
-          </Link>
-          
-          {segments.map((segment, index) => (
-            <div key={segment.href} className="flex items-center">
-              <span className="mx-2 text-green-200">/</span>
-              {index === segments.length - 1 ? (
-                <span className="font-medium text-green-100">{segment.label}</span>
-              ) : (
-                <Link 
-                  href={segment.href}
-                  className="text-white hover:text-green-200"
-                >
-                  {segment.label}
-                </Link>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
+  if (pathname === '/') {
+    return null;
+  }
 
-export default Breadcrumbs; 
+  // Crear el array de breadcrumbs
+  const pathSegments = pathname.split('/').filter(segment => segment);
+  
+  // Mapa de rutas a nombres legibles
+  const routeMap: Record<string, string> = {
+    'que-son': '¿Qué son los probióticos?',
+    'beneficios': 'Beneficios',
+    'como-elegir': 'Cómo elegir',
+    'referencias': 'Referencias',
+    'politica-privacidad': 'Política de privacidad',
+    'cookies': 'Política de cookies',
+  };
+
+  // Generar los breadcrumbs con sus rutas
+  const breadcrumbs = [
+    { name: 'Inicio', path: '/' },
+    ...pathSegments.map((segment, index) => {
+      const path = `/${pathSegments.slice(0, index + 1).join('/')}`;
+      return {
+        name: routeMap[segment] || segment,
+        path,
+      };
+    }),
+  ];
+
+  // Generar datos estructurados para Schema.org BreadcrumbList
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': breadcrumbs.map((crumb, index) => ({
+      '@type': 'ListItem',
+      'position': index + 1,
+      'name': crumb.name,
+      'item': `https://www.probioticosparatodos.com${crumb.path}`,
+    })),
+  };
+
+  return (
+    <>
+      {/* Datos estructurados Schema.org */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      
+      {/* UI de Breadcrumbs */}
+      <nav className="bg-green-600 text-white py-2">
+        <div className="container mx-auto px-4">
+          <ol className="flex flex-wrap text-sm">
+            {breadcrumbs.map((crumb, index) => (
+              <li key={crumb.path} className="flex items-center">
+                {index > 0 && <span className="mx-2">/</span>}
+                {index === breadcrumbs.length - 1 ? (
+                  <span className="font-medium">{crumb.name}</span>
+                ) : (
+                  <Link href={crumb.path} className="hover:underline hover:text-white/90 transition-colors">
+                    {crumb.name}
+                  </Link>
+                )}
+              </li>
+            ))}
+          </ol>
+        </div>
+      </nav>
+    </>
+  );
+} 
