@@ -1,30 +1,22 @@
 import Image from 'next/image';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Link from 'next/link';
 import AdBanner from '../components/AdBanner';
 
 export default function ComoElegir() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      
+    <>
       {/* Header */}
-      <header className="bg-green-600 text-white py-12">
+      <header className="bg-green-600 text-white py-8 sm:py-12">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4">Cómo Elegir el Probiótico Adecuado</h1>
-          <p className="text-xl max-w-3xl">
-            Guía basada en evidencia científica para seleccionar el probiótico más adecuado para tus necesidades específicas.
+          <h1 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4">Cómo Elegir Probióticos</h1>
+          <p className="text-base sm:text-xl max-w-3xl">
+            Guía basada en evidencia para seleccionar los probióticos adecuados según tus necesidades específicas.
           </p>
         </div>
       </header>
       
-      {/* Ad Banner Top */}
-      <div className="container mx-auto px-4 py-6">
-        <AdBanner position="top" />
-      </div>
-      
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-8 sm:py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Main Content Area */}
           <div className="md:col-span-2">
@@ -274,14 +266,12 @@ export default function ComoElegir() {
             </div>
           </div>
         </div>
-      </main>
+      </div>
       
       {/* Bottom Ad */}
       <div className="container mx-auto px-4 py-6">
         <AdBanner position="bottom" />
       </div>
-      
-      <Footer />
-    </div>
+    </>
   );
 } 

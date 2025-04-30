@@ -1,24 +1,25 @@
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import AdBanner from '../components/AdBanner';
 
 export default function Referencias() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      
+    <>
       {/* Header */}
-      <header className="bg-green-600 text-white py-12">
+      <header className="bg-green-600 text-white py-8 sm:py-12">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4">Referencias Científicas</h1>
-          <p className="text-xl max-w-3xl">
-            Estudios científicos y publicaciones que respaldan la información presentada en este sitio.
+          <h1 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4">Referencias Científicas</h1>
+          <p className="text-base sm:text-xl max-w-3xl">
+            Base científica y estudios que respaldan la información sobre probióticos presentada en este sitio.
           </p>
         </div>
       </header>
       
+      {/* Ad Banner Top */}
+      <div className="container mx-auto px-4 py-6">
+        <AdBanner position="top" />
+      </div>
+      
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-8 sm:py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Main Content Area */}
           <div className="md:col-span-2">
@@ -132,64 +133,15 @@ export default function Referencias() {
           <div>
             <div className="sticky top-6">
               <AdBanner position="sidebar" className="mb-6" />
-              
-              <div className="bg-green-50 p-6 rounded-lg shadow-sm border border-green-100 mb-6">
-                <h3 className="text-xl font-semibold mb-4 text-gray-800">Bases de datos científicas</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-700 transition-colors">
-                      PubMed
-                    </a>
-                  </li>
-                  <li className="flex items-start">
-                    <a href="https://www.cochranelibrary.com/" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-700 transition-colors">
-                      Cochrane Library
-                    </a>
-                  </li>
-                  <li className="flex items-start">
-                    <a href="https://clinicaltrials.gov/" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-700 transition-colors">
-                      ClinicalTrials.gov
-                    </a>
-                  </li>
-                  <li className="flex items-start">
-                    <a href="https://www.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-700 transition-colors">
-                      National Center for Biotechnology Information
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="bg-white p-6 rounded-lg shadow-sm">
-                <h3 className="text-xl font-semibold mb-4 text-gray-800">Organizaciones científicas</h3>
-                <ul className="space-y-3">
-                  <li>
-                    <a href="https://isappscience.org/" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-700 transition-colors">
-                      International Scientific Association for Probiotics and Prebiotics
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://www.gastro.org/" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-700 transition-colors">
-                      American Gastroenterological Association
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://www.who.int/" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-700 transition-colors">
-                      Organización Mundial de la Salud
-                    </a>
-                  </li>
-                </ul>
-              </div>
             </div>
           </div>
         </div>
-      </main>
+      </div>
       
       {/* Bottom Ad */}
       <div className="container mx-auto px-4 py-6">
         <AdBanner position="bottom" />
       </div>
-      
-      <Footer />
-    </div>
+    </>
   );
 } 

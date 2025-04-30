@@ -1,6 +1,4 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 
 export const metadata = {
   title: 'Política de Privacidad | Probióticos Para Todos',
@@ -9,21 +7,34 @@ export const metadata = {
 
 export default function PoliticaPrivacidad() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar />
-      <main className="flex-grow container mx-auto px-4 py-8">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-3xl font-bold mb-6 text-gray-800">Política de Privacidad</h1>
+    <>
+      {/* Header */}
+      <header className="bg-green-600 text-white py-8 sm:py-12">
+        <div className="container mx-auto px-4">
+          <h1 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4">Política de Privacidad</h1>
+          <p className="text-base sm:text-xl max-w-3xl">
+            Información sobre cómo manejamos tus datos en este sitio web.
+          </p>
+        </div>
+      </header>
+      
+      {/* Main Content */}
+      <div className="container mx-auto px-4 py-8 sm:py-12">
+        <div className="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-lg shadow-sm">
+          <section className="mb-8">
+            <h2 className="text-xl sm:text-2xl font-bold mb-4 text-gray-800">Introducción</h2>
+            <p className="text-gray-700 mb-4">
+              En Probióticos Para Todos, nos tomamos muy en serio la privacidad de nuestros visitantes. Esta Política de Privacidad describe los tipos de información que recopilamos y cómo la utilizamos.
+            </p>
+            <p className="text-gray-700">
+              Al utilizar nuestro sitio web, usted acepta las prácticas descritas en esta política.
+            </p>
+          </section>
           
           <div className="prose prose-green max-w-none">
             <p>Última actualización: {new Date().toLocaleDateString('es-ES')}</p>
             
-            <h2>1. Introducción</h2>
-            <p>
-              En Probióticos Para Todos, accesible desde https://www.probioticosparatodos.com, una de nuestras principales prioridades es la privacidad de nuestros visitantes. Esta Política de Privacidad documenta los tipos de información que recopilamos y registramos y cómo la utilizamos.
-            </p>
-            
-            <h2>2. Información que recopilamos</h2>
+            <h2>1. Información que recopilamos</h2>
             <p>
               Cuando visitas nuestro sitio web, podemos recopilar cierta información automáticamente, incluyendo:
             </p>
@@ -33,7 +44,7 @@ export default function PoliticaPrivacidad() {
               <li>Cookies y tecnologías similares que pueden identificar tu navegador o dispositivo</li>
             </ul>
             
-            <h2>3. Cómo utilizamos Google Analytics</h2>
+            <h2>2. Cómo utilizamos Google Analytics</h2>
             <p>
               Utilizamos Google Analytics, un servicio de análisis web proporcionado por Google, Inc. (&ldquo;Google&rdquo;), para entender cómo los visitantes interactúan con nuestro sitio web. Google Analytics utiliza &ldquo;cookies&rdquo;, que son archivos de texto colocados en tu ordenador, para ayudar al sitio web a analizar cómo los usuarios utilizan el sitio.
             </p>
@@ -44,7 +55,7 @@ export default function PoliticaPrivacidad() {
               Google puede también transferir esta información a terceros cuando así lo requiera la legislación, o cuando dichos terceros procesen la información en nombre de Google. Google no asociará tu dirección IP con ningún otro dato del que disponga Google.
             </p>
             
-            <h2>4. Base legal para el procesamiento</h2>
+            <h2>3. Base legal para el procesamiento</h2>
             <p>
               Procesamos tus datos personales solo cuando tenemos una base legal válida para hacerlo. Dependiendo de las circunstancias específicas, podemos basarnos en:
             </p>
@@ -54,7 +65,7 @@ export default function PoliticaPrivacidad() {
               <li>La necesidad de cumplir con obligaciones legales</li>
             </ul>
             
-            <h2>5. Tus derechos sobre tus datos</h2>
+            <h2>4. Tus derechos sobre tus datos</h2>
             <p>
               De acuerdo con las leyes de protección de datos, tienes ciertos derechos respecto a tus datos personales:
             </p>
@@ -67,7 +78,7 @@ export default function PoliticaPrivacidad() {
               <li>Derecho de oposición: Puedes oponerte al procesamiento de tus datos personales en cualquier momento.</li>
             </ul>
             
-            <h2>6. Cookies y tecnologías similares</h2>
+            <h2>5. Cookies y tecnologías similares</h2>
             <p>
               Utilizamos cookies y tecnologías similares para mejorar tu experiencia en nuestro sitio web. Puedes gestionar tus preferencias de cookies a través del banner de consentimiento que aparece cuando visitas nuestro sitio por primera vez.
             </p>
@@ -79,19 +90,18 @@ export default function PoliticaPrivacidad() {
               <li><strong>Cookies de análisis:</strong> Nos ayudan a entender cómo interactúas con nuestro sitio web (Google Analytics).</li>
             </ul>
             
-            <h2>7. Cambios a esta política</h2>
+            <h2>6. Cambios a esta política</h2>
             <p>
               Podemos actualizar nuestra Política de Privacidad de vez en cuando. Te notificaremos cualquier cambio publicando la nueva Política de Privacidad en esta página. Te recomendamos que revises esta Política de Privacidad periódicamente para ver si hay cambios.
             </p>
             
-            <h2>8. Contacto</h2>
+            <h2>7. Contacto</h2>
             <p>
               Si tienes alguna pregunta sobre esta Política de Privacidad, puedes contactarnos a través de nuestro formulario de contacto o enviando un correo electrónico a info@probioticosparatodos.com.
             </p>
           </div>
         </div>
-      </main>
-      <Footer />
-    </div>
+      </div>
+    </>
   );
 } 

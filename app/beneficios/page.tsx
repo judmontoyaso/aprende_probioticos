@@ -1,13 +1,9 @@
 import Image from 'next/image';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import AdBanner from '../components/AdBanner';
 
 export default function Beneficios() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      
+    <>
       {/* Header */}
       <header className="bg-green-600 text-white py-12">
         <div className="container mx-auto px-4">
@@ -24,7 +20,7 @@ export default function Beneficios() {
       </div>
       
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Main Content Area */}
           <div className="md:col-span-2">
@@ -32,13 +28,14 @@ export default function Beneficios() {
               <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">Salud Digestiva</h2>
               
               <div className="mb-6">
-                <div className="relative w-full h-[200px] sm:h-[250px]">
+                <div className="relative w-full h-[300px] md:h-[400px]">
                   <Image 
                     src="/images/beneficios-digestivos.png" 
                     alt="Beneficios digestivos de los probióticos"
                     fill
                     sizes="(max-width: 768px) 100vw, 700px"
-                    className="rounded-lg shadow-md object-contain"
+                    className="rounded-lg shadow-md object-cover md:object-contain"
+                    style={{ objectPosition: 'center' }}
                   />
                 </div>
               </div>
@@ -90,13 +87,14 @@ export default function Beneficios() {
               <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">Sistema Inmunológico</h2>
               
               <div className="mb-6">
-                <div className="relative w-full h-[200px] sm:h-[250px]">
+                <div className="relative w-full h-[300px] md:h-[400px]">
                   <Image 
                     src="/images/sistema-inmune.png" 
                     alt="Probióticos y sistema inmunológico"
                     fill
                     sizes="(max-width: 768px) 100vw, 700px"
-                    className="rounded-lg shadow-md object-contain"
+                    className="rounded-lg shadow-md object-cover md:object-contain"
+                    style={{ objectPosition: 'center' }}
                   />
                 </div>
               </div>
@@ -138,13 +136,14 @@ export default function Beneficios() {
               <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">Eje Intestino-Cerebro</h2>
               
               <div className="mb-6">
-                <div className="relative w-full h-[200px] sm:h-[250px]">
+                <div className="relative w-full h-[300px] md:h-[400px]">
                   <Image 
                     src="/images/intestino-cerebro.png" 
                     alt="Conexión intestino-cerebro y probióticos"
                     fill
                     sizes="(max-width: 768px) 100vw, 700px"
-                    className="rounded-lg shadow-md object-contain"
+                    className="rounded-lg shadow-md object-cover md:object-contain"
+                    style={{ objectPosition: 'center' }}
                   />
                 </div>
               </div>
@@ -368,14 +367,12 @@ export default function Beneficios() {
             </div>
           </div>
         </div>
-      </main>
+      </div>
       
       {/* Bottom Ad */}
       <div className="container mx-auto px-4 py-6">
         <AdBanner position="bottom" />
       </div>
-      
-      <Footer />
-    </div>
+    </>
   );
 } 

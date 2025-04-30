@@ -1,14 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import AdBanner from '../components/AdBanner';
 
 export default function QueSon() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      
+    <>
       {/* Header */}
       <header className="bg-green-600 text-white py-8 sm:py-12">
         <div className="container mx-auto px-4">
@@ -25,7 +21,7 @@ export default function QueSon() {
       </div>
       
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-8 sm:py-12">
+      <div className="container mx-auto px-4 py-8 sm:py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {/* Main Content Area */}
           <div className="md:col-span-2">
@@ -259,14 +255,12 @@ export default function QueSon() {
             </div>
           </div>
         </div>
-      </main>
+      </div>
       
       {/* Bottom Ad */}
       <div className="container mx-auto px-4 py-6">
         <AdBanner position="bottom" />
       </div>
-      
-      <Footer />
-    </div>
+    </>
   );
 } 
