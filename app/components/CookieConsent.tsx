@@ -5,8 +5,8 @@ import { useState, useEffect } from 'react';
 // Extender el tipo Window para incluir gtag
 declare global {
   interface Window {
-    gtag: (command: string, action: string, params?: any) => void;
-    dataLayer: any[];
+    gtag: (command: string, action: string, params?: Record<string, unknown>) => void;
+    dataLayer: unknown[];
   }
 }
 

@@ -35,7 +35,7 @@ export default function PoliticaPrivacidad() {
             
             <h2>3. Cómo utilizamos Google Analytics</h2>
             <p>
-              Utilizamos Google Analytics, un servicio de análisis web proporcionado por Google, Inc. ("Google"), para entender cómo los visitantes interactúan con nuestro sitio web. Google Analytics utiliza "cookies", que son archivos de texto colocados en tu ordenador, para ayudar al sitio web a analizar cómo los usuarios utilizan el sitio.
+              Utilizamos Google Analytics, un servicio de análisis web proporcionado por Google, Inc. (&ldquo;Google&rdquo;), para entender cómo los visitantes interactúan con nuestro sitio web. Google Analytics utiliza &ldquo;cookies&rdquo;, que son archivos de texto colocados en tu ordenador, para ayudar al sitio web a analizar cómo los usuarios utilizan el sitio.
             </p>
             <p>
               La información generada por la cookie sobre tu uso del sitio web (incluyendo tu dirección IP) será transmitida y almacenada por Google en servidores en Estados Unidos. Google utilizará esta información con el propósito de evaluar tu uso del sitio web, compilar informes sobre la actividad del sitio web para los operadores del sitio web y proporcionar otros servicios relacionados con la actividad del sitio web y el uso de internet.
