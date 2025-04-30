@@ -72,7 +72,7 @@ export default function QueSon() {
                     alt="Diferentes tipos de bacterias probióticas"
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 768px) 700px, 700px"
-                    className="rounded-lg shadow-md object-contain"
+                    priority
                   />
                 </div>
               </div>
@@ -90,7 +90,7 @@ export default function QueSon() {
                         alt="Ícono de Lactobacillus"
                         width={24}
                         height={24}
-                        className="object-contain"
+                        priority
                       />
                     </div>
                     Lactobacillus
@@ -111,7 +111,7 @@ export default function QueSon() {
                         alt="Ícono de Bifidobacterium"
                         width={24}
                         height={24}
-                        className="object-contain"
+                        priority
                       />
                     </div>
                     Bifidobacterium
@@ -132,7 +132,7 @@ export default function QueSon() {
                         alt="Ícono de Saccharomyces"
                         width={24}
                         height={24}
-                        className="object-contain"
+                        priority
                       />
                     </div>
                     Saccharomyces boulardii
@@ -150,7 +150,7 @@ export default function QueSon() {
                         alt="Ícono de Streptococcus"
                         width={24}
                         height={24}
-                        className="object-contain"
+                        priority
                       />
                     </div>
                     Streptococcus thermophilus

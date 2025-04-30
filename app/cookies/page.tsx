@@ -114,10 +114,7 @@ export default function PoliticaCookies() {
             
             <h2>5. Contacto</h2>
             <p>
-              Si tienes alguna pregunta sobre nuestra Política de Cookies, no dudes en contactarnos:
-            </p>
-            <p>
-              Email: info@probioticosparatodos.com
+              Si tienes alguna pregunta sobre nuestra política de cookies, no dudes en contactarnos a través de nuestro correo electrónico: <a href="mailto:info@aprendeprobioticos.com" className="text-green-600 hover:text-green-700">info@aprendeprobioticos.com</a>
             </p>
           </div>
         </div>

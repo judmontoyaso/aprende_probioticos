@@ -1,8 +1,14 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 export default function GlobalSchema() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -40,6 +46,10 @@ export default function GlobalSchema() {
     },
     "inLanguage": "es"
   };
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <>

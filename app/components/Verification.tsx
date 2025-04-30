@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import { Metadata } from 'next';
 
 interface VerificationProps {
   // Añadir IDs de verificación según sea necesario
