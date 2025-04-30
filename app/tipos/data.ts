@@ -1,7 +1,7 @@
 // Archivo de datos para los tipos de probióticos
 // En un entorno de producción, estos datos podrían venir de una API o CMS
 
-interface TipoData {
+export interface TipoData {
   titulo: string;
   descripcion: string;
   imagenPrincipal: {

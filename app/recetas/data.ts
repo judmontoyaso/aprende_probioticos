@@ -1,7 +1,7 @@
 // Archivo de datos para las recetas probióticas
 // En un entorno de producción, estos datos podrían venir de una API o CMS
 
-interface RecetaData {
+export interface RecetaData {
   titulo: string;
   descripcion: string;
   imagenPrincipal: {
