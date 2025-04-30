@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 // Extender el tipo Window para incluir gtag
 declare global {
@@ -69,9 +70,13 @@ const CookieConsent = () => {
             <p className="text-sm text-gray-600">
               Este sitio utiliza cookies para analizar el tráfico y mejorar tu experiencia. 
               Al continuar, aceptas nuestro uso de cookies. Puedes consultar nuestra{' '}
-              <a href="/politica-privacidad" className="text-green-600 underline">
+              <Link href="/cookies" className="text-green-600 hover:text-green-700 underline">
+                política de cookies
+              </Link>{' '}
+              y{' '}
+              <Link href="/politica-privacidad" className="text-green-600 hover:text-green-700 underline">
                 política de privacidad
-              </a>{' '}
+              </Link>{' '}
               para más información.
             </p>
           </div>

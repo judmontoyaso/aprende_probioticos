@@ -22,13 +22,14 @@ export default function ComoElegir() {
           <div className="md:col-span-2">
             {/* Imagen de cabecera */}
             <div className="mb-8">
-              <div className="relative w-full h-[250px] sm:h-[300px]">
+              <div className="relative w-full h-[300px] sm:h-[400px] md:h-[450px]">
                 <Image 
                   src="/images/elegir-probioticos.png" 
                   alt="Guía para elegir el probiótico adecuado"
                   fill
                   sizes="(max-width: 768px) 100vw, 800px"
                   className="rounded-lg shadow-md object-contain"
+                  style={{ objectPosition: 'center' }}
                 />
               </div>
             </div>
