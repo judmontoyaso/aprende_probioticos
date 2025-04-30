@@ -293,7 +293,7 @@ export default function Beneficios() {
                 
                 <li id="ref11"><span className="font-semibold">[11]</span> Zhang Q et al. (2023). <em>Effect of prebiotics, probiotics, synbiotics on depression: results from a meta-analysis</em>. BMC Psychiatry, 23:477. <a href="https://doi.org/10.1186/s12888-023-05047-4" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">DOI: 10.1186/s12888-023-05047-4</a></li>
                 
-                <li id="ref12"><span className="font-semibold">[12]</span> Merkouris E et al. (2024). <em>Probiotics' Effects in the Treatment of Anxiety and Depression: A Comprehensive Review of 2014–2023 Clinical Trials</em>. Nutrients, 15(3):1382. <a href="https://doi.org/10.3390/nu15031382" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">DOI: 10.3390/nu15031382</a></li>
+                <li id="ref12"><span className="font-semibold">[12]</span> Merkouris E et al. (2024). <em>Probiotics&apos; Effects in the Treatment of Anxiety and Depression: A Comprehensive Review of 2014–2023 Clinical Trials</em>. Nutrients, 15(3):1382. <a href="https://doi.org/10.3390/nu15031382" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">DOI: 10.3390/nu15031382</a></li>
                 
                 <li id="ref13"><span className="font-semibold">[13]</span> Ciudad MJ et al. (2024). <em>Use of probiotics in preventing and treating excess weight and obesity. A systematic review</em>. Obes Sci Pract, 10(5):e1234.</li>
                 
