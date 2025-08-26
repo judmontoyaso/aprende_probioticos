@@ -123,10 +123,10 @@ export default function AgriculturaArticulo() {
                   vegetal, y protegen contra patógenos y estrés ambiental.
                 </p>
                 <blockquote className="bg-green-50 border-l-4 border-green-500 p-4 my-6">
-                  "Los probióticos agrícolas son microorganismos vivos que, cuando se aplican a suelos, semillas o 
+                  &ldquo;Los probióticos agrícolas son microorganismos vivos que, cuando se aplican a suelos, semillas o 
                   superficies de plantas, colonizan la rizosfera o el interior de la planta y promueven el crecimiento 
                   vegetal mediante el aumento del suministro o disponibilidad de nutrientes primarios para la planta 
-                  huésped."
+                  huésped.&rdquo;
                 </blockquote>
                 <p>
                   Los principales grupos de microorganismos utilizados como probióticos en agricultura incluyen:

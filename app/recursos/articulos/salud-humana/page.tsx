@@ -117,8 +117,8 @@ export default function SaludHumanaArticulo() {
                   la Agricultura (FAO) y la Organización Mundial de la Salud (OMS), los probióticos son:
                 </p>
                 <blockquote className="bg-green-50 border-l-4 border-green-500 p-4 my-6">
-                  "Microorganismos vivos que, cuando se administran en cantidades adecuadas, confieren un beneficio 
-                  a la salud del huésped."
+                  &ldquo;Microorganismos vivos que, cuando se administran en cantidades adecuadas, confieren un beneficio 
+                  a la salud del huésped.&rdquo;
                 </blockquote>
                 <p>
                   Esta definición, establecida en 2001 y confirmada en 2014, destaca tres componentes esenciales:

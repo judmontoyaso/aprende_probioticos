@@ -6,7 +6,8 @@ import TipoProbioticosTemplate from '../../templates/TipoProbioticosTemplate';
 import { tiposData, type TipoData } from '../data';
 
 export default function TipoPage() {
-  const { slug } = useParams();
+  const params = useParams();
+  const slug = params.slug as string;
   const [tipoData, setTipoData] = useState<TipoData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

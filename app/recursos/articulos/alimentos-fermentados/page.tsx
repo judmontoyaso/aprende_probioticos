@@ -126,9 +126,9 @@ export default function AlimentosFermentadosArticulo() {
                   también mejoraban su sabor y propiedades.
                 </p>
                 <blockquote className="bg-green-50 border-l-4 border-green-500 p-4 my-6">
-                  "La fermentación es el lento proceso alquímico que transforma y preserva la comida mediante la 
+                  &ldquo;La fermentación es el lento proceso alquímico que transforma y preserva la comida mediante la 
                   acción de microorganismos beneficiosos, convirtiéndose en un puente entre nuestro pasado cultural 
-                  y nuestra comprensión científica moderna."
+                  y nuestra comprensión científica moderna.&rdquo;
                 </blockquote>
                 <h3 className="text-xl font-bold mb-3">La ciencia detrás del proceso</h3>
                 <p>
