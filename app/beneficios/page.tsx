@@ -6,6 +6,7 @@ import Image from 'next/image';
 
 export default function Beneficios() {
   // Create FAQ items for both schema
+  /*
   const faqItems = [
     {
       question: "¿Cuáles son los principales beneficios digestivos de los probióticos?",
@@ -26,6 +27,7 @@ export default function Beneficios() {
     image: "https://www.probioticosparatodos.com/images/beneficios-digestivos.png",
     url: "https://www.probioticosparatodos.com/beneficios"
   };
+  */
 
   return (
     <>

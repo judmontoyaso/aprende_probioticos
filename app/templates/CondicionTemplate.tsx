@@ -49,6 +49,7 @@ export default function CondicionTemplate({
 }: CondicionTemplateProps) {
   // Schema.org estructurado (desactivado temporalmente para depurar)
   // <SEOSchema type="both" data={{ article: articleData, faq: faqData }} />
+  /*
   const articleData = {
     title: titulo,
     description: descripcion,
@@ -63,6 +64,7 @@ export default function CondicionTemplate({
     question: item.pregunta,
     answer: item.respuesta
   }));
+  */
 
   return (
     <>
@@ -170,7 +172,7 @@ export default function CondicionTemplate({
                   <h2 className="text-2xl font-bold text-gray-800">Recomendación del especialista</h2>
                 </div>
                 <div className="bg-blue-50 p-6 rounded-lg border border-blue-100">
-                  <p className="text-gray-700 italic">"{recomendacionesDoctor}"</p>
+                  <p className="text-gray-700 italic">&ldquo;{recomendacionesDoctor}&rdquo;</p>
                 </div>
               </section>
             )}

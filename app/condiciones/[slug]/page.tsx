@@ -3,11 +3,12 @@
 import { useParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import CondicionTemplate from '../../templates/CondicionTemplate';
-import { condicionesData } from '../data';
+import { condicionesData, type CondicionData } from '../data';
 
 export default function CondicionPage() {
-  const { slug } = useParams();
-  const [condicionData, setCondicionData] = useState<any>(null);
+  const params = useParams();
+  const slug = params.slug as string;
+  const [condicionData, setCondicionData] = useState<CondicionData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 

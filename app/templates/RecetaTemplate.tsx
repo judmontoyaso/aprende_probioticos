@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import AdBanner from '../components/AdBanner';
+// import AdBanner from '../components/AdBanner';
 // import SEOSchema from '../components/SEOSchema';
 
 interface RecetaTemplateProps {
@@ -68,6 +68,7 @@ export default function RecetaTemplate({
   variaciones,
   faq
 }: RecetaTemplateProps) {
+  /* Temporarily disabled data structures for SEO
   // Datos estructurados para el esquema de artículo/receta
   const recipeData = {
     title: titulo,
@@ -88,6 +89,7 @@ export default function RecetaTemplate({
     question: item.pregunta,
     answer: item.respuesta
   }));
+  */
 
   // Función para obtener color según dificultad
   const getDifficultyColor = () => {

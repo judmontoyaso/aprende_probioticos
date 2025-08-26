@@ -13,9 +13,9 @@ const Navbar = () => {
     return pathname === route;
   };
 
-  const isActiveGroup = (routes: string[]) => {
-    return routes.some(route => pathname.startsWith(route));
-  };
+  // const isActiveGroup = (routes: string[]) => {
+  //   return routes.some(route => pathname.startsWith(route));
+  // };
 
   const mainRoutes = [
     { path: '/', label: 'Inicio' },

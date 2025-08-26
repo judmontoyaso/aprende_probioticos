@@ -1,6 +1,6 @@
 import Script from 'next/script';
 import { Metadata } from 'next';
-import AdBanner from '../../components/AdBanner';
+// import AdBanner from '../../components/AdBanner';
 
 export const metadata: Metadata = {
   title: 'Artículos sobre Probióticos | Recursos Prácticos',

@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import AdBanner from '../components/AdBanner';
+// import AdBanner from '../components/AdBanner';
 // import SEOSchema from '../components/SEOSchema';
 
 interface TipoProbioticosTemplateProps {
@@ -69,6 +69,7 @@ export default function TipoProbioticosTemplate({
   seccionesContenido
 }: TipoProbioticosTemplateProps) {
   // Datos estructurados para el esquema de artículo
+  /*
   const articleData = {
     title: titulo,
     description: descripcion,
@@ -83,6 +84,7 @@ export default function TipoProbioticosTemplate({
     question: item.pregunta,
     answer: item.respuesta
   }));
+  */
 
   return (
     <>
