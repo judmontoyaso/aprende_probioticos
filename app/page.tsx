@@ -1,280 +1,161 @@
 import Link from "next/link";
-import AdBanner from "./components/AdBanner";
-import OptimizedImage from "./components/OptimizedImage";
-import SEOSchema from "./components/SEOSchema";
-import AlimentosImageWithModal from "./components/AlimentosImageWithModal";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Probióticos: Tu Guía Completa para la Salud Digestiva | Probióticos Nicho',
+  description: 'Descubre los beneficios de los probióticos para la salud digestiva, inmunológica y mental. Guía completa sobre suplementos, alimentos fermentados y cómo elegir los mejores probióticos.',
+  keywords: 'probióticos, salud digestiva, bacterias beneficiosas, alimentos fermentados, suplementos probióticos, microbiota intestinal, sistema inmunológico',
+};
+
+function AdSpace({ position, title }: { position: string; title: string }) {
+  return (
+    <div className="bg-gray-100 border-2 border-dashed border-gray-300 p-4 text-center text-gray-500 rounded my-4">
+      <div className="text-sm font-medium mb-1">📢 {title}</div>
+      <div className="text-xs">Google AdSense - {position}</div>
+      <div className="text-xs mt-1 text-gray-400">Espacio publicitario optimizado</div>
+    </div>
+  );
+}
 
 export default function Home() {
-  // Datos estructurados para el esquema del sitio web como homePage
-  const homeSchema = {
-    title: "Probióticos Para Todos - Información basada en evidencia científica",
-    description: "Sitio informativo sobre probióticos basado en evidencia científica. Aprende sobre sus beneficios, cómo elegirlos y su impacto en la salud.",
-    publishDate: "2024-05-01T00:00:00+00:00",
-    author: "Probióticos Para Todos",
-    image: "https://www.probioticosparatodos.com/images/probiotics-hero.png",
-    url: "https://www.probioticosparatodos.com"
-  };
-
   return (
-    <>
-      {/* Schema.org estructurado */}
-      <SEOSchema type="article" data={homeSchema} />
-      
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-green-500 to-green-700 text-white py-12 md:py-16">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
-          <div className="w-full md:w-1/2 mb-8 md:mb-0">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Probióticos: Aliados de tu Salud</h1>
-            <p className="text-lg sm:text-xl mb-6">Descubre cómo estos microorganismos beneficiosos pueden mejorar tu salud digestiva y bienestar general, respaldados por la ciencia.</p>
-            <div className="flex flex-wrap gap-4">
-              <Link href="/que-son" className="bg-white text-green-700 px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold hover:bg-green-100 transition-colors text-sm sm:text-base">
-                Aprender más
-              </Link>
-              <Link href="/beneficios" className="bg-transparent border-2 border-white text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold hover:bg-white/10 transition-colors text-sm sm:text-base">
-                Ver beneficios
-              </Link>
-            </div>
-          </div>
-          <div className="w-full md:w-1/2 flex justify-center">
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80">
-              <OptimizedImage
-                src="/images/probiotics-hero.png" 
-                alt="Ilustración de probióticos"
-                fill
-                sizes="(max-width: 640px) 256px, 400px"
-                className="object-contain"
-                priority
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Ad Banner Top */}
-      <div className="container mx-auto px-4 py-6">
-        <AdBanner position="top" />
+    <div className="bg-white min-h-screen">
+      <div className="hidden md:block container mx-auto px-4 pt-4">
+        <AdSpace position="top-desktop" title="Banner Superior Escritorio (728x90)" />
       </div>
       
-      {/* Introduction Section */}
-      <section className="py-8 sm:py-12 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center mb-8 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-800">¿Qué son los Probióticos?</h2>
-            <p className="text-base sm:text-lg text-gray-600">
-              Los probióticos son microorganismos vivos que, cuando se administran en cantidades adecuadas, confieren un beneficio para la salud del huésped. Principalmente se encuentran en alimentos fermentados y suplementos dietéticos.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-            <div className="bg-green-50 p-5 sm:p-6 rounded-lg shadow-sm border border-green-100">
-              <div className="h-12 w-12 mb-3 sm:mb-4">
-                <OptimizedImage 
-                  src="/icons/investigacion_ciencia.png" 
-                  alt="Ícono de investigación científica"
-                  width={48}
-                  height={48}
-                  className="object-contain"
-                />
-              </div>
-              <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-gray-800">Respaldados por la Ciencia</h3>
-              <p className="text-sm sm:text-base text-gray-600">
-                Investigaciones científicas han demostrado sus efectos positivos en el sistema digestivo, inmunológico y más.
-              </p>
-            </div>
-            
-            <div className="bg-green-50 p-5 sm:p-6 rounded-lg shadow-sm border border-green-100">
-              <div className="h-12 w-12 mb-3 sm:mb-4">
-                <OptimizedImage 
-                  src="/icons/bacterias_probioticos.png" 
-                  alt="Ícono de bacterias probióticas"
-                  width={48}
-                  height={48}
-                  className="object-contain"
-                />
-              </div>
-              <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-gray-800">Microorganismos Beneficiosos</h3>
-              <p className="text-sm sm:text-base text-gray-600">
-                Principalmente bacterias de los géneros Lactobacillus y Bifidobacterium, pero también algunas levaduras como Saccharomyces.
-              </p>
-            </div>
-            
-            <div className="bg-green-50 p-5 sm:p-6 rounded-lg shadow-sm border border-green-100 sm:col-span-2 md:col-span-1">
-              <div className="h-12 w-12 mb-3 sm:mb-4">
-                <OptimizedImage 
-                  src="/icons/alimentos_fermentados.png" 
-                  alt="Ícono de alimentos fermentados"
-                  width={48}
-                  height={48}
-                  className="object-contain"
-                />
-              </div>
-              <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-gray-800">Fuentes Naturales</h3>
-              <p className="text-sm sm:text-base text-gray-600">
-                Presentes en alimentos fermentados como yogur, kéfir, chucrut, kimchi y también disponibles como suplementos.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Alimentos Probióticos Section */}
-      <section className="py-8 sm:py-12 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center text-gray-800">Alimentos ricos en probióticos</h2>
-          
-          <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="w-full md:w-1/2">
-              <AlimentosImageWithModal />
-            </div>
-            
-            <div className="w-full md:w-1/2">
-              <ul className="space-y-3 text-gray-700">
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2 font-bold">•</span>
-                  <p className="text-sm sm:text-base"><strong>Yogur:</strong> Especialmente aquellos con cultivos vivos y activos, aportan probióticos como Lactobacillus y Streptococcus thermophilus.</p>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2 font-bold">•</span>
-                  <p className="text-sm sm:text-base"><strong>Kéfir:</strong> Bebida fermentada que contiene hasta 30 cepas diferentes de bacterias y levaduras probióticas.</p>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2 font-bold">•</span>
-                  <p className="text-sm sm:text-base"><strong>Chucrut:</strong> Col fermentada rica en probióticos y también en vitaminas C, B y K.</p>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2 font-bold">•</span>
-                  <p className="text-sm sm:text-base"><strong>Kimchi:</strong> Plato coreano fermentado que contiene múltiples cepas de bacterias beneficiosas.</p>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2 font-bold">•</span>
-                  <p className="text-sm sm:text-base"><strong>Kombucha:</strong> Té fermentado con propiedades probióticas y antioxidantes.</p>
-                </li>
-              </ul>
+      <div className="block md:hidden container mx-auto px-4 pt-4">
+        <AdSpace position="mobile-banner" title="Banner Móvil (320x50)" />
+      </div>
 
-              <div className="mt-4 px-4 py-3 bg-green-50 rounded-lg border border-green-100">
-                <p className="text-xs sm:text-sm text-gray-700">
-                  <strong className="text-green-700">Consejo:</strong> Para obtener el máximo beneficio, consume estos alimentos regularmente como parte de una dieta equilibrada.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Content with Sidebar Ad */}
-      <section className="py-8 sm:py-12 bg-white">
+      <header className="bg-green-600 text-white py-12">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            <div className="md:col-span-2">
-              <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-gray-800">Beneficios principales de los probióticos</h2>
-              
-              <div className="space-y-4 sm:space-y-6">
-                <div className="bg-white p-5 sm:p-6 rounded-lg shadow-sm">
-                  <div className="flex items-start">
-                    <div className="h-10 w-10 mr-3 flex-shrink-0">
-                      <OptimizedImage 
-                        src="/icons/sistema_digestivo.png" 
-                        alt="Ícono de sistema digestivo"
-                        width={40}
-                        height={40}
-                        className="object-contain"
-                      />
-                    </div>
-                    <div>
-                      <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-green-600">Mejora la salud digestiva</h3>
-                      <p className="text-sm sm:text-base text-gray-700">
-                        Los probióticos pueden ayudar a restaurar el equilibrio de la flora intestinal, especialmente después de alteraciones como el uso de antibióticos. Contribuyen a reducir síntomas de trastornos digestivos como el síndrome del intestino irritable.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="bg-white p-5 sm:p-6 rounded-lg shadow-sm">
-                  <div className="flex items-start">
-                    <div className="h-10 w-10 mr-3 flex-shrink-0">
-                      <OptimizedImage 
-                        src="/icons/sistema_inmunologico.png" 
-                        alt="Ícono de sistema inmunológico"
-                        width={40}
-                        height={40}
-                        className="object-contain"
-                      />
-                    </div>
-                    <div>
-                      <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-green-600">Fortalece el sistema inmunológico</h3>
-                      <p className="text-sm sm:text-base text-gray-700">
-                        Aproximadamente el 70% de nuestro sistema inmunológico reside en el intestino. Los probióticos pueden estimular la producción de anticuerpos naturales y mejorar la actividad de las células inmunitarias.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="bg-white p-5 sm:p-6 rounded-lg shadow-sm">
-                  <div className="flex items-start">
-                    <div className="h-10 w-10 mr-3 flex-shrink-0">
-                      <OptimizedImage 
-                        src="/icons/conexion_intestino_cerebro.png" 
-                        alt="Ícono de conexión intestino-cerebro"
-                        width={40}
-                        height={40}
-                        className="object-contain"
-                      />
-                    </div>
-                    <div>
-                      <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-green-600">Mejora la salud mental</h3>
-                      <p className="text-sm sm:text-base text-gray-700">
-                        Estudios recientes han mostrado conexiones entre la salud intestinal y la salud cerebral (eje intestino-cerebro), sugiriendo que los probióticos podrían tener efectos positivos en condiciones como la ansiedad y la depresión.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="mt-4 sm:mt-6">
-                <Link href="/beneficios" className="text-green-600 font-semibold hover:text-green-700 transition-colors inline-flex items-center text-sm sm:text-base">
-                  Ver todos los beneficios
-                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              </div>
-            </div>
-            
-            <div>
-              <AdBanner position="sidebar" className="sticky top-6" />
-            </div>
+          <h1 className="text-5xl font-bold mb-4">Probióticos Para Todos</h1>
+          <p className="text-xl text-green-100">Tu guía completa sobre probióticos y salud intestinal</p>
+        </div>
+      </header>
+      
+      <div className="container mx-auto px-4">
+        <AdSpace position="in-article" title="Banner Artículo (300x250)" />
+      </div>
+      
+      <main className="container mx-auto px-4 py-12">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold mb-6 text-gray-800">¿Qué son los Probióticos?</h2>
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+            Los probióticos son microorganismos vivos que proporcionan beneficios para la salud cuando se consumen en cantidades adecuadas.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div className="bg-green-50 p-8 rounded-xl text-center">
+            <div className="text-4xl mb-4">🦠</div>
+            <h3 className="text-xl font-semibold mb-3">Salud Digestiva</h3>
+            <p className="text-gray-700">Mejoran la función intestinal y la digestión</p>
+          </div>
+          <div className="bg-blue-50 p-8 rounded-xl text-center">
+            <div className="text-4xl mb-4">🛡️</div>
+            <h3 className="text-xl font-semibold mb-3">Sistema Inmune</h3>
+            <p className="text-gray-700">Fortalecen las defensas naturales</p>
+          </div>
+          <div className="bg-purple-50 p-8 rounded-xl text-center">
+            <div className="text-4xl mb-4">💪</div>
+            <h3 className="text-xl font-semibold mb-3">Bienestar General</h3>
+            <p className="text-gray-700">Contribuyen al equilibrio y salud integral</p>
           </div>
         </div>
-      </section>
-      
-      {/* Call to Action */}
-      <section className="py-8 sm:py-12 bg-green-600 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <div className="flex justify-center mb-4">
-            <div className="h-16 w-16">
-              <OptimizedImage
-                src="/icons/suplementos_capsulas.png" 
-                alt="Ícono de suplementos probióticos"
-                width={64}
-                height={64}
-                className="object-contain"
-              />
+        
+        <div className="my-12">
+          <AdSpace position="content" title="Banner Contenido Principal (970x280)" />
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <Link href="/beneficios" className="block group">
+            <div className="bg-green-50 p-6 rounded-xl border border-green-200 group-hover:shadow-lg transition-all">
+              <div className="text-3xl mb-4">✨</div>
+              <h3 className="text-xl font-semibold mb-3">Beneficios</h3>
+              <p className="text-gray-700 mb-4">Descubre todos los beneficios de los probióticos</p>
+              <div className="text-green-600 font-medium">Ver más →</div>
             </div>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">¿Quieres aprender a elegir el probiótico adecuado?</h2>
-          <p className="text-base sm:text-xl mb-6 sm:mb-8 max-w-3xl mx-auto">
-            No todos los probióticos son iguales. Descubre cómo seleccionar el más adecuado para tus necesidades específicas.
-          </p>
-          <Link href="/como-elegir" className="bg-white text-green-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-sm sm:text-lg hover:bg-green-50 transition-colors inline-block">
-            Guía para elegir probióticos
+          </Link>
+
+          <Link href="/tipos" className="block group">
+            <div className="bg-blue-50 p-6 rounded-xl border border-blue-200 group-hover:shadow-lg transition-all">
+              <div className="text-3xl mb-4">🔬</div>
+              <h3 className="text-xl font-semibold mb-3">Tipos</h3>
+              <p className="text-gray-700 mb-4">Conoce los diferentes tipos de probióticos</p>
+              <div className="text-blue-600 font-medium">Explorar →</div>
+            </div>
+          </Link>
+
+          <Link href="/como-elegir" className="block group">
+            <div className="bg-purple-50 p-6 rounded-xl border border-purple-200 group-hover:shadow-lg transition-all">
+              <div className="text-3xl mb-4">🎯</div>
+              <h3 className="text-xl font-semibold mb-3">Cómo Elegir</h3>
+              <p className="text-gray-700 mb-4">Guía para elegir el probiótico ideal</p>
+              <div className="text-purple-600 font-medium">Guía →</div>
+            </div>
+          </Link>
+
+          <Link href="/alimentos-fermentados" className="block group">
+            <div className="bg-orange-50 p-6 rounded-xl border border-orange-200 group-hover:shadow-lg transition-all">
+              <div className="text-3xl mb-4">🥛</div>
+              <h3 className="text-xl font-semibold mb-3">Alimentos Fermentados</h3>
+              <p className="text-gray-700 mb-4">Descubre alimentos naturales ricos en probióticos</p>
+              <div className="text-orange-600 font-medium">Ver más →</div>
+            </div>
+          </Link>
+
+          <Link href="/condiciones" className="block group">
+            <div className="bg-red-50 p-6 rounded-xl border border-red-200 group-hover:shadow-lg transition-all">
+              <div className="text-3xl mb-4">🏥</div>
+              <h3 className="text-xl font-semibold mb-3">Condiciones Específicas</h3>
+              <p className="text-gray-700 mb-4">Probióticos para condiciones específicas</p>
+              <div className="text-red-600 font-medium">Ver más →</div>
+            </div>
+          </Link>
+
+          <Link href="/recetas" className="block group">
+            <div className="bg-yellow-50 p-6 rounded-xl border border-yellow-200 group-hover:shadow-lg transition-all">
+              <div className="text-3xl mb-4">🍽️</div>
+              <h3 className="text-xl font-semibold mb-3">Recetas</h3>
+              <p className="text-gray-700 mb-4">Recetas con alimentos probióticos</p>
+              <div className="text-yellow-600 font-medium">Ver más →</div>
+            </div>
           </Link>
         </div>
-      </section>
+
+        <div className="text-center my-12">
+          <div className="bg-gradient-to-r from-green-500 to-green-600 text-white p-8 rounded-xl">
+            <h2 className="text-2xl font-bold mb-4">Comienza Tu Viaje Hacia Una Mejor Salud</h2>
+            <p className="text-lg mb-6">Descubre cómo los probióticos pueden transformar tu bienestar</p>
+            <Link href="/beneficios" className="bg-white text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors">
+              Conoce todos los beneficios
+            </Link>
+          </div>
+        </div>
+      </main>
       
-      {/* Bottom Ad */}
-      <div className="container mx-auto px-4 py-6">
-        <AdBanner position="bottom" />
+      <div className="hidden xl:block fixed right-4 top-1/2 transform -translate-y-1/2 z-20 w-72">
+        <AdSpace position="sidebar" title="Banner Lateral (300x600)" />
       </div>
-    </>
+      
+      <footer className="bg-gray-50 py-8">
+        <div className="container mx-auto px-4">
+          <AdSpace position="footer" title="Banner Footer (728x90)" />
+          <div className="text-center mt-8 text-gray-600">
+            <p>&copy; 2025 Probióticos Para Todos</p>
+            <div className="mt-4 space-x-6">
+              <Link href="/politica-privacidad" className="text-green-600 hover:text-green-700">
+                Privacidad
+              </Link>
+              <Link href="/cookies" className="text-green-600 hover:text-green-700">
+                Cookies
+              </Link>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
 }

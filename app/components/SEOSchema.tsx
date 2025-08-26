@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 
@@ -17,42 +17,76 @@ interface FAQItem {
 }
 
 interface SEOSchemaProps {
-  type: 'article' | 'faq';
-  data: ArticleData | FAQItem[];
+  type: 'article' | 'faq' | 'both';
+  data: ArticleData | FAQItem[] | { article: ArticleData; faq: FAQItem[] };
 }
 
-export default function SEOSchema({ type, data }: SEOSchemaProps) {
-  const schemaData = 
-    type === 'article' ? {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      headline: (data as ArticleData).title,
-      description: (data as ArticleData).description,
-      datePublished: (data as ArticleData).publishDate,
-      author: {
-        "@type": "Person",
-        name: (data as ArticleData).author
-      },
-      image: (data as ArticleData).image,
-      url: (data as ArticleData).url
-    } : 
-    type === 'faq' ? {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: (data as FAQItem[]).map(item => ({
-        "@type": "Question",
-        name: item.question,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: item.answer
-        }
-      }))
-    } : {};
+// Default-only export to avoid import confusion
+function SEOSchema({ type, data }: SEOSchemaProps) {
+  // Handle article schema
+  const getArticleSchema = (articleData: ArticleData) => ({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: articleData.title,
+    description: articleData.description,
+    datePublished: articleData.publishDate,
+    author: {
+      "@type": "Person",
+      name: articleData.author,
+    },
+    image: articleData.image,
+    url: articleData.url,
+  });
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-    />
-  );
-} 
+  // Handle FAQ schema
+  const getFAQSchema = (faqItems: FAQItem[]) => ({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map(item => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  });
+
+  // Single schema type (article or FAQ)
+  if (type === 'article' || type === 'faq') {
+    const schemaData = type === 'article' 
+      ? getArticleSchema(data as ArticleData) 
+      : getFAQSchema(data as FAQItem[]);
+    
+    return (
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      />
+    );
+  }
+  
+  // Both schemas combined (article and FAQ)
+  if (type === 'both') {
+    const combinedData = data as { article: ArticleData; faq: FAQItem[] };
+    const articleSchema = getArticleSchema(combinedData.article);
+    const faqSchema = getFAQSchema(combinedData.faq);
+    
+    return (
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      </>
+    );
+  }
+  
+  return null;
+}
+
+export default SEOSchema;

@@ -35,11 +35,8 @@ export default function ComoElegir() {
 
   return (
     <>
-      {/* Schema.org estructurado - article */}
-      <SEOSchema type="article" data={articleData} />
-      
-      {/* Schema.org estructurado - FAQ */}
-      <SEOSchema type="faq" data={faqData} />
+      {/* Schema.org estructurado - combina article y FAQ (temporarily disabled) */}
+      {/* <SEOSchema type="both" data={{ article: articleData, faq: faqData }} /> */}
       
       {/* Header */}
       <header className="bg-green-600 text-white py-8 sm:py-12">
@@ -244,7 +241,7 @@ export default function ComoElegir() {
           {/* Sidebar */}
           <div>
             <div className="sticky top-6">
-              <AdBanner position="sidebar" className="mb-6" />
+              {/* <AdBanner position="sidebar" className="mb-6" /> */}
               
               <div className="bg-green-50 p-6 rounded-lg shadow-sm border border-green-100 mb-6">
                 <h3 className="text-xl font-semibold mb-4 text-gray-800">Checklist para elegir</h3>
@@ -307,7 +304,7 @@ export default function ComoElegir() {
       
       {/* Bottom Ad */}
       <div className="container mx-auto px-4 py-6">
-        <AdBanner position="bottom" />
+        {/* <AdBanner position="bottom" /> */}
       </div>
     </>
   );

@@ -8,16 +8,23 @@ const Navbar = () => {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+
   const isActiveRoute = (route: string) => {
     return pathname === route;
   };
 
-  const routes = [
+  const isActiveGroup = (routes: string[]) => {
+    return routes.some(route => pathname.startsWith(route));
+  };
+
+  const mainRoutes = [
     { path: '/', label: 'Inicio' },
     { path: '/que-son', label: '¿Qué son?' },
     { path: '/beneficios', label: 'Beneficios' },
+    { path: '/tipos', label: 'Tipos' },
     { path: '/como-elegir', label: 'Cómo elegir' },
-    { path: '/referencias', label: 'Referencias' },
+    { path: '/recetas', label: 'Recetas' },
+    { path: '/recursos/articulos', label: 'Artículos' },
   ];
 
   return (
@@ -28,8 +35,8 @@ const Navbar = () => {
         </Link>
         
         {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-6">
-          {routes.map(route => (
+        <div className="hidden md:flex space-x-6 items-center">
+          {mainRoutes.map(route => (
             <Link 
               key={route.path} 
               href={route.path}
@@ -59,7 +66,7 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden w-full py-3 px-4 bg-green-700">
           <div className="flex flex-col space-y-3">
-            {routes.map(route => (
+            {mainRoutes.map(route => (
               <Link
                 key={route.path}
                 href={route.path}
