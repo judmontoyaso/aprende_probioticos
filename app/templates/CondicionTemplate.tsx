@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import AdBanner from '../components/AdBanner';
-import SEOSchema from '../components/SEOSchema';
+// import SEOSchema from '../components/SEOSchema';
 
 interface CondicionTemplateProps {
   titulo: string;
@@ -47,7 +47,8 @@ export default function CondicionTemplate({
   faq,
   recomendacionesDoctor
 }: CondicionTemplateProps) {
-  // Datos estructurados para el esquema de artículo
+  // Schema.org estructurado (desactivado temporalmente para depurar)
+  // <SEOSchema type="both" data={{ article: articleData, faq: faqData }} />
   const articleData = {
     title: titulo,
     description: descripcion,
@@ -65,11 +66,8 @@ export default function CondicionTemplate({
 
   return (
     <>
-      {/* Schema.org estructurado - article */}
-      <SEOSchema type="article" data={articleData} />
-      
-      {/* Schema.org estructurado - FAQ */}
-      <SEOSchema type="faq" data={faqData} />
+  {/* Schema.org estructurado (temporalmente desactivado para depurar) */}
+  {/** <SEOSchema type="both" data={{ article: articleData, faq: faqData }} /> **/}
       
       {/* Header */}
       <header className="bg-green-600 text-white py-8 sm:py-12">

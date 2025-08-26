@@ -55,7 +55,7 @@ export default function AgriculturaArticulo() {
 
       {/* AdBanner Top */}
       <div className="container mx-auto px-4 py-6">
-        <AdBanner position="top" />
+        {/* <AdBanner position="top" /> */}
       </div>
 
       {/* Article Content */}
@@ -198,7 +198,7 @@ export default function AgriculturaArticulo() {
                 </ul>
 
                 <div className="my-8">
-                  <AdBanner position="content" />
+                  {/* <AdBanner position="content" /> */}
                 </div>
 
                 <p>
@@ -262,7 +262,7 @@ export default function AgriculturaArticulo() {
           {/* Sidebar */}
           <div className="lg:w-1/4">
             <div className="sticky top-6">
-              <AdBanner position="sidebar" className="mb-6" />
+              {/* <AdBanner position="sidebar" className="mb-6" /> */}
               
               <div className="bg-green-50 p-4 sm:p-6 rounded-lg shadow-sm border border-green-100 mb-6">
                 <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-800">Datos interesantes</h3>
@@ -318,7 +318,7 @@ export default function AgriculturaArticulo() {
       
       {/* Ad Banner Bottom */}
       <div className="container mx-auto px-4 py-6">
-        <AdBanner position="bottom" />
+        {/* <AdBanner position="bottom" /> */}
       </div>
     </div>
   );

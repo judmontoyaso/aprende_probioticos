@@ -72,9 +72,9 @@ export default function ArticulosPage() {
         </div>
       </header>
 
-      {/* Ad Banner Top */}
+      {/* Ad Banner Top (temporarily disabled) */}
       <div className="container mx-auto px-4 py-6">
-        <AdBanner position="top" />
+        {/* <AdBanner position="top" /> */}
       </div>
       
       {/* Main Content */}
@@ -128,9 +128,9 @@ export default function ArticulosPage() {
               ))}
             </div>
 
-            {/* Ad Banner Content */}
+            {/* Ad Banner Content (temporarily disabled) */}
             <div className="my-10">
-              <AdBanner position="content" />
+              {/* <AdBanner position="content" /> */}
             </div>
             
             {/* Introduction Section */}
@@ -159,7 +159,7 @@ export default function ArticulosPage() {
           {/* Sidebar */}
           <div>
             <div className="sticky top-6">
-              <AdBanner position="sidebar" className="mb-6" />
+              {/* <AdBanner position="sidebar" className="mb-6" /> */}
               
               <div className="bg-green-50 p-4 sm:p-6 rounded-lg shadow-sm border border-green-100 mb-6">
                 <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-800">Temas populares</h3>
@@ -203,9 +203,9 @@ export default function ArticulosPage() {
         </div>
       </div>
 
-      {/* Ad Banner Bottom */}
+      {/* Ad Banner Bottom (temporarily disabled) */}
       <div className="container mx-auto px-4 py-6">
-        <AdBanner position="bottom" />
+        {/* <AdBanner position="bottom" /> */}
       </div>
     </>
   );

@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import AdBanner from '../components/AdBanner';
-import SEOSchema from '../components/SEOSchema';
+// import SEOSchema from '../components/SEOSchema';
 
 interface TipoProbioticosTemplateProps {
   titulo: string;
@@ -86,11 +86,8 @@ export default function TipoProbioticosTemplate({
 
   return (
     <>
-      {/* Schema.org estructurado - article */}
-      <SEOSchema type="article" data={articleData} />
-      
-      {/* Schema.org estructurado - FAQ */}
-      <SEOSchema type="faq" data={faqData} />
+  {/* Schema.org estructurado - article (desactivado temporalmente para depurar) */}
+  {/** <SEOSchema type="both" data={{ article: articleData, faq: faqData }} /> **/}
       
       {/* Header */}
       <header className="bg-green-600 text-white py-8 sm:py-12">
@@ -266,7 +263,7 @@ export default function TipoProbioticosTemplate({
           {/* Sidebar */}
           <div>
             <div className="sticky top-6">
-              <AdBanner position="sidebar" className="mb-6" />
+              {/* <AdBanner position="sidebar" className="mb-6" /> */}
               
               <div className="bg-green-50 p-6 rounded-lg shadow-sm border border-green-100 mb-6">
                 <h3 className="text-xl font-semibold mb-4 text-gray-800">Contenido relacionado</h3>
@@ -324,10 +321,12 @@ export default function TipoProbioticosTemplate({
         </div>
       </div>
       
-      {/* Bottom Ad */}
+      {/* Bottom Ad (desactivado temporalmente) */}
+      {/**
       <div className="container mx-auto px-4 py-6">
         <AdBanner position="bottom" />
       </div>
+      **/}
     </>
   );
 } 

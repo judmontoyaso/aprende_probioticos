@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import AdBanner from '../components/AdBanner';
-import SEOSchema from '../components/SEOSchema';
+// import SEOSchema from '../components/SEOSchema';
 
 interface RecetaTemplateProps {
   titulo: string;
@@ -48,7 +48,6 @@ interface RecetaTemplateProps {
     pregunta: string;
     respuesta: string;
   }[];
-  notas?: string;
 }
 
 export default function RecetaTemplate({
@@ -67,8 +66,7 @@ export default function RecetaTemplate({
   beneficios,
   probioticosPresentes,
   variaciones,
-  faq,
-  notas
+  faq
 }: RecetaTemplateProps) {
   // Datos estructurados para el esquema de artículo/receta
   const recipeData = {
@@ -103,11 +101,8 @@ export default function RecetaTemplate({
 
   return (
     <>
-      {/* Schema.org estructurado - recipe */}
-      <SEOSchema type="article" data={recipeData} />
-      
-      {/* Schema.org estructurado - FAQ */}
-      <SEOSchema type="faq" data={faqData} />
+  {/* Schema.org estructurado (temporalmente desactivado para depurar) */}
+  {/** <SEOSchema type="both" data={{ article: recipeData, faq: faqData }} /> **/}
       
       {/* Header */}
       <header className="bg-green-600 text-white py-8 sm:py-12">
@@ -289,14 +284,6 @@ export default function RecetaTemplate({
             </section>
             
             {/* Notas */}
-            {notas && (
-              <section className="bg-white p-8 rounded-lg shadow-sm mb-8">
-                <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">Notas importantes</h2>
-                <div className="bg-yellow-50 p-6 rounded-lg border border-yellow-100">
-                  <div dangerouslySetInnerHTML={{ __html: notas }} />
-                </div>
-              </section>
-            )}
             
             {/* FAQ */}
             <section className="bg-white p-8 rounded-lg shadow-sm mb-8">
@@ -315,7 +302,7 @@ export default function RecetaTemplate({
           {/* Sidebar */}
           <div>
             <div className="sticky top-6">
-              <AdBanner position="sidebar" className="mb-6" />
+              {/* <AdBanner position="sidebar" className="mb-6" /> */}
               
               <div className="bg-green-50 p-6 rounded-lg shadow-sm border border-green-100 mb-6">
                 <h3 className="text-xl font-semibold mb-4 text-gray-800">Artículos relacionados</h3>
@@ -370,7 +357,7 @@ export default function RecetaTemplate({
       
       {/* Bottom Ad */}
       <div className="container mx-auto px-4 py-6">
-        <AdBanner position="bottom" />
+    {/* <AdBanner position="bottom" /> */}
       </div>
     </>
   );

@@ -53,9 +53,9 @@ export default function AlimentosFermentadosArticulo() {
         </div>
       </div>
 
-      {/* AdBanner Top */}
+      {/* AdBanner Top (temporarily disabled) */}
       <div className="container mx-auto px-4 py-6">
-        <AdBanner position="top" />
+        {/* <AdBanner position="top" /> */}
       </div>
 
       {/* Article Content */}
@@ -169,7 +169,7 @@ export default function AlimentosFermentadosArticulo() {
                   alimentos poseen propiedades únicas para la salud.
                 </p>
                 <div className="my-8">
-                  <AdBanner position="content" />
+                  {/* <AdBanner position="content" /> */}
                 </div>
                 <h3 className="text-xl font-bold mb-3">Beneficios nutricionales</h3>
                 <p>
@@ -232,7 +232,7 @@ export default function AlimentosFermentadosArticulo() {
           {/* Sidebar */}
           <div className="lg:w-1/4">
             <div className="sticky top-6">
-              <AdBanner position="sidebar" className="mb-6" />
+              {/* <AdBanner position="sidebar" className="mb-6" /> */}
               
               <div className="bg-green-50 p-4 sm:p-6 rounded-lg shadow-sm border border-green-100 mb-6">
                 <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-800">¿Sabías que...?</h3>
@@ -288,7 +288,7 @@ export default function AlimentosFermentadosArticulo() {
       
       {/* Ad Banner Bottom */}
       <div className="container mx-auto px-4 py-6">
-        <AdBanner position="bottom" />
+        {/* <AdBanner position="bottom" /> */}
       </div>
     </div>
   );
