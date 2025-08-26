@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
-import AdBanner from '../../components/AdBanner';
+// import AdBanner from '../../components/AdBanner';
 
 export const metadata: Metadata = {
   title: 'Artículos sobre Probióticos | Información Científica y Práctica',

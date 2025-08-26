@@ -3,11 +3,11 @@
 import { useParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import TipoProbioticosTemplate from '../../templates/TipoProbioticosTemplate';
-import { tiposData } from '../data';
+import { tiposData, type TipoData } from '../data';
 
 export default function TipoPage() {
   const { slug } = useParams();
-  const [tipoData, setTipoData] = useState<any>(null);
+  const [tipoData, setTipoData] = useState<TipoData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 

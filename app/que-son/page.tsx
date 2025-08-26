@@ -26,8 +26,8 @@ export default function QueSon() {
 
   return (
     <>
-      {/* Schema.org estructurado */}
-      <SEOSchema type="faq" data={faqData} />
+      {/* Schema.org estructurado (temporarily disabled) */}
+      {/* <SEOSchema type="faq" data={faqData} /> */}
       
       {/* Header */}
       <header className="bg-green-600 text-white py-8 sm:py-12">
@@ -39,9 +39,9 @@ export default function QueSon() {
         </div>
       </header>
       
-      {/* Ad Banner Top */}
+      {/* Ad Banner Top (temporarily disabled) */}
       <div className="container mx-auto px-4 py-6">
-        <AdBanner position="top" />
+        {/* <AdBanner position="top" /> */}
       </div>
       
       {/* Main Content */}
@@ -232,7 +232,7 @@ export default function QueSon() {
           {/* Sidebar */}
           <div>
             <div className="sticky top-6">
-              <AdBanner position="sidebar" className="mb-6" />
+              {/* <AdBanner position="sidebar" className="mb-6" /> */}
               
               <div className="bg-green-50 p-4 sm:p-6 rounded-lg shadow-sm border border-green-100 mb-6">
                 <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-800">Datos interesantes</h3>
@@ -283,7 +283,7 @@ export default function QueSon() {
       
       {/* Bottom Ad */}
       <div className="container mx-auto px-4 py-6">
-        <AdBanner position="bottom" />
+        {/* <AdBanner position="bottom" /> */}
       </div>
     </>
   );

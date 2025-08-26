@@ -158,7 +158,7 @@ export default function SaludHumanaArticulo() {
                     <li>Contiene más de 1,000 especies diferentes de bacterias</li>
                     <li>El intestino alberga la mayor densidad de microorganismos</li>
                     <li>El genoma microbiano colectivo (microbioma) contiene 100 veces más genes que nuestro genoma humano</li>
-                    <li>Cada persona tiene una composición única, similar a una "huella dactilar microbiana"</li>
+                    <li>Cada persona tiene una composición única, similar a una &ldquo;huella dactilar microbiana&rdquo;</li>
                     <li>Se establece principalmente durante los primeros 1,000 días de vida</li>
                   </ul>
                 </div>

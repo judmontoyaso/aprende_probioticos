@@ -1,10 +1,10 @@
 import Image from 'next/image';
-import AdBanner from '../components/AdBanner';
-import SEOSchema from '../components/SEOSchema';
+// import AdBanner from '../components/AdBanner';
+// import SEOSchema from '../components/SEOSchema';
 
 export default function ComoElegir() {
-  // Datos estructurados para el esquema de artículo
-  const articleData = {
+  // Datos estructurados para el esquema de artículo (temporarily disabled)
+  /* const articleData = {
     title: "Cómo Elegir el Probiótico Adecuado: Guía Completa",
     description: "Guía basada en evidencia para seleccionar los probióticos adecuados según tus necesidades específicas. Aprende a identificar cepas, verificar potencia y elegir entre suplementos y alimentos.",
     publishDate: "2024-05-15T10:00:00+00:00",
@@ -13,7 +13,7 @@ export default function ComoElegir() {
     url: "https://www.probioticosparatodos.com/como-elegir"
   };
 
-  // Datos estructurados para el esquema FAQ
+  // Datos estructurados para el esquema FAQ (temporarily disabled)
   const faqData = [
     {
       question: "¿Cómo identificar un buen probiótico?",
@@ -31,7 +31,7 @@ export default function ComoElegir() {
       question: "¿Quién debe consultar a un médico antes de tomar probióticos?",
       answer: "Personas con sistema inmunológico comprometido, enfermedades graves, post-cirugía reciente, o con alergias graves a componentes que puedan estar en los probióticos deben consultar con un profesional de la salud antes de comenzar un régimen probiótico."
     }
-  ];
+  ]; */
 
   return (
     <>

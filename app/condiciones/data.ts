@@ -1,7 +1,7 @@
 // Archivo de datos para las condiciones de salud relacionadas con probióticos
 // En un entorno de producción, estos datos podrían venir de una API o CMS
 
-interface CondicionData {
+export interface CondicionData {
   titulo: string;
   descripcion: string;
   imagenPrincipal: {

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Metadata } from 'next';
-import AdBanner from '../../../components/AdBanner';
+// import AdBanner from '../../../components/AdBanner';
 
 export const metadata: Metadata = {
   title: 'Enciclopedia de alimentos fermentados | Artículos sobre Probióticos',
