@@ -58,7 +58,7 @@ export default function TipoProbioticosTemplate({
   titulo,
   descripcion,
   imagenPrincipal,
-  fechaPublicacion,
+  // fechaPublicacion, // comentado temporalmente
   introduccion,
   caracteristicas,
   beneficios,

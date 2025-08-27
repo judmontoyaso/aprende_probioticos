@@ -54,7 +54,7 @@ export default function RecetaTemplate({
   titulo,
   descripcion,
   imagenPrincipal,
-  fechaPublicacion,
+  // fechaPublicacion, // comentado temporalmente
   tiempoPreparacion,
   dificultad,
   porciones,

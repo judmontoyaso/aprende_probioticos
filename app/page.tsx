@@ -55,7 +55,7 @@ export default function Home() {
           <h2 className="text-4xl font-bold mb-6 text-gray-800">¿Qué son los Probióticos?</h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-8">
             Los probióticos son microorganismos vivos que proporcionan beneficios para la salud cuando se consumen en cantidades adecuadas. 
-            Estas "bacterias buenas" ayudan a mantener un equilibrio saludable en tu microbiota intestinal.
+            Estas &ldquo;bacterias buenas&rdquo; ayudan a mantener un equilibrio saludable en tu microbiota intestinal.
           </p>
           <div className="bg-green-50 p-6 rounded-xl max-w-3xl mx-auto">
             <p className="text-gray-700">
