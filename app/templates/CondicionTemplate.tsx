@@ -39,7 +39,7 @@ export default function CondicionTemplate({
   titulo,
   descripcion,
   imagenPrincipal,
-  fechaPublicacion,
+  // fechaPublicacion, // comentado temporalmente
   introduccion,
   seccionesContenido,
   cepasRecomendadas,

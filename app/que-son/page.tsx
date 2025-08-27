@@ -1,10 +1,9 @@
 import Link from 'next/link';
-import AdBanner from '../components/AdBanner';
-import SEOSchema from '../components/SEOSchema';
 import OptimizedImage from '../components/OptimizedImage';
 
 export default function QueSon() {
-  // Datos estructurados para el esquema FAQ
+  // Datos estructurados para el esquema FAQ - comentados temporalmente
+  /*
   const faqData = [
     {
       question: "¿Qué son los probióticos?",
@@ -23,6 +22,7 @@ export default function QueSon() {
       answer: "La eficacia de los probióticos es cepa-específica, lo que significa que no todas las cepas de una misma especie producen los mismos efectos. Por ello, es importante elegir productos con cepas documentadas clínicamente según el objetivo deseado."
     }
   ];
+  */
 
   return (
     <>
