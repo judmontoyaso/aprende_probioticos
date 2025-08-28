@@ -25,6 +25,7 @@ const Navbar = () => {
     { path: '/como-elegir', label: 'Cómo elegir' },
     { path: '/recetas', label: 'Recetas' },
     { path: '/recursos/articulos', label: 'Artículos' },
+    { path: '/contacto', label: 'Contacto' },
   ];
 
   return (

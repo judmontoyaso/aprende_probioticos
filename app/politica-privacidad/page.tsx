@@ -55,7 +55,30 @@ export default function PoliticaPrivacidad() {
               Google puede también transferir esta información a terceros cuando así lo requiera la legislación, o cuando dichos terceros procesen la información en nombre de Google. Google no asociará tu dirección IP con ningún otro dato del que disponga Google.
             </p>
             
-            <h2>3. Base legal para el procesamiento</h2>
+            <h2>3. Google AdSense y publicidad</h2>
+            <p>
+              Este sitio web utiliza Google AdSense, un servicio de publicidad proporcionado por Google Inc. (&ldquo;Google&rdquo;). Google AdSense utiliza cookies para mostrar anuncios relevantes a los usuarios. El uso de estas cookies permite a Google y sus socios mostrar anuncios basados en visitas previas a nuestro sitio web u otros sitios web.
+            </p>
+            
+            <h3>Información importante sobre la publicidad:</h3>
+            <ul>
+              <li><strong>Cookies publicitarias:</strong> Google utiliza cookies publicitarias para personalizar los anuncios mostrados en nuestro sitio</li>
+              <li><strong>Anuncios personalizados:</strong> Los anuncios pueden basarse en tu historial de navegación y preferencias</li>
+              <li><strong>Control de anuncios:</strong> Puedes desactivar los anuncios personalizados visitando la <a href="https://www.google.com/settings/ads" className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">configuración de anuncios de Google</a></li>
+              <li><strong>Terceros:</strong> Los anunciantes de terceros también pueden utilizar cookies para rastrear tu actividad</li>
+            </ul>
+            
+            <h3>Opt-out de la publicidad personalizada:</h3>
+            <p>
+              Si prefieres no recibir publicidad personalizada, puedes:
+            </p>
+            <ul>
+              <li>Visitar la <a href="https://www.google.com/settings/ads" className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">página de configuración de anuncios de Google</a></li>
+              <li>Usar la herramienta de exclusión de la <a href="https://www.networkadvertising.org/choices/" className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">Network Advertising Initiative</a></li>
+              <li>Configurar tu navegador para rechazar cookies de terceros</li>
+            </ul>
+            
+            <h2>4. Base legal para el procesamiento</h2>
             <p>
               Procesamos tus datos personales solo cuando tenemos una base legal válida para hacerlo. Dependiendo de las circunstancias específicas, podemos basarnos en:
             </p>
@@ -65,7 +88,7 @@ export default function PoliticaPrivacidad() {
               <li>La necesidad de cumplir con obligaciones legales</li>
             </ul>
             
-            <h2>4. Tus derechos sobre tus datos</h2>
+            <h2>5. Tus derechos sobre tus datos</h2>
             <p>
               De acuerdo con las leyes de protección de datos, tienes ciertos derechos respecto a tus datos personales:
             </p>
@@ -78,7 +101,7 @@ export default function PoliticaPrivacidad() {
               <li>Derecho de oposición: Puedes oponerte al procesamiento de tus datos personales en cualquier momento.</li>
             </ul>
             
-            <h2>5. Cookies y tecnologías similares</h2>
+            <h2>6. Cookies y tecnologías similares</h2>
             <p>
               Utilizamos cookies y tecnologías similares para mejorar tu experiencia en nuestro sitio web. Puedes gestionar tus preferencias de cookies a través del banner de consentimiento que aparece cuando visitas nuestro sitio por primera vez.
             </p>
@@ -88,16 +111,17 @@ export default function PoliticaPrivacidad() {
             <ul>
               <li><strong>Cookies esenciales:</strong> Necesarias para el funcionamiento básico del sitio web.</li>
               <li><strong>Cookies de análisis:</strong> Nos ayudan a entender cómo interactúas con nuestro sitio web (Google Analytics).</li>
+              <li><strong>Cookies publicitarias:</strong> Utilizadas por Google AdSense para mostrar anuncios relevantes.</li>
             </ul>
             
-            <h2>6. Cambios a esta política</h2>
+            <h2>7. Cambios a esta política</h2>
             <p>
               Podemos actualizar nuestra Política de Privacidad de vez en cuando. Te notificaremos cualquier cambio publicando la nueva Política de Privacidad en esta página. Te recomendamos que revises esta Política de Privacidad periódicamente para ver si hay cambios.
             </p>
             
-            <h2>7. Contacto</h2>
+            <h2>8. Contacto</h2>
             <p>
-              Si tienes alguna pregunta sobre esta Política de Privacidad, puedes contactarnos a través de nuestro formulario de contacto o enviando un correo electrónico a info@probioticosparatodos.com.
+              Si tienes alguna pregunta sobre esta Política de Privacidad, puedes contactarnos a través de nuestro formulario de contacto o enviando un correo electrónico a contacto@probioticosparatodos.com.
             </p>
           </div>
         </div>

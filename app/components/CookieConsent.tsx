@@ -27,20 +27,22 @@ const CookieConsent = () => {
     }
   }, []);
 
-  // Función para habilitar Google Analytics
+  // Función para habilitar Google Analytics y Ads
   const enableGoogleAnalytics = () => {
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('consent', 'update', {
-        'analytics_storage': 'granted'
+        'analytics_storage': 'granted',
+        'ad_storage': 'granted'
       });
     }
   };
 
-  // Función para deshabilitar Google Analytics
+  // Función para deshabilitar Google Analytics y Ads
   const disableGoogleAnalytics = () => {
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('consent', 'update', {
-        'analytics_storage': 'denied'
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied'
       });
     }
   };
@@ -68,8 +70,9 @@ const CookieConsent = () => {
           <div className="flex-1">
             <h3 className="text-lg font-semibold mb-1">Política de Cookies</h3>
             <p className="text-sm text-gray-600">
-              Este sitio utiliza cookies para analizar el tráfico y mejorar tu experiencia. 
-              Al continuar, aceptas nuestro uso de cookies. Puedes consultar nuestra{' '}
+              Este sitio utiliza cookies para analizar el tráfico, personalizar contenido y mostrar publicidad relevante. 
+              También utilizamos Google AdSense para mostrar anuncios. Al continuar, aceptas nuestro uso de cookies. 
+              Puedes consultar nuestra{' '}
               <Link href="/cookies" className="text-green-600 hover:text-green-700 underline">
                 política de cookies
               </Link>{' '}
