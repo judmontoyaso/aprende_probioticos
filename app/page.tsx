@@ -1,10 +1,106 @@
 import Link from "next/link";
 import { Metadata } from 'next';
+import OptimizedImagePlaceholder from './components/OptimizedImagePlaceholder';
 
 export const metadata: Metadata = {
   title: 'Probióticos: Tu Guía Completa para la Salud Digestiva | Probióticos Para Todos',
   description: 'Descubre todo sobre los probióticos: beneficios científicamente comprobados, tipos de bacterias beneficiosas, alimentos fermentados, suplementos y cómo elegir el mejor probiótico para tu salud digestiva, inmunológica y mental.',
   keywords: 'probióticos, salud digestiva, bacterias beneficiosas, alimentos fermentados, suplementos probióticos, microbiota intestinal, sistema inmunológico, Lactobacillus, Bifidobacterium, yogur, kéfir, chucrut, salud mental, eje intestino-cerebro',
+  openGraph: {
+    title: 'Probióticos: Guía Completa para tu Salud Digestiva',
+    description: 'Aprende sobre los probióticos con nuestra guía científica: beneficios comprobados, mejores tipos de bacterias, alimentos fermentados naturales y cómo elegir suplementos efectivos.',
+    url: 'https://probioticosparatodos.com',
+    siteName: 'Probióticos Para Todos',
+    images: [
+      {
+        url: 'https://probioticosparatodos.com/images/probiotics-hero.png',
+        width: 1200,
+        height: 630,
+        alt: 'Sistema digestivo humano con bacterias probióticas beneficiosas para la salud intestinal',
+      },
+    ],
+    locale: 'es_ES',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Probióticos: Tu Guía Completa para la Salud Digestiva',
+    description: 'Descubre los beneficios científicamente comprobados de los probióticos para tu salud digestiva, inmunológica y mental.',
+    images: ['https://probioticosparatodos.com/images/probiotics-hero.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: 'https://probioticosparatodos.com',
+  },
+};
+
+// Schema.org para FAQ
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuándo es el mejor momento para tomar probióticos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Muchos expertos recomiendan tomarlos con el estómago vacío, 30 minutos antes de las comidas, aunque algunos probióticos funcionan mejor con alimentos. Consulta las instrucciones específicas del producto."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Los probióticos son seguros para todos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para la mayoría de las personas sanas, los probióticos son seguros. Sin embargo, personas con sistemas inmunológicos comprometidos o condiciones médicas graves deben consultar a un profesional de la salud antes de usarlos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tiempo se tarda en ver resultados?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Los efectos pueden variar, pero muchas personas notan mejoras digestivas en 1-2 semanas. Los beneficios para el sistema inmune pueden tardar más tiempo en manifestarse, típicamente 4-8 semanas."
+      }
+    }
+  ]
+};
+
+// Schema.org para las imágenes principales (SEO optimizado)
+const imageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ImageObject", 
+  "name": "Probióticos para la Salud Digestiva",
+  "description": "Sistema digestivo humano con bacterias probióticas beneficiosas Lactobacillus y Bifidobacterium",
+  "url": "https://probioticosparatodos.com/images/probiotics-hero.png",
+  "width": "1200",
+  "height": "630",
+  "encodingFormat": "image/png",
+  "thumbnail": {
+    "@type": "ImageObject",
+    "url": "https://probioticosparatodos.com/images/probiotics-hero.png",
+    "width": "1200", 
+    "height": "630"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Probióticos Para Todos"
+  },
+  "copyrightHolder": {
+    "@type": "Organization",
+    "name": "Probióticos Para Todos"
+  },
+  "license": "https://probioticosparatodos.com/terminos-servicio"
 };
 
 function AdSpace({ position, title }: { position: string; title: string }) {
@@ -20,6 +116,16 @@ function AdSpace({ position, title }: { position: string; title: string }) {
 export default function Home() {
   return (
     <div className="bg-white min-h-screen">
+      {/* Schema.org structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(imageSchema) }}
+      />
+      
       <div className="hidden md:block container mx-auto px-4 pt-4">
         <AdSpace position="top-desktop" title="Banner Superior Escritorio (728x90)" />
       </div>
@@ -67,24 +173,64 @@ export default function Home() {
       </div>
       
       <main className="container mx-auto px-4 py-12">
-        {/* Introducción */}
+        {/* Introducción optimizada para SEO */}
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-6 text-gray-800">¿Qué son los Probióticos?</h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-8">
             Los probióticos son microorganismos vivos que proporcionan beneficios para la salud cuando se consumen en cantidades adecuadas. 
             Estas &ldquo;bacterias buenas&rdquo; ayudan a mantener un equilibrio saludable en tu microbiota intestinal.
           </p>
+          
+          {/* Imagen hero optimizada */}
+          <div className="mb-8 max-w-4xl mx-auto">
+            <OptimizedImagePlaceholder 
+              src="/images/probiotics-hero.png"
+              alt="Sistema digestivo saludable con probióticos - bacterias beneficiosas Lactobacillus y Bifidobacterium para la salud intestinal"
+              width={1200}
+              height={630}
+              priority={true}
+              className="w-full h-auto"
+            />
+          </div>
+          
           <div className="bg-green-50 p-6 rounded-xl max-w-3xl mx-auto">
             <p className="text-gray-700">
               <strong className="text-green-700">Dato importante:</strong> Tu intestino alberga más de 100 billones de bacterias, 
               y mantener su equilibrio es clave para tu salud digestiva, inmunológica y mental.
             </p>
           </div>
+          
+          {/* Información adicional para SEO */}
+          <div className="mt-8 max-w-4xl mx-auto text-left">
+            <p className="text-gray-700 mb-4">
+              La <strong>microbiota intestinal</strong> juega un papel crucial en múltiples aspectos de nuestra salud. 
+              Los probióticos, principalmente <em>Lactobacillus</em> y <em>Bifidobacterium</em>, han sido extensamente 
+              estudiados por sus efectos beneficiosos en la digestión, el sistema inmunológico y incluso la salud mental 
+              a través del <strong>eje intestino-cerebro</strong>.
+            </p>
+            <p className="text-gray-700">
+              Según la <strong>Organización Mundial de la Salud (OMS)</strong> y la <strong>FAO</strong>, 
+              los probióticos deben cumplir criterios específicos para ser considerados beneficiosos, 
+              incluyendo la supervivencia al tránsito intestinal y la demostración de efectos positivos en estudios clínicos controlados.
+            </p>
+          </div>
         </div>
 
-        {/* Beneficios principales */}
+        {/* Beneficios principales con placeholders de imagen */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">Beneficios Científicamente Comprobados</h2>
+          <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Beneficios Científicamente Comprobados</h2>
+          
+          {/* Imagen de beneficios optimizada */}
+          <div className="mb-12 max-w-3xl mx-auto">
+            <OptimizedImagePlaceholder 
+              src="/images/beneficios-probioticos-salud.png"
+              alt="Infografía completa de beneficios de los probióticos: mejora salud digestiva, fortalece sistema inmunológico y apoya bienestar mental"
+              width={800}
+              height={400}
+              className="w-full h-auto"
+            />
+          </div>
+          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-green-50 p-8 rounded-xl text-center hover:shadow-lg transition-shadow">
               <div className="text-5xl mb-4">🦠</div>
@@ -117,9 +263,21 @@ export default function Home() {
           <AdSpace position="content" title="Banner Contenido Principal (970x280)" />
         </div>
 
-        {/* Sección de tipos de probióticos */}
+        {/* Sección de tipos de probióticos con placeholder de imagen */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">Tipos de Probióticos Más Estudiados</h2>
+          <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Tipos de Probióticos Más Estudiados</h2>
+          
+          {/* Imagen de tipos de probióticos optimizada */}
+          <div className="mb-8 max-w-2xl mx-auto">
+            <OptimizedImagePlaceholder 
+              src="/images/tipos-probioticos-lactobacillus-bifidobacterium.png"
+              alt="Ilustración científica comparativa de bacterias probióticas Lactobacillus y Bifidobacterium bajo microscopio"
+              width={600}
+              height={300}
+              className="w-full h-auto"
+            />
+          </div>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm">
               <h3 className="text-xl font-semibold mb-4 text-green-700">Lactobacillus</h3>
@@ -149,7 +307,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Sección de alimentos vs suplementos */}
+        {/* Sección de alimentos vs suplementos con placeholders */}
         <div className="mb-16 bg-gray-50 p-8 rounded-xl">
           <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">¿Alimentos o Suplementos?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -157,6 +315,18 @@ export default function Home() {
               <h3 className="text-xl font-semibold mb-4 text-green-700 flex items-center">
                 🥛 Alimentos Fermentados
               </h3>
+              
+              {/* Imagen de alimentos fermentados optimizada */}
+              <div className="mb-4">
+                <OptimizedImagePlaceholder 
+                  src="/images/alimentos-fermentados-yogur-kefir.png"
+                  alt="Variedad completa de alimentos fermentados ricos en probióticos naturales: yogur griego, kéfir, chucrut, kimchi y kombucha"
+                  width={500}
+                  height={350}
+                  className="w-full h-auto rounded-lg"
+                />
+              </div>
+              
               <ul className="space-y-3 text-gray-700">
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">✓</span>
@@ -183,6 +353,18 @@ export default function Home() {
               <h3 className="text-xl font-semibold mb-4 text-blue-700 flex items-center">
                 💊 Suplementos
               </h3>
+              
+              {/* Imagen de suplementos optimizada */}
+              <div className="mb-4">
+                <OptimizedImagePlaceholder 
+                  src="/images/suplementos-probioticos-capsulas.png"
+                  alt="Suplementos probióticos en cápsulas mostrando diferentes cepas bacterianas y información nutricional CFU"
+                  width={500}
+                  height={350}
+                  className="w-full h-auto rounded-lg"
+                />
+              </div>
+              
               <ul className="space-y-3 text-gray-700">
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">✓</span>
