@@ -83,9 +83,11 @@ export default function RootLayout({
           bingSiteVerification="YOUR_BING_VERIFICATION_ID"
         />
         
-        {/* Preconectar con dominios importantes */}
+        {/* Preconectar con dominios importantes para mejorar performance */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         
