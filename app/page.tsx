@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Metadata } from 'next';
+import Image from 'next/image';
 import OptimizedImagePlaceholder from './components/OptimizedImagePlaceholder';
 
 export const metadata: Metadata = {
@@ -113,6 +114,38 @@ function AdSpace({ position, title }: { position: string; title: string }) {
   );
 }
 
+function TemporaryBanner({ className = "", alt = "Banner promocional Probióticos Para Todos" }: { className?: string; alt?: string }) {
+  return (
+    <div className={`my-4 ${className}`}>
+      <Image
+        src="/images/banner.png"
+        alt={alt}
+        width={300}
+        height={600}
+        className="w-full h-auto rounded-lg hover:scale-105 transition-transform cursor-pointer"
+        quality={90}
+        style={{ objectFit: 'contain' }}
+      />
+    </div>
+  );
+}
+
+function HorizontalBanner({ className = "", alt = "Banner horizontal Probióticos Para Todos" }: { className?: string; alt?: string }) {
+  return (
+    <div className={`my-4 ${className}`}>
+      <Image
+        src="/images/banner_horizontal.png"
+        alt={alt}
+        width={970}
+        height={280}
+        className="w-full h-auto rounded-lg hover:scale-105 transition-transform cursor-pointer"
+        quality={90}
+        style={{ objectFit: 'contain' }}
+      />
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <div className="bg-white min-h-screen">
@@ -127,17 +160,28 @@ export default function Home() {
       />
       
       <div className="hidden md:block container mx-auto px-4 pt-4">
-        <AdSpace position="top-desktop" title="Banner Superior Escritorio (728x90)" />
+        <HorizontalBanner className="max-w-4xl mx-auto" alt="Banner horizontal Probióticos Para Todos - Escritorio" />
       </div>
       
       <div className="block md:hidden container mx-auto px-4 pt-4">
-        <AdSpace position="mobile-banner" title="Banner Móvil (320x50)" />
+        <HorizontalBanner className="max-w-full" alt="Banner horizontal Probióticos Para Todos - Móvil" />
       </div>
 
-      <header className="bg-green-600 text-white py-16">
+      <header className="bg-green-600 text-white py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl font-bold mb-6">Probióticos Para Todos</h1>
+            {/* Logo principal de Probióticos Para Todos */}
+            <div className="mb-8">
+              <Image 
+                src="/images/logo_transparente.png"
+                alt="Probióticos Para Todos - Logo oficial con bacterias probióticas beneficiosas"
+                width={300}
+                height={300}
+                priority={true}
+                className="w-64 h-64 mx-auto drop-shadow-2xl"
+              />
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">Probióticos Para Todos</h1>
             <p className="text-xl text-green-100 mb-8">Tu guía completa sobre probióticos y salud intestinal basada en ciencia</p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/que-son" className="bg-white text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors">
@@ -181,15 +225,15 @@ export default function Home() {
             Estas &ldquo;bacterias buenas&rdquo; ayudan a mantener un equilibrio saludable en tu microbiota intestinal.
           </p>
           
-          {/* Imagen hero optimizada */}
-          <div className="mb-8 max-w-4xl mx-auto">
+          {/* Imagen hero optimizada con mejor presentación */}
+          <div className="mb-12 max-w-5xl mx-auto">
             <OptimizedImagePlaceholder 
               src="/images/probiotics-hero.png"
               alt="Sistema digestivo saludable con probióticos - bacterias beneficiosas Lactobacillus y Bifidobacterium para la salud intestinal"
               width={1200}
-              height={630}
+              height={600}
               priority={true}
-              className="w-full h-auto"
+              className="w-full h-auto rounded-2xl shadow-2xl"
             />
           </div>
           
@@ -216,43 +260,49 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Beneficios principales con placeholders de imagen */}
+        {/* Beneficios principales con imagen centralizada */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Beneficios Científicamente Comprobados</h2>
           
-          {/* Imagen de beneficios optimizada */}
-          <div className="mb-12 max-w-3xl mx-auto">
+          {/* Imagen de beneficios optimizada con tamaño estándar */}
+          <div className="mb-12 max-w-4xl mx-auto">
             <OptimizedImagePlaceholder 
               src="/images/beneficios-probioticos-salud.png"
               alt="Infografía completa de beneficios de los probióticos: mejora salud digestiva, fortalece sistema inmunológico y apoya bienestar mental"
-              width={800}
-              height={400}
-              className="w-full h-auto"
+              width={1000}
+              height={500}
+              className="w-full h-auto rounded-xl shadow-lg"
             />
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-green-50 p-8 rounded-xl text-center hover:shadow-lg transition-shadow">
-              <div className="text-5xl mb-4">🦠</div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="bg-green-50 p-8 rounded-xl text-center hover:shadow-lg transition-all hover:scale-105">
+              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="text-4xl">🦠</div>
+              </div>
               <h3 className="text-xl font-semibold mb-4 text-green-700">Salud Digestiva</h3>
-              <p className="text-gray-700 mb-4">Mejoran la digestión, reducen la inflamación intestinal y ayudan con problemas como el síndrome del intestino irritable.</p>
-              <Link href="/beneficios#digestiva" className="text-green-600 font-medium hover:underline">
+              <p className="text-gray-700 mb-6 text-sm leading-relaxed">Mejoran la digestión, reducen la inflamación intestinal y ayudan con problemas como el síndrome del intestino irritable.</p>
+              <Link href="/beneficios#digestiva" className="inline-block bg-green-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors">
                 Leer más →
               </Link>
             </div>
-            <div className="bg-blue-50 p-8 rounded-xl text-center hover:shadow-lg transition-shadow">
-              <div className="text-5xl mb-4">🛡️</div>
+            <div className="bg-blue-50 p-8 rounded-xl text-center hover:shadow-lg transition-all hover:scale-105">
+              <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="text-4xl">🛡️</div>
+              </div>
               <h3 className="text-xl font-semibold mb-4 text-blue-700">Sistema Inmune</h3>
-              <p className="text-gray-700 mb-4">Fortalecen las defensas naturales del cuerpo y pueden reducir la duración de infecciones respiratorias.</p>
-              <Link href="/beneficios#inmune" className="text-blue-600 font-medium hover:underline">
+              <p className="text-gray-700 mb-6 text-sm leading-relaxed">Fortalecen las defensas naturales del cuerpo y pueden reducir la duración de infecciones respiratorias.</p>
+              <Link href="/beneficios#inmune" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors">
                 Leer más →
               </Link>
             </div>
-            <div className="bg-purple-50 p-8 rounded-xl text-center hover:shadow-lg transition-shadow">
-              <div className="text-5xl mb-4">🧠</div>
+            <div className="bg-purple-50 p-8 rounded-xl text-center hover:shadow-lg transition-all hover:scale-105">
+              <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="text-4xl">🧠</div>
+              </div>
               <h3 className="text-xl font-semibold mb-4 text-purple-700">Salud Mental</h3>
-              <p className="text-gray-700 mb-4">A través del eje intestino-cerebro, pueden influir positivamente en el estado de ánimo y reducir la ansiedad.</p>
-              <Link href="/beneficios#mental" className="text-purple-600 font-medium hover:underline">
+              <p className="text-gray-700 mb-6 text-sm leading-relaxed">A través del eje intestino-cerebro, pueden influir positivamente en el estado de ánimo y reducir la ansiedad.</p>
+              <Link href="/beneficios#mental" className="inline-block bg-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-purple-700 transition-colors">
                 Leer más →
               </Link>
             </div>
@@ -260,191 +310,278 @@ export default function Home() {
         </div>
         
         <div className="my-12">
-          <AdSpace position="content" title="Banner Contenido Principal (970x280)" />
+          <HorizontalBanner className="max-w-5xl mx-auto" alt="Banner horizontal Probióticos Para Todos - Contenido principal" />
         </div>
 
-        {/* Sección de tipos de probióticos con placeholder de imagen */}
+        {/* Sección de tipos de probióticos con imagen centrada y mejorada */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Tipos de Probióticos Más Estudiados</h2>
           
-          {/* Imagen de tipos de probióticos optimizada */}
-          <div className="mb-8 max-w-2xl mx-auto">
+          {/* Imagen de tipos de probióticos optimizada con tamaño estándar */}
+          <div className="mb-12 max-w-3xl mx-auto">
             <OptimizedImagePlaceholder 
               src="/images/tipos-probioticos-lactobacillus-bifidobacterium.png"
               alt="Ilustración científica comparativa de bacterias probióticas Lactobacillus y Bifidobacterium bajo microscopio"
-              width={600}
-              height={300}
-              className="w-full h-auto"
+              width={900}
+              height={450}
+              className="w-full h-auto rounded-xl shadow-lg"
             />
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm">
-              <h3 className="text-xl font-semibold mb-4 text-green-700">Lactobacillus</h3>
-              <p className="text-gray-700 mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                  <div className="text-2xl">🦠</div>
+                </div>
+                <h3 className="text-xl font-semibold text-green-700">Lactobacillus</h3>
+              </div>
+              <p className="text-gray-700 mb-6 leading-relaxed">
                 Las cepas más comunes incluyen L. acidophilus, L. rhamnosus y L. casei. 
                 Son especialmente efectivos para la salud digestiva y pueden ayudar con la intolerancia a la lactosa.
               </p>
-              <div className="text-sm text-gray-600">
-                <strong>Beneficios principales:</strong> Digestión, sistema inmune, salud vaginal
+              <div className="bg-green-50 p-4 rounded-lg">
+                <div className="text-sm text-gray-700">
+                  <strong className="text-green-700">Beneficios principales:</strong> Digestión, sistema inmune, salud vaginal
+                </div>
               </div>
             </div>
-            <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm">
-              <h3 className="text-xl font-semibold mb-4 text-blue-700">Bifidobacterium</h3>
-              <p className="text-gray-700 mb-4">
+            <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                  <div className="text-2xl">🔬</div>
+                </div>
+                <h3 className="text-xl font-semibold text-blue-700">Bifidobacterium</h3>
+              </div>
+              <p className="text-gray-700 mb-6 leading-relaxed">
                 Incluye B. bifidum, B. longum y B. breve. Son predominantes en el colon y 
                 son cruciales para la síntesis de vitaminas y la digestión de fibra.
               </p>
-              <div className="text-sm text-gray-600">
-                <strong>Beneficios principales:</strong> Salud del colon, síntesis de vitaminas, digestión de fibra
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <div className="text-sm text-gray-700">
+                  <strong className="text-blue-700">Beneficios principales:</strong> Salud del colon, síntesis de vitaminas, digestión de fibra
+                </div>
               </div>
             </div>
           </div>
           <div className="text-center mt-8">
-            <Link href="/tipos" className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+            <Link href="/tipos" className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors shadow-md hover:shadow-lg">
               Ver todos los tipos →
             </Link>
           </div>
         </div>
 
-        {/* Sección de alimentos vs suplementos con placeholders */}
-        <div className="mb-16 bg-gray-50 p-8 rounded-xl">
-          <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">¿Alimentos o Suplementos?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="text-xl font-semibold mb-4 text-green-700 flex items-center">
-                🥛 Alimentos Fermentados
+        {/* Sección de alimentos vs suplementos con imágenes homogéneas */}
+        <div className="mb-16 bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-2xl">
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">¿Alimentos o Suplementos?</h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+              <h3 className="text-2xl font-semibold mb-6 text-green-700 flex items-center">
+                <span className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                  🥛
+                </span>
+                Alimentos Fermentados
               </h3>
               
-              {/* Imagen de alimentos fermentados optimizada */}
-              <div className="mb-4">
+              {/* Imagen de alimentos fermentados con tamaño estándar */}
+              <div className="mb-6">
                 <OptimizedImagePlaceholder 
                   src="/images/alimentos-fermentados-yogur-kefir.png"
                   alt="Variedad completa de alimentos fermentados ricos en probióticos naturales: yogur griego, kéfir, chucrut, kimchi y kombucha"
-                  width={500}
-                  height={350}
-                  className="w-full h-auto rounded-lg"
+                  width={600}
+                  height={400}
+                  className="w-full h-64 object-cover rounded-lg shadow-md"
                 />
               </div>
               
-              <ul className="space-y-3 text-gray-700">
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
-                  <span><strong>Yogur:</strong> Rico en Lactobacillus y Bifidobacterium</span>
+              <ul className="space-y-4 text-gray-700 mb-6">
+                <li className="flex items-start p-3 bg-green-50 rounded-lg">
+                  <span className="text-green-500 mr-3 mt-1 text-lg">✓</span>
+                  <div>
+                    <span className="font-semibold">Yogur:</span>
+                    <span className="text-sm block text-gray-600">Rico en Lactobacillus y Bifidobacterium</span>
+                  </div>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
-                  <span><strong>Kéfir:</strong> Contiene más de 30 cepas diferentes</span>
+                <li className="flex items-start p-3 bg-green-50 rounded-lg">
+                  <span className="text-green-500 mr-3 mt-1 text-lg">✓</span>
+                  <div>
+                    <span className="font-semibold">Kéfir:</span>
+                    <span className="text-sm block text-gray-600">Contiene más de 30 cepas diferentes</span>
+                  </div>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
-                  <span><strong>Chucrut:</strong> Fermentado tradicional con múltiples beneficios</span>
+                <li className="flex items-start p-3 bg-green-50 rounded-lg">
+                  <span className="text-green-500 mr-3 mt-1 text-lg">✓</span>
+                  <div>
+                    <span className="font-semibold">Chucrut:</span>
+                    <span className="text-sm block text-gray-600">Fermentado tradicional con múltiples beneficios</span>
+                  </div>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
-                  <span><strong>Kimchi:</strong> Probióticos + vegetales nutritivos</span>
+                <li className="flex items-start p-3 bg-green-50 rounded-lg">
+                  <span className="text-green-500 mr-3 mt-1 text-lg">✓</span>
+                  <div>
+                    <span className="font-semibold">Kimchi:</span>
+                    <span className="text-sm block text-gray-600">Probióticos + vegetales nutritivos</span>
+                  </div>
                 </li>
               </ul>
-              <Link href="/alimentos-fermentados" className="inline-block mt-4 text-green-600 font-medium hover:underline">
+              <Link href="/alimentos-fermentados" className="inline-block w-full bg-green-600 text-white text-center px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors">
                 Ver todos los alimentos →
               </Link>
             </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4 text-blue-700 flex items-center">
-                💊 Suplementos
+            
+            <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+              <h3 className="text-2xl font-semibold mb-6 text-blue-700 flex items-center">
+                <span className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                  💊
+                </span>
+                Suplementos
               </h3>
               
-              {/* Imagen de suplementos optimizada */}
-              <div className="mb-4">
+              {/* Imagen de suplementos con tamaño estándar */}
+              <div className="mb-6">
                 <OptimizedImagePlaceholder 
                   src="/images/suplementos-probioticos-capsulas.png"
                   alt="Suplementos probióticos en cápsulas mostrando diferentes cepas bacterianas y información nutricional CFU"
-                  width={500}
-                  height={350}
-                  className="w-full h-auto rounded-lg"
+                  width={600}
+                  height={400}
+                  className="w-full h-64 object-cover rounded-lg shadow-md"
                 />
               </div>
               
-              <ul className="space-y-3 text-gray-700">
-                <li className="flex items-start">
-                  <span className="text-blue-500 mr-2">✓</span>
-                  <span>Concentraciones más altas (miles de millones de UFC)</span>
+              <ul className="space-y-4 text-gray-700 mb-6">
+                <li className="flex items-start p-3 bg-blue-50 rounded-lg">
+                  <span className="text-blue-500 mr-3 mt-1 text-lg">✓</span>
+                  <div>
+                    <span className="font-semibold">Alta Concentración:</span>
+                    <span className="text-sm block text-gray-600">Miles de millones de UFC</span>
+                  </div>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-blue-500 mr-2">✓</span>
-                  <span>Cepas específicas para condiciones particulares</span>
+                <li className="flex items-start p-3 bg-blue-50 rounded-lg">
+                  <span className="text-blue-500 mr-3 mt-1 text-lg">✓</span>
+                  <div>
+                    <span className="font-semibold">Cepas Específicas:</span>
+                    <span className="text-sm block text-gray-600">Para condiciones particulares</span>
+                  </div>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-blue-500 mr-2">✓</span>
-                  <span>Mayor estabilidad y vida útil</span>
+                <li className="flex items-start p-3 bg-blue-50 rounded-lg">
+                  <span className="text-blue-500 mr-3 mt-1 text-lg">✓</span>
+                  <div>
+                    <span className="font-semibold">Mayor Estabilidad:</span>
+                    <span className="text-sm block text-gray-600">Vida útil prolongada</span>
+                  </div>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-blue-500 mr-2">✓</span>
-                  <span>Dosificación precisa y consistente</span>
+                <li className="flex items-start p-3 bg-blue-50 rounded-lg">
+                  <span className="text-blue-500 mr-3 mt-1 text-lg">✓</span>
+                  <div>
+                    <span className="font-semibold">Dosificación Precisa:</span>
+                    <span className="text-sm block text-gray-600">Cantidad consistente</span>
+                  </div>
                 </li>
               </ul>
-              <Link href="/como-elegir" className="inline-block mt-4 text-blue-600 font-medium hover:underline">
+              <Link href="/como-elegir" className="inline-block w-full bg-blue-600 text-white text-center px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
                 Guía para elegir suplementos →
               </Link>
             </div>
           </div>
         </div>
         
-        {/* Navegación de secciones principales */}
+        {/* Navegación de secciones principales con diseño mejorado */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">Explora Nuestro Contenido</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <Link href="/beneficios" className="block group">
-              <div className="bg-green-50 p-6 rounded-xl border border-green-200 group-hover:shadow-lg transition-all">
-                <div className="text-3xl mb-4">✨</div>
-                <h3 className="text-xl font-semibold mb-3 text-green-700">Beneficios</h3>
-                <p className="text-gray-700 mb-4">Descubre todos los beneficios científicamente comprobados de los probióticos para tu salud.</p>
-                <div className="text-green-600 font-medium">Ver más →</div>
+              <div className="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-2xl border border-green-200 group-hover:shadow-xl transition-all group-hover:scale-105 h-full">
+                <div className="w-16 h-16 bg-green-200 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <div className="text-3xl">✨</div>
+                </div>
+                <h3 className="text-xl font-semibold mb-4 text-green-700">Beneficios</h3>
+                <p className="text-gray-700 mb-6 text-sm leading-relaxed">Descubre todos los beneficios científicamente comprobados de los probióticos para tu salud.</p>
+                <div className="text-green-600 font-medium flex items-center">
+                  Ver más 
+                  <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </div>
               </div>
             </Link>
 
             <Link href="/tipos" className="block group">
-              <div className="bg-blue-50 p-6 rounded-xl border border-blue-200 group-hover:shadow-lg transition-all">
-                <div className="text-3xl mb-4">🔬</div>
-                <h3 className="text-xl font-semibold mb-3 text-blue-700">Tipos</h3>
-                <p className="text-gray-700 mb-4">Conoce los diferentes tipos de probióticos y sus aplicaciones específicas.</p>
-                <div className="text-blue-600 font-medium">Explorar →</div>
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl border border-blue-200 group-hover:shadow-xl transition-all group-hover:scale-105 h-full">
+                <div className="w-16 h-16 bg-blue-200 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <div className="text-3xl">🔬</div>
+                </div>
+                <h3 className="text-xl font-semibold mb-4 text-blue-700">Tipos</h3>
+                <p className="text-gray-700 mb-6 text-sm leading-relaxed">Conoce los diferentes tipos de probióticos y sus aplicaciones específicas.</p>
+                <div className="text-blue-600 font-medium flex items-center">
+                  Explorar 
+                  <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </div>
               </div>
             </Link>
 
             <Link href="/como-elegir" className="block group">
-              <div className="bg-purple-50 p-6 rounded-xl border border-purple-200 group-hover:shadow-lg transition-all">
-                <div className="text-3xl mb-4">🎯</div>
-                <h3 className="text-xl font-semibold mb-3 text-purple-700">Cómo Elegir</h3>
-                <p className="text-gray-700 mb-4">Guía completa para elegir el probiótico ideal según tus necesidades.</p>
-                <div className="text-purple-600 font-medium">Guía →</div>
+              <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-2xl border border-purple-200 group-hover:shadow-xl transition-all group-hover:scale-105 h-full">
+                <div className="w-16 h-16 bg-purple-200 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <div className="text-3xl">🎯</div>
+                </div>
+                <h3 className="text-xl font-semibold mb-4 text-purple-700">Cómo Elegir</h3>
+                <p className="text-gray-700 mb-6 text-sm leading-relaxed">Guía completa para elegir el probiótico ideal según tus necesidades.</p>
+                <div className="text-purple-600 font-medium flex items-center">
+                  Guía 
+                  <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </div>
               </div>
             </Link>
 
             <Link href="/alimentos-fermentados" className="block group">
-              <div className="bg-orange-50 p-6 rounded-xl border border-orange-200 group-hover:shadow-lg transition-all">
-                <div className="text-3xl mb-4">🥛</div>
-                <h3 className="text-xl font-semibold mb-3 text-orange-700">Alimentos Fermentados</h3>
-                <p className="text-gray-700 mb-4">Descubre alimentos naturales ricos en probióticos y cómo prepararlos.</p>
-                <div className="text-orange-600 font-medium">Ver más →</div>
+              <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-2xl border border-orange-200 group-hover:shadow-xl transition-all group-hover:scale-105 h-full">
+                <div className="w-16 h-16 bg-orange-200 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <div className="text-3xl">🥛</div>
+                </div>
+                <h3 className="text-xl font-semibold mb-4 text-orange-700">Alimentos Fermentados</h3>
+                <p className="text-gray-700 mb-6 text-sm leading-relaxed">Descubre alimentos naturales ricos en probióticos y cómo prepararlos.</p>
+                <div className="text-orange-600 font-medium flex items-center">
+                  Ver más 
+                  <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </div>
               </div>
             </Link>
 
             <Link href="/condiciones" className="block group">
-              <div className="bg-red-50 p-6 rounded-xl border border-red-200 group-hover:shadow-lg transition-all">
-                <div className="text-3xl mb-4">🏥</div>
-                <h3 className="text-xl font-semibold mb-3 text-red-700">Condiciones Específicas</h3>
-                <p className="text-gray-700 mb-4">Probióticos recomendados para condiciones de salud específicas.</p>
-                <div className="text-red-600 font-medium">Ver más →</div>
+              <div className="bg-gradient-to-br from-red-50 to-red-100 p-8 rounded-2xl border border-red-200 group-hover:shadow-xl transition-all group-hover:scale-105 h-full">
+                <div className="w-16 h-16 bg-red-200 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <div className="text-3xl">🏥</div>
+                </div>
+                <h3 className="text-xl font-semibold mb-4 text-red-700">Condiciones Específicas</h3>
+                <p className="text-gray-700 mb-6 text-sm leading-relaxed">Probióticos recomendados para condiciones de salud específicas.</p>
+                <div className="text-red-600 font-medium flex items-center">
+                  Ver más 
+                  <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </div>
               </div>
             </Link>
 
             <Link href="/recetas" className="block group">
-              <div className="bg-yellow-50 p-6 rounded-xl border border-yellow-200 group-hover:shadow-lg transition-all">
-                <div className="text-3xl mb-4">🍽️</div>
-                <h3 className="text-xl font-semibold mb-3 text-yellow-700">Recetas</h3>
-                <p className="text-gray-700 mb-4">Recetas deliciosas con alimentos probióticos para toda la familia.</p>
-                <div className="text-yellow-600 font-medium">Ver más →</div>
+              <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 p-8 rounded-2xl border border-yellow-200 group-hover:shadow-xl transition-all group-hover:scale-105 h-full">
+                <div className="w-16 h-16 bg-yellow-200 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <div className="text-3xl">🍽️</div>
+                </div>
+                <h3 className="text-xl font-semibold mb-4 text-yellow-700">Recetas</h3>
+                <p className="text-gray-700 mb-6 text-sm leading-relaxed">Recetas deliciosas con alimentos probióticos para toda la familia.</p>
+                <div className="text-yellow-600 font-medium flex items-center">
+                  Ver más 
+                  <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </div>
               </div>
             </Link>
           </div>
@@ -531,12 +668,12 @@ export default function Home() {
       </main>
       
       <div className="hidden xl:block fixed right-4 top-1/2 transform -translate-y-1/2 z-20 w-72">
-        <AdSpace position="sidebar" title="Banner Lateral (300x600)" />
+        <TemporaryBanner className="w-full" alt="Banner promocional Probióticos Para Todos - Lateral" />
       </div>
       
       <footer className="bg-gray-50 py-8">
         <div className="container mx-auto px-4">
-          <AdSpace position="footer" title="Banner Footer (728x90)" />
+          <HorizontalBanner className="max-w-4xl mx-auto" alt="Banner horizontal Probióticos Para Todos - Footer" />
           <div className="text-center mt-8 text-gray-600">
             <p>&copy; 2025 Probióticos Para Todos</p>
             <div className="mt-4 space-x-6">
