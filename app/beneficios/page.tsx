@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Beneficios de los Probióticos Respaldados por la Ciencia',
     description: 'Guía completa sobre los beneficios de los probióticos con evidencia científica: mejora digestiva, fortalecimiento inmune y bienestar mental.',
-    images: ['/images/beneficios-probioticos-salud.png'],
+    images: ['/images/beneficios de los probioticos.png'],
     type: 'article',
     authors: ['Probióticos Para Todos'],
     publishedTime: '2024-06-01T08:00:00+00:00',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Beneficios Científicos de los Probióticos',
     description: 'Evidencia médica sobre cómo los probióticos mejoran tu salud digestiva, inmune y mental.',
-    images: ['/images/beneficios-probioticos-salud.png'],
+    images: ['/images/beneficios de los probioticos.png'],
   },
   alternates: {
     canonical: 'https://www.probioticosparatodos.com/beneficios',
@@ -47,7 +47,7 @@ export default function Beneficios() {
       },
       "datePublished": "2024-06-01T08:00:00+00:00",
       "dateModified": new Date().toISOString(),
-      "image": "https://www.probioticosparatodos.com/images/beneficios-probioticos-salud.png",
+      "image": "https://www.probioticosparatodos.com/images/beneficios de los probioticos.png",
       "url": "https://www.probioticosparatodos.com/beneficios"
     },
     "medicalAudience": {
@@ -165,19 +165,22 @@ export default function Beneficios() {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Main Content Area */}
           <div className="lg:col-span-3">
-            {/* Introducción con imagen hero */}
-            <section className="bg-white p-8 rounded-xl shadow-sm mb-8 border border-gray-100">
-              <div className="mb-8">
+            {/* Imagen hero pequeña */}
+            <div className="mb-6 flex justify-center">
+              <div className="w-[400px]">
                 <OptimizedImagePlaceholder
-                  src="/images/beneficios-probioticos-salud.png"
-                  alt="Infografía completa de beneficios de los probióticos para la salud digestiva, inmunológica y mental"
-                  width={800}
-                  height={400}
+                  src="/images/beneficios de los probioticos.png?v=2024"
+                  alt="Los principales beneficios de los probióticos: salud digestiva, sistema inmunológico y salud mental"
+                  width={400}
+                  height={300}
                   priority={true}
-                  className="w-full h-auto rounded-lg shadow-md"
+                  className="w-full h-auto"
                 />
               </div>
+            </div>
 
+            {/* Introducción */}
+            <section className="bg-white p-8 rounded-xl shadow-sm mb-8 border border-gray-100">
               <div className="prose prose-lg max-w-none">
                 <p className="text-xl text-gray-700 mb-6 leading-relaxed">
                   Los <strong>probióticos</strong> son microorganismos vivos que, cuando se administran en cantidades adecuadas,
@@ -301,6 +304,19 @@ export default function Beneficios() {
               </div>
             </section>
 
+            {/* Imagen del sistema inmune - fuera del recuadro */}
+            <div className="mb-6 flex justify-center">
+              <div className="w-[500px]">
+                <OptimizedImagePlaceholder
+                  src="/images/sistema _inmune_probioticos.png?v=2024"
+                  alt="Ilustración del sistema inmunológico y su relación con los probióticos intestinales"
+                  width={500}
+                  height={285}
+                  className="w-full h-auto"
+                />
+              </div>
+            </div>
+
             {/* Sección 2: Sistema Inmunológico */}
             <section className="bg-white p-8 rounded-xl shadow-sm mb-8 border border-gray-100">
               <div className="flex items-center mb-6">
@@ -310,16 +326,6 @@ export default function Beneficios() {
                   </svg>
                 </div>
                 <h2 className="text-3xl font-bold text-gray-800">2. Fortalecimiento del Sistema Inmune</h2>
-              </div>
-
-              <div className="mb-8">
-                <OptimizedImagePlaceholder
-                  src="/images/sistema-inmune.png"
-                  alt="Ilustración del sistema inmunológico y su relación con los probióticos intestinales"
-                  width={700}
-                  height={400}
-                  className="w-full h-auto rounded-lg shadow-md"
-                />
               </div>
 
               <div className="space-y-8">
@@ -396,6 +402,19 @@ export default function Beneficios() {
               </div>
             </section>
 
+            {/* Imagen del eje intestino-cerebro - fuera del recuadro */}
+            <div className="mb-6 flex justify-center">
+              <div className="w-[550px]">
+                <OptimizedImagePlaceholder
+                  src="/images/probioticos-eje.png?v=2024"
+                  alt="Conexión intestino-cerebro y probióticos para la salud mental"
+                  width={700}
+                  height={400}
+                  className="w-full h-auto"
+                />
+              </div>
+            </div>
+
             {/* Sección 3: Salud Mental */}
             <section className="bg-white p-8 rounded-xl shadow-sm mb-8 border border-gray-100">
               <div className="flex items-center mb-6">
@@ -405,16 +424,6 @@ export default function Beneficios() {
                   </svg>
                 </div>
                 <h2 className="text-3xl font-bold text-gray-800">3. Eje Intestino-Cerebro y Salud Mental</h2>
-              </div>
-
-              <div className="mb-8">
-                <OptimizedImagePlaceholder
-                  src="/images/intestino-cerebro.png"
-                  alt="Conexión intestino-cerebro y probióticos para la salud mental"
-                  width={700}
-                  height={400}
-                  className="w-full h-auto rounded-lg shadow-md"
-                />
               </div>
 
               <div className="space-y-8">

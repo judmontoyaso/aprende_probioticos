@@ -25,8 +25,21 @@ const OptimizedImage = ({
   placeholder = 'empty',
   sizes = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
 }: OptimizedImageProps) => {
-  // Verificar si es placeholder (las imágenes reales ya están disponibles)
-  const isPlaceholder = src.startsWith('/placeholder/') || src.includes('placeholder');
+  // Lista de imágenes reales que existen
+  const realImages = [
+    '/images/tipos_probioticos.png',
+    '/images/lactobacillus.png',
+    '/images/bifidubacterium.png',
+    '/images/saccaromises.png'
+  ];
+
+  // Verificar si es placeholder o si la imagen no existe
+  const isPlaceholder = !realImages.includes(src) && 
+                       (src.startsWith('/placeholder/') || 
+                        src.includes('placeholder') || 
+                        src.includes('-bacteria') ||
+                        src.includes('saccharomyces-boulardii') ||
+                        !src.startsWith('/images/'));
   
   if (isPlaceholder) {
     return (

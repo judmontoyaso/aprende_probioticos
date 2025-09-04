@@ -52,11 +52,11 @@ interface TiposData {
 
 export const tiposData: TiposData = {
   'lactobacillus': {
-    titulo: 'Lactobacillus: El Probiótico Versátil',
+    titulo: 'Lactobacillus: Lo que deberías saber',
     descripcion: 'Descubre los beneficios y aplicaciones de las bacterias Lactobacillus, uno de los géneros probióticos más estudiados y utilizados.',
     imagenPrincipal: {
       src: '/images/lactobacillus.png',
-      alt: 'Bacterias Lactobacillus bajo microscopio'
+      alt: 'Bacterias Lactobacillus - género probiótico versátil'
     },
     fechaPublicacion: '2024-05-10T00:00:00+00:00',
     introduccion: `
@@ -149,7 +149,7 @@ export const tiposData: TiposData = {
         nombre: 'Yogur',
         descripcion: 'El alimento fermentado más conocido que contiene Lactobacillus. El yogur tradicional contiene L. bulgaricus junto con Streptococcus thermophilus.',
         imagen: {
-          src: '/images/yogur.png',
+          src: '/images/yogurt_photo.png',
           alt: 'Yogur natural con cultivos vivos'
         }
       },
@@ -157,7 +157,7 @@ export const tiposData: TiposData = {
         nombre: 'Kéfir',
         descripcion: 'Bebida fermentada que contiene múltiples especies de Lactobacillus, junto con levaduras y otras bacterias beneficiosas.',
         imagen: {
-          src: '/images/kefir.png',
+          src: '/images/kefir_photo.png',
           alt: 'Kéfir de leche con granos probióticos'
         }
       },
@@ -165,7 +165,7 @@ export const tiposData: TiposData = {
         nombre: 'Chucrut',
         descripcion: 'Col fermentada que contiene L. plantarum y otras especies de Lactobacillus, junto con nutrientes y compuestos bioactivos.',
         imagen: {
-          src: '/images/chucrut.png',
+          src: '/images/chucrut _photo.png',
           alt: 'Chucrut casero fermentado'
         }
       }
@@ -202,6 +202,269 @@ export const tiposData: TiposData = {
       }
     ]
   },
+  
+  'bifidobacterium': {
+    titulo: 'Bifidobacterium: El Guardián del Colon',
+    descripcion: 'Explora las bacterias Bifidobacterium, esenciales para la salud intestinal y el desarrollo del microbioma desde la infancia.',
+    imagenPrincipal: {
+      src: '/images/bifido.png',
+      alt: 'Bacterias Bifidobacterium - probióticos para el colon'
+    },
+    fechaPublicacion: '2024-05-15T00:00:00+00:00',
+    introduccion: `
+      <p>Las <em>Bifidobacterium</em> son bacterias anaerobias estrictas que constituyen uno de los géneros más importantes del microbioma humano. Estas bacterias reciben su nombre por su forma característica en "Y" o bifurcada, observada por primera vez por Henri Tissier en 1899.</p>
+      <p>Son especialmente abundantes en los intestinos de los bebés y juegan un papel crucial en el desarrollo del sistema inmune. Con la edad, su presencia disminuye gradualmente, por lo que su suplementación puede ser particularmente beneficiosa en adultos y personas mayores.</p>
+      <p>Estas bacterias son fundamentales para mantener la salud del colon, producir nutrientes esenciales y establecer una barrera protectora contra patógenos. Su importancia en la salud humana las convierte en uno de los probióticos más estudiados y recomendados.</p>
+    `,
+    caracteristicas: [
+      {
+        titulo: 'Anaerobias estrictas',
+        descripcion: 'Requieren ambientes libres de oxígeno para sobrevivir, lo que las hace ideales para colonizar el colon donde las condiciones anaeróbicas son naturales.'
+      },
+      {
+        titulo: 'Forma bifurcada característica',
+        descripcion: 'Su morfología única en forma de "Y" o bifurcada las distingue fácilmente de otras bacterias probióticas bajo el microscopio.'
+      },
+      {
+        titulo: 'Dominantes en la infancia',
+        descripcion: 'Constituyen hasta el 90% del microbioma intestinal en bebés, estableciendo la base para un sistema inmune saludable.'
+      },
+      {
+        titulo: 'Productoras de ácidos orgánicos',
+        descripcion: 'Generan ácido acético y ácido láctico, creando un ambiente intestinal ácido que inhibe el crecimiento de bacterias patógenas.'
+      },
+      {
+        titulo: 'Metabolismo especializado',
+        descripcion: 'Poseen enzimas únicas que les permiten metabolizar oligosacáridos complejos y fibras prebióticas específicas.'
+      },
+      {
+        titulo: 'Resistencia al estrés',
+        descripcion: 'Aunque sensibles al oxígeno, muestran notable resistencia a cambios de pH y temperatura dentro del rango intestinal normal.'
+      }
+    ],
+    beneficios: [
+      {
+        titulo: 'Salud óptima del colon',
+        descripcion: 'Producen ácidos grasos de cadena corta (AGCC) como butirato, acetato y propionato que nutren las células del colon, mantienen la integridad de la barrera intestinal y reducen la inflamación colónica.'
+      },
+      {
+        titulo: 'Síntesis de vitaminas esenciales',
+        descripcion: 'Producen vitaminas del complejo B, especialmente ácido fólico, vitamina B12, tiamina y riboflavina, contribuyendo significativamente al estado nutricional del organismo.'
+      },
+      {
+        titulo: 'Modulación inmunológica avanzada',
+        descripcion: 'Estimulan la producción de IgA secretora, modulan la respuesta de células T reguladoras y ayudan en el desarrollo de tolerancia inmunológica, previniendo alergias y enfermedades autoinmunes.'
+      },
+      {
+        titulo: 'Prevención de infecciones intestinales',
+        descripcion: 'Compiten efectivamente con patógenos por nutrientes y sitios de adhesión, producen bacteriocinas naturales y mantienen un pH intestinal que inhibe el crecimiento de microorganismos dañinos.'
+      },
+      {
+        titulo: 'Mejora de la digestión de carbohidratos',
+        descripcion: 'Poseen enzimas especializadas para degradar oligosacáridos complejos, fibras prebióticas y almidones resistentes, mejorando la digestión y absorción de nutrientes.'
+      },
+      {
+        titulo: 'Regulación del metabolismo',
+        descripcion: 'Influyen en el metabolismo de lípidos y glucosa, contribuyendo al control del peso corporal y la sensibilidad a la insulina.'
+      },
+      {
+        titulo: 'Salud mental y cognitiva',
+        descripcion: 'A través del eje intestino-cerebro, producen neurotransmisores y metabolitos que pueden influir positivamente en el estado de ánimo, la ansiedad y la función cognitiva.'
+      },
+      {
+        titulo: 'Protección hepática',
+        descripcion: 'Sus metabolitos pueden ayudar a reducir la carga tóxica en el hígado y mejorar la función de detoxificación hepática.'
+      }
+    ],
+    cepasPopulares: [
+      {
+        nombre: 'Bifidobacterium bifidum',
+        descripcion: 'Una de las primeras especies en colonizar el intestino infantil, fundamental para el desarrollo del sistema inmune temprano.',
+        beneficios: ['Salud intestinal infantil', 'Apoyo inmunológico', 'Digestión de carbohidratos', 'Prevención de alergias', 'Síntesis de vitamina K'],
+        condiciones: ['Síndrome del intestino irritable', 'Diarrea infantil', 'Estreñimiento', 'Intolerancia a la lactosa']
+      },
+      {
+        nombre: 'Bifidobacterium longum',
+        descripcion: 'Especie versátil con múltiples subespecies, conocida por su longevidad en el intestino y beneficios amplios para todas las edades.',
+        beneficios: ['Reducción de inflamación', 'Salud mental', 'Longevidad intestinal', 'Antioxidante natural', 'Mejora de la barrera intestinal'],
+        condiciones: ['Enfermedad inflamatoria intestinal', 'Ansiedad', 'Colesterol elevado', 'Síndrome metabólico']
+      },
+      {
+        nombre: 'Bifidobacterium infantis',
+        descripcion: 'Especializada en metabolizar oligosacáridos complejos, esencial para la salud digestiva infantil.',
+        beneficios: ['Digestión de oligosacáridos', 'Desarrollo inmune infantil', 'Prevención de cólicos', 'Reducción de inflamación intestinal'],
+        condiciones: ['Cólicos del lactante', 'Diarrea asociada a antibióticos', 'Dermatitis atópica infantil']
+      },
+      {
+        nombre: 'Bifidobacterium animalis subsp. lactis',
+        descripcion: 'Cepa probiótica ampliamente utilizada en productos comerciales, conocida por su estabilidad y beneficios digestivos.',
+        beneficios: ['Regulación del tránsito intestinal', 'Mejora de la inmunidad', 'Reducción de infecciones respiratorias', 'Tolerancia a la lactosa'],
+        condiciones: ['Estreñimiento crónico', 'Inmunodeficiencias leves', 'Síndrome del intestino irritable']
+      },
+      {
+        nombre: 'Bifidobacterium breve',
+        descripcion: 'Cepa pequeña pero poderosa, especialmente beneficiosa para la salud intestinal y la función inmune en niños.',
+        beneficios: ['Protección contra alergias', 'Mejora de la función intestinal', 'Apoyo en prematuros', 'Producción de vitaminas'],
+        condiciones: ['Alergias alimentarias', 'Enterocolitis necrotizante', 'Dermatitis atópica']
+      }
+    ],
+    alimentosNaturales: [
+      {
+        nombre: 'Yogur natural',
+        descripcion: 'Fuente tradicional de bifidobacterias, especialmente cuando está marcado como contiene "cultivos vivos y activos".',
+        imagen: {
+          src: '/images/yogurt_photo.png',
+          alt: 'Yogur natural con cultivos probióticos activos'
+        }
+      },
+      {
+        nombre: 'Kéfir',
+        descripcion: 'Bebida fermentada rica en diversas cepas de bifidobacterias y otros probióticos beneficiosos.',
+        imagen: {
+          src: '/images/kefir_photo.png',
+          alt: 'Kéfir casero fuente natural de probióticos'
+        }
+      },
+      {
+        nombre: 'Productos lácteos fermentados',
+        descripcion: 'Quesos madurados, leches fermentadas y otros productos lácteos tradicionales pueden contener bifidobacterias naturales.',
+        imagen: {
+          src: '/images/quesos.png',
+          alt: 'Quesos fermentados ricos en probióticos naturales'
+        }
+      }
+    ],
+    estudiosRelevantes: [
+      {
+        titulo: 'Bifidobacterium y salud mental: eje intestino-cerebro',
+        autores: 'Pinto-Sanchez MI, et al.',
+        año: '2017',
+        publicacion: 'Clinical and Translational Gastroenterology',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/28323273/',
+        resumen: 'Estudio que demuestra la conexión entre Bifidobacterium y la mejora del estado de ánimo a través del eje intestino-cerebro, mostrando reducciones significativas en ansiedad y depresión.'
+      },
+      {
+        titulo: 'Efectos de B. infantis en la inflamación intestinal',
+        autores: 'Underwood MA, et al.',
+        año: '2020',
+        publicacion: 'Nutrients',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/32708578/',
+        resumen: 'Investigación que documenta cómo B. infantis reduce marcadores inflamatorios en el intestino de bebés prematuros y mejora la función de barrera intestinal.'
+      },
+      {
+        titulo: 'Bifidobacterium longum y función cognitiva en adultos mayores',
+        autores: 'Tamura T, et al.',
+        año: '2021',
+        publicacion: 'Frontiers in Aging Neuroscience',
+        resumen: 'Estudio que demuestra mejoras en memoria y función ejecutiva en adultos mayores tras suplementación con B. longum durante 12 semanas.'
+      },
+      {
+        titulo: 'Papel de las bifidobacterias en la prevención de alergias',
+        autores: 'Kalliomaki M, et al.',
+        año: '2019',
+        publicacion: 'Current Opinion in Allergy and Clinical Immunology',
+        resumen: 'Revisión sistemática que confirma el papel protector de las bifidobacterias contra el desarrollo de alergias y asma en la infancia.'
+      },
+      {
+        titulo: 'Bifidobacterium animalis y síndrome del intestino irritable',
+        autores: 'Ford AC, et al.',
+        año: '2018',
+        publicacion: 'The Lancet Gastroenterology & Hepatology',
+        resumen: 'Meta-análisis que demuestra la efectividad de B. animalis subsp. lactis en la reducción de síntomas del intestino irritable.'
+      }
+    ],
+    faq: [
+      {
+        pregunta: '¿Por qué disminuyen las Bifidobacterium con la edad?',
+        respuesta: 'Los cambios en la dieta (menor consumo de fibras prebióticas), el estrés crónico, el uso de medicamentos (especialmente antibióticos), cambios hormonales y el envejecimiento natural del sistema digestivo contribuyen a la reducción progresiva de estas bacterias. La suplementación dirigida puede ayudar a mantener niveles saludables.'
+      },
+      {
+        pregunta: '¿Cuál es la diferencia entre las especies de Bifidobacterium?',
+        respuesta: 'Cada especie tiene características únicas: B. infantis es especialista en oligosacáridos de leche materna, B. longum es versátil y persistente, B. bifidum es excelente para la inmunidad, y B. animalis subsp. lactis es muy estable en productos comerciales. La diversidad es clave para obtener beneficios óptimos.'
+      },
+      {
+        pregunta: '¿Pueden las Bifidobacterium sobrevivir al ácido estomacal?',
+        respuesta: 'Las bifidobacterias son naturalmente sensibles al ácido, pero muchas cepas probióticas comerciales están formuladas con recubrimientos entéricos o en formas que mejoran su supervivencia. Tomarlas con comida también ayuda a protegerlas durante el tránsito gástrico.'
+      },
+      {
+        pregunta: '¿Es seguro dar Bifidobacterium a bebés?',
+        respuesta: 'Sí, las bifidobacterias son naturalmente dominantes en bebés sanos. Cepas específicas como B. infantis han demostrado ser seguras y beneficiosas para bebés, especialmente prematuros. Sin embargo, siempre consulte con el pediatra antes de usar suplementos probióticos.'
+      },
+      {
+        pregunta: '¿Cuánto tiempo tardan en hacer efecto las Bifidobacterium?',
+        respuesta: 'Los primeros beneficios pueden notarse en 1-2 semanas, pero los efectos óptimos generalmente se observan después de 4-8 semanas de uso consistente. La colonización estable del intestino requiere tiempo y puede beneficiarse del consumo regular de alimentos prebióticos.'
+      },
+      {
+        pregunta: '¿Qué alimentos ayudan a que crezcan las Bifidobacterium?',
+        respuesta: 'Los prebióticos como inulina, fructooligosacáridos (FOS), galactooligosacáridos (GOS), y fibras de frutas y verduras alimentan específicamente a las bifidobacterias. Alimentos ricos en estos incluyen: ajo, cebolla, plátanos, espárragos, alcachofas y legumbres.'
+      }
+    ]
+  },
+
+  'saccharomyces-boulardii': {
+    titulo: 'Saccharomyces boulardii: La Levadura Probiótica',
+    descripcion: 'Descubre S. boulardii, la única levadura probiótica ampliamente estudiada, resistente a antibióticos y efectiva contra la diarrea.',
+    imagenPrincipal: {
+      src: '/images/saccaromises.png',
+      alt: 'Saccharomyces boulardii - levadura probiótica única'
+    },
+    fechaPublicacion: '2024-05-20T00:00:00+00:00',
+    introduccion: `
+      <p><em>Saccharomyces boulardii</em> es una levadura probiótica única, diferente de las bacterias probióticas tradicionales. Fue descubierta en 1923 y ha sido ampliamente estudiada por sus propiedades terapéuticas.</p>
+      <p>Su principal ventaja es su resistencia a los antibióticos, lo que la convierte en el probiótico ideal durante y después de tratamientos antibióticos.</p>
+    `,
+    caracteristicas: [
+      {
+        titulo: 'Levadura no patógena',
+        descripcion: 'Es una levadura beneficiosa, diferente de las bacterias probióticas comunes.'
+      },
+      {
+        titulo: 'Resistente a antibióticos',
+        descripcion: 'No se ve afectada por tratamientos antibióticos, mantiendo sus beneficios durante estos tratamientos.'
+      },
+      {
+        titulo: 'Termoresistente',
+        descripcion: 'Sobrevive a temperaturas más altas que muchas bacterias probióticas.'
+      }
+    ],
+    beneficios: [
+      {
+        titulo: 'Prevención de diarrea',
+        descripcion: 'Especialmente efectiva contra la diarrea asociada a antibióticos y la diarrea del viajero.'
+      },
+      {
+        titulo: 'Protección intestinal',
+        descripcion: 'Fortalece la barrera intestinal y reduce la inflamación.'
+      },
+      {
+        titulo: 'Antifúngica natural',
+        descripcion: 'Ayuda a controlar el crecimiento excesivo de Candida y otros hongos patógenos.'
+      }
+    ],
+    cepasPopulares: [
+      {
+        nombre: 'Saccharomyces boulardii CNCM I-745',
+        descripcion: 'La cepa más estudiada y ampliamente utilizada en suplementos.',
+        beneficios: ['Diarrea asociada a antibióticos', 'Diarrea del viajero', 'Síndrome del intestino irritable']
+      }
+    ],
+    estudiosRelevantes: [
+      {
+        titulo: 'Eficacia de S. boulardii en la prevención de diarrea asociada a antibióticos',
+        autores: 'McFarland LV, et al.',
+        año: '2016',
+        publicacion: 'Cochrane Database of Systematic Reviews',
+        resumen: 'Meta-análisis que confirma la eficacia de S. boulardii para prevenir la diarrea asociada a antibióticos en adultos y niños.'
+      }
+    ],
+    faq: [
+      {
+        pregunta: '¿Puedo tomar S. boulardii con antibióticos?',
+        respuesta: 'Sí, S. boulardii es resistente a la mayoría de antibióticos y puede tomarse simultáneamente. Es especialmente recomendada para prevenir los efectos secundarios gastrointestinales de los antibióticos.'
+      }
+    ]
+  }
+  
   // Más tipos de probióticos se agregarán aquí
 };
 

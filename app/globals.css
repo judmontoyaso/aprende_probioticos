@@ -3,6 +3,18 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  
+  /* Nueva paleta de colores */
+  --de-york: #7fc786;
+  --biscay: #163660;
+  --apple: #48a537;
+  --seagull: #7eaee4;
+  --san-marino: #4071b4;
+  --st-tropaz: #275b9e;
+  --aqua-squeeze: #eff8f5;
+  --gossip: #d2f8c2;
+  --ghost: #c4ccd7;
+  --gossip-light: #c4faa4;
 }
 
 @theme inline {
@@ -10,6 +22,18 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  
+  /* Colores personalizados disponibles en Tailwind */
+  --color-de-york: var(--de-york);
+  --color-biscay: var(--biscay);
+  --color-apple: var(--apple);
+  --color-seagull: var(--seagull);
+  --color-san-marino: var(--san-marino);
+  --color-st-tropaz: var(--st-tropaz);
+  --color-aqua-squeeze: var(--aqua-squeeze);
+  --color-gossip: var(--gossip);
+  --color-ghost: var(--ghost);
+  --color-gossip-light: var(--gossip-light);
 }
 
 @media (prefers-color-scheme: dark) {
