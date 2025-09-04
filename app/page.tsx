@@ -130,6 +130,60 @@ function TemporaryBanner({ className = "", alt = "Banner promocional Probiótico
   );
 }
 
+function NewBannerProfessional({ className = "", alt = "Banner profesional Probióticos Para Todos" }: { className?: string; alt?: string }) {
+  return (
+    <div className={`my-4 ${className}`}>
+      <div className="bg-gradient-to-r from-green-50 to-green-100 border border-green-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow duration-300">
+        <div className="flex items-center justify-between max-h-[90px]">
+          <div className="flex items-center space-x-4">
+            <div className="bg-green-600 p-3 rounded-full">
+              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+              </svg>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold text-gray-800">Probióticos para Todos</h3>
+              <p className="text-sm text-gray-600">Ciencia, bienestar y salud digestiva</p>
+            </div>
+          </div>
+          <div className="hidden md:flex items-center space-x-6 text-sm text-gray-700">
+            <div className="text-center">
+              <div className="font-bold text-green-600">🧬</div>
+              <div>Evidencia Científica</div>
+            </div>
+            <div className="text-center">
+              <div className="font-bold text-blue-600">🌿</div>
+              <div>Salud Natural</div>
+            </div>
+            <div className="text-center">
+              <div className="font-bold text-purple-600">💪</div>
+              <div>Bienestar</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ImageBannerProfessional({ className = "", alt = "Banner imagen Probióticos Para Todos" }: { className?: string; alt?: string }) {
+  return (
+    <div className={`my-4 ${className}`}>
+      <Image
+        src="/images/banner_3.png"
+        alt={alt}
+        width={0}
+        height={0}
+        sizes="100vw"
+        className="w-full h-auto rounded-lg hover:scale-[1.01] transition-all duration-300 cursor-pointer shadow-sm"
+        quality={95}
+        style={{ width: '100%', height: 'auto' }}
+        priority={true}
+      />
+    </div>
+  );
+}
+
 function HorizontalBanner({ className = "", alt = "Banner horizontal Probióticos Para Todos" }: { className?: string; alt?: string }) {
   return (
     <div className={`my-4 ${className}`}>
@@ -159,8 +213,8 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(imageSchema) }}
       />
       
-      <div className="hidden md:block container mx-auto px-4 pt-4">
-        <HorizontalBanner className="max-w-4xl mx-auto" alt="Banner horizontal Probióticos Para Todos - Escritorio" />
+      <div className="hidden md:block container mx-auto px-4 py-2">
+        <NewBannerProfessional className="max-w-5xl mx-auto" alt="Banner profesional Probióticos Para Todos - Ciencia, bienestar y salud digestiva" />
       </div>
       
       <div className="block md:hidden container mx-auto px-4 pt-4">
@@ -309,8 +363,8 @@ export default function Home() {
           </div>
         </div>
         
-        <div className="my-12">
-          <HorizontalBanner className="max-w-5xl mx-auto" alt="Banner horizontal Probióticos Para Todos - Contenido principal" />
+        <div className="my-8">
+          <ImageBannerProfessional className="max-w-5xl mx-auto" alt="Banner imagen Probióticos Para Todos - Ciencia, bienestar y salud digestiva" />
         </div>
 
         {/* Sección de tipos de probióticos con imagen centrada y mejorada */}
