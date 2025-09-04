@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     siteName: 'Probióticos Para Todos',
     images: [
       {
-        url: 'https://probioticosparatodos.com/images/probiotics-hero.png',
+        url: 'https://probioticosparatodos.com/images/new hero.png',
         width: 1200,
         height: 630,
         alt: 'Sistema digestivo humano con bacterias probióticas beneficiosas para la salud intestinal',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Probióticos: Tu Guía Completa para la Salud Digestiva',
     description: 'Descubre los beneficios científicamente comprobados de los probióticos para tu salud digestiva, inmunológica y mental.',
-    images: ['https://probioticosparatodos.com/images/probiotics-hero.png'],
+    images: ['https://probioticosparatodos.com/images/new hero.png'],
   },
   robots: {
     index: true,
@@ -82,14 +82,14 @@ const imageSchema = {
   "@context": "https://schema.org",
   "@type": "ImageObject", 
   "name": "Probióticos para la Salud Digestiva",
-  "description": "Sistema digestivo humano con bacterias probióticas beneficiosas Lactobacillus y Bifidobacterium",
-  "url": "https://probioticosparatodos.com/images/probiotics-hero.png",
+  "description": "Nueva imagen hero - personas y mascotas saludables con beneficios de los probióticos",
+  "url": "https://probioticosparatodos.com/images/new hero.png",
   "width": "1200",
   "height": "630",
   "encodingFormat": "image/png",
   "thumbnail": {
     "@type": "ImageObject",
-    "url": "https://probioticosparatodos.com/images/probiotics-hero.png",
+    "url": "https://probioticosparatodos.com/images/new hero.png",
     "width": "1200", 
     "height": "630"
   },
@@ -118,7 +118,7 @@ function TemporaryBanner({ className = "", alt = "Banner promocional Probiótico
   return (
     <div className={`my-4 ${className}`}>
       <Image
-        src="/images/banner.png"
+        src="/images/banner.png?v=2024"
         alt={alt}
         width={300}
         height={600}
@@ -283,15 +283,15 @@ export default function Home() {
             Estas &ldquo;bacterias buenas&rdquo; ayudan a mantener un equilibrio saludable en tu microbiota intestinal.
           </p>
           
-          {/* Imagen hero optimizada con mejor presentación */}
-          <div className="mb-12 max-w-5xl mx-auto">
+          {/* Nueva imagen hero */}
+          <div className="mb-12 max-w-3xl mx-auto">
             <OptimizedImagePlaceholder 
-              src="/images/probiotics-hero.png"
-              alt="Sistema digestivo saludable con probióticos - bacterias beneficiosas Lactobacillus y Bifidobacterium para la salud intestinal"
-              width={1200}
-              height={600}
+              src="/images/new hero.png"
+              alt="Nueva imagen hero de probióticos - personas y mascotas saludables con beneficios de la salud digestiva"
+              width={800}
+              height={400}
               priority={true}
-              className="w-full h-auto rounded-2xl shadow-2xl"
+              className="w-full h-auto rounded-xl shadow-lg"
             />
           </div>
           
@@ -322,14 +322,14 @@ export default function Home() {
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Beneficios Científicamente Comprobados</h2>
           
-          {/* Imagen de beneficios optimizada con tamaño estándar */}
-          <div className="mb-12 max-w-4xl mx-auto">
+          {/* Imagen de beneficios - infografía original más pequeña */}
+          <div className="mb-12 max-w-lg mx-auto">
             <OptimizedImagePlaceholder 
-              src="/images/beneficios-probioticos-salud.png"
-              alt="Infografía completa de beneficios de los probióticos: mejora salud digestiva, fortalece sistema inmunológico y apoya bienestar mental"
-              width={1000}
-              height={500}
-              className="w-full h-auto rounded-xl shadow-lg"
+              src="/images/beneficios de los probioticos.png"
+              alt="Los principales beneficios de los probióticos: salud digestiva, sistema inmunológico y salud mental"
+              width={500}
+              height={650}
+              className="w-full h-auto rounded-lg shadow-md"
             />
           </div>
           
@@ -375,15 +375,17 @@ export default function Home() {
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Tipos de Probióticos Más Estudiados</h2>
           
-          {/* Imagen de tipos de probióticos optimizada con tamaño estándar */}
-          <div className="mb-12 max-w-3xl mx-auto">
-            <OptimizedImagePlaceholder 
-              src="/images/tipos-probioticos-lactobacillus-bifidobacterium.png"
-              alt="Ilustración científica comparativa de bacterias probióticas Lactobacillus y Bifidobacterium bajo microscopio"
-              width={900}
-              height={450}
-              className="w-full h-auto rounded-xl shadow-lg"
-            />
+          {/* Nueva imagen comparativa de Lactobacillus vs Bifidobacterium - tamaño reducido */}
+          <div className="mb-12 flex justify-center">
+            <div className="w-[600px]">
+              <OptimizedImagePlaceholder 
+                src="/images/lactobacillus-vs-bifidu.png"
+                alt="Comparación visual entre bacterias probióticas Lactobacillus y Bifidobacterium - diferencias y beneficios"
+                width={600}
+                height={300}
+                className="w-full h-auto rounded-xl"
+              />
+            </div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -441,11 +443,11 @@ export default function Home() {
                 Alimentos Fermentados
               </h3>
               
-              {/* Imagen de alimentos fermentados con tamaño estándar */}
+              {/* Nueva imagen de alimentos probióticos */}
               <div className="mb-6">
                 <OptimizedImagePlaceholder 
-                  src="/images/alimentos-fermentados-yogur-kefir.png"
-                  alt="Variedad completa de alimentos fermentados ricos en probióticos naturales: yogur griego, kéfir, chucrut, kimchi y kombucha"
+                  src="/images/probiotic_foods.png"
+                  alt="Variedad completa de alimentos probióticos: yogur, kéfir, chucrut, kimchi, kombucha y otros alimentos fermentados ricos en bacterias beneficiosas"
                   width={600}
                   height={400}
                   className="w-full h-64 object-cover rounded-lg shadow-md"
@@ -495,11 +497,11 @@ export default function Home() {
                 Suplementos
               </h3>
               
-              {/* Imagen de suplementos con tamaño estándar */}
+              {/* Nueva imagen de suplementos probióticos */}
               <div className="mb-6">
                 <OptimizedImagePlaceholder 
-                  src="/images/suplementos-probioticos-capsulas.png"
-                  alt="Suplementos probióticos en cápsulas mostrando diferentes cepas bacterianas y información nutricional CFU"
+                  src="/images/suplementos.png"
+                  alt="Suplementos probióticos en cápsulas y tabletas mostrando diferentes presentaciones y concentraciones CFU"
                   width={600}
                   height={400}
                   className="w-full h-64 object-cover rounded-lg shadow-md"
