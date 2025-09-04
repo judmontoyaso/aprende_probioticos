@@ -133,7 +133,11 @@ function TemporaryBanner({ className = "", alt = "Banner promocional Probiótico
 function NewBannerProfessional({ className = "", alt = "Banner profesional Probióticos Para Todos" }: { className?: string; alt?: string }) {
   return (
     <div className={`my-4 ${className}`}>
-      <div className="bg-gradient-to-r from-green-50 to-green-100 border border-green-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow duration-300">
+      <div 
+        className="bg-gradient-to-r from-green-50 to-green-100 border border-green-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow duration-300"
+        role="banner"
+        aria-label={alt}
+      >
         <div className="flex items-center justify-between max-h-[90px]">
           <div className="flex items-center space-x-4">
             <div className="bg-green-600 p-3 rounded-full">
