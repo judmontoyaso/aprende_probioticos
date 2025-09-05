@@ -72,6 +72,9 @@ export default function TipoProbioticosTemplate({
 
   // Generar datos estructurados específicos según el tipo
   const generateStructuredData = () => {
+    // Usar una fecha fija para evitar problemas de hidratación
+    const lastModified = new Date('2025-09-04T00:00:00.000Z').toISOString();
+    
     const baseStructuredData = {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -98,7 +101,7 @@ export default function TipoProbioticosTemplate({
         }
       },
       "datePublished": fechaPublicacion,
-      "dateModified": new Date().toISOString(),
+      "dateModified": lastModified,
       "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": `https://www.probioticosparatodos.com/tipos/${titulo.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`

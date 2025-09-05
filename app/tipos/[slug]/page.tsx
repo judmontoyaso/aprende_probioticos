@@ -76,7 +76,7 @@ export async function generateMetadata({
       locale: 'es_ES',
       type: 'article',
       publishedTime: tipoData.fechaPublicacion,
-      modifiedTime: new Date().toISOString(),
+      modifiedTime: '2025-09-04T00:00:00.000Z',
       section: 'Tipos de Probióticos',
       tags: keywords.split(', '),
     },
