@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
 import OptimizedImagePlaceholder from '../components/OptimizedImagePlaceholder';
+import ArticleBanner from '../components/ArticleBanner';
 
 export const metadata: Metadata = {
   title: 'Beneficios de los Probióticos: Evidencia Científica Actualizada 2024 | Probióticos Para Todos',
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
     type: 'article',
     authors: ['Probióticos Para Todos'],
     publishedTime: '2024-06-01T08:00:00+00:00',
-    modifiedTime: new Date().toISOString(),
+    modifiedTime: "2024-12-01T08:00:00+00:00",
   },
   twitter: {
     card: 'summary_large_image',
@@ -46,7 +47,7 @@ export default function Beneficios() {
         "url": "https://www.probioticosparatodos.com"
       },
       "datePublished": "2024-06-01T08:00:00+00:00",
-      "dateModified": new Date().toISOString(),
+      "dateModified": "2024-12-01T08:00:00+00:00",
       "image": "https://www.probioticosparatodos.com/images/beneficios de los probioticos.png",
       "url": "https://www.probioticosparatodos.com/beneficios"
     },
@@ -303,6 +304,9 @@ export default function Beneficios() {
                 </div>
               </div>
             </section>
+
+            {/* Banner de artículo */}
+            <ArticleBanner />
 
             {/* Imagen del sistema inmune - fuera del recuadro */}
             <div className="mb-6 flex justify-center">

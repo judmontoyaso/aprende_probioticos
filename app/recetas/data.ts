@@ -54,20 +54,20 @@ interface RecetasData {
 
 export const recetasData: RecetasData = {
   'yogur-casero': {
-    titulo: 'Yogur Casero Probiótico',
-    descripcion: 'Aprende a preparar yogur casero rico en probióticos con ingredientes simples y sin conservantes artificiales.',
+    titulo: 'Yogur Casero para Principiantes',
+    descripcion: 'El método más fácil para hacer yogur casero usando yogur comercial como iniciador. Perfecto para comenzar tu aventura en alimentos fermentados.',
     imagenPrincipal: {
       src: '/images/yogurt-recetas.png',
-      alt: 'Yogur casero en recipiente de vidrio con frutas frescas'
+      alt: 'Yogur casero para principiantes en recipiente de vidrio con frutas frescas'
     },
     fechaPublicacion: '2024-05-12T00:00:00+00:00',
-    tiempoPreparacion: '24 horas',
+    tiempoPreparacion: '12-24 horas',
     dificultad: 'Fácil',
     porciones: 4,
     introduccion: `
-      <p>El yogur es uno de los alimentos probióticos más accesibles y versátiles. Prepararlo en casa no solo es más económico que comprarlo, sino que también te permite controlar completamente sus ingredientes, evitando azúcares añadidos, estabilizantes y conservantes.</p>
+      <p>Esta es la forma más simple y accesible de comenzar a hacer yogur casero. Usando yogur comercial como iniciador, puedes crear tu propio yogur sin necesidad de equipos especializados o cultivos difíciles de conseguir.</p>
       <p>Hacer yogur casero es una práctica tradicional en muchas culturas por una buena razón: el proceso es simple, requiere pocos ingredientes y el resultado es un alimento nutritivo, rico en proteínas y cargado de bacterias beneficiosas para tu microbiota intestinal.</p>
-      <p>En esta receta, aprenderás el proceso básico para elaborar yogur casero cremoso y delicioso, además de consejos para personalizarlo según tus preferencias.</p>
+      <p>Esta receta es perfecta para principiantes que quieren experimentar con alimentos fermentados sin complicaciones técnicas. Una vez que domines este método, podrás avanzar a técnicas más avanzadas.</p>
     `,
     ingredientes: [
       {
@@ -84,24 +84,24 @@ export const recetasData: RecetasData = {
     materialesRequeridos: [
       'Olla de acero inoxidable o esmaltada',
       'Termómetro de cocina',
-      'Frascos de vidrio con tapa',
-      'Manta o toalla',
+      'Recipiente hermético de vidrio de 1 litro con tapa',
+      'Manta o toalla gruesa',
       'Cuchara de madera o silicona'
     ],
     instrucciones: [
       {
-        paso: 'Esterilizar los recipientes',
-        descripcion: 'Lava bien los frascos de vidrio y sus tapas. Esterilízalos sumergiéndolos en agua hirviendo durante 5 minutos, o pasándolos por el lavavajillas en ciclo caliente. Déjalos secar boca abajo sobre un paño limpio.',
+        paso: 'Esterilizar el recipiente',
+        descripcion: 'Lava bien el recipiente hermético de vidrio de 1 litro y su tapa. Esterilízalo sumergiéndolo en agua hirviendo durante 5 minutos, o pasándolo por el lavavajillas en ciclo caliente. Déjalo secar boca abajo sobre un paño limpio.',
         imagen: {
-          src: '/images/esterilizar-frascos.png',
-          alt: 'Frascos de vidrio siendo esterilizados'
+          src: '/images/frasco-esterilizado.png',
+          alt: 'Recipiente hermético de vidrio siendo esterilizado'
         }
       },
       {
         paso: 'Calentar la leche',
         descripcion: 'Vierte la leche en una olla y caliéntala a fuego medio-bajo hasta alcanzar 85°C (185°F). Mantén esta temperatura durante 5-10 minutos, removiendo ocasionalmente. Este paso desnaturaliza las proteínas de la leche, lo que resultará en un yogur más espeso.',
         imagen: {
-          src: '/images/calentar-leche.png',
+          src: '/images/leche-en-estufa.png',
           alt: 'Leche calentándose en una olla'
         }
       },
@@ -113,24 +113,29 @@ export const recetasData: RecetasData = {
         paso: 'Añadir el cultivo iniciador',
         descripcion: 'Una vez que la leche alcance la temperatura adecuada, añade las 2 cucharadas de yogur natural. Mezcla suavemente hasta que esté completamente incorporado.',
         imagen: {
-          src: '/images/anadir-cultivo.png',
+          src: '/images/cultivo-en-leche.png',
           alt: 'Añadiendo cultivo iniciador a la leche'
         }
       },
       {
-        paso: 'Incubación',
-        descripcion: 'Vierte la mezcla en los frascos esterilizados y ciérralos. Envuélvelos en una manta o toalla para mantener el calor, y colócalos en un lugar cálido y sin corrientes de aire durante 6-12 horas. Cuanto más tiempo lo incubes, más ácido será el yogur. Una opción es usar una yogurtera o el horno con la luz encendida.',
+        paso: 'Transferir al recipiente hermético',
+        descripcion: 'Vierte toda la mezcla en el recipiente hermético de vidrio de 1 litro. Cierra la tapa firmemente pero no excesivamente apretada para permitir que escape cualquier gas que se pueda formar durante la fermentación.'
       },
       {
-        paso: 'Refrigeración',
-        descripcion: 'Una vez que el yogur haya alcanzado la consistencia deseada, refrigéralo durante al menos 4 horas antes de consumirlo. Esto detendrá el proceso de fermentación y ayudará a que el yogur se asiente.',
+        paso: 'Incubación',
+        descripcion: 'Envuelve el recipiente en una manta o toalla gruesa y colócalo en un lugar cálido y sin corrientes de aire. Puedes usar el horno apagado con la luz encendida, una yogurtera, o simplemente un rincón cálido de tu cocina. Mantén la temperatura entre 38-45°C durante 6-12 horas.',
+      },
+      {
+        paso: 'Verificar y refrigerar',
+        descripcion: 'Después de 6-8 horas, verifica la consistencia del yogur. Debe tener una textura firme y un sabor ligeramente ácido. Si prefieres un sabor más fuerte, déjalo fermentar por 2-4 horas adicionales. Una vez listo, refrigera inmediatamente.',
       }
     ],
     consejos: [
       'Reserva 2 cucharadas de tu yogur casero para usar como cultivo iniciador en tu próximo lote.',
       'Para obtener un yogur más espeso, puedes filtrar el producto final a través de una gasa o un paño de muselina.',
       'Evita mezclar o agitar el yogur durante la incubación para no interrumpir el proceso de fermentación.',
-      'Si prefieres un yogur más dulce, puedes añadir miel, frutas o mermelada casera al servirlo, no durante la fermentación.'
+      'Si prefieres un yogur más dulce, puedes añadir miel, frutas o mermelada casera al servirlo, no durante la fermentación.',
+      'El recipiente hermético facilita el almacenamiento y permite servir directamente desde el mismo contenedor.'
     ],
     beneficios: [
       {
@@ -194,6 +199,14 @@ export const recetasData: RecetasData = {
       {
         pregunta: '¿Puedo usar yogur comercial como cultivo iniciador?',
         respuesta: 'Sí, pero asegúrate de que el yogur contenga cultivos vivos y activos. Busca en la etiqueta frases como "contiene cultivos vivos" o "con cultivos activos". Evita yogures con muchos aditivos o tratados térmicamente después de la fermentación, ya que pueden contener menos bacterias viables.'
+      },
+      {
+        pregunta: '¿Cuándo debería considerar usar cultivos puros en lugar de yogur comercial?',
+        respuesta: 'Si ya dominas esta receta básica y quieres máxima potencia probiótica, control total sobre las cepas, o hacer yogur regularmente, considera probar cultivos iniciadores puros. Ofrecen 10-50x más bacterias y resultados más consistentes, pero requieren más precisión técnica.'
+      },
+      {
+        pregunta: '¿Por qué usar un solo recipiente hermético en lugar de varios frascos pequeños?',
+        respuesta: 'Un recipiente de 1 litro es más práctico para principiantes: es más fácil de manejar, mantener limpio, y permite mejor control de temperatura durante la fermentación. Además, facilita el almacenamiento y permite servir directamente desde el mismo contenedor.'
       }
     ],
     notas: `<p>El éxito en la elaboración de yogur casero depende en gran medida de la calidad de los ingredientes y del control de la temperatura. Con un poco de práctica, podrás ajustar los tiempos y temperaturas para lograr exactamente la textura y sabor que prefieres.</p><p>Recuerda que la fermentación es un proceso vivo y puede variar de un lote a otro. ¡Disfruta experimentando con esta antigua técnica de conservación de alimentos!</p>`,
@@ -201,26 +214,26 @@ export const recetasData: RecetasData = {
   },
 
   'kefir-agua': {
-    titulo: 'Kéfir de Agua Natural',
-    descripcion: 'Bebida probiótica refrescante y ligeramente efervescente, rica en bacterias beneficiosas y enzimas digestivas.',
+    titulo: 'Kéfir de Agua con Aguapanela',
+    descripcion: 'Bebida probiótica tradicional latinoamericana usando aguapanela como endulzante natural, rica en minerales y bacterias beneficiosas.',
     imagenPrincipal: {
       src: '/images/kefir_recetas.png',
-      alt: 'Kéfir de agua en botella de vidrio con limón y hierbas'
+      alt: 'Kéfir de agua con aguapanela en botella de vidrio con limón'
     },
     fechaPublicacion: '2024-05-15T00:00:00+00:00',
     tiempoPreparacion: '48-72 horas',
     dificultad: 'Fácil',
     porciones: 6,
     introduccion: `
-      <p>El kéfir de agua es una alternativa refrescante y saludable a las bebidas gaseosas comerciales. Esta bebida fermentada milenaria contiene una diversidad de microorganismos beneficiosos que superan en variedad a muchos suplementos probióticos.</p>
-      <p>A diferencia del kéfir de leche, el kéfir de agua es naturalmente libre de lácteos y tiene un sabor más suave y refrescante. Es perfecto para aquellos que buscan una bebida probiótica ligera y deliciosa.</p>
-      <p>Los gránulos de kéfir de agua, cuando se cuidan adecuadamente, pueden durar años y multiplicarse, creando una fuente continua de probióticos para toda la familia.</p>
+      <p>El kéfir de agua con aguapanela es una fusión perfecta entre la tradición probiótica europea y los sabores latinoamericanos. La aguapanela, además de endulzar naturalmente, aporta minerales esenciales como hierro, calcio y potasio que nutren tanto a los gránulos de kéfir como a tu organismo.</p>
+      <p>Esta bebida fermentada combina los beneficios probióticos del kéfir tradicional con la riqueza nutricional de la panela, creando una alternativa saludable y culturalmente relevante a las bebidas comerciales procesadas.</p>
+      <p>Los gránulos de kéfir prosperan especialmente bien con aguapanela debido a su contenido natural de minerales, produciendo una bebida más nutritiva y con mejor sabor que las versiones con azúcar refinado.</p>
     `,
     ingredientes: [
       {
         nombre: 'agua filtrada',
         cantidad: '1 litro',
-        nota: 'libre de cloro'
+        nota: 'libre de cloro, a temperatura ambiente'
       },
       {
         nombre: 'gránulos de kéfir de agua',
@@ -228,19 +241,24 @@ export const recetasData: RecetasData = {
         nota: 'hidratados y activos'
       },
       {
-        nombre: 'azúcar orgánico',
-        cantidad: '3 cucharadas',
-        nota: 'alimento para los gránulos'
+        nombre: 'panela rallada o en polvo',
+        cantidad: '3-4 cucharadas',
+        nota: 'aguapanela tradicional, fuente de minerales'
       },
       {
-        nombre: 'limón orgánico',
+        nombre: 'limón criollo',
         cantidad: '1/2 unidad',
-        nota: 'opcional, para sabor'
+        nota: 'preferiblemente orgánico, para acidez natural'
       },
       {
-        nombre: 'higos secos o pasas',
+        nombre: 'jengibre fresco (opcional)',
+        cantidad: '1 rodaja pequeña',
+        nota: 'para sabor y propiedades digestivas'
+      },
+      {
+        nombre: 'higos secos o dátiles',
         cantidad: '2-3 unidades',
-        nota: 'opcional, para minerales adicionales'
+        nota: 'opcional, aportan minerales adicionales'
       }
     ],
     materialesRequeridos: [
@@ -253,57 +271,63 @@ export const recetasData: RecetasData = {
     ],
     instrucciones: [
       {
-        paso: 'Preparar el agua azucarada',
-        descripcion: 'Disuelve completamente el azúcar en el agua filtrada. Asegúrate de que el agua esté a temperatura ambiente. El cloro del agua del grifo puede dañar los gránulos, por lo que es importante usar agua filtrada o dejada reposar 24 horas para que se evapore el cloro.',
+        paso: 'Preparar agua de panela',
+        descripcion: 'Disuelve completamente la panela rallada en el agua filtrada a temperatura ambiente. Revuelve bien hasta que no queden grumos. La panela se disuelve más lentamente que el azúcar, así que ten paciencia. El agua debe quedar con un color dorado claro y sabor dulce suave.',
         imagen: {
-          src: '/images/agua-azucarada-kefir.png',
-          alt: 'Disolviendo azúcar en agua para kéfir'
+          src: '/images/aguapanela-kefir.png',
+          alt: 'Disolviendo panela en agua para kéfir'
         }
       },
       {
         paso: 'Añadir gránulos y saborizantes',
-        descripcion: 'Coloca los gránulos de kéfir en el frasco con el agua azucarada. Añade el medio limón (puedes exprimirlo ligeramente) y los higos secos o pasas si los usas. Estos ingredientes proporcionan minerales adicionales que nutren los gránulos.',
+        descripcion: 'Coloca los gránulos de kéfir en el frasco con el agua de panela. Añade el medio limón (exprímelo ligeramente), la rodaja de jengibre si la usas, y los higos secos o dátiles. Estos ingredientes aportan acidez natural y minerales que nutren los gránulos.',
         imagen: {
-          src: '/images/granulos-kefir-agua.png',
-          alt: 'Gránulos de kéfir de agua en frasco'
+          src: '/images/kefir-frasco.png',
+          alt: 'Gránulos de kéfir de agua en agua de panela'
         }
       },
       {
-        paso: 'Cubrir y fermentar',
-        descripcion: 'Cubre el frasco con una tela transpirable o filtro de café asegurado con banda elástica. Esto permite que la fermentación ocurra mientras protege de contaminantes. Fermenta a temperatura ambiente (20-25°C) durante 24-48 horas.',
+        paso: 'Cubrir y fermentar primera fase',
+        descripcion: 'Cubre el frasco con una tela transpirable o filtro de café asegurado con banda elástica. La aguapanela fermentará más vigorosamente que el azúcar común. Fermenta a temperatura ambiente (20-25°C) durante 24-48 horas. Notarás burbujas y un aroma ligeramente dulce-ácido.',
       },
       {
-        paso: 'Colar y embotellar',
-        descripcion: 'Cuela el kéfir a través del colador, separando los gránulos del líquido fermentado. Reserva los gránulos para el siguiente lote. Embotella el kéfir en botellas de vidrio hermético para crear una segunda fermentación si deseas más carbonatación.',
+        paso: 'Colar y evaluar fermentación',
+        descripcion: 'Cuela el kéfir a través del colador, separando cuidadosamente los gránulos del líquido fermentado. El líquido debe tener un sabor ligeramente ácido, efervescente y menos dulce que al inicio. Reserva los gránulos para el siguiente lote - estarán más activos gracias a los minerales de la panela.',
       },
       {
-        paso: 'Segunda fermentación (opcional)',
-        descripcion: 'Para mayor efervescencia y sabor, cierra herméticamente las botellas y déjalas a temperatura ambiente durante 12-24 horas adicionales. Luego refrigera para detener la fermentación. Abre con cuidado ya que puede estar muy carbonatado.',
+        paso: 'Segunda fermentación para carbonatación',
+        descripcion: 'Embotella el kéfir en botellas de vidrio hermético. Puedes añadir una pizca más de panela o frutas para saborizar. Fermenta 12-24 horas adicionales a temperatura ambiente para mayor carbonatación, luego refrigera. El kéfir con aguapanela desarrolla una efervescencia natural muy agradable.',
       }
     ],
     consejos: [
-      'Nunca uses utensilios de metal en contacto directo con los gránulos, pueden dañarlos.',
-      'Si los gránulos se multiplican, compártelos con amigos o guárdalos en agua azucarada en la nevera.',
-      'Para conservar gránulos a largo plazo, deshidrátalos o congélalos en agua azucarada.',
-      'El kéfir de agua es más activo en clima cálido; ajusta los tiempos según la temperatura.',
-      'Experimenta con diferentes sabores en la segunda fermentación: jengibre, hierbas, frutas.'
+      'La panela se disuelve más lentamente que el azúcar refinado - revuelve bien y ten paciencia.',
+      'Los gránulos prosperan mejor con panela debido a su contenido mineral natural.',
+      'Si los gránulos se multiplican (cosa común con aguapanela), compártelos con amigos.',
+      'Para conservar gránulos, mantenlos en agua con panela en la nevera hasta por 2 semanas.',
+      'El jengibre fresco añade propiedades digestivas y un toque picante muy agradable.',
+      'Experenta con panelas de diferentes regiones - cada una aporta sabores únicos.',
+      'El kéfir con aguapanela fermenta más rápido en clima tropical - vigila los tiempos.'
     ],
     beneficios: [
       {
+        titulo: 'Rica en minerales naturales',
+        descripcion: 'La aguapanela aporta hierro, calcio, potasio y magnesio que nutren tanto los gránulos de kéfir como tu organismo, creando una bebida probiótica más completa nutricionalmente.'
+      },
+      {
         titulo: 'Diversidad microbiana excepcional',
-        descripcion: 'El kéfir de agua contiene más de 30 cepas diferentes de bacterias y levaduras probióticas, superando la diversidad de muchos suplementos comerciales.'
+        descripcion: 'Los minerales de la panela favorecen el crecimiento de más de 30 cepas diferentes de bacterias y levaduras probióticas, superando la diversidad de muchos suplementos comerciales.'
+      },
+      {
+        titulo: 'Energía natural sostenida',
+        descripcion: 'Los azúcares complejos de la panela proporcionan energía más estable que el azúcar refinado, evitando picos de glucosa en sangre.'
+      },
+      {
+        titulo: 'Tradición y cultura',
+        descripcion: 'Conecta con las tradiciones alimentarias latinoamericanas mientras obtienes beneficios probióticos modernos, valorando ingredientes locales y naturales.'
       },
       {
         titulo: 'Digestión mejorada',
-        descripcion: 'Las enzimas producidas durante la fermentación ayudan a pre-digerir nutrientes y facilitan la absorción intestinal.'
-      },
-      {
-        titulo: 'Hidratación probiótica',
-        descripcion: 'Combina hidratación con beneficios probióticos, ideal para deportistas o como alternativa saludable a bebidas azucaradas.'
-      },
-      {
-        titulo: 'Bajo en azúcar',
-        descripcion: 'Los microorganismos consumen la mayoría del azúcar durante la fermentación, resultando en una bebida naturalmente baja en azúcar.'
+        descripcion: 'Las enzimas producidas durante la fermentación, combinadas con las propiedades digestivas naturales de la panela, facilitan la digestión y absorción de nutrientes.'
       }
     ],
     probioticosPresentes: [
@@ -354,10 +378,18 @@ export const recetasData: RecetasData = {
       {
         pregunta: '¿Qué hago si mi kéfir tiene moho?',
         respuesta: 'Si ves moho peludo (generalmente verde, azul o negro) en la superficie, desecha todo el lote incluyendo los gránulos. El moho indica contaminación y puede ser peligroso. Esteriliza todos los utensilios antes de comenzar con gránulos nuevos.'
+      },
+      {
+        pregunta: '¿Por qué usar aguapanela en lugar de azúcar común?',
+        respuesta: 'La aguapanela aporta minerales naturales (hierro, calcio, potasio) que nutren mejor los gránulos de kéfir, resultando en una fermentación más vigorosa y una bebida más nutritiva. Además, conecta con tradiciones alimentarias latinoamericanas y tiene un sabor más complejo y agradable.'
+      },
+      {
+        pregunta: '¿Dónde consigo panela de buena calidad?',
+        respuesta: 'Busca panela orgánica en tiendas naturistas, mercados campesinos o supermercados en la sección de productos naturales. La panela artesanal de trapiche tradicional es ideal. Evita panelas muy refinadas o con aditivos.'
       }
     ],
-    notas: `<p>El kéfir de agua es una de las formas más accesibles de introducir probióticos en tu dieta diaria. Su sabor suave y refrescante lo hace especialmente atractivo para niños y personas que no disfrutan de alimentos fermentados más fuertes.</p><p>Recuerda que la fermentación es un arte tanto como una ciencia. Cada lote puede variar ligeramente dependiendo de la temperatura, humedad y calidad de los ingredientes. ¡Disfruta del proceso de experimentación!</p>`,
-    beneficiosPrincipales: ['Hidratación probiótica', 'Digestión mejorada', 'Bajo en azúcar']
+    notas: `<p>El kéfir de agua con aguapanela representa una perfecta fusión entre tradición y salud moderna. La panela no solo endulza naturalmente, sino que aporta minerales que enriquecen tanto el perfil nutricional como el sabor de la bebida.</p><p>Esta versión latinoamericana del kéfir tradicional demuestra cómo los ingredientes locales pueden mejorar recetas ancestrales, creando bebidas probióticas más nutritivas y culturalmente relevantes para nuestro contexto.</p>`,
+    beneficiosPrincipales: ['Rica en minerales naturales', 'Probióticos + tradición', 'Energía sostenida', 'Digestión mejorada']
   },
 
   'chucrut-casero': {
@@ -413,7 +445,7 @@ export const recetasData: RecetasData = {
         paso: 'Preparar el repollo',
         descripcion: 'Retira las hojas exteriores del repollo y reserva 2-3 hojas enteras y limpias. Corta el repollo en cuartos, retira el corazón duro y córtalo en tiras finas de 2-3mm. La consistencia debe ser uniforme para una fermentación pareja.',
         imagen: {
-          src: '/images/cortar-repollo-chucrut.png',
+          src: '/images/chucrtu-cortar.png',
           alt: 'Repollo cortado en tiras finas para chucrut'
         }
       },
@@ -421,7 +453,7 @@ export const recetasData: RecetasData = {
         paso: 'Salar y masajear',
         descripcion: 'Coloca el repollo cortado en un tazón grande y espolvorea con sal. Masajea vigorosamente con las manos durante 5-10 minutos hasta que el repollo libere su jugo natural y se ablande considerablemente. Debe formar su propia salmuera.',
         imagen: {
-          src: '/images/masajear-repollo-sal.png',
+          src: '/images/chucrut-masajear.png',
           alt: 'Masajeando repollo con sal para extraer jugos'
         }
       },
@@ -591,7 +623,7 @@ export const recetasData: RecetasData = {
         paso: 'Preparar té endulzado',
         descripcion: 'Hierve el agua y prepara un té fuerte con las bolsitas o té suelto durante 10-15 minutos. Disuelve completamente el azúcar mientras el té está caliente. Deja enfriar completamente a temperatura ambiente - el calor puede dañar el SCOBY.',
         imagen: {
-          src: '/images/te-endulzado-kombucha.png',
+          src: '/images/azucar-kombucha.png',
           alt: 'Preparando té endulzado para kombucha'
         }
       },
@@ -760,7 +792,7 @@ export const recetasData: RecetasData = {
         paso: 'Preparar la soya',
         descripcion: 'Remoja las soyas secas en abundante agua durante 12-24 horas. Deben triplicar su tamaño. Cocina en olla a presión durante 45 minutos o hierve durante 3-4 horas hasta que estén muy blandas - deben aplastarse fácilmente con los dedos.',
         imagen: {
-          src: '/images/soya-cocida-miso.png',
+          src: '/images/soya-seca.png',
           alt: 'Soyas cocidas muy blandas para miso'
         }
       },
@@ -772,7 +804,7 @@ export const recetasData: RecetasData = {
         paso: 'Preparar mezcla de sal y koji',
         descripcion: 'Mezcla íntimamente el koji con la sal hasta que esté uniformemente distribuida. Esta mezcla se llama "shio-koji" y es fundamental para una fermentación exitosa.',
         imagen: {
-          src: '/images/koji-sal-miso.png',
+          src: '/images/koji-sal.png',
           alt: 'Koji mezclado con sal para miso'
         }
       },
@@ -884,6 +916,169 @@ export const recetasData: RecetasData = {
     ],
     notas: `<p>Hacer miso casero es probablemente el proyecto de fermentación más ambicioso y gratificante. Requiere compromiso a largo plazo pero conecta profundamente con tradiciones ancestrales.</p><p>Cada lote de miso casero será único - influenciado por tu ambiente local, microorganismos nativos, y técnica personal. Mantén registros detallados de cada lote para perfeccionar tu técnica a lo largo de los años.</p>`,
     beneficiosPrincipales: ['Proteína completa', 'Probióticos resistentes', 'Sabor umami único']
+  },
+
+  'yogur-cultivos-puros': {
+    titulo: 'Yogur Casero con Cultivos Profesionales',
+    descripcion: 'Aprende a hacer yogur con cultivos iniciadores puros para obtener máxima potencia probiótica y control total sobre las cepas bacterianas.',
+    imagenPrincipal: {
+      src: '/images/yogurt-cultivos.png',
+      alt: 'Yogur casero hecho con cultivos puros en frascos de vidrio'
+    },
+    fechaPublicacion: '2024-06-15T00:00:00+00:00',
+    tiempoPreparacion: '24-48 horas',
+    dificultad: 'Media',
+    porciones: 6,
+    introduccion: `
+      <p>Mientras que hacer yogur con yogur comercial es perfecto para principiantes, usar cultivos iniciadores puros te permite crear yogur de nivel profesional con cepas específicas, mayor potencia probiótica y consistencia superior.</p>
+      <p>Los cultivos puros ofrecen ventajas significativas: mayor concentración de bacterias beneficiosas (hasta 50x más que yogures comerciales), control total sobre las cepas utilizadas, y la posibilidad de hacer yogur indefinidamente sin degradación del cultivo.</p>
+      <p>Esta receta está diseñada para personas que quieren maximizar los beneficios probióticos de su yogur casero y obtener resultados consistentes y profesionales.</p>
+    `,
+    ingredientes: [
+      {
+        nombre: 'leche entera',
+        cantidad: '1.5 litros',
+        nota: 'preferiblemente orgánica, sin pasteurizar UHT'
+      },
+      {
+        nombre: 'cultivo iniciador liofilizado',
+        cantidad: '1 sobre (1/8 cucharadita)',
+        nota: 'L. bulgaricus + S. thermophilus + cepas adicionales'
+      },
+      {
+        nombre: 'leche en polvo (opcional)',
+        cantidad: '3 cucharadas',
+        nota: 'para yogur más espeso'
+      }
+    ],
+    materialesRequeridos: [
+      'Olla de acero inoxidable de fondo grueso',
+      'Termómetro digital preciso (±1°C)',
+      'Frascos de vidrio esterilizados',
+      'Yogurtera o horno con función de fermentación',
+      'Batidor manual no metálico',
+      'Colador de malla fina',
+      'Cronómetro'
+    ],
+    instrucciones: [
+      {
+        paso: 'Preparar cultivo iniciador',
+        descripcion: 'Saca el cultivo liofilizado del freezer 30 minutos antes de usar. Prepara un vaso pequeño con 50ml de leche tibia (37°C) para rehidratar el cultivo. Este paso es crucial para activar las bacterias dormantes.',
+        imagen: {
+          src: '/images/yogurt-iniciador-frascos.png',
+          alt: 'Cultivo liofilizado siendo rehidratado en leche tibia'
+        }
+      },
+      {
+        paso: 'Calentar leche a temperatura precisa',
+        descripcion: 'Calienta la leche lentamente hasta 85°C, removiendo constantemente para evitar que se pegue. Esta temperatura elimina bacterias competidoras sin desnaturalizar completamente las proteínas. Mantén esta temperatura por 10 minutos.'
+      },
+      {
+        paso: 'Enfriamiento controlado',
+        descripcion: 'Enfría la leche exactamente a 43°C. Puedes acelerar el proceso sumergiendo la olla en agua fría. Esta temperatura es óptima para las bacterias del yogur. Temperaturas más altas matarán el cultivo, más bajas retrasarán la fermentación.'
+      },
+      {
+        paso: 'Incorporar cultivo activado',
+        descripcion: 'Mezcla suavemente el cultivo rehidratado con 200ml de la leche templada. Luego incorpora esta mezcla al resto de la leche, batiendo suavemente para distribuir uniformemente sin crear espuma.'
+      },
+      {
+        paso: 'Fermentación controlada',
+        descripcion: 'Vierte en frascos esterilizados y fermenta a 43°C durante 4-6 horas para yogur suave, 8-12 horas para más acidez. Usa yogurtera, horno con luz encendida, o deshidratador. La temperatura debe ser constante (±2°C).',
+        imagen: {
+          src: '/images/yogurtera-frascos-yogurt.png',
+          alt: 'Frascos de yogur en yogurtera durante fermentación'
+        }
+      },
+      {
+        paso: 'Prueba de acidez y refrigeración',
+        descripcion: 'Prueba el yogur: debe tener consistencia firme y sabor ligeramente ácido. pH ideal: 4.0-4.4. Refrigera inmediatamente para detener la fermentación. El yogur seguirá espesando en el refrigerador.'
+      }
+    ],
+    consejos: [
+      'Guarda 2 cucharadas de tu yogur como iniciador para el siguiente lote (hasta 7 generaciones)',
+      'Temperatura crítica: ±2°C puede afectar significativamente el resultado',
+      'El primer lote con cultivo nuevo puede tardar más (hasta 15 horas)',
+      'Anota tiempo de fermentación y resultados para perfeccionar tu técnica',
+      'Congela porciones de tu mejor lote como respaldo del cultivo'
+    ],
+    beneficios: [
+      {
+        titulo: 'Máxima Potencia Probiótica',
+        descripcion: 'Los cultivos puros contienen 100-500 mil millones de UFC por gramo, 10-50x más concentrados que yogures comerciales.'
+      },
+      {
+        titulo: 'Cepas Específicas Documentadas',
+        descripcion: 'Conoces exactamente qué bacterias estás consumiendo y sus beneficios respaldados por investigación científica.'
+      },
+      {
+        titulo: 'Consistencia Profesional',
+        descripcion: 'Resultados predecibles y repetibles, sin la variabilidad de usar yogur comercial como iniciador.'
+      },
+      {
+        titulo: 'Economía a Largo Plazo',
+        descripcion: 'Un sobre de cultivo ($3-5) puede producir yogur durante meses, reduciendo el costo por lote significativamente.'
+      }
+    ],
+    probioticosPresentes: [
+      {
+        nombre: 'Lactobacillus delbrueckii subsp. bulgaricus',
+        descripcion: 'Bacteria principal del yogur, produce ácido láctico y mejora la digestión de lactosa. Concentración: 100+ millones UFC/ml.'
+      },
+      {
+        nombre: 'Streptococcus thermophilus',
+        descripcion: 'Trabaja sinérgicamente con L. bulgaricus, produce folato y mejora la textura. Concentración: 100+ millones UFC/ml.'
+      },
+      {
+        nombre: 'Lactobacillus acidophilus (según cultivo)',
+        descripcion: 'Presente en cultivos premium, sobrevive mejor al tracto digestivo y coloniza el intestino delgado.'
+      },
+      {
+        nombre: 'Bifidobacterium lactis (según cultivo)',
+        descripcion: 'Añadido en cultivos avanzados, especialmente beneficioso para el sistema inmunológico y salud intestinal.'
+      }
+    ],
+    variaciones: [
+      {
+        titulo: 'Yogur Griego Espeso',
+        descripcion: 'Después de fermentar, cuela el yogur en gasa durante 2-4 horas para eliminar suero. Obtienes yogur concentrado con doble proteína.'
+      },
+      {
+        titulo: 'Yogur con Probióticos Extra',
+        descripcion: 'Usa cultivos que incluyan L. casei, L. rhamnosus o B. longum para beneficios adicionales. Tiempo de fermentación puede extenderse.'
+      },
+      {
+        titulo: 'Yogur de Leche de Cabra',
+        descripcion: 'Sustituye leche de vaca por leche de cabra. Más digestible, sabor distintivo, requiere mismo proceso pero puede necesitar más tiempo.'
+      },
+      {
+        titulo: 'Yogur Fortificado',
+        descripcion: 'Añade prebióticos (inulina), colágeno o proteína en polvo antes de fermentar para beneficios nutricionales adicionales.'
+      }
+    ],
+    faq: [
+      {
+        pregunta: '¿Dónde compro cultivos iniciadores puros?',
+        respuesta: 'Cultivos puros se venden en tiendas especializadas de fermentación, Amazon, o sitios como Cultures for Health. Marcas recomendadas: Yogourmet, Danisco, Chr. Hansen. Precio: $3-8 por sobre.'
+      },
+      {
+        pregunta: '¿Cuántas veces puedo reutilizar mi yogur como iniciador?',
+        respuesta: 'Con cultivos puros, puedes hacer 5-7 generaciones manteniendo potencia. Después, las bacterias se debilitan y debes usar cultivo fresco. Congela porciones de tus mejores lotes como respaldo.'
+      },
+      {
+        pregunta: '¿Por qué mi yogur con cultivos puros salió más ácido?',
+        respuesta: 'Los cultivos puros son más activos que yogur comercial. Reduce tiempo de fermentación a 4-6 horas inicialmente. También verifica que la temperatura sea exactamente 43°C - temperaturas más altas aceleran acidificación.'
+      },
+      {
+        pregunta: '¿Puedo hacer yogur sin lactosa con cultivos puros?',
+        respuesta: 'Sí, usa leche sin lactosa o añade enzima lactasa antes de fermentar. Algunas cepas como L. acidophilus y B. lactis son especialmente efectivas digiriendo lactosa residual.'
+      },
+      {
+        pregunta: '¿Qué diferencia hay en sabor vs yogur comercial?',
+        respuesta: 'El yogur con cultivos puros tiene sabor más limpio, menos dulce, y acidez más balanceada. La textura es más cremosa y uniforme. El sabor puede variar según las cepas específicas del cultivo.'
+      }
+    ],
+    notas: `<p>Usar cultivos puros representa el siguiente nivel en la elaboración de yogur casero. Requiere más precisión técnica pero ofrece control completo sobre el producto final y beneficios probióticos superiores.</p><p>Invierte en un termómetro digital preciso y yogurtera o método de temperatura controlada - son herramientas esenciales para resultados consistentes. Mantén registros detallados de cada lote para perfeccionar tu técnica personal.</p>`,
+    beneficiosPrincipales: ['Máxima potencia probiótica', 'Control total de cepas', 'Consistencia profesional', 'Economía a largo plazo']
   }
 };
 

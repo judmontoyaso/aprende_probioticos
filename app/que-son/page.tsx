@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import OptimizedImage from '../components/OptimizedImage';
+import ArticleBanner from '../components/ArticleBanner';
 import { useState } from 'react';
 
 export default function QueSon() {
@@ -26,7 +27,7 @@ export default function QueSon() {
       }
     },
     "datePublished": "2024-06-01T08:00:00+00:00",
-    "dateModified": new Date().toISOString(),
+    "dateModified": "2024-12-01T08:00:00+00:00",
     "image": "https://www.probioticosparatodos.com/images/mujer_exlpicando_probioticos.png",
     "url": "https://www.probioticosparatodos.com/que-son",
     "mainEntityOfPage": {
@@ -285,6 +286,9 @@ export default function QueSon() {
                 </p>
               </div>
             </section>
+            
+            {/* Banner de artículo */}
+            <ArticleBanner />
             
             {/* Nueva sección: Historia y evolución */}
             <section className="bg-white p-5 sm:p-8 rounded-lg shadow-sm mb-6 sm:mb-8">

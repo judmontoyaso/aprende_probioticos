@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { tiposData, tipoSlugs } from './data';
 import OptimizedImagePlaceholder from '../components/OptimizedImagePlaceholder';
+import ArticleBanner from '../components/ArticleBanner';
 import { useState } from 'react';
 
 export default function TiposIndexPage() {
@@ -30,7 +31,7 @@ export default function TiposIndexPage() {
       }
     },
     "datePublished": "2024-06-01T08:00:00+00:00",
-    "dateModified": new Date().toISOString(),
+    "dateModified": "2024-12-01T08:00:00+00:00",
     "image": {
       "@type": "ImageObject",
       "url": "https://www.probioticosparatodos.com/images/tipos_probioticos.png",
@@ -287,6 +288,239 @@ export default function TiposIndexPage() {
         </div>
       </section>
 
+      {/* Banner de artículo */}
+      <ArticleBanner />
+
+      {/* Nueva sección: Comparación detallada */}
+      <section className="py-12 bg-white" aria-labelledby="comparison-heading">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 id="comparison-heading" className="text-3xl font-bold text-center mb-12 text-biscay">
+              Comparación Detallada de Tipos de Probióticos
+            </h2>
+            
+            <div className="overflow-x-auto">
+              <table className="w-full bg-white rounded-xl shadow-lg overflow-hidden">
+                <thead className="bg-gradient-to-r from-apple to-st-tropaz text-white">
+                  <tr>
+                    <th className="px-6 py-4 text-left font-semibold">Tipo de Probiótico</th>
+                    <th className="px-6 py-4 text-left font-semibold">Ubicación Principal</th>
+                    <th className="px-6 py-4 text-left font-semibold">Beneficios Clave</th>
+                    <th className="px-6 py-4 text-left font-semibold">Supervivencia Gástrica</th>
+                    <th className="px-6 py-4 text-left font-semibold">Fuentes Alimentarias</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200">
+                  <tr className="hover:bg-gray-50">
+                    <td className="px-6 py-4 font-semibold text-apple">Lactobacillus</td>
+                    <td className="px-6 py-4">Intestino delgado, vagina</td>
+                    <td className="px-6 py-4">Digestión lactosa, salud vaginal, sistema inmune</td>
+                    <td className="px-6 py-4"><span className="text-yellow-600">★★★☆☆</span> Moderada</td>
+                    <td className="px-6 py-4">Yogur, kéfir, chucrut, kimchi</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50">
+                    <td className="px-6 py-4 font-semibold text-st-tropaz">Bifidobacterium</td>
+                    <td className="px-6 py-4">Intestino grueso (colon)</td>
+                    <td className="px-6 py-4">Síntesis vitaminas B, salud del colon, antienvejecimiento</td>
+                    <td className="px-6 py-4"><span className="text-green-600">★★★★☆</span> Buena</td>
+                    <td className="px-6 py-4">Productos lácteos fermentados, algunos vegetales fermentados</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50">
+                    <td className="px-6 py-4 font-semibold text-seagull">Saccharomyces</td>
+                    <td className="px-6 py-4">Intestino delgado y grueso</td>
+                    <td className="px-6 py-4">Resistencia antibióticos, anti-diarrea, detoxificación</td>
+                    <td className="px-6 py-4"><span className="text-green-600">★★★★★</span> Excelente</td>
+                    <td className="px-6 py-4">Kombucha, algunos suplementos especializados</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Nueva sección: Historia y evolución científica */}
+      <section className="py-12 bg-gray-50" aria-labelledby="history-heading">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 id="history-heading" className="text-3xl font-bold text-center mb-12 text-biscay">
+              Historia del Descubrimiento de los Tipos Probióticos
+            </h2>
+            
+            <div className="space-y-8">
+              <article className="bg-white rounded-xl p-8 shadow-lg border-l-4 border-apple">
+                <h3 className="text-xl font-bold mb-4 text-apple flex items-center">
+                  <span className="bg-apple text-white rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">1</span>
+                  1857 - Primeros Lactobacillus
+                </h3>
+                <p className="text-gray-700 mb-4">
+                  <strong>Louis Pasteur</strong> fue el primero en observar bacterias lácticas durante sus estudios sobre la fermentación. 
+                  Sin embargo, no fue hasta 1919 que <strong>Henri Tissier</strong> identificó formalmente el género Lactobacillus 
+                  en el intestino humano, estableciendo las bases para entender su papel en la salud digestiva.
+                </p>
+                <div className="bg-apple/10 p-4 rounded-lg">
+                  <p className="text-sm text-gray-600">
+                    <strong>Dato histórico:</strong> El primer Lactobacillus identificado fue L. acidophilus, 
+                    descubierto por Moro en 1900 en las heces de bebés lactantes.
+                  </p>
+                </div>
+              </article>
+
+              <article className="bg-white rounded-xl p-8 shadow-lg border-l-4 border-st-tropaz">
+                <h3 className="text-xl font-bold mb-4 text-st-tropaz flex items-center">
+                  <span className="bg-st-tropaz text-white rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">2</span>
+                  1899 - Descubrimiento de Bifidobacterium
+                </h3>
+                <p className="text-gray-700 mb-4">
+                  <strong>Henri Tissier</strong> del Instituto Pasteur identificó las primeras bacterias bífidas en las heces de bebés alimentados con leche materna. 
+                  Observó que estos bebés tenían menos problemas digestivos y propuso que estas bacterias &quot;bifurcadas&quot; 
+                  (por su forma característica en Y) podrían ser beneficiosas para la salud infantil.
+                </p>
+                <div className="bg-st-tropaz/10 p-4 rounded-lg">
+                  <p className="text-sm text-gray-600">
+                    <strong>Evolución científica:</strong> No fue hasta la década de 1960 que se estableció la nomenclatura moderna 
+                    del género Bifidobacterium y se comenzó a estudiar sistemáticamente su papel en la salud.
+                  </p>
+                </div>
+              </article>
+
+              <article className="bg-white rounded-xl p-8 shadow-lg border-l-4 border-seagull">
+                <h3 className="text-xl font-bold mb-4 text-seagull flex items-center">
+                  <span className="bg-seagull text-white rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">3</span>
+                  1920s - Saccharomyces boulardii
+                </h3>
+                <p className="text-gray-700 mb-4">
+                  El microbiólogo francés <strong>Henri Boulard</strong> aisló esta levadura única en 1923 mientras estudiaba 
+                  el uso tradicional de la piel de lichi y mangostán en el sudeste asiático para tratar el cólera. 
+                  S. boulardii se convirtió en el primer probiótico no bacteriano en ser estudiado científicamente.
+                </p>
+                <div className="bg-seagull/10 p-4 rounded-lg">
+                  <p className="text-sm text-gray-600">
+                    <strong>Aplicación moderna:</strong> Hoy en día, S. boulardii es ampliamente utilizada en hospitales 
+                    europeos para prevenir la diarrea asociada a antibióticos y tratar infecciones por C. difficile.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Nueva sección: Mecanismos de acción específicos */}
+      <section className="py-12 bg-white" aria-labelledby="mechanisms-heading">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 id="mechanisms-heading" className="text-3xl font-bold text-center mb-12 text-biscay">
+              ¿Cómo Actúan los Diferentes Tipos en tu Cuerpo?
+            </h2>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <article className="bg-gradient-to-br from-apple/10 to-apple/5 rounded-xl p-8 border border-apple/20">
+                <div className="text-center mb-6">
+                  <div className="w-16 h-16 bg-apple rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl text-white">🔬</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-apple">Lactobacillus</h3>
+                  <p className="text-sm text-gray-600">Mecanismos de Acción</p>
+                </div>
+                
+                <ul className="space-y-4">
+                  <li className="flex items-start">
+                    <span className="bg-apple text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-3 mt-0.5">1</span>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Producción de Ácido Láctico</h4>
+                      <p className="text-sm text-gray-600">Acidifica el ambiente intestinal, inhibiendo patógenos como E. coli y Salmonella</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="bg-apple text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-3 mt-0.5">2</span>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Competencia por Nutrientes</h4>
+                      <p className="text-sm text-gray-600">Compite por hierro y otros nutrientes esenciales para bacterias dañinas</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="bg-apple text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-3 mt-0.5">3</span>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Estimulación Inmune</h4>
+                      <p className="text-sm text-gray-600">Activa macrófagos y células NK (Natural Killer) para fortalecer defensas</p>
+                    </div>
+                  </li>
+                </ul>
+              </article>
+
+              <article className="bg-gradient-to-br from-st-tropaz/10 to-st-tropaz/5 rounded-xl p-8 border border-st-tropaz/20">
+                <div className="text-center mb-6">
+                  <div className="w-16 h-16 bg-st-tropaz rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl text-white">⚗️</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-st-tropaz">Bifidobacterium</h3>
+                  <p className="text-sm text-gray-600">Funciones Especializadas</p>
+                </div>
+                
+                <ul className="space-y-4">
+                  <li className="flex items-start">
+                    <span className="bg-st-tropaz text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-3 mt-0.5">1</span>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Síntesis de Vitaminas B</h4>
+                      <p className="text-sm text-gray-600">Produce B1, B2, B6, B12 y ácido fólico esenciales para el metabolismo</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="bg-st-tropaz text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-3 mt-0.5">2</span>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Producción de Butirato</h4>
+                      <p className="text-sm text-gray-600">Genera ácidos grasos de cadena corta que nutren las células del colon</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="bg-st-tropaz text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-3 mt-0.5">3</span>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Modulación del pH Colónico</h4>
+                      <p className="text-sm text-gray-600">Mantiene un ambiente ácido que previene la putrefacción intestinal</p>
+                    </div>
+                  </li>
+                </ul>
+              </article>
+
+              <article className="bg-gradient-to-br from-seagull/10 to-seagull/5 rounded-xl p-8 border border-seagull/20">
+                <div className="text-center mb-6">
+                  <div className="w-16 h-16 bg-seagull rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl text-white">🛡️</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-seagull">Saccharomyces</h3>
+                  <p className="text-sm text-gray-600">Propiedades Únicas</p>
+                </div>
+                
+                <ul className="space-y-4">
+                  <li className="flex items-start">
+                    <span className="bg-seagull text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-3 mt-0.5">1</span>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Resistencia a Antibióticos</h4>
+                      <p className="text-sm text-gray-600">Como levadura, no es afectada por antibióticos que eliminan bacterias</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="bg-seagull text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-3 mt-0.5">2</span>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Neutralización de Toxinas</h4>
+                      <p className="text-sm text-gray-600">Secreta proteasas que degradan toxinas de C. difficile y otros patógenos</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="bg-seagull text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-3 mt-0.5">3</span>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Fortalecimiento Barrera</h4>
+                      <p className="text-sm text-gray-600">Aumenta la producción de IgA secretora y fortalece tight junctions</p>
+                    </div>
+                  </li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Grid de tipos individuales */}
       <section className="py-12 bg-aqua-squeeze" aria-labelledby="individual-types-heading">
         <div className="container mx-auto px-4">
@@ -416,6 +650,417 @@ export default function TiposIndexPage() {
         </div>
       </section>
 
+      {/* Nueva sección: Tipos de probióticos en fuentes naturales */}
+      <section className="py-12 bg-white" aria-labelledby="natural-sources-heading">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 id="natural-sources-heading" className="text-3xl font-bold text-center mb-12 text-biscay">
+              Dónde Encontrar Cada Tipo de Probiótico Naturalmente
+            </h2>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+              {/* Lactobacillus en fuentes naturales */}
+              <article className="bg-gradient-to-br from-apple/10 to-apple/5 rounded-xl p-8 border border-apple/20">
+                <div className="text-center mb-6">
+                  <div className="w-16 h-16 bg-apple rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl text-white">�</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-apple">Género Lactobacillus</h3>
+                  <p className="text-sm text-gray-600">Fuentes Alimentarias Principales</p>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="bg-white rounded-lg p-4 border-l-4 border-apple">
+                    <h4 className="font-semibold text-gray-800 mb-2">L. acidophilus</h4>
+                    <p className="text-sm text-gray-600 mb-2">
+                      <strong>Fuentes:</strong> Yogur, kéfir, miso, tempeh
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      Más abundante en productos lácteos fermentados a temperaturas moderadas
+                    </p>
+                  </div>
+                  
+                  <div className="bg-white rounded-lg p-4 border-l-4 border-apple">
+                    <h4 className="font-semibold text-gray-800 mb-2">L. plantarum</h4>
+                    <p className="text-sm text-gray-600 mb-2">
+                      <strong>Fuentes:</strong> Chucrut, kimchi, aceitunas fermentadas
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      Dominante en fermentaciones vegetales sin oxígeno
+                    </p>
+                  </div>
+                  
+                  <div className="bg-white rounded-lg p-4 border-l-4 border-apple">
+                    <h4 className="font-semibold text-gray-800 mb-2">L. casei</h4>
+                    <p className="text-sm text-gray-600 mb-2">
+                      <strong>Fuentes:</strong> Quesos madurados, kéfir de agua
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      Resistente al ácido, sobrevive bien en el estómago
+                    </p>
+                  </div>
+
+                  <div className="bg-white rounded-lg p-4 border-l-4 border-apple">
+                    <h4 className="font-semibold text-gray-800 mb-2">L. rhamnosus</h4>
+                    <p className="text-sm text-gray-600 mb-2">
+                      <strong>Fuentes:</strong> Algunos yogures específicos, suplementos
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      Menos común en alimentos tradicionales, más en productos comerciales
+                    </p>
+                  </div>
+                </div>
+              </article>
+
+              {/* Bifidobacterium en fuentes naturales */}
+              <article className="bg-gradient-to-br from-st-tropaz/10 to-st-tropaz/5 rounded-xl p-8 border border-st-tropaz/20">
+                <div className="text-center mb-6">
+                  <div className="w-16 h-16 bg-st-tropaz rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl text-white">🔬</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-st-tropaz">Género Bifidobacterium</h3>
+                  <p className="text-sm text-gray-600">Bacterias Bífidas en Alimentos</p>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="bg-white rounded-lg p-4 border-l-4 border-st-tropaz">
+                    <h4 className="font-semibold text-gray-800 mb-2">B. lactis</h4>
+                    <p className="text-sm text-gray-600 mb-2">
+                      <strong>Fuentes:</strong> Yogures probióticos, kéfir, algunos quesos
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      Añadida comercialmente a productos lácteos por sus beneficios digestivos
+                    </p>
+                  </div>
+                  
+                  <div className="bg-white rounded-lg p-4 border-l-4 border-st-tropaz">
+                    <h4 className="font-semibold text-gray-800 mb-2">B. longum</h4>
+                    <p className="text-sm text-gray-600 mb-2">
+                      <strong>Fuentes:</strong> Leche materna, algunos fermentados asiáticos
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      Naturalmente presente en bebés, difícil de encontrar en alimentos comunes
+                    </p>
+                  </div>
+                  
+                  <div className="bg-white rounded-lg p-4 border-l-4 border-st-tropaz">
+                    <h4 className="font-semibold text-gray-800 mb-2">B. bifidum</h4>
+                    <p className="text-sm text-gray-600 mb-2">
+                      <strong>Fuentes:</strong> Productos lácteos fermentados especializados
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      Principalmente disponible en suplementos o productos fortificados
+                    </p>
+                  </div>
+
+                  <div className="bg-st-tropaz/10 rounded-lg p-4">
+                    <p className="text-xs text-gray-700">
+                      <strong>Nota:</strong> Las bifidobacterias son menos comunes en alimentos tradicionales 
+                      y más abundantes en suplementos probióticos específicos.
+                    </p>
+                  </div>
+                </div>
+              </article>
+
+              {/* Saccharomyces y otros tipos */}
+              <article className="bg-gradient-to-br from-seagull/10 to-seagull/5 rounded-xl p-8 border border-seagull/20">
+                <div className="text-center mb-6">
+                  <div className="w-16 h-16 bg-seagull rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl text-white">🍄</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-seagull">Levaduras y Otros Tipos</h3>
+                  <p className="text-sm text-gray-600">Probióticos No Bacterianos</p>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="bg-white rounded-lg p-4 border-l-4 border-seagull">
+                    <h4 className="font-semibold text-gray-800 mb-2">S. boulardii</h4>
+                    <p className="text-sm text-gray-600 mb-2">
+                      <strong>Fuentes:</strong> Principalmente suplementos, algunas kombuchas
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      Levadura tropical, raramente en alimentos tradicionales occidentales
+                    </p>
+                  </div>
+                  
+                  <div className="bg-white rounded-lg p-4 border-l-4 border-seagull">
+                    <h4 className="font-semibold text-gray-800 mb-2">S. cerevisiae</h4>
+                    <p className="text-sm text-gray-600 mb-2">
+                      <strong>Fuentes:</strong> Kombucha, levadura nutricional, pan de masa madre
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      Levadura común en fermentaciones alcohólicas y de panadería
+                    </p>
+                  </div>
+                  
+                  <div className="bg-white rounded-lg p-4 border-l-4 border-seagull">
+                    <h4 className="font-semibold text-gray-800 mb-2">Enterococcus faecium</h4>
+                    <p className="text-sm text-gray-600 mb-2">
+                      <strong>Fuentes:</strong> Algunos quesos artesanales, aceitunas
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      Controvertido - beneficioso en ciertos contextos, preocupante en otros
+                    </p>
+                  </div>
+
+                  <div className="bg-seagull/10 rounded-lg p-4">
+                    <p className="text-xs text-gray-700">
+                      <strong>Ventaja de levaduras:</strong> Resistentes a antibióticos y ambientes ácidos, 
+                      complementan perfectamente a las bacterias probióticas.
+                    </p>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            {/* Tabla comparativa: Tipos vs Fuentes Alimentarias */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
+              <div className="bg-gradient-to-r from-apple to-st-tropaz p-6">
+                <h3 className="text-xl font-bold text-white text-center">
+                  Guía Rápida: Tipos de Probióticos por Fuente Alimentaria
+                </h3>
+              </div>
+              
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th className="px-6 py-4 text-left font-semibold text-gray-800">Alimento</th>
+                      <th className="px-6 py-4 text-left font-semibold text-gray-800">Tipos Principales</th>
+                      <th className="px-6 py-4 text-left font-semibold text-gray-800">Beneficio Específico del Tipo</th>
+                      <th className="px-6 py-4 text-left font-semibold text-gray-800">Disponibilidad</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200">
+                    <tr className="hover:bg-apple/5">
+                      <td className="px-6 py-4 font-medium">Yogur Natural</td>
+                      <td className="px-6 py-4"><span className="text-apple font-semibold">L. bulgaricus, S. thermophilus</span></td>
+                      <td className="px-6 py-4">Digestión de lactosa, proteínas biodisponibles</td>
+                      <td className="px-6 py-4"><span className="text-green-600">●●●●●</span> Alta</td>
+                    </tr>
+                    <tr className="hover:bg-st-tropaz/5">
+                      <td className="px-6 py-4 font-medium">Kéfir</td>
+                      <td className="px-6 py-4"><span className="text-st-tropaz font-semibold">L. kefiri, B. lactis, Levaduras</span></td>
+                      <td className="px-6 py-4">Diversidad microbiana, tolerancia lactosa</td>
+                      <td className="px-6 py-4"><span className="text-yellow-600">●●●○○</span> Media</td>
+                    </tr>
+                    <tr className="hover:bg-apple/5">
+                      <td className="px-6 py-4 font-medium">Chucrut</td>
+                      <td className="px-6 py-4"><span className="text-apple font-semibold">L. plantarum, L. brevis</span></td>
+                      <td className="px-6 py-4">Resistencia patógenos, vitamina C</td>
+                      <td className="px-6 py-4"><span className="text-green-600">●●●●○</span> Alta (casero)</td>
+                    </tr>
+                    <tr className="hover:bg-seagull/5">
+                      <td className="px-6 py-4 font-medium">Kombucha</td>
+                      <td className="px-6 py-4"><span className="text-seagull font-semibold">S. cerevisiae, Acetobacter</span></td>
+                      <td className="px-6 py-4">Antioxidantes, desintoxicación hepática</td>
+                      <td className="px-6 py-4"><span className="text-yellow-600">●●●○○</span> Media</td>
+                    </tr>
+                    <tr className="hover:bg-apple/5">
+                      <td className="px-6 py-4 font-medium">Kimchi</td>
+                      <td className="px-6 py-4"><span className="text-apple font-semibold">L. sakei, Weissella koreensis</span></td>
+                      <td className="px-6 py-4">Antiinflamatorio, metabolismo</td>
+                      <td className="px-6 py-4"><span className="text-orange-600">●●○○○</span> Baja</td>
+                    </tr>
+                    <tr className="hover:bg-st-tropaz/5">
+                      <td className="px-6 py-4 font-medium">Miso</td>
+                      <td className="px-6 py-4"><span className="text-st-tropaz font-semibold">Aspergillus oryzae, L. plantarum</span></td>
+                      <td className="px-6 py-4">Enzimas digestivas, umami natural</td>
+                      <td className="px-6 py-4"><span className="text-yellow-600">●●●○○</span> Media</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Consejos para maximizar tipos específicos */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-gradient-to-br from-apple/5 to-apple/10 rounded-xl p-6 border border-apple/20">
+                <h4 className="text-lg font-bold text-apple mb-4 flex items-center">
+                  <span className="bg-apple text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-2">🎯</span>
+                  Para Maximizar Lactobacillus
+                </h4>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  <li className="flex items-start">
+                    <span className="text-apple mr-2">•</span>
+                    <span>Consume yogur y kéfir <strong>no pasteurizados</strong> después de la producción</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-apple mr-2">•</span>
+                    <span>Prepara <strong>chucrut casero</strong> - contiene más L. plantarum que versiones comerciales</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-apple mr-2">•</span>
+                    <span>Busca productos con <strong>&quot;cultivos vivos activos&quot;</strong> en la etiqueta</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-apple mr-2">•</span>
+                    <span>Consume en ayunas o con <strong>alimentos grasos</strong> para mejor supervivencia</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-gradient-to-br from-st-tropaz/5 to-st-tropaz/10 rounded-xl p-6 border border-st-tropaz/20">
+                <h4 className="text-lg font-bold text-st-tropaz mb-4 flex items-center">
+                  <span className="bg-st-tropaz text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-2">🔬</span>
+                  Para Optimizar Bifidobacterium
+                </h4>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  <li className="flex items-start">
+                    <span className="text-st-tropaz mr-2">•</span>
+                    <span>Elige <strong>productos específicamente fortificados</strong> con bifidobacterias</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-st-tropaz mr-2">•</span>
+                    <span>Combina con <strong>prebióticos</strong> como inulina (alcachofa, ajo, cebolla)</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-st-tropaz mr-2">•</span>
+                    <span>Considera <strong>suplementos</strong> ya que son escasas en alimentos tradicionales</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-st-tropaz mr-2">•</span>
+                    <span>Consume con <strong>fibra soluble</strong> para favorecer su crecimiento en el colon</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Nueva sección: Criterios de selección */}
+      <section className="py-12 bg-gray-50" aria-labelledby="selection-heading">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 id="selection-heading" className="text-3xl font-bold text-center mb-12 text-biscay">
+              Cómo Elegir el Tipo de Probiótico Adecuado para Ti
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+              <article className="bg-white rounded-xl p-8 shadow-lg">
+                <h3 className="text-xl font-bold mb-6 text-apple flex items-center">
+                  <span className="bg-apple text-white rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">🎯</span>
+                  Por Objetivo de Salud
+                </h3>
+                
+                <div className="space-y-4">
+                  <div className="border-l-4 border-apple/30 pl-4">
+                    <h4 className="font-semibold text-gray-800">Digestión y Estreñimiento</h4>
+                    <p className="text-sm text-gray-600 mb-2">Lactobacillus casei, L. rhamnosus, Bifidobacterium lactis</p>
+                    <p className="text-xs text-gray-500">Mejoran la motilidad intestinal y la consistencia de las heces</p>
+                  </div>
+                  
+                  <div className="border-l-4 border-st-tropaz/30 pl-4">
+                    <h4 className="font-semibold text-gray-800">Diarrea y SII</h4>
+                    <p className="text-sm text-gray-600 mb-2">Saccharomyces boulardii, L. rhamnosus GG, B. infantis</p>
+                    <p className="text-xs text-gray-500">Restauran el equilibrio microbiano y reducen la inflamación</p>
+                  </div>
+                  
+                  <div className="border-l-4 border-seagull/30 pl-4">
+                    <h4 className="font-semibold text-gray-800">Sistema Inmune</h4>
+                    <p className="text-sm text-gray-600 mb-2">L. casei, L. paracasei, B. lactis, B. bifidum</p>
+                    <p className="text-xs text-gray-500">Fortalecen la respuesta inmunitaria y reducen infecciones</p>
+                  </div>
+                  
+                  <div className="border-l-4 border-apple/30 pl-4">
+                    <h4 className="font-semibold text-gray-800">Salud Vaginal</h4>
+                    <p className="text-sm text-gray-600 mb-2">L. rhamnosus GR-1, L. reuteri RC-14, L. crispatus</p>
+                    <p className="text-xs text-gray-500">Mantienen el pH ácido y previenen infecciones urogenitales</p>
+                  </div>
+                </div>
+              </article>
+
+              <article className="bg-white rounded-xl p-8 shadow-lg">
+                <h3 className="text-xl font-bold mb-6 text-st-tropaz flex items-center">
+                  <span className="bg-st-tropaz text-white rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">👥</span>
+                  Por Grupo de Edad
+                </h3>
+                
+                <div className="space-y-4">
+                  <div className="border-l-4 border-apple/30 pl-4">
+                    <h4 className="font-semibold text-gray-800">Bebés (0-2 años)</h4>
+                    <p className="text-sm text-gray-600 mb-2">Bifidobacterium infantis, B. breve, L. rhamnosus GG</p>
+                    <p className="text-xs text-gray-500">Apoyan el desarrollo del sistema inmune y digestivo</p>
+                  </div>
+                  
+                  <div className="border-l-4 border-st-tropaz/30 pl-4">
+                    <h4 className="font-semibold text-gray-800">Niños (3-12 años)</h4>
+                    <p className="text-sm text-gray-600 mb-2">L. casei, L. rhamnosus, B. lactis, B. longum</p>
+                    <p className="text-xs text-gray-500">Previenen alergias y fortalecen las defensas escolares</p>
+                  </div>
+                  
+                  <div className="border-l-4 border-seagull/30 pl-4">
+                    <h4 className="font-semibold text-gray-800">Adultos (18-65 años)</h4>
+                    <p className="text-sm text-gray-600 mb-2">Combinaciones multi-cepa, S. boulardii para viajes</p>
+                    <p className="text-xs text-gray-500">Manejo del estrés, dieta irregular y antibióticos</p>
+                  </div>
+                  
+                  <div className="border-l-4 border-apple/30 pl-4">
+                    <h4 className="font-semibold text-gray-800">Adultos Mayores (+65 años)</h4>
+                    <p className="text-sm text-gray-600 mb-2">B. longum, B. bifidum, L. acidophilus, multi-especies</p>
+                    <p className="text-xs text-gray-500">Compensan la disminución natural de bifidobacterias</p>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            {/* Tabla de dosificación recomendada */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+              <div className="bg-gradient-to-r from-apple to-st-tropaz p-6">
+                <h3 className="text-xl font-bold text-white text-center">Dosificación Recomendada por Tipo</h3>
+              </div>
+              
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th className="px-6 py-4 text-left font-semibold text-gray-800">Tipo de Probiótico</th>
+                      <th className="px-6 py-4 text-left font-semibold text-gray-800">Dosis Diaria (UFC)</th>
+                      <th className="px-6 py-4 text-left font-semibold text-gray-800">Duración Mínima</th>
+                      <th className="px-6 py-4 text-left font-semibold text-gray-800">Mejor Momento</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200">
+                    <tr className="hover:bg-gray-50">
+                      <td className="px-6 py-4 font-medium">Lactobacillus (preventivo)</td>
+                      <td className="px-6 py-4">1-10 mil millones</td>
+                      <td className="px-6 py-4">4-6 semanas</td>
+                      <td className="px-6 py-4">Con el desayuno</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50">
+                      <td className="px-6 py-4 font-medium">Bifidobacterium (mantenimiento)</td>
+                      <td className="px-6 py-4">5-20 mil millones</td>
+                      <td className="px-6 py-4">8-12 semanas</td>
+                      <td className="px-6 py-4">Con la cena</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50">
+                      <td className="px-6 py-4 font-medium">S. boulardii (terapéutico)</td>
+                      <td className="px-6 py-4">250-500 mg (5-10 mil millones)</td>
+                      <td className="px-6 py-4">2-4 semanas</td>
+                      <td className="px-6 py-4">Entre comidas</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50">
+                      <td className="px-6 py-4 font-medium">Multi-cepa (integral)</td>
+                      <td className="px-6 py-4">10-50 mil millones</td>
+                      <td className="px-6 py-4">12+ semanas</td>
+                      <td className="px-6 py-4">Con alimento graso</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+              <div className="p-6 bg-gray-50">
+                <p className="text-sm text-gray-600">
+                  <strong className="text-gray-800">Nota importante:</strong> Las dosis pueden variar según la marca, concentración y condición específica. 
+                  Siempre consulta con un profesional de salud antes de iniciar cualquier suplementación, especialmente si tienes condiciones médicas preexistentes.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ expandible */}
       <section className="py-12 bg-aqua-squeeze" aria-labelledby="faq-heading">
         <div className="container mx-auto px-4">
@@ -494,9 +1139,9 @@ export default function TiposIndexPage() {
                   <div className="text-sm text-gray-600 mt-1">Preparaciones caseras</div>
                 </Link>
                 
-                <Link href="/condiciones" className="bg-white text-apple px-6 py-4 rounded-xl font-semibold hover:bg-green-50 transition-colors shadow-lg group" role="listitem">
+                <Link href="/beneficios" className="bg-white text-apple px-6 py-4 rounded-xl font-semibold hover:bg-green-50 transition-colors shadow-lg group" role="listitem">
                   <div className="text-2xl mb-2" aria-hidden="true">🏥</div>
-                  <div className="group-hover:text-st-tropaz transition-colors">Condiciones de Salud</div>
+                  <div className="group-hover:text-st-tropaz transition-colors">Beneficios para la Salud</div>
                   <div className="text-sm text-gray-600 mt-1">Aplicaciones específicas</div>
                 </Link>
                 

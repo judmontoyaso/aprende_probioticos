@@ -39,5 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-docs/google-analytics.md
-docs/indexacion-google.md
+
+# docs folder
+docs/

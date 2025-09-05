@@ -2,11 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import OptimizedImagePlaceholder from '../components/OptimizedImagePlaceholder';
+import ArticleBanner from '../components/ArticleBanner';
 import SEOSchema from '../components/SEOSchema';
 import Head from 'next/head';
 
 export default function ComoElegir() {
-  const [activeTab, setActiveTab] = useState('suplementos');
+  const [activeTab, setActiveTab] = useState('alimentos');
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
   // Configurar metadatos SEO dinámicamente
@@ -464,6 +465,9 @@ export default function ComoElegir() {
             </div>
           </section>
 
+          {/* Banner de artículo */}
+          <ArticleBanner />
+
           {/* Tipos de productos con tabs */}
           <section className="mb-16" aria-labelledby="tipos-productos">
             <div className="text-center mb-12">
@@ -559,54 +563,359 @@ export default function ComoElegir() {
               )}
 
               {activeTab === 'alimentos' && (
-                <div className="space-y-6">
-                  <h3 className="text-2xl font-bold text-biscay">Alimentos Fermentados</h3>
-                  <p className="text-gray-600 text-lg">
-                    Alimentos como yogur, kéfir, chucrut, kimchi y kombucha contienen naturalmente probióticos.
-                  </p>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="bg-gossip/20 p-6 rounded-xl">
-                      <h4 className="font-bold text-apple mb-4">Ventajas</h4>
-                      <ul className="space-y-2 text-gray-700">
-                        <li className="flex items-center">
-                          <span className="w-2 h-2 bg-apple rounded-full mr-3"></span>
-                          Fuente natural de probióticos
-                        </li>
-                        <li className="flex items-center">
-                          <span className="w-2 h-2 bg-apple rounded-full mr-3"></span>
-                          Aportan otros nutrientes
-                        </li>
-                        <li className="flex items-center">
-                          <span className="w-2 h-2 bg-apple rounded-full mr-3"></span>
-                          Fácil de incorporar en la dieta
-                        </li>
-                      </ul>
+                <div className="space-y-8">
+                  <div className="text-center mb-8">
+                    <h3 className="text-2xl font-bold text-biscay mb-4">Fuentes Naturales de Probióticos</h3>
+                    <p className="text-gray-600 text-lg max-w-3xl mx-auto">
+                      Los alimentos fermentados tradicionales han sido consumidos durante milenios y ofrecen probióticos 
+                      naturales junto con una amplia gama de nutrientes beneficiosos.
+                    </p>
+                  </div>
+
+                  {/* Grid de alimentos fermentados detallado */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                    {/* Lácteos fermentados */}
+                    <div className="bg-gradient-to-br from-apple/10 to-apple/5 rounded-xl p-6 border border-apple/20">
+                      <div className="text-center mb-4">
+                        <div className="w-12 h-12 bg-apple rounded-full flex items-center justify-center mx-auto mb-3">
+                          <span className="text-xl text-white">🥛</span>
+                        </div>
+                        <h4 className="font-bold text-apple">Lácteos Fermentados</h4>
+                      </div>
+                      <div className="space-y-3">
+                        <div className="bg-white rounded-lg p-3">
+                          <h5 className="font-semibold text-gray-800 text-sm">Yogur Natural</h5>
+                          <p className="text-xs text-gray-600 mb-1">
+                            <strong>Probióticos:</strong> L. bulgaricus, S. thermophilus
+                          </p>
+                          <p className="text-xs text-gray-500">
+                            1-10 mil millones UFC por taza. Busca &quot;cultivos vivos activos&quot;
+                          </p>
+                        </div>
+                        <div className="bg-white rounded-lg p-3">
+                          <h5 className="font-semibold text-gray-800 text-sm">Kéfir de Leche</h5>
+                          <p className="text-xs text-gray-600 mb-1">
+                            <strong>Probióticos:</strong> 12+ cepas diferentes
+                          </p>
+                          <p className="text-xs text-gray-500">
+                            10-34 mil millones UFC por taza. Mayor diversidad que yogur
+                          </p>
+                        </div>
+                        <div className="bg-white rounded-lg p-3">
+                          <h5 className="font-semibold text-gray-800 text-sm">Quesos Madurados</h5>
+                          <p className="text-xs text-gray-600 mb-1">
+                            <strong>Probióticos:</strong> L. helveticus, L. casei
+                          </p>
+                          <p className="text-xs text-gray-500">
+                            Variable según tipo. Gouda y Cheddar son buenas opciones
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                    
-                    <div className="bg-ghost/30 p-6 rounded-xl">
-                      <h4 className="font-bold text-biscay mb-4">Consideraciones</h4>
-                      <ul className="space-y-2 text-gray-700">
-                        <li className="flex items-center">
-                          <span className="w-2 h-2 bg-gray-400 rounded-full mr-3"></span>
-                          Contenido variable de probióticos
-                        </li>
-                        <li className="flex items-center">
-                          <span className="w-2 h-2 bg-gray-400 rounded-full mr-3"></span>
-                          Posible contenido de azúcares
-                        </li>
-                        <li className="flex items-center">
-                          <span className="w-2 h-2 bg-gray-400 rounded-full mr-3"></span>
-                          Menor especificidad
-                        </li>
-                      </ul>
+
+                    {/* Vegetales fermentados */}
+                    <div className="bg-gradient-to-br from-st-tropaz/10 to-st-tropaz/5 rounded-xl p-6 border border-st-tropaz/20">
+                      <div className="text-center mb-4">
+                        <div className="w-12 h-12 bg-st-tropaz rounded-full flex items-center justify-center mx-auto mb-3">
+                          <span className="text-xl text-white">🥬</span>
+                        </div>
+                        <h4 className="font-bold text-st-tropaz">Vegetales Fermentados</h4>
+                      </div>
+                      <div className="space-y-3">
+                        <div className="bg-white rounded-lg p-3">
+                          <h5 className="font-semibold text-gray-800 text-sm">Chucrut Casero</h5>
+                          <p className="text-xs text-gray-600 mb-1">
+                            <strong>Probióticos:</strong> L. plantarum, L. brevis
+                          </p>
+                          <p className="text-xs text-gray-500">
+                            100M-1B UFC por ½ taza. Evita versiones pasteurizadas
+                          </p>
+                        </div>
+                        <div className="bg-white rounded-lg p-3">
+                          <h5 className="font-semibold text-gray-800 text-sm">Kimchi Coreano</h5>
+                          <p className="text-xs text-gray-600 mb-1">
+                            <strong>Probióticos:</strong> L. sakei, Weissella
+                          </p>
+                          <p className="text-xs text-gray-500">
+                            100-500M UFC por ½ taza. Rico en vitaminas A y C
+                          </p>
+                        </div>
+                        <div className="bg-white rounded-lg p-3">
+                          <h5 className="font-semibold text-gray-800 text-sm">Aceitunas Fermentadas</h5>
+                          <p className="text-xs text-gray-600 mb-1">
+                            <strong>Probióticos:</strong> L. plantarum, L. pentosus
+                          </p>
+                          <p className="text-xs text-gray-500">
+                            Moderado contenido. Elige fermentadas, no en salmuera simple
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Bebidas fermentadas */}
+                    <div className="bg-gradient-to-br from-seagull/10 to-seagull/5 rounded-xl p-6 border border-seagull/20">
+                      <div className="text-center mb-4">
+                        <div className="w-12 h-12 bg-seagull rounded-full flex items-center justify-center mx-auto mb-3">
+                          <span className="text-xl text-white">🍄</span>
+                        </div>
+                        <h4 className="font-bold text-seagull">Bebidas Fermentadas</h4>
+                      </div>
+                      <div className="space-y-3">
+                        <div className="bg-white rounded-lg p-3">
+                          <h5 className="font-semibold text-gray-800 text-sm">Kombucha</h5>
+                          <p className="text-xs text-gray-600 mb-1">
+                            <strong>Probióticos:</strong> S. cerevisiae, Acetobacter
+                          </p>
+                          <p className="text-xs text-gray-500">
+                            10-100M UFC por taza. Combina probióticos y antioxidantes
+                          </p>
+                        </div>
+                        <div className="bg-white rounded-lg p-3">
+                          <h5 className="font-semibold text-gray-800 text-sm">Kéfir de Agua</h5>
+                          <p className="text-xs text-gray-600 mb-1">
+                            <strong>Probióticos:</strong> L. casei, Leuconostoc
+                          </p>
+                          <p className="text-xs text-gray-500">
+                            Opción vegana. Menor carga calórica que kéfir de leche
+                          </p>
+                        </div>
+                        <div className="bg-white rounded-lg p-3">
+                          <h5 className="font-semibold text-gray-800 text-sm">Jun (Honey Kombucha)</h5>
+                          <p className="text-xs text-gray-600 mb-1">
+                            <strong>Probióticos:</strong> Z. kombuchaensis
+                          </p>
+                          <p className="text-xs text-gray-500">
+                            Fermentado con miel cruda. Propiedades antibacterianas
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  
-                  <div className="bg-apple/5 p-6 rounded-xl">
-                    <p className="text-gray-700">
-                      <strong className="text-apple">Consejo:</strong> Busca productos que especifiquen &ldquo;cultivos vivos y activos&rdquo; y mencionen las cepas específicas que contienen.
-                    </p>
+
+                  {/* Comparación: Alimentos vs Suplementos */}
+                  <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
+                    <div className="bg-gradient-to-r from-apple to-st-tropaz p-6">
+                      <h4 className="text-xl font-bold text-white text-center">
+                        Alimentos Fermentados vs Suplementos: ¿Cuál Elegir?
+                      </h4>
+                    </div>
+                    <div className="p-6">
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div className="space-y-4">
+                          <h5 className="text-lg font-bold text-apple flex items-center">
+                            <span className="bg-apple text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-2">✓</span>
+                            Ventajas de Alimentos Fermentados
+                          </h5>
+                          <ul className="space-y-3 text-sm text-gray-700">
+                            <li className="flex items-start">
+                              <span className="bg-apple/20 text-apple rounded-full w-5 h-5 flex items-center justify-center text-xs mr-3 mt-0.5">1</span>
+                              <div>
+                                <strong>Nutrientes adicionales:</strong> Vitaminas B, K2, enzimas digestivas, péptidos bioactivos
+                              </div>
+                            </li>
+                            <li className="flex items-start">
+                              <span className="bg-apple/20 text-apple rounded-full w-5 h-5 flex items-center justify-center text-xs mr-3 mt-0.5">2</span>
+                              <div>
+                                <strong>Matriz alimentaria:</strong> Los probióticos están protegidos naturalmente por la matriz del alimento
+                              </div>
+                            </li>
+                            <li className="flex items-start">
+                              <span className="bg-apple/20 text-apple rounded-full w-5 h-5 flex items-center justify-center text-xs mr-3 mt-0.5">3</span>
+                              <div>
+                                <strong>Costo-efectividad:</strong> Generalmente más económicos a largo plazo
+                              </div>
+                            </li>
+                            <li className="flex items-start">
+                              <span className="bg-apple/20 text-apple rounded-full w-5 h-5 flex items-center justify-center text-xs mr-3 mt-0.5">4</span>
+                              <div>
+                                <strong>Diversidad natural:</strong> Contienen múltiples cepas que trabajan sinérgicamente
+                              </div>
+                            </li>
+                            <li className="flex items-start">
+                              <span className="bg-apple/20 text-apple rounded-full w-5 h-5 flex items-center justify-center text-xs mr-3 mt-0.5">5</span>
+                              <div>
+                                <strong>Fácil integración:</strong> Se incorporan naturalmente en la dieta diaria
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+
+                        <div className="space-y-4">
+                          <h5 className="text-lg font-bold text-st-tropaz flex items-center">
+                            <span className="bg-st-tropaz text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-2">⚡</span>
+                            Ventajas de Suplementos
+                          </h5>
+                          <ul className="space-y-3 text-sm text-gray-700">
+                            <li className="flex items-start">
+                              <span className="bg-st-tropaz/20 text-st-tropaz rounded-full w-5 h-5 flex items-center justify-center text-xs mr-3 mt-0.5">1</span>
+                              <div>
+                                <strong>Dosis específicas:</strong> Concentraciones altas y estandarizadas (1-100 mil millones UFC)
+                              </div>
+                            </li>
+                            <li className="flex items-start">
+                              <span className="bg-st-tropaz/20 text-st-tropaz rounded-full w-5 h-5 flex items-center justify-center text-xs mr-3 mt-0.5">2</span>
+                              <div>
+                                <strong>Cepas específicas:</strong> Dirigidos a condiciones de salud particulares
+                              </div>
+                            </li>
+                            <li className="flex items-start">
+                              <span className="bg-st-tropaz/20 text-st-tropaz rounded-full w-5 h-5 flex items-center justify-center text-xs mr-3 mt-0.5">3</span>
+                              <div>
+                                <strong>Conveniencia:</strong> Fácil dosificación y portabilidad
+                              </div>
+                            </li>
+                            <li className="flex items-start">
+                              <span className="bg-st-tropaz/20 text-st-tropaz rounded-full w-5 h-5 flex items-center justify-center text-xs mr-3 mt-0.5">4</span>
+                              <div>
+                                <strong>Evidencia clínica:</strong> Muchos estudios se realizan con suplementos específicos
+                              </div>
+                            </li>
+                            <li className="flex items-start">
+                              <span className="bg-st-tropaz/20 text-st-tropaz rounded-full w-5 h-5 flex items-center justify-center text-xs mr-3 mt-0.5">5</span>
+                              <div>
+                                <strong>Control de calidad:</strong> Mejor trazabilidad y garantía de potencia
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Guía de selección de alimentos fermentados */}
+                  <div className="bg-gradient-to-br from-apple/5 to-st-tropaz/5 rounded-xl p-8 mb-8">
+                    <h4 className="text-xl font-bold text-biscay mb-6 text-center">
+                      Cómo Elegir Alimentos Fermentados de Calidad
+                    </h4>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div>
+                        <h5 className="font-bold text-apple mb-4 flex items-center">
+                          <span className="bg-apple text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-2">✓</span>
+                          Qué Buscar
+                        </h5>
+                        <ul className="space-y-2 text-sm text-gray-700">
+                          <li className="flex items-center">
+                            <span className="w-2 h-2 bg-apple rounded-full mr-3"></span>
+                            <strong>Etiqueta &quot;cultivos vivos activos&quot;</strong> o &quot;no pasteurizado&quot;
+                          </li>
+                          <li className="flex items-center">
+                            <span className="w-2 h-2 bg-apple rounded-full mr-3"></span>
+                            <strong>Lista específica de cepas</strong> probióticas contenidas
+                          </li>
+                          <li className="flex items-center">
+                            <span className="w-2 h-2 bg-apple rounded-full mr-3"></span>
+                            <strong>Fecha de caducidad clara</strong> y almacenamiento adecuado
+                          </li>
+                          <li className="flex items-center">
+                            <span className="w-2 h-2 bg-apple rounded-full mr-3"></span>
+                            <strong>Ingredientes mínimos</strong> y sin conservantes artificiales
+                          </li>
+                          <li className="flex items-center">
+                            <span className="w-2 h-2 bg-apple rounded-full mr-3"></span>
+                            <strong>Proceso de fermentación tradicional</strong> mencionado
+                          </li>
+                          <li className="flex items-center">
+                            <span className="w-2 h-2 bg-apple rounded-full mr-3"></span>
+                            <strong>Refrigeración requerida</strong> (indica que están vivos)
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <h5 className="font-bold text-red-600 mb-4 flex items-center">
+                          <span className="bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-2">✗</span>
+                          Qué Evitar
+                        </h5>
+                        <ul className="space-y-2 text-sm text-gray-700">
+                          <li className="flex items-center">
+                            <span className="w-2 h-2 bg-red-400 rounded-full mr-3"></span>
+                            <strong>Productos pasteurizados</strong> después de la fermentación
+                          </li>
+                          <li className="flex items-center">
+                            <span className="w-2 h-2 bg-red-400 rounded-full mr-3"></span>
+                            <strong>Alto contenido de azúcares añadidos</strong> (más de 15g por porción)
+                          </li>
+                          <li className="flex items-center">
+                            <span className="w-2 h-2 bg-red-400 rounded-full mr-3"></span>
+                            <strong>Conservantes químicos</strong> como benzoato de sodio
+                          </li>
+                          <li className="flex items-center">
+                            <span className="w-2 h-2 bg-red-400 rounded-full mr-3"></span>
+                            <strong>Colorantes y sabores artificiales</strong>
+                          </li>
+                          <li className="flex items-center">
+                            <span className="w-2 h-2 bg-red-400 rounded-full mr-3"></span>
+                            <strong>Almacenamiento a temperatura ambiente</strong> (sospechoso)
+                          </li>
+                          <li className="flex items-center">
+                            <span className="w-2 h-2 bg-red-400 rounded-full mr-3"></span>
+                            <strong>Etiquetas vagas</strong> sin especificidad de cepas
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Recomendaciones prácticas */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div className="bg-apple/10 rounded-xl p-6 text-center">
+                      <div className="w-12 h-12 bg-apple rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span className="text-xl text-white">🏠</span>
+                      </div>
+                      <h5 className="font-bold text-apple mb-3">Preparación Casera</h5>
+                      <p className="text-sm text-gray-700 mb-4">
+                        Hacer fermentados en casa te da control total sobre ingredientes y proceso.
+                      </p>
+                      <div className="text-xs text-gray-600">
+                        <strong>Fáciles de empezar:</strong> Chucrut, kéfir de agua, yogur casero
+                      </div>
+                    </div>
+
+                    <div className="bg-st-tropaz/10 rounded-xl p-6 text-center">
+                      <div className="w-12 h-12 bg-st-tropaz rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span className="text-xl text-white">💰</span>
+                      </div>
+                      <h5 className="font-bold text-st-tropaz mb-3">Relación Costo-Beneficio</h5>
+                      <p className="text-sm text-gray-700 mb-4">
+                        Los alimentos fermentados suelen ser más económicos que suplementos.
+                      </p>
+                      <div className="text-xs text-gray-600">
+                        <strong>Tip:</strong> Compra granos de kéfir una vez, úsalos indefinidamente
+                      </div>
+                    </div>
+
+                    <div className="bg-seagull/10 rounded-xl p-6 text-center">
+                      <div className="w-12 h-12 bg-seagull rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span className="text-xl text-white">📈</span>
+                      </div>
+                      <h5 className="font-bold text-seagull mb-3">Introducción Gradual</h5>
+                      <p className="text-sm text-gray-700 mb-4">
+                        Comienza con pequeñas cantidades para permitir adaptación digestiva.
+                      </p>
+                      <div className="text-xs text-gray-600">
+                        <strong>Progresión:</strong> 1 cucharada → ¼ taza → ½ taza diaria
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Consejo final */}
+                  <div className="bg-gradient-to-r from-apple/10 to-st-tropaz/10 rounded-xl p-6 border border-apple/20">
+                    <div className="flex items-start">
+                      <div className="bg-apple text-white rounded-full w-8 h-8 flex items-center justify-center text-sm mr-4 mt-1">💡</div>
+                      <div>
+                        <h5 className="font-bold text-biscay mb-2">Estrategia Combinada Recomendada</h5>
+                        <p className="text-gray-700 text-sm mb-3">
+                          Para obtener máximos beneficios, considera combinar alimentos fermentados para uso diario 
+                          con suplementos específicos para necesidades particulares de salud.
+                        </p>
+                        <ul className="text-xs text-gray-600 space-y-1">
+                          <li>• <strong>Base diaria:</strong> Yogur o kéfir en el desayuno, chucrut con comidas</li>
+                          <li>• <strong>Necesidades específicas:</strong> Suplemento con cepas documentadas clínicamente</li>
+                          <li>• <strong>Viajes o antibióticos:</strong> Suplemento de S. boulardii</li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
               )}
