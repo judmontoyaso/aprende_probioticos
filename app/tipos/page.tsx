@@ -373,7 +373,7 @@ export default function TiposIndexPage() {
                 </h3>
                 <p className="text-gray-700 mb-4">
                   <strong>Henri Tissier</strong> del Instituto Pasteur identificó las primeras bacterias bífidas en las heces de bebés alimentados con leche materna. 
-                  Observó que estos bebés tenían menos problemas digestivos y propuso que estas bacterias "bifurcadas" 
+                  Observó que estos bebés tenían menos problemas digestivos y propuso que estas bacterias &quot;bifurcadas&quot; 
                   (por su forma característica en Y) podrían ser beneficiosas para la salud infantil.
                 </p>
                 <div className="bg-st-tropaz/10 p-4 rounded-lg">
@@ -891,7 +891,7 @@ export default function TiposIndexPage() {
                   </li>
                   <li className="flex items-start">
                     <span className="text-apple mr-2">•</span>
-                    <span>Busca productos con <strong>"cultivos vivos activos"</strong> en la etiqueta</span>
+                    <span>Busca productos con <strong>&quot;cultivos vivos activos&quot;</strong> en la etiqueta</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-apple mr-2">•</span>
@@ -1139,9 +1139,9 @@ export default function TiposIndexPage() {
                   <div className="text-sm text-gray-600 mt-1">Preparaciones caseras</div>
                 </Link>
                 
-                <Link href="/condiciones" className="bg-white text-apple px-6 py-4 rounded-xl font-semibold hover:bg-green-50 transition-colors shadow-lg group" role="listitem">
+                <Link href="/beneficios" className="bg-white text-apple px-6 py-4 rounded-xl font-semibold hover:bg-green-50 transition-colors shadow-lg group" role="listitem">
                   <div className="text-2xl mb-2" aria-hidden="true">🏥</div>
-                  <div className="group-hover:text-st-tropaz transition-colors">Condiciones de Salud</div>
+                  <div className="group-hover:text-st-tropaz transition-colors">Beneficios para la Salud</div>
                   <div className="text-sm text-gray-600 mt-1">Aplicaciones específicas</div>
                 </Link>
                 

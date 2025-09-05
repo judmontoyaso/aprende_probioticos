@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Metadata } from 'next';
 import Image from 'next/image';
 import OptimizedImagePlaceholder from './components/OptimizedImagePlaceholder';
-import { NewBannerProfessional, HorizontalBanner, ImageBannerProfessional } from './components/AdBanners';
+import { HorizontalBanner, ImageBannerProfessional, ArticleBanner } from './components/AdBanners';
 
 export const metadata: Metadata = {
   title: 'Probióticos: Tu Guía Completa para la Salud Digestiva | Probióticos Para Todos',
@@ -105,16 +105,6 @@ const imageSchema = {
   "license": "https://probioticosparatodos.com/terminos-servicio"
 };
 
-function AdSpace({ position, title }: { position: string; title: string }) {
-  return (
-    <div className="bg-gray-100 border-2 border-dashed border-gray-300 p-4 text-center text-gray-500 rounded my-4">
-      <div className="text-sm font-medium mb-1">📢 {title}</div>
-      <div className="text-xs">Google AdSense - {position}</div>
-      <div className="text-xs mt-1 text-gray-400">Espacio publicitario optimizado</div>
-    </div>
-  );
-}
-
 export default function Home() {
   return (
     <div className="bg-white min-h-screen">
@@ -128,37 +118,68 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(imageSchema) }}
       />
       
-      <div className="hidden md:block container mx-auto px-4 py-2">
-        <NewBannerProfessional className="max-w-5xl mx-auto" alt="Banner profesional Probióticos Para Todos - Ciencia, bienestar y salud digestiva" />
-      </div>
-      
       <div className="block md:hidden container mx-auto px-4 pt-4">
         <HorizontalBanner className="max-w-full" alt="Banner horizontal Probióticos Para Todos - Móvil" />
       </div>
 
-      <header className="bg-green-600 text-white py-20">
-        <div className="container mx-auto px-4">
+      <header className="bg-gradient-to-br from-green-600 via-green-700 to-emerald-800 text-white py-20 relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 bg-gradient-to-r from-green-600/20 to-emerald-600/20"></div>
+        <div className="absolute top-0 left-0 w-full h-full">
+          <div className="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
+          <div className="absolute bottom-10 right-10 w-40 h-40 bg-green-300/20 rounded-full blur-xl"></div>
+          <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-emerald-400/15 rounded-full blur-lg"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             {/* Logo principal de Probióticos Para Todos */}
-            <div className="mb-8">
+            <div className="mb-8 relative">
+              <div className="absolute inset-0 bg-white/20 rounded-full blur-2xl transform scale-110"></div>
               <Image 
                 src="/images/logo_transparente.png"
                 alt="Probióticos Para Todos - Logo oficial con bacterias probióticas beneficiosas"
                 width={300}
                 height={300}
                 priority={true}
-                className="w-64 h-64 mx-auto drop-shadow-2xl"
+                className="w-64 h-64 mx-auto drop-shadow-2xl relative z-10 hover:scale-105 transition-transform duration-300"
               />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Probióticos Para Todos</h1>
-            <p className="text-xl text-green-100 mb-8">Tu guía completa sobre probióticos y salud intestinal basada en ciencia</p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/que-son" className="bg-white text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-green-100 bg-clip-text text-transparent">
+              Probióticos Para Todos
+            </h1>
+            <p className="text-xl md:text-2xl text-green-100 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Tu guía completa sobre probióticos y salud intestinal basada en ciencia
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 mb-8">
+              <Link href="/que-son" className="bg-white text-green-600 px-8 py-4 rounded-xl font-semibold hover:bg-green-50 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
                 ¿Qué son los probióticos?
               </Link>
-              <Link href="/beneficios" className="bg-green-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-800 transition-colors">
+              <Link href="/beneficios" className="bg-green-700 text-white px-8 py-4 rounded-xl font-semibold hover:bg-green-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
                 Ver beneficios
               </Link>
+            </div>
+            
+            {/* Trust indicators */}
+            <div className="flex flex-wrap justify-center items-center gap-6 text-green-200 text-sm mb-8">
+              <div className="flex items-center">
+                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                Información respaldada científicamente
+              </div>
+              <div className="flex items-center">
+                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                Contenido actualizado regularmente
+              </div>
+              <div className="flex items-center">
+                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                Guías prácticas y fáciles de seguir
+              </div>
             </div>
             
             {/* Disclaimer médico prominente */}
@@ -182,35 +203,50 @@ export default function Home() {
       </header>
       
       <div className="container mx-auto px-4">
-        <NewBannerProfessional className="max-w-4xl mx-auto" alt="Banner promocional Probióticos Para Todos - Contenido educativo" />
+        <ArticleBanner className="max-w-4xl mx-auto" alt="Banner promocional artículos científicos sobre probióticos" />
       </div>
       
       <main className="container mx-auto px-4 py-12">
         {/* Introducción optimizada para SEO */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-6 text-gray-800">¿Qué son los Probióticos?</h2>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-8">
-            Los probióticos son microorganismos vivos que proporcionan beneficios para la salud cuando se consumen en cantidades adecuadas. 
-            Estas &ldquo;bacterias buenas&rdquo; ayudan a mantener un equilibrio saludable en tu microbiota intestinal.
-          </p>
+        <div className="text-center mb-16 relative">
+          {/* Background decoration */}
+          <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl opacity-50 blur-3xl"></div>
+          
+          <div className="relative">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+              ¿Qué son los Probióticos?
+            </h2>
+            <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-8 leading-relaxed">
+              Los probióticos son microorganismos vivos que proporcionan beneficios para la salud cuando se consumen en cantidades adecuadas. 
+              Estas &ldquo;bacterias buenas&rdquo; ayudan a mantener un equilibrio saludable en tu microbiota intestinal.
+            </p>
+          </div>
           
           {/* Nueva imagen hero */}
-          <div className="mb-12 max-w-3xl mx-auto">
+          <div className="mb-12 max-w-3xl mx-auto relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-400 rounded-xl blur-xl opacity-20"></div>
             <OptimizedImagePlaceholder 
               src="/images/new hero.png"
               alt="Nueva imagen hero de probióticos - personas y mascotas saludables con beneficios de la salud digestiva"
               width={800}
               height={400}
               priority={true}
-              className="w-full h-auto rounded-xl shadow-lg"
+              className="relative w-full h-auto rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-300"
             />
           </div>
           
-          <div className="bg-green-50 p-6 rounded-xl max-w-3xl mx-auto">
-            <p className="text-gray-700">
-              <strong className="text-green-700">Dato importante:</strong> Tu intestino alberga más de 100 billones de bacterias, 
-              y mantener su equilibrio es clave para tu salud digestiva, inmunológica y mental.
-            </p>
+          <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-8 rounded-2xl max-w-3xl mx-auto border border-green-100 shadow-lg">
+            <div className="flex items-start">
+              <div className="flex-shrink-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4">
+                <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <p className="text-gray-700 text-lg">
+                <strong className="text-green-700">Dato importante:</strong> Tu intestino alberga más de 100 billones de bacterias, 
+                y mantener su equilibrio es clave para tu salud digestiva, inmunológica y mental.
+              </p>
+            </div>
           </div>
           
           {/* Información adicional para SEO */}
@@ -230,50 +266,58 @@ export default function Home() {
         </div>
 
         {/* Beneficios principales con imagen centralizada */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Beneficios Científicamente Comprobados</h2>
+        <div className="mb-16 relative">
+          {/* Background decoration */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-green-50 rounded-3xl opacity-30"></div>
           
-          {/* Imagen de beneficios - infografía original más pequeña */}
-          <div className="mb-12 max-w-lg mx-auto">
-            <OptimizedImagePlaceholder 
-              src="/images/beneficios de los probioticos.png"
-              alt="Los principales beneficios de los probióticos: salud digestiva, sistema inmunológico y salud mental"
-              width={500}
-              height={650}
-              className="w-full h-auto rounded-lg shadow-md"
-            />
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <div className="bg-green-50 p-8 rounded-xl text-center hover:shadow-lg transition-all hover:scale-105">
-              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <div className="text-4xl">🦠</div>
-              </div>
-              <h3 className="text-xl font-semibold mb-4 text-green-700">Salud Digestiva</h3>
-              <p className="text-gray-700 mb-6 text-sm leading-relaxed">Mejoran la digestión, reducen la inflamación intestinal y ayudan con problemas como el síndrome del intestino irritable.</p>
-              <Link href="/beneficios#digestiva" className="inline-block bg-green-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors">
-                Leer más →
-              </Link>
+          <div className="relative py-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
+              Beneficios Científicamente Comprobados
+            </h2>
+            
+            {/* Imagen de beneficios - infografía original más pequeña */}
+            <div className="mb-12 max-w-lg mx-auto relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-green-400 rounded-lg blur-xl opacity-20"></div>
+              <OptimizedImagePlaceholder 
+                src="/images/beneficios de los probioticos.png"
+                alt="Los principales beneficios de los probióticos: salud digestiva, sistema inmunológico y salud mental"
+                width={500}
+                height={650}
+                className="relative w-full h-auto rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-300"
+              />
             </div>
-            <div className="bg-blue-50 p-8 rounded-xl text-center hover:shadow-lg transition-all hover:scale-105">
-              <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <div className="text-4xl">🛡️</div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              <div className="group bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-2xl text-center hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-green-200">
+                <div className="w-20 h-20 bg-gradient-to-br from-green-400 to-green-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl transition-shadow">
+                  <div className="text-4xl">🦠</div>
+                </div>
+                <h3 className="text-xl font-semibold mb-4 text-green-700">Salud Digestiva</h3>
+                <p className="text-gray-700 mb-6 text-sm leading-relaxed">Mejoran la digestión, reducen la inflamación intestinal y ayudan con problemas como el síndrome del intestino irritable.</p>
+                <Link href="/beneficios#digestiva" className="inline-block bg-gradient-to-r from-green-600 to-green-700 text-white px-6 py-3 rounded-xl font-medium hover:from-green-700 hover:to-green-800 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
+                  Leer más →
+                </Link>
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-blue-700">Sistema Inmune</h3>
-              <p className="text-gray-700 mb-6 text-sm leading-relaxed">Fortalecen las defensas naturales del cuerpo y pueden reducir la duración de infecciones respiratorias.</p>
-              <Link href="/beneficios#inmune" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors">
-                Leer más →
-              </Link>
-            </div>
-            <div className="bg-purple-50 p-8 rounded-xl text-center hover:shadow-lg transition-all hover:scale-105">
-              <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <div className="text-4xl">🧠</div>
+              <div className="group bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl text-center hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-blue-200">
+                <div className="w-20 h-20 bg-gradient-to-br from-blue-400 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl transition-shadow">
+                  <div className="text-4xl">🛡️</div>
+                </div>
+                <h3 className="text-xl font-semibold mb-4 text-blue-700">Sistema Inmune</h3>
+                <p className="text-gray-700 mb-6 text-sm leading-relaxed">Fortalecen las defensas naturales del cuerpo y pueden reducir la duración de infecciones respiratorias.</p>
+                <Link href="/beneficios#inmune" className="inline-block bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-xl font-medium hover:from-blue-700 hover:to-blue-800 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
+                  Leer más →
+                </Link>
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-purple-700">Salud Mental</h3>
-              <p className="text-gray-700 mb-6 text-sm leading-relaxed">A través del eje intestino-cerebro, pueden influir positivamente en el estado de ánimo y reducir la ansiedad.</p>
-              <Link href="/beneficios#mental" className="inline-block bg-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-purple-700 transition-colors">
-                Leer más →
-              </Link>
+              <div className="group bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-2xl text-center hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-purple-200">
+                <div className="w-20 h-20 bg-gradient-to-br from-purple-400 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl transition-shadow">
+                  <div className="text-4xl">🧠</div>
+                </div>
+                <h3 className="text-xl font-semibold mb-4 text-purple-700">Salud Mental</h3>
+                <p className="text-gray-700 mb-6 text-sm leading-relaxed">A través del eje intestino-cerebro, pueden influir positivamente en el estado de ánimo y reducir la ansiedad.</p>
+                <Link href="/beneficios#mental" className="inline-block bg-gradient-to-r from-purple-600 to-purple-700 text-white px-6 py-3 rounded-xl font-medium hover:from-purple-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
+                  Leer más →
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -524,13 +568,13 @@ export default function Home() {
               </div>
             </Link>
 
-            <Link href="/condiciones" className="block group">
+            <Link href="/beneficios" className="block group">
               <div className="bg-gradient-to-br from-red-50 to-red-100 p-8 rounded-2xl border border-red-200 group-hover:shadow-xl transition-all group-hover:scale-105 h-full">
                 <div className="w-16 h-16 bg-red-200 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <div className="text-3xl">🏥</div>
                 </div>
-                <h3 className="text-xl font-semibold mb-4 text-red-700">Condiciones Específicas</h3>
-                <p className="text-gray-700 mb-6 text-sm leading-relaxed">Probióticos recomendados para condiciones de salud específicas.</p>
+                <h3 className="text-xl font-semibold mb-4 text-red-700">Beneficios para la Salud</h3>
+                <p className="text-gray-700 mb-6 text-sm leading-relaxed">Probióticos recomendados para diferentes beneficios de salud.</p>
                 <div className="text-red-600 font-medium flex items-center">
                   Ver más 
                   <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -612,44 +656,83 @@ export default function Home() {
 
         {/* Sección de recursos adicionales */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">Recursos Adicionales</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-gray-50 p-8 rounded-xl">
-              <h3 className="text-xl font-semibold mb-4 text-gray-800">📚 Artículos Científicos</h3>
-              <p className="text-gray-700 mb-4">
-                Accede a artículos detallados basados en investigación científica sobre probióticos, 
-                microbioma y salud intestinal.
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">Centro de Conocimiento</h2>
+          <div className="max-w-2xl mx-auto">
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-xl border border-green-200 shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div className="flex items-center mb-4">
+                <span className="text-2xl mr-3">📚</span>
+                <h3 className="text-xl font-semibold text-gray-800">Centro de Conocimiento Probiótico</h3>
+              </div>
+              <p className="text-gray-700 mb-6 leading-relaxed">
+                Explora nuestro extenso repositorio de artículos especializados sobre probióticos, microbioma 
+                y salud digestiva. Contenido respaldado por investigación científica actual y escrito por expertos.
               </p>
-              <Link href="/recursos/articulos" className="text-green-600 font-medium hover:underline">
-                Ver artículos →
-              </Link>
-            </div>
-            <div className="bg-gray-50 p-8 rounded-xl">
-              <h3 className="text-xl font-semibold mb-4 text-gray-800">🔍 Referencias Científicas</h3>
-              <p className="text-gray-700 mb-4">
-                Toda nuestra información está respaldada por estudios científicos y fuentes confiables. 
-                Consulta nuestras referencias.
-              </p>
-              <Link href="/referencias" className="text-green-600 font-medium hover:underline">
-                Ver referencias →
+              <div className="space-y-2 mb-6">
+                <div className="flex items-center text-sm text-gray-600">
+                  <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+                  Agricultura sostenible con probióticos
+                </div>
+                <div className="flex items-center text-sm text-gray-600">
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                  Nutrición animal y veterinaria
+                </div>
+                <div className="flex items-center text-sm text-gray-600">
+                  <span className="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
+                  Salud humana y microbioma
+                </div>
+                <div className="flex items-center text-sm text-gray-600">
+                  <span className="w-2 h-2 bg-orange-500 rounded-full mr-3"></span>
+                  Alimentos fermentados y biotecnología
+                </div>
+              </div>
+              <Link href="/blog" className="inline-flex items-center text-green-600 font-medium hover:text-green-700 transition-colors duration-200 group">
+                <span>Explorar conocimiento científico</span>
+                <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
               </Link>
             </div>
           </div>
         </div>
       </main>
       
-      <footer className="bg-gray-50 py-8">
+      <footer className="bg-gradient-to-br from-gray-50 to-green-50 py-12 border-t border-gray-200">
         <div className="container mx-auto px-4">
-          <div className="text-center mt-8 text-gray-600">
-            <p>&copy; 2024-2025 Probióticos Para Todos. Todos los derechos reservados.</p>
-            <p className="text-sm mt-2 text-gray-500">Contenido educativo sobre probióticos y salud digestiva</p>
-            <div className="mt-4 space-x-6">
-              <Link href="/politica-privacidad" className="text-green-600 hover:text-green-700">
-                Privacidad
+          <div className="text-center">
+            {/* Enhanced brand section */}
+            <div className="mb-8">
+              <h3 className="text-2xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-4">
+                Probióticos Para Todos
+              </h3>
+              <p className="text-gray-600 max-w-2xl mx-auto">
+                Tu fuente confiable de información científica sobre probióticos, salud digestiva y bienestar general.
+              </p>
+            </div>
+            
+            {/* Links section */}
+            <div className="flex flex-wrap justify-center gap-8 mb-8">
+              <Link href="/politica-privacidad" className="text-green-600 hover:text-green-700 transition-colors duration-200 font-medium">
+                Política de Privacidad
               </Link>
-              <Link href="/cookies" className="text-green-600 hover:text-green-700">
-                Cookies
+              <Link href="/cookies" className="text-green-600 hover:text-green-700 transition-colors duration-200 font-medium">
+                Política de Cookies
               </Link>
+              <Link href="/terminos-servicio" className="text-green-600 hover:text-green-700 transition-colors duration-200 font-medium">
+                Términos de Servicio
+              </Link>
+              <Link href="/contacto" className="text-green-600 hover:text-green-700 transition-colors duration-200 font-medium">
+                Contacto
+              </Link>
+            </div>
+            
+            {/* Copyright */}
+            <div className="border-t border-gray-200 pt-8">
+              <p className="text-gray-600 mb-2">
+                &copy; 2024-2025 Probióticos Para Todos. Todos los derechos reservados.
+              </p>
+              <p className="text-sm text-gray-500">
+                Contenido educativo basado en evidencia científica sobre probióticos y salud digestiva
+              </p>
             </div>
           </div>
         </div>

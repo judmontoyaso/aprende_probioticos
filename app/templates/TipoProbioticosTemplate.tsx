@@ -636,11 +636,11 @@ export default function TipoProbioticosTemplate({
                       </Link>
                     </li>
                     <li>
-                      <Link href="/referencias" className="flex items-center text-st-tropaz hover:text-san-marino transition-colors group">
+                      <Link href="/alimentos-fermentados" className="flex items-center text-st-tropaz hover:text-san-marino transition-colors group">
                         <svg className="w-4 h-4 mr-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
-                        Referencias científicas
+                        Alimentos fermentados
                       </Link>
                     </li>
                   </ul>

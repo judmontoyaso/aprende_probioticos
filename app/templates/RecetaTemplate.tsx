@@ -1,7 +1,5 @@
-'use client';
-
-import Image from 'next/image';
 import Link from 'next/link';
+import SafeImage from '../components/SafeImage';
 // import AdBanner from '../components/AdBanner';
 // import SEOSchema from '../components/SEOSchema';
 
@@ -102,7 +100,7 @@ export default function RecetaTemplate({
   };
 
   return (
-    <>
+    <div>
   {/* Schema.org estructurado (temporalmente desactivado para depurar) */}
   {/** <SEOSchema type="both" data={{ article: recipeData, faq: faqData }} /> **/}
       
@@ -124,7 +122,7 @@ export default function RecetaTemplate({
             {/* Imagen de cabecera */}
             <div className="mb-8">
               <div className="relative w-full h-[300px] sm:h-[400px] md:h-[450px]">
-                <Image 
+                <SafeImage 
                   src={imagenPrincipal.src} 
                   alt={imagenPrincipal.alt}
                   fill
@@ -167,7 +165,7 @@ export default function RecetaTemplate({
               <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">Ingredientes</h2>
               <ul className="space-y-3">
                 {ingredientes.map((ingrediente, index) => (
-                  <li key={index} className="flex items-center">
+                  <li key={`ingrediente-${index}-${ingrediente.nombre.substring(0, 10)}`} className="flex items-center">
                     <span className="h-2 w-2 rounded-full bg-green-500 mr-3"></span>
                     <div>
                       <span className="font-medium">{ingrediente.cantidad}</span> {ingrediente.nombre}
@@ -186,7 +184,7 @@ export default function RecetaTemplate({
                 <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">Materiales necesarios</h2>
                 <ul className="space-y-3">
                   {materialesRequeridos.map((material, index) => (
-                    <li key={index} className="flex items-center">
+                    <li key={`material-${index}-${material.substring(0, 10)}`} className="flex items-center">
                       <span className="h-2 w-2 rounded-full bg-blue-500 mr-3"></span>
                       <div>{material}</div>
                     </li>
@@ -200,7 +198,7 @@ export default function RecetaTemplate({
               <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">Preparación</h2>
               <div className="space-y-8">
                 {instrucciones.map((instruccion, index) => (
-                  <div key={index} className="flex">
+                  <div key={`instruccion-${index}-${instruccion.paso.substring(0, 15).replace(/\s+/g, '-')}`} className="flex">
                     <div className="flex-shrink-0 mr-4">
                       <div className="h-8 w-8 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-lg">
                         {index + 1}
@@ -212,7 +210,7 @@ export default function RecetaTemplate({
                       
                       {instruccion.imagen && (
                         <div className="relative w-full max-w-md mx-auto aspect-square mt-3 mb-4">
-                          <Image 
+                          <SafeImage 
                             src={instruccion.imagen.src} 
                             alt={instruccion.imagen.alt}
                             fill
@@ -234,7 +232,7 @@ export default function RecetaTemplate({
                 <div className="bg-green-50 p-6 rounded-lg border border-green-100">
                   <ul className="space-y-3">
                     {consejos.map((consejo, index) => (
-                      <li key={index} className="flex items-start">
+                      <li key={`consejo-${index}-${consejo.substring(0, 15).replace(/\s+/g, '-')}`} className="flex items-start">
                         <span className="text-green-600 mr-2">•</span>
                         <p className="text-gray-700">{consejo}</p>
                       </li>
@@ -250,7 +248,7 @@ export default function RecetaTemplate({
                 <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">Variaciones</h2>
                 <div className="space-y-4">
                   {variaciones.map((variacion, index) => (
-                    <div key={index} className="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                    <div key={`variacion-${index}-${variacion.titulo.substring(0, 15).replace(/\s+/g, '-')}`} className="bg-blue-50 p-4 rounded-lg border border-blue-100">
                       <h3 className="text-lg font-semibold mb-2 text-blue-700">{variacion.titulo}</h3>
                       <p className="text-gray-700">{variacion.descripcion}</p>
                     </div>
@@ -264,7 +262,7 @@ export default function RecetaTemplate({
               <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">Probióticos presentes</h2>
               <div className="space-y-4">
                 {probioticosPresentes.map((probiotico, index) => (
-                  <div key={index}>
+                  <div key={`probiotico-${index}-${probiotico.nombre.substring(0, 15).replace(/\s+/g, '-')}`}>
                     <h3 className="text-xl font-semibold mb-2 text-green-600">{probiotico.nombre}</h3>
                     <p className="text-gray-700">{probiotico.descripcion}</p>
                   </div>
@@ -277,7 +275,7 @@ export default function RecetaTemplate({
               <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">Beneficios para la salud</h2>
               <div className="space-y-4">
                 {beneficios.map((beneficio, index) => (
-                  <div key={index}>
+                  <div key={`beneficio-${index}-${beneficio.titulo.substring(0, 15).replace(/\s+/g, '-')}`}>
                     <h3 className="text-xl font-semibold mb-2 text-green-600">{beneficio.titulo}</h3>
                     <p className="text-gray-700">{beneficio.descripcion}</p>
                   </div>
@@ -292,7 +290,7 @@ export default function RecetaTemplate({
               <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">Preguntas frecuentes</h2>
               <div className="space-y-6">
                 {faq.map((item, index) => (
-                  <div key={index}>
+                  <div key={`faq-${index}-${item.pregunta.substring(0, 20).replace(/\s+/g, '-').replace(/[¿?]/g, '')}`}>
                     <h3 className="text-xl font-semibold mb-2 text-green-600">{item.pregunta}</h3>
                     <p className="text-gray-700">{item.respuesta}</p>
                   </div>
@@ -361,6 +359,6 @@ export default function RecetaTemplate({
       <div className="container mx-auto px-4 py-6">
     {/* <AdBanner position="bottom" /> */}
       </div>
-    </>
+    </div>
   );
 } 

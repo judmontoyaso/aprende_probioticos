@@ -589,7 +589,7 @@ export default function ComoElegir() {
                             <strong>Probióticos:</strong> L. bulgaricus, S. thermophilus
                           </p>
                           <p className="text-xs text-gray-500">
-                            1-10 mil millones UFC por taza. Busca "cultivos vivos activos"
+                            1-10 mil millones UFC por taza. Busca &quot;cultivos vivos activos&quot;
                           </p>
                         </div>
                         <div className="bg-white rounded-lg p-3">
@@ -797,7 +797,7 @@ export default function ComoElegir() {
                         <ul className="space-y-2 text-sm text-gray-700">
                           <li className="flex items-center">
                             <span className="w-2 h-2 bg-apple rounded-full mr-3"></span>
-                            <strong>Etiqueta "cultivos vivos activos"</strong> o "no pasteurizado"
+                            <strong>Etiqueta &quot;cultivos vivos activos&quot;</strong> o &quot;no pasteurizado&quot;
                           </li>
                           <li className="flex items-center">
                             <span className="w-2 h-2 bg-apple rounded-full mr-3"></span>

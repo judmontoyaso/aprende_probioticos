@@ -445,7 +445,7 @@ export const recetasData: RecetasData = {
         paso: 'Preparar el repollo',
         descripcion: 'Retira las hojas exteriores del repollo y reserva 2-3 hojas enteras y limpias. Corta el repollo en cuartos, retira el corazón duro y córtalo en tiras finas de 2-3mm. La consistencia debe ser uniforme para una fermentación pareja.',
         imagen: {
-          src: '/images/cortar-repollo-chucrut.png',
+          src: '/images/chucrtu-cortar.png',
           alt: 'Repollo cortado en tiras finas para chucrut'
         }
       },
@@ -453,7 +453,7 @@ export const recetasData: RecetasData = {
         paso: 'Salar y masajear',
         descripcion: 'Coloca el repollo cortado en un tazón grande y espolvorea con sal. Masajea vigorosamente con las manos durante 5-10 minutos hasta que el repollo libere su jugo natural y se ablande considerablemente. Debe formar su propia salmuera.',
         imagen: {
-          src: '/images/masajear-repollo-sal.png',
+          src: '/images/chucrut-masajear.png',
           alt: 'Masajeando repollo con sal para extraer jugos'
         }
       },
@@ -623,7 +623,7 @@ export const recetasData: RecetasData = {
         paso: 'Preparar té endulzado',
         descripcion: 'Hierve el agua y prepara un té fuerte con las bolsitas o té suelto durante 10-15 minutos. Disuelve completamente el azúcar mientras el té está caliente. Deja enfriar completamente a temperatura ambiente - el calor puede dañar el SCOBY.',
         imagen: {
-          src: '/images/te-endulzado-kombucha.png',
+          src: '/images/azucar-kombucha.png',
           alt: 'Preparando té endulzado para kombucha'
         }
       },
@@ -792,7 +792,7 @@ export const recetasData: RecetasData = {
         paso: 'Preparar la soya',
         descripcion: 'Remoja las soyas secas en abundante agua durante 12-24 horas. Deben triplicar su tamaño. Cocina en olla a presión durante 45 minutos o hierve durante 3-4 horas hasta que estén muy blandas - deben aplastarse fácilmente con los dedos.',
         imagen: {
-          src: '/images/soya-cocida-miso.png',
+          src: '/images/soya-seca.png',
           alt: 'Soyas cocidas muy blandas para miso'
         }
       },
@@ -804,7 +804,7 @@ export const recetasData: RecetasData = {
         paso: 'Preparar mezcla de sal y koji',
         descripcion: 'Mezcla íntimamente el koji con la sal hasta que esté uniformemente distribuida. Esta mezcla se llama "shio-koji" y es fundamental para una fermentación exitosa.',
         imagen: {
-          src: '/images/koji-sal-miso.png',
+          src: '/images/koji-sal.png',
           alt: 'Koji mezclado con sal para miso'
         }
       },
@@ -965,49 +965,33 @@ export const recetasData: RecetasData = {
         paso: 'Preparar cultivo iniciador',
         descripcion: 'Saca el cultivo liofilizado del freezer 30 minutos antes de usar. Prepara un vaso pequeño con 50ml de leche tibia (37°C) para rehidratar el cultivo. Este paso es crucial para activar las bacterias dormantes.',
         imagen: {
-          src: '/images/cultivo-liofilizado-preparacion.png',
+          src: '/images/yogurt-iniciador-frascos.png',
           alt: 'Cultivo liofilizado siendo rehidratado en leche tibia'
         }
       },
       {
         paso: 'Calentar leche a temperatura precisa',
-        descripcion: 'Calienta la leche lentamente hasta 85°C, removiendo constantemente para evitar que se pegue. Esta temperatura elimina bacterias competidoras sin desnaturalizar completamente las proteínas. Mantén esta temperatura por 10 minutos.',
-        imagen: {
-          src: '/images/calentar-leche-85-grados.png',
-          alt: 'Termómetro mostrando 85°C en leche caliente'
-        }
+        descripcion: 'Calienta la leche lentamente hasta 85°C, removiendo constantemente para evitar que se pegue. Esta temperatura elimina bacterias competidoras sin desnaturalizar completamente las proteínas. Mantén esta temperatura por 10 minutos.'
       },
       {
         paso: 'Enfriamiento controlado',
-        descripcion: 'Enfría la leche exactamente a 43°C. Puedes acelerar el proceso sumergiendo la olla en agua fría. Esta temperatura es óptima para las bacterias del yogur. Temperaturas más altas matarán el cultivo, más bajas retrasarán la fermentación.',
-        imagen: {
-          src: '/images/enfriamiento-43-grados.png',
-          alt: 'Leche enfriándose con termómetro marcando 43°C'
-        }
+        descripcion: 'Enfría la leche exactamente a 43°C. Puedes acelerar el proceso sumergiendo la olla en agua fría. Esta temperatura es óptima para las bacterias del yogur. Temperaturas más altas matarán el cultivo, más bajas retrasarán la fermentación.'
       },
       {
         paso: 'Incorporar cultivo activado',
-        descripcion: 'Mezcla suavemente el cultivo rehidratado con 200ml de la leche templada. Luego incorpora esta mezcla al resto de la leche, batiendo suavemente para distribuir uniformemente sin crear espuma.',
-        imagen: {
-          src: '/images/incorporar-cultivo-profesional.png',
-          alt: 'Mezclando cultivo activado con la leche'
-        }
+        descripcion: 'Mezcla suavemente el cultivo rehidratado con 200ml de la leche templada. Luego incorpora esta mezcla al resto de la leche, batiendo suavemente para distribuir uniformemente sin crear espuma.'
       },
       {
         paso: 'Fermentación controlada',
         descripcion: 'Vierte en frascos esterilizados y fermenta a 43°C durante 4-6 horas para yogur suave, 8-12 horas para más acidez. Usa yogurtera, horno con luz encendida, o deshidratador. La temperatura debe ser constante (±2°C).',
         imagen: {
-          src: '/images/fermentacion-yogurtera.png',
+          src: '/images/yogurtera-frascos-yogurt.png',
           alt: 'Frascos de yogur en yogurtera durante fermentación'
         }
       },
       {
         paso: 'Prueba de acidez y refrigeración',
-        descripcion: 'Prueba el yogur: debe tener consistencia firme y sabor ligeramente ácido. pH ideal: 4.0-4.4. Refrigera inmediatamente para detener la fermentación. El yogur seguirá espesando en el refrigerador.',
-        imagen: {
-          src: '/images/yogur-terminado-ph.png',
-          alt: 'Yogur terminado con medidor de pH'
-        }
+        descripcion: 'Prueba el yogur: debe tener consistencia firme y sabor ligeramente ácido. pH ideal: 4.0-4.4. Refrigera inmediatamente para detener la fermentación. El yogur seguirá espesando en el refrigerador.'
       }
     ],
     consejos: [

@@ -1,42 +1,18 @@
-'use client';
-
-import { useParams } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { notFound } from 'next/navigation';
 import RecetaTemplate from '../../templates/RecetaTemplate';
-import { recetasData, RecetaData } from '../data';
+import { recetasData } from '../data';
 
-export default function RecetaPage() {
-  const { slug } = useParams();
-  const [recetaData, setRecetaData] = useState<RecetaData | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+interface PageProps {
+  params: Promise<{ slug: string }>;
+}
 
-  useEffect(() => {
-    try {
-      if (typeof slug !== 'string') {
-        throw new Error('Slug no válido');
-      }
-
-      const data = recetasData[slug];
-      
-      if (!data) {
-        throw new Error('Receta no encontrada');
-      }
-      
-      setRecetaData(data);
-      setLoading(false);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Error desconocido');
-      setLoading(false);
-    }
-  }, [slug]);
-
-  if (loading) {
-    return <div>Cargando...</div>;
-  }
-
-  if (error || !recetaData) {
-    return <div>Error: {error}</div>;
+export default async function RecetaPage({ params }: PageProps) {
+  const { slug } = await params;
+  
+  const recetaData = recetasData[slug];
+  
+  if (!recetaData) {
+    notFound();
   }
 
   return <RecetaTemplate {...recetaData} />;

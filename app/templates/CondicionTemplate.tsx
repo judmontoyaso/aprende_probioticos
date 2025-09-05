@@ -237,8 +237,8 @@ export default function CondicionTemplate({
                     </Link>
                   </li>
                   <li>
-                    <Link href="/referencias" className="text-green-600 hover:text-green-700 transition-colors">
-                      Referencias científicas
+                    <Link href="/tipos" className="text-green-600 hover:text-green-700 transition-colors">
+                      Tipos de probióticos
                     </Link>
                   </li>
                 </ul>
