@@ -12,7 +12,7 @@ export default function Breadcrumbs() {
   }
 
   // Crear el array de breadcrumbs
-  const pathSegments = pathname.split('/').filter(segment => segment);
+  const pathSegments = (pathname ?? '').split('/').filter(segment => segment);
   
   // Mapa de rutas a nombres legibles
   const routeMap: Record<string, string> = {
