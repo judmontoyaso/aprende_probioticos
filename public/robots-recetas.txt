@@ -1,0 +1,32 @@
+# Robots.txt adicional para recetas
+# Este archivo mejora la indexación de las páginas de recetas
+
+User-agent: *
+Allow: /recetas
+Allow: /recetas/
+Allow: /recetas/yogur-casero
+Allow: /recetas/kefir-agua  
+Allow: /recetas/chucrut-casero
+Allow: /recetas/kombucha-casa
+Allow: /recetas/miso-casero
+
+# Sitemap específico de recetas
+Sitemap: https://www.probioticosparatodos.com/recetas/sitemap.xml
+
+# Optimización para bots de búsqueda
+Crawl-delay: 1
+
+# Directivas específicas para Google
+User-agent: Googlebot
+Allow: /recetas
+Crawl-delay: 0
+
+# Directivas para Bing
+User-agent: Bingbot
+Allow: /recetas
+Crawl-delay: 1
+
+# Permitir indexación de imágenes de recetas
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /icons/

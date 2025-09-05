@@ -1,0 +1,130 @@
+{
+  "name": "Recetas Probióticas - Probióticos Para Todos",
+  "short_name": "Recetas Probióticas",
+  "description": "Guías completas para preparar alimentos fermentados caseros con beneficios probióticos para la salud digestiva",
+  "start_url": "/recetas",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#2E8B57",
+  "orientation": "portrait-primary",
+  "scope": "/recetas/",
+  "lang": "es-ES",
+  "dir": "ltr",
+  "categories": [
+    "health",
+    "food",
+    "lifestyle",
+    "education"
+  ],
+  "screenshots": [
+    {
+      "src": "/images/screenshots/recetas-mobile.png",
+      "sizes": "375x667",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Vista móvil de recetas probióticas"
+    },
+    {
+      "src": "/images/screenshots/recetas-desktop.png", 
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Vista de escritorio de recetas probióticas"
+    }
+  ],
+  "icons": [
+    {
+      "src": "/icons/recetas-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/recetas-96x96.png",
+      "sizes": "96x96", 
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/recetas-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/recetas-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/recetas-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/recetas-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/recetas-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/recetas-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Yogur Casero",
+      "short_name": "Yogur",
+      "description": "Receta de yogur probiótico casero",
+      "url": "/recetas/yogur-casero",
+      "icons": [
+        {
+          "src": "/icons/yogur-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Kéfir de Agua",
+      "short_name": "Kéfir",
+      "description": "Receta de kéfir de agua probiótico",
+      "url": "/recetas/kefir-agua",
+      "icons": [
+        {
+          "src": "/icons/kefir-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Kombucha Casera",
+      "short_name": "Kombucha",
+      "description": "Receta de kombucha casera con SCOBY",
+      "url": "/recetas/kombucha-casa",
+      "icons": [
+        {
+          "src": "/icons/kombucha-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "focus-existing"
+  }
+}
