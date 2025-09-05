@@ -3,7 +3,10 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import OptimizedImagePlaceholder from '../components/OptimizedImagePlaceholder';
+import RecipeOptimizedImage from '../components/RecipeOptimizedImage';
 import { recetasData, recetaSlugs } from './data';
+import RecipesSchema from '../components/RecipesSchema';
+import { faqData, faqSchema } from './seo-data';
 
 // Categorías disponibles para filtrar
 const CATEGORIAS = ['Todas', 'Lácteos', 'Vegetales', 'Bebidas', 'Fermentados'];
@@ -84,10 +87,30 @@ export default function RecetasIndexPage() {
         }}
       />
 
+      {/* Datos estructurados JSON-LD optimizados para SEO */}
+      <RecipesSchema />
+
       {/* Header moderno con gradient */}
       <header className="bg-gradient-to-r from-apple to-st-tropaz text-white py-16 relative overflow-hidden" role="banner">
         <div className="absolute inset-0 bg-black opacity-10"></div>
         <div className="container mx-auto px-4 relative z-10">
+          {/* Breadcrumbs */}
+          <nav aria-label="Navegación de migas de pan" className="mb-8">
+            <ol className="flex items-center space-x-2 text-sm">
+              <li>
+                <Link href="/" className="text-seagull hover:text-white transition-colors">
+                  Inicio
+                </Link>
+              </li>
+              <li>
+                <span className="text-seagull mx-2">›</span>
+              </li>
+              <li>
+                <span className="text-white font-medium">Recetas Probióticas</span>
+              </li>
+            </ol>
+          </nav>
+          
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             
             {/* Contenido del header */}
@@ -217,53 +240,57 @@ export default function RecetasIndexPage() {
       </section>
 
       {/* Grid de recetas mejorado */}
-      <section id="recetas" className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-biscay mb-4">
-              Nuestras Recetas Probióticas
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
-              Cada receta incluye guía paso a paso, consejos de experto, información nutricional y beneficios específicos para la salud.
-            </p>
-            <p className="text-sm text-gray-500 mb-8">
-              {categoriaActiva === 'Todas' 
-                ? `Mostrando todas las ${recetasFiltradas.length} recetas` 
-                : `Mostrando ${recetasFiltradas.length} recetas de ${categoriaActiva.toLowerCase()}`
-              }
-            </p>
-            
-            {/* Filtros por categoría */}
-            <div className="flex flex-wrap justify-center gap-3 mb-8">
-              {CATEGORIAS.map((categoria) => (
-                <button 
-                  key={categoria}
-                  onClick={() => setCategoriaActiva(categoria)}
-                  className={`px-4 py-2 rounded-full font-medium transition-all duration-300 ${
-                    categoria === categoriaActiva
-                      ? 'bg-apple text-white shadow-lg' 
-                      : 'bg-ghost text-gray-600 hover:bg-apple hover:text-white'
-                  }`}
-                >
-                  {categoria}
-                </button>
-              ))}
-            </div>
-          </div>
+      <main>
+        <section id="recetas" className="py-16" aria-labelledby="recetas-heading">
+          <div className="container mx-auto px-4">
+            <header className="text-center mb-12">
+              <h2 id="recetas-heading" className="text-3xl lg:text-4xl font-bold text-biscay mb-4">
+                Nuestras Recetas Probióticas
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
+                Cada receta incluye guía paso a paso, consejos de experto, información nutricional y beneficios específicos para la salud.
+              </p>
+              <p className="text-sm text-gray-500 mb-8" role="status" aria-live="polite">
+                {categoriaActiva === 'Todas' 
+                  ? `Mostrando todas las ${recetasFiltradas.length} recetas` 
+                  : `Mostrando ${recetasFiltradas.length} recetas de ${categoriaActiva.toLowerCase()}`
+                }
+              </p>
+              
+              {/* Filtros por categoría */}
+              <nav aria-label="Filtrar recetas por categoría" className="mb-8">
+                <div className="flex flex-wrap justify-center gap-3">
+                  {CATEGORIAS.map((categoria) => (
+                    <button 
+                      key={categoria}
+                      onClick={() => setCategoriaActiva(categoria)}
+                      aria-pressed={categoria === categoriaActiva}
+                      className={`px-4 py-2 rounded-full font-medium transition-all duration-300 ${
+                        categoria === categoriaActiva
+                          ? 'bg-apple text-white shadow-lg' 
+                          : 'bg-ghost text-gray-600 hover:bg-apple hover:text-white'
+                      }`}
+                    >
+                      {categoria}
+                    </button>
+                  ))}
+                </div>
+              </nav>
+            </header>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {recetasFiltradas.map((slug) => {
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" role="list">{recetasFiltradas.map((slug) => {
               const receta = recetasData[slug];
               return (
                 <Link href={`/recetas/${slug}`} key={slug} className="group">
                   <article className="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:translate-y-[-8px] border border-gray-100 h-[460px] flex flex-col">
                     <div className="relative w-full h-56 overflow-hidden flex-shrink-0">
-                      <OptimizedImagePlaceholder 
+                      <RecipeOptimizedImage 
                         src={receta.imagenPrincipal.src} 
                         alt={receta.imagenPrincipal.alt}
                         width={400}
                         height={224}
                         className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                       <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-apple text-xs font-bold px-3 py-1 rounded-full">
                         {receta.dificultad}
@@ -395,6 +422,46 @@ export default function RecetasIndexPage() {
         </div>
       </section>
 
+      {/* Sección FAQ para SEO */}
+      <section className="py-16 bg-white" aria-labelledby="faq-heading">
+        <div className="container mx-auto px-4">
+          <header className="text-center mb-12">
+            <h2 id="faq-heading" className="text-3xl lg:text-4xl font-bold text-biscay mb-4">
+              Preguntas Frecuentes sobre Fermentados Caseros
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Resolvemos las dudas más comunes sobre la preparación de alimentos fermentados en casa
+            </p>
+          </header>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="grid gap-6">
+              {faqData.map((faq, index) => (
+                <details key={index} className="bg-aqua-squeeze rounded-lg p-6 group">
+                  <summary className="cursor-pointer font-semibold text-lg text-biscay group-hover:text-apple transition-colors flex items-center justify-between">
+                    {faq.question}
+                    <svg className="w-5 h-5 transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </summary>
+                  <div className="mt-4 text-gray-700 leading-relaxed">
+                    {faq.answer}
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+
+          {/* Schema estructurado para FAQ */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(faqSchema)
+            }}
+          />
+        </div>
+      </section>
+
       {/* CTA mejorado */}
       <section className="py-16 bg-gradient-to-r from-biscay to-st-tropaz text-white">
         <div className="container mx-auto px-4 text-center">
@@ -439,6 +506,7 @@ export default function RecetasIndexPage() {
           </div>
         </div>
       </section>
+      </main>
     </>
   );
 } 
