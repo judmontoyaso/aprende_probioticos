@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { Metadata } from 'next';
 import OptimizedImagePlaceholder from '../components/OptimizedImagePlaceholder';
 
@@ -183,7 +182,7 @@ export default function Beneficios() {
                 <p className="text-xl text-gray-700 mb-6 leading-relaxed">
                   Los <strong>probióticos</strong> son microorganismos vivos que, cuando se administran en cantidades adecuadas,
                   confieren beneficios significativos para la salud. La investigación científica ha identificado múltiples
-                  mecanismos por los cuales estos "microorganismos beneficiosos" mejoran diversos aspectos de nuestro bienestar.
+                  mecanismos por los cuales estos &ldquo;microorganismos beneficiosos&rdquo; mejoran diversos aspectos de nuestro bienestar.
                 </p>
 
                 <div className="bg-blue-50 border-l-4 border-blue-400 p-6 my-6 rounded-r-lg">

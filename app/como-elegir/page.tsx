@@ -605,7 +605,7 @@ export default function ComoElegir() {
                   
                   <div className="bg-apple/5 p-6 rounded-xl">
                     <p className="text-gray-700">
-                      <strong className="text-apple">Consejo:</strong> Busca productos que especifiquen "cultivos vivos y activos" y mencionen las cepas específicas que contienen.
+                      <strong className="text-apple">Consejo:</strong> Busca productos que especifiquen &ldquo;cultivos vivos y activos&rdquo; y mencionen las cepas específicas que contienen.
                     </p>
                   </div>
                 </div>
