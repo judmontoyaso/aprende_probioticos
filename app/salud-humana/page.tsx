@@ -358,7 +358,7 @@ export default function SaludHumanaPage() {
                   <Link href="/recetas/yogur-casero" className="flex items-start hover:bg-gray-50 p-2 rounded transition-colors">
                     <div className="h-14 w-14 flex-shrink-0 rounded overflow-hidden mr-3">
                       <Image 
-                        src="/images/yogur-casero.png" 
+                        src="/images/yogurt-recetas.png" 
                         alt="Yogur casero" 
                         width={56} 
                         height={56} 

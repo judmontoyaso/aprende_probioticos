@@ -8,6 +8,8 @@ import Footer from "./components/Footer";
 import Analytics from "./components/Analytics";
 import Verification from "./components/Verification";
 import GlobalSchema from "./components/GlobalSchema";
+import HrefLangTags from "./components/HrefLangTags";
+import InternationalSEO from "./components/InternationalSEO";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -101,6 +103,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
       >
+        {/* Componentes dinámicos para SEO internacional */}
+        <HrefLangTags />
+        <InternationalSEO />
+        
         <div className="flex flex-col min-h-screen">
           <Navbar />
           <Breadcrumbs />
