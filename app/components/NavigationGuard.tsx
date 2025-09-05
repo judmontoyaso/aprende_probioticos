@@ -79,9 +79,9 @@ export default function NavigationGuard({ children }: NavigationGuardProps) {
       }
       
       // Limpieza segura del contenedor
-      if (containerRef.current) {
+      const container = containerRef.current;
+      if (container) {
         try {
-          const container = containerRef.current;
           // Timeout para permitir que React limpie primero
           cleanupTimeoutRef.current = setTimeout(() => {
             if (container && container.parentNode && isUnmountingRef.current) {
