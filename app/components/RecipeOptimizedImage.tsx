@@ -38,9 +38,6 @@ export default function RecipeOptimizedImage({
     setLoading(false);
   };
 
-  // Imagen de fallback para recetas
-  const fallbackSrc = '/images/receta-placeholder.png';
-
   if (hasError) {
     return (
       <div className={`bg-gray-200 flex items-center justify-center ${className}`}>

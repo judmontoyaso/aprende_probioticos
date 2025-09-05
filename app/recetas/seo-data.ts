@@ -1,5 +1,3 @@
-import { Metadata } from 'next';
-
 // Metadatos adicionales para contenido localizado
 export const additionalKeywords = [
   // Palabras clave locales
