@@ -1,4 +1,5 @@
 import React from 'react';
+import ContactForm from './ContactForm';
 import Link from 'next/link';
 
 export const metadata = {
@@ -182,98 +183,8 @@ export default function Contacto() {
                 Envíanos un mensaje
               </h2>
 
-              <form className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Tipo de consulta *
-                  </label>
-                  <select className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors">
-                    <option>Pregunta general sobre probióticos</option>
-                    <option>Sugerencia de contenido</option>
-                    <option>Colaboración/Partnership</option>
-                    <option>Reporte de error técnico</option>
-                    <option>Consulta científica</option>
-                    <option>Otros</option>
-                  </select>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Nombre
-                    </label>
-                    <input 
-                      type="text" 
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
-                      placeholder="Tu nombre"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Email *
-                    </label>
-                    <input 
-                      type="email" 
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
-                      placeholder="tu@email.com"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Asunto *
-                  </label>
-                  <input 
-                    type="text" 
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
-                    placeholder="Resumen breve de tu consulta"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Mensaje *
-                  </label>
-                  <textarea 
-                    required
-                    rows={6}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors resize-none"
-                    placeholder="Describe tu consulta, sugerencia o comentario en detalle..."
-                  ></textarea>
-                </div>
-
-                <div className="bg-gray-50 p-4 rounded-xl">
-                  <div className="text-sm text-gray-600 space-y-2">
-                    <p className="font-medium">* Campos requeridos</p>
-                    <p>
-                      Al enviar este formulario, aceptas nuestros{' '}
-                      <Link href="/terminos-servicio" className="text-green-600 hover:text-green-700 underline font-medium">
-                        Términos de Servicio
-                      </Link>{' '}
-                      y{' '}
-                      <Link href="/politica-privacidad" className="text-green-600 hover:text-green-700 underline font-medium">
-                        Política de Privacidad
-                      </Link>.
-                    </p>
-                  </div>
-                </div>
-
-                <button 
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 py-4 rounded-xl font-semibold hover:from-green-700 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-                >
-                  <span className="flex items-center justify-center">
-                    Enviar mensaje
-                    <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                    </svg>
-                  </span>
-                </button>
-              </form>
+              {/* Formulario funcional con envío a API */}
+              <ContactForm />
             </div>
           </div>
 
