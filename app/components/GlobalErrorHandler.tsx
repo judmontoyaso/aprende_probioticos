@@ -60,14 +60,14 @@ export default function GlobalErrorHandler() {
     const handleBeforeUnload = () => {
       // Limpiar cualquier timeout o intervalo activo
       try {
-        const highestTimeoutId = setTimeout(() => {}, 0) as any;
+        const highestTimeoutId = setTimeout(() => {}, 0) as unknown as number;
         clearTimeout(highestTimeoutId);
         
         for (let i = 1; i < 1000; i++) {
           clearTimeout(i);
           clearInterval(i);
         }
-      } catch (e) {
+      } catch {
         // Ignorar errores de limpieza
       }
     };

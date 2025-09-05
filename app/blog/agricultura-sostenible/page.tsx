@@ -106,10 +106,10 @@ export default function AgriculturaArticulo() {
             
             <div className="bg-green-100 border-l-4 border-green-500 p-6 rounded-r-lg mb-6">
               <p className="text-green-800 italic">
-                "Los probióticos agrícolas son microorganismos vivos que, cuando se aplican a suelos, semillas o
+                &ldquo;Los probióticos agrícolas son microorganismos vivos que, cuando se aplican a suelos, semillas o
                 superficies de plantas, colonizan la rizosfera o el interior de la planta y promueven el crecimiento
                 vegetal mediante el aumento del suministro o disponibilidad de nutrientes primarios para la planta
-                huésped" [1,9].
+                huésped&rdquo; [1,9].
               </p>
             </div>
 
@@ -1090,7 +1090,7 @@ export default function AgriculturaArticulo() {
                     beneficiosos específicos mediante mejoramiento genético asistido.
                   </p>
                   <ul className="text-xs text-orange-600 space-y-1">
-                    <li>• Plantas "pre-programadas" para simbiosis</li>
+                    <li>• Plantas &ldquo;pre-programadas&rdquo; para simbiosis</li>
                     <li>• Exudados radiculares optimizados</li>
                     <li>• Resistencia natural mejorada</li>
                   </ul>
@@ -1414,8 +1414,8 @@ export default function AgriculturaArticulo() {
             </p>
             <div className="bg-white p-4 rounded-lg mt-4">
               <p className="text-green-800 font-medium italic text-center">
-                "El futuro de la agricultura es biológico, y ese futuro ya está aquí. Solo necesitamos la voluntad 
-                colectiva para adoptarlo a la escala que requiere nuestro planeta."
+                &ldquo;El futuro de la agricultura es biológico, y ese futuro ya está aquí. Solo necesitamos la voluntad 
+                colectiva para adoptarlo a la escala que requiere nuestro planeta.&rdquo;
               </p>
             </div>
           </div>

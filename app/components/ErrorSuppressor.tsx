@@ -8,7 +8,7 @@ export default function ErrorSuppressor({ children }: { children: React.ReactNod
     const originalAppendChild = Node.prototype.appendChild;
     const originalInsertBefore = Node.prototype.insertBefore;
 
-    // @ts-ignore
+    // @ts-expect-error - Overriding DOM API for error suppression
     Node.prototype.removeChild = function(child) {
       try {
         if (this && child && this.contains(child)) {
@@ -21,7 +21,7 @@ export default function ErrorSuppressor({ children }: { children: React.ReactNod
       }
     };
 
-    // @ts-ignore
+    // @ts-expect-error - Overriding DOM API for error suppression
     Node.prototype.appendChild = function(child) {
       try {
         if (this && child) {
@@ -34,7 +34,7 @@ export default function ErrorSuppressor({ children }: { children: React.ReactNod
       }
     };
 
-    // @ts-ignore
+    // @ts-expect-error - Overriding DOM API for error suppression
     Node.prototype.insertBefore = function(newNode, referenceNode) {
       try {
         if (this && newNode) {

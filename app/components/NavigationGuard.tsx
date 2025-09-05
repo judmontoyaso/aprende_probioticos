@@ -11,14 +11,13 @@ export default function NavigationGuard({ children }: NavigationGuardProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const isUnmountingRef = useRef(false);
   const cleanupTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const router = useRouter();
   const pathname = usePathname();
 
   useEffect(() => {
     isUnmountingRef.current = false;
     
     // Interceptar navegación del navegador
-    const handlePopState = (event: PopStateEvent) => {
+    const handlePopState = () => {
       // Marcar que estamos navegando
       isUnmountingRef.current = true;
       
@@ -43,11 +42,11 @@ export default function NavigationGuard({ children }: NavigationGuardProps) {
                 if (element.parentNode) {
                   element.parentNode.replaceChild(newElement, element);
                 }
-              } catch (e) {
+              } catch {
                 // Ignorar errores de limpieza
               }
             });
-          } catch (error) {
+          } catch {
             // Ignorar errores de limpieza
           }
         }
@@ -89,12 +88,12 @@ export default function NavigationGuard({ children }: NavigationGuardProps) {
               try {
                 // Solo intentar limpiar si aún existe
                 container.innerHTML = '';
-              } catch (e) {
+              } catch {
                 // Ignorar errores de limpieza tardía
               }
             }
           }, 0);
-        } catch (error) {
+        } catch {
           // Ignorar errores de limpieza
         }
       }

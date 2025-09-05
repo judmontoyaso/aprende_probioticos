@@ -30,7 +30,7 @@ export function useNavigationSafety() {
             if (el.parentNode) {
               // Solo limpiar si es seguro
             }
-          } catch (e) {
+          } catch {
             // Ignorar errores de limpieza
           }
         });

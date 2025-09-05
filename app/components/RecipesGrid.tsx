@@ -7,9 +7,6 @@ import RecipeOptimizedImage from '../components/RecipeOptimizedImage';
 import { recetasData, recetaSlugs } from '../recetas/data';
 import RecipeFilters from '../components/RecipeFilters';
 
-// Categorías disponibles para filtrar
-const CATEGORIAS = ['Todas', 'Lácteos', 'Vegetales', 'Bebidas', 'Fermentados'];
-
 // Función para categorizar recetas
 const categorizarReceta = (slug: string) => {
   switch (slug) {
@@ -62,7 +59,7 @@ export default function RecipesGrid() {
 
       {/* Grid de recetas */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-        {recetasFiltradas.map((slug, index) => {
+        {recetasFiltradas.map((slug) => {
           const receta = recetasData[slug];
           if (!receta) return null;
 
@@ -76,12 +73,9 @@ export default function RecipesGrid() {
                 <RecipeOptimizedImage 
                   src={`/images/${slug}-principal.png`}
                   alt={`Receta de ${receta.titulo}`}
+                  width={400}
+                  height={200}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  placeholder={
-                    <OptimizedImagePlaceholder 
-                      className="w-full h-full bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center"
-                    />
-                  }
                 />
                 <div className="absolute top-3 left-3">
                   <span className={`px-3 py-1 rounded-full text-xs font-medium ${

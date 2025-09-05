@@ -420,7 +420,7 @@ export default function AlimentosFermentadosArticulo() {
                 <h3 className="text-xl font-bold mb-4 text-[#163660]">Kéfir: la bebida de la longevidad</h3>
                 <div className="bg-[#eef8f2] p-6 rounded-lg my-6">
                   <p className="text-gray-700 mb-4">
-                    El kéfir se produce utilizando "granos de kéfir", una matriz compleja de bacterias y levaduras 
+                    El kéfir se produce utilizando &ldquo;granos de kéfir&rdquo;, una matriz compleja de bacterias y levaduras 
                     (SCOBY) que fermentan la leche creando un producto único con propiedades excepcionales<sup className="text-[#163660] font-semibold">[2,3]</sup>:
                   </p>
                   <ul className="text-gray-700 space-y-2">

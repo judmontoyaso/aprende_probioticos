@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import BlogArticleTemplate from '@/app/templates/BlogArticleTemplate';
@@ -560,7 +559,7 @@ export default function SaludHumanaPage() {
           </div>
           
           <p className="text-gray-700">
-            Es importante destacar que no todos los productos comercializados como "probióticos" contienen 
+            Es importante destacar que no todos los productos comercializados como &ldquo;probióticos&rdquo; contienen 
             cepas viables o en cantidades terapéuticas. Los consumidores deben buscar productos que especifiquen:
           </p>
           <div className="bg-amber-50 border-l-4 border-amber-400 p-6 my-6">
@@ -731,7 +730,7 @@ export default function SaludHumanaPage() {
             </p>
             <p className="text-gray-700">
               Las áreas de investigación más prometedoras incluyen la modulación del sistema inmunitario en 
-              inmunoterapia oncológica y el desarrollo de "psicobióticos" para trastornos neuropsiquiátricos.
+              inmunoterapia oncológica y el desarrollo de &ldquo;psicobióticos&rdquo; para trastornos neuropsiquiátricos.
             </p>
           </div>
         </div>
