@@ -70,54 +70,119 @@ export default function TipoProbioticosTemplate({
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
   const [expandedStudy, setExpandedStudy] = useState<number | null>(null);
 
-  // Datos estructurados JSON-LD para SEO
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": titulo,
-    "description": descripcion,
-    "image": {
-      "@type": "ImageObject",
-      "url": `https://www.probioticosparatodos.com${imagenPrincipal.src}`,
-      "width": 1200,
-      "height": 630,
-      "alt": imagenPrincipal.alt
-    },
-    "author": {
-      "@type": "Organization",
-      "name": "Probióticos Para Todos",
-      "url": "https://www.probioticosparatodos.com"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Probióticos Para Todos",
-      "logo": {
+  // Generar datos estructurados específicos según el tipo
+  const generateStructuredData = () => {
+    const baseStructuredData = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": titulo,
+      "description": descripcion,
+      "image": {
         "@type": "ImageObject",
-        "url": "https://www.probioticosparatodos.com/images/logo_transparente.png"
+        "url": `https://www.probioticosparatodos.com${imagenPrincipal.src}`,
+        "width": 1200,
+        "height": 630,
+        "alt": imagenPrincipal.alt
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Probióticos Para Todos",
+        "url": "https://www.probioticosparatodos.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Probióticos Para Todos",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.probioticosparatodos.com/images/logo_transparente.png"
+        }
+      },
+      "datePublished": fechaPublicacion,
+      "dateModified": new Date().toISOString(),
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `https://www.probioticosparatodos.com/tipos/${titulo.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`
+      },
+      "articleSection": "Tipos de Probióticos",
+      "keywords": titulo.includes('Saccharomyces') 
+        ? "Saccharomyces boulardii, levadura probiótica, resistente antibióticos, diarrea asociada antibióticos, S. boulardii, probiótico durante antibióticos"
+        : "probióticos, bacterias beneficiosas, microbiota intestinal, salud digestiva",
+      "about": {
+        "@type": "Thing",
+        "name": titulo.includes('Saccharomyces') ? "Saccharomyces boulardii" : titulo,
+        "description": descripcion
       }
-    },
-    "datePublished": fechaPublicacion,
-    "dateModified": new Date().toISOString(),
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": `https://www.probioticosparatodos.com/tipos/${titulo.toLowerCase().replace(/\s+/g, '-')}`
-    },
-    "articleSection": "Salud y Bienestar",
-    "keywords": [`${titulo}`, "probióticos", "salud digestiva", "microbioma", "bacterias beneficiosas"]
+    };
+
+    // Datos específicos para Saccharomyces boulardii
+    if (titulo.includes('Saccharomyces')) {
+      return [
+        baseStructuredData,
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": faq.map(item => ({
+            "@type": "Question",
+            "name": item.pregunta,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": item.respuesta
+            }
+          }))
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "MedicalCondition",
+          "name": "Diarrea asociada a antibióticos",
+          "possibleTreatment": {
+            "@type": "Drug",
+            "name": "Saccharomyces boulardii",
+            "description": "Levadura probiótica resistente a antibióticos para prevención y tratamiento de diarrea",
+            "drugClass": "Probiótico"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          "name": "Cómo tomar Saccharomyces boulardii correctamente",
+          "description": "Guía paso a paso para el uso óptimo de S. boulardii",
+          "step": [
+            {
+              "@type": "HowToStep",
+              "name": "Dosificación estándar",
+              "text": "Tomar 250-500 mg (5-10 mil millones UFC) dos veces al día"
+            },
+            {
+              "@type": "HowToStep", 
+              "name": "Durante antibióticos",
+              "text": "Continuar durante todo el tratamiento antibiótico y 1-2 semanas después"
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Para diarrea del viajero",
+              "text": "Comenzar 5 días antes del viaje, continuar durante y después"
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "Saccharomyces boulardii CNCM I-745",
+          "description": "Levadura probiótica más estudiada, resistente a antibióticos",
+          "brand": {
+            "@type": "Brand",
+            "name": "Probióticos Científicos"
+          },
+          "category": "Suplemento Probiótico",
+          "healthCondition": ["Diarrea asociada a antibióticos", "Síndrome del intestino irritable", "Diarrea del viajero"]
+        }
+      ];
+    }
+
+    return [baseStructuredData];
   };
 
-  const faqStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faq.map(item => ({
-      "@type": "Question",
-      "name": item.pregunta,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.respuesta
-      }
-    }))
-  };
+  const structuredDataArray = generateStructuredData();
 
   const toggleFaq = (index: number) => {
     setExpandedFaq(expandedFaq === index ? null : index);
@@ -129,15 +194,14 @@ export default function TipoProbioticosTemplate({
 
   return (
     <>
-      {/* Datos estructurados JSON-LD */}
-      <script 
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
-      <script 
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
-      />
+      {/* Datos estructurados JSON-LD múltiples para SEO avanzado */}
+      {structuredDataArray.map((data, index) => (
+        <script 
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+        />
+      ))}
 
       {/* Header moderno con gradient */}
       <header className="bg-gradient-to-r from-apple to-st-tropaz text-white py-16 relative overflow-hidden" role="banner">
@@ -216,7 +280,9 @@ export default function TipoProbioticosTemplate({
                   <div className={`relative rounded-2xl overflow-hidden shadow-2xl ${
                     titulo.includes('Bifidobacterium') 
                       ? 'h-[360px] sm:h-[400px] lg:h-[450px]' 
-                      : 'h-[400px] sm:h-[450px] lg:h-[500px]'
+                      : titulo.includes('Saccharomyces boulardii')
+                        ? 'h-[250px] sm:h-[280px] lg:h-[300px]'
+                        : 'h-[400px] sm:h-[450px] lg:h-[500px]'
                   }`}>
                     <OptimizedImagePlaceholder 
                       src={imagenPrincipal.src} 
