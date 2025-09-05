@@ -2,7 +2,7 @@ import React from 'react';
 
 export const metadata = {
   title: 'Política de Cookies | Probióticos Para Todos',
-  description: 'Información sobre cómo utilizamos las cookies y otras tecnologías de seguimiento en Probióticos Para Todos.',
+  description: 'Información sobre cómo utilizamos las cookies para analizar el tráfico y mejorar la experiencia del usuario en Probióticos Para Todos.',
 };
 
 export default function PoliticaCookies() {
@@ -13,7 +13,7 @@ export default function PoliticaCookies() {
         <div className="container mx-auto px-4">
           <h1 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4">Política de Cookies</h1>
           <p className="text-base sm:text-xl max-w-3xl">
-            Cómo utilizamos las cookies y otras tecnologías de seguimiento en nuestro sitio web.
+            Cómo utilizamos las cookies para analizar el tráfico y mejorar la experiencia del usuario.
           </p>
         </div>
       </header>
@@ -24,7 +24,7 @@ export default function PoliticaCookies() {
           <section className="mb-8">
             <h2 className="text-xl sm:text-2xl font-bold mb-4 text-gray-800">Introducción</h2>
             <p className="text-gray-700 mb-4">
-              En Probióticos Para Todos utilizamos cookies y tecnologías similares para mejorar tu experiencia en nuestro sitio web. Esta política explica qué son las cookies, cómo las utilizamos y cómo puedes controlarlas.
+              En Probióticos Para Todos utilizamos cookies y tecnologías similares para analizar el tráfico y mejorar tu experiencia en nuestro sitio web. Esta política explica qué son las cookies, cómo las utilizamos y cómo puedes controlarlas.
             </p>
             <p className="text-gray-700">
               Al continuar navegando por nuestro sitio, aceptas el uso de cookies de acuerdo con esta política.
@@ -32,7 +32,7 @@ export default function PoliticaCookies() {
           </section>
           
           <div className="prose prose-green max-w-none">
-            <p>Última actualización: {new Date().toLocaleDateString('es-ES')}</p>
+            <p>Última actualización: 1 de diciembre de 2024</p>
             
             <h2>1. ¿Qué son las cookies?</h2>
             <p>

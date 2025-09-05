@@ -211,12 +211,12 @@ export default function RecetaTemplate({
                       <p className="text-gray-700 mb-4">{instruccion.descripcion}</p>
                       
                       {instruccion.imagen && (
-                        <div className="relative w-full h-60 mt-3 mb-4">
+                        <div className="relative w-full max-w-md mx-auto aspect-square mt-3 mb-4">
                           <Image 
                             src={instruccion.imagen.src} 
                             alt={instruccion.imagen.alt}
                             fill
-                            sizes="(max-width: 768px) 100vw, 600px"
+                            sizes="(max-width: 768px) 100vw, 400px"
                             className="rounded-lg object-cover"
                           />
                         </div>

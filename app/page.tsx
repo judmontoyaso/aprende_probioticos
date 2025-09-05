@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Metadata } from 'next';
 import Image from 'next/image';
 import OptimizedImagePlaceholder from './components/OptimizedImagePlaceholder';
+import { NewBannerProfessional, HorizontalBanner, ImageBannerProfessional } from './components/AdBanners';
 
 export const metadata: Metadata = {
   title: 'Probióticos: Tu Guía Completa para la Salud Digestiva | Probióticos Para Todos',
@@ -114,96 +115,6 @@ function AdSpace({ position, title }: { position: string; title: string }) {
   );
 }
 
-function TemporaryBanner({ className = "", alt = "Banner promocional Probióticos Para Todos" }: { className?: string; alt?: string }) {
-  return (
-    <div className={`my-4 ${className}`}>
-      <Image
-        src="/images/banner.png?v=2024"
-        alt={alt}
-        width={300}
-        height={600}
-        className="w-full h-auto rounded-lg hover:scale-105 transition-transform cursor-pointer"
-        quality={90}
-        style={{ objectFit: 'contain' }}
-      />
-    </div>
-  );
-}
-
-function NewBannerProfessional({ className = "", alt = "Banner profesional Probióticos Para Todos" }: { className?: string; alt?: string }) {
-  return (
-    <div className={`my-4 ${className}`}>
-      <div 
-        className="bg-gradient-to-r from-green-50 to-green-100 border border-green-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow duration-300"
-        role="banner"
-        aria-label={alt}
-      >
-        <div className="flex items-center justify-between max-h-[90px]">
-          <div className="flex items-center space-x-4">
-            <div className="bg-green-600 p-3 rounded-full">
-              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-              </svg>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold text-gray-800">Probióticos para Todos</h3>
-              <p className="text-sm text-gray-600">Ciencia, bienestar y salud digestiva</p>
-            </div>
-          </div>
-          <div className="hidden md:flex items-center space-x-6 text-sm text-gray-700">
-            <div className="text-center">
-              <div className="font-bold text-green-600">🧬</div>
-              <div>Evidencia Científica</div>
-            </div>
-            <div className="text-center">
-              <div className="font-bold text-blue-600">🌿</div>
-              <div>Salud Natural</div>
-            </div>
-            <div className="text-center">
-              <div className="font-bold text-purple-600">💪</div>
-              <div>Bienestar</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function ImageBannerProfessional({ className = "", alt = "Banner imagen Probióticos Para Todos" }: { className?: string; alt?: string }) {
-  return (
-    <div className={`my-4 ${className}`}>
-      <Image
-        src="/images/banner_3.png"
-        alt={alt}
-        width={0}
-        height={0}
-        sizes="100vw"
-        className="w-full h-auto rounded-lg hover:scale-[1.01] transition-all duration-300 cursor-pointer shadow-sm"
-        quality={95}
-        style={{ width: '100%', height: 'auto' }}
-        priority={true}
-      />
-    </div>
-  );
-}
-
-function HorizontalBanner({ className = "", alt = "Banner horizontal Probióticos Para Todos" }: { className?: string; alt?: string }) {
-  return (
-    <div className={`my-4 ${className}`}>
-      <Image
-        src="/images/banner_horizontal.png"
-        alt={alt}
-        width={970}
-        height={280}
-        className="w-full h-auto rounded-lg hover:scale-105 transition-transform cursor-pointer"
-        quality={90}
-        style={{ objectFit: 'contain' }}
-      />
-    </div>
-  );
-}
-
 export default function Home() {
   return (
     <div className="bg-white min-h-screen">
@@ -271,7 +182,7 @@ export default function Home() {
       </header>
       
       <div className="container mx-auto px-4">
-        <AdSpace position="in-article" title="Banner Artículo (300x250)" />
+        <NewBannerProfessional className="max-w-4xl mx-auto" alt="Banner promocional Probióticos Para Todos - Contenido educativo" />
       </div>
       
       <main className="container mx-auto px-4 py-12">
@@ -727,15 +638,11 @@ export default function Home() {
         </div>
       </main>
       
-      <div className="hidden xl:block fixed right-4 top-1/2 transform -translate-y-1/2 z-20 w-72">
-        <TemporaryBanner className="w-full" alt="Banner promocional Probióticos Para Todos - Lateral" />
-      </div>
-      
       <footer className="bg-gray-50 py-8">
         <div className="container mx-auto px-4">
-          <HorizontalBanner className="max-w-4xl mx-auto" alt="Banner horizontal Probióticos Para Todos - Footer" />
           <div className="text-center mt-8 text-gray-600">
-            <p>&copy; 2025 Probióticos Para Todos</p>
+            <p>&copy; 2024-2025 Probióticos Para Todos. Todos los derechos reservados.</p>
+            <p className="text-sm mt-2 text-gray-500">Contenido educativo sobre probióticos y salud digestiva</p>
             <div className="mt-4 space-x-6">
               <Link href="/politica-privacidad" className="text-green-600 hover:text-green-700">
                 Privacidad

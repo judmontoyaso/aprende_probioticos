@@ -42,7 +42,7 @@ export default function TerminosServicio() {
             </div>
             
             <p className="text-gray-700 mb-4">
-              Última actualización: {new Date().toLocaleDateString('es-ES')}
+              Última actualización: 1 de diciembre de 2024
             </p>
           </section>
           

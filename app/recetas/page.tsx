@@ -16,6 +16,8 @@ const categorizarReceta = (slug: string) => {
   switch (slug) {
     case 'yogur-casero':
       return ['Lácteos', 'Fermentados'];
+    case 'yogur-cultivos-puros':
+      return ['Lácteos', 'Fermentados'];
     case 'kefir-agua':
       return ['Bebidas', 'Fermentados'];
     case 'chucrut-casero':

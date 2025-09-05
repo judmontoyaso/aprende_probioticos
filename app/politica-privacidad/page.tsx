@@ -32,7 +32,7 @@ export default function PoliticaPrivacidad() {
           </section>
           
           <div className="prose prose-green max-w-none">
-            <p>Última actualización: {new Date().toLocaleDateString('es-ES')}</p>
+            <p>Última actualización: 1 de diciembre de 2024</p>
             
             <h2>1. Información que recopilamos</h2>
             <p>
@@ -55,28 +55,23 @@ export default function PoliticaPrivacidad() {
               Google puede también transferir esta información a terceros cuando así lo requiera la legislación, o cuando dichos terceros procesen la información en nombre de Google. Google no asociará tu dirección IP con ningún otro dato del que disponga Google.
             </p>
             
-            <h2>3. Google AdSense y publicidad</h2>
+            <h2>3. Uso futuro de publicidad</h2>
             <p>
-              Este sitio web utiliza Google AdSense, un servicio de publicidad proporcionado por Google Inc. (&ldquo;Google&rdquo;). Google AdSense utiliza cookies para mostrar anuncios relevantes a los usuarios. El uso de estas cookies permite a Google y sus socios mostrar anuncios basados en visitas previas a nuestro sitio web u otros sitios web.
+              En el futuro, este sitio web puede implementar servicios de publicidad para generar ingresos que ayuden a mantener el contenido gratuito. 
+              Cuando esto ocurra, actualizaremos esta política de privacidad para informarte sobre:
             </p>
             
-            <h3>Información importante sobre la publicidad:</h3>
+            <h3>Información sobre posible publicidad futura:</h3>
             <ul>
-              <li><strong>Cookies publicitarias:</strong> Google utiliza cookies publicitarias para personalizar los anuncios mostrados en nuestro sitio</li>
-              <li><strong>Anuncios personalizados:</strong> Los anuncios pueden basarse en tu historial de navegación y preferencias</li>
-              <li><strong>Control de anuncios:</strong> Puedes desactivar los anuncios personalizados visitando la <a href="https://www.google.com/settings/ads" className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">configuración de anuncios de Google</a></li>
-              <li><strong>Terceros:</strong> Los anunciantes de terceros también pueden utilizar cookies para rastrear tu actividad</li>
+              <li><strong>Cookies publicitarias:</strong> Se utilizarán para personalizar anuncios cuando implementemos servicios de publicidad</li>
+              <li><strong>Anuncios personalizados:</strong> Los anuncios podrán basarse en el historial de navegación y preferencias</li>
+              <li><strong>Control de anuncios:</strong> Proporcionaremos opciones para controlar la personalización de anuncios</li>
+              <li><strong>Terceros:</strong> Los anunciantes de terceros podrán utilizar cookies para rastrear actividad</li>
             </ul>
             
-            <h3>Opt-out de la publicidad personalizada:</h3>
             <p>
-              Si prefieres no recibir publicidad personalizada, puedes:
+              <strong>Nota importante:</strong> Actualmente no utilizamos ningún servicio de publicidad. Esta sección se incluye para transparencia sobre posibles usos futuros.
             </p>
-            <ul>
-              <li>Visitar la <a href="https://www.google.com/settings/ads" className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">página de configuración de anuncios de Google</a></li>
-              <li>Usar la herramienta de exclusión de la <a href="https://www.networkadvertising.org/choices/" className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">Network Advertising Initiative</a></li>
-              <li>Configurar tu navegador para rechazar cookies de terceros</li>
-            </ul>
             
             <h2>4. Base legal para el procesamiento</h2>
             <p>
@@ -111,7 +106,6 @@ export default function PoliticaPrivacidad() {
             <ul>
               <li><strong>Cookies esenciales:</strong> Necesarias para el funcionamiento básico del sitio web.</li>
               <li><strong>Cookies de análisis:</strong> Nos ayudan a entender cómo interactúas con nuestro sitio web (Google Analytics).</li>
-              <li><strong>Cookies publicitarias:</strong> Utilizadas por Google AdSense para mostrar anuncios relevantes.</li>
             </ul>
             
             <h2>7. Cambios a esta política</h2>

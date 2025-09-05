@@ -216,7 +216,7 @@ export default function DescargoResponsabilidad() {
               </p>
               
               <p className="text-sm text-gray-500 mt-6">
-                Última actualización: {new Date().toLocaleDateString('es-ES')}
+                Última actualización: 1 de diciembre de 2024
               </p>
             </section>
           </div>

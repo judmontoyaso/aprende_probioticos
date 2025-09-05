@@ -24,7 +24,7 @@ const Footer = () => {
         </div>
         
         <div className="border-t mt-8 pt-8 text-sm text-center">
-          <p>&copy; {new Date().getFullYear()} Probióticos Para Todos. Todos los derechos reservados.</p>
+          <p>&copy; {2024} Probióticos Para Todos. Todos los derechos reservados.</p>
           <div className="mt-2 flex justify-center space-x-4 flex-wrap">
             <Link href="/politica-privacidad" className="hover:text-green-600 transition-colors">Política de privacidad</Link>
             <Link href="/terminos-servicio" className="hover:text-green-600 transition-colors">Términos de servicio</Link>
@@ -37,9 +37,11 @@ const Footer = () => {
               <strong>Aviso médico:</strong> La información de este sitio es únicamente educativa. 
               No constituye consejo médico. Consulte siempre con un profesional de la salud.
             </p>
-            <p>
-              Este sitio participa en el programa Google AdSense. Los anuncios mostrados son seleccionados automáticamente 
-              y no constituyen recomendaciones del sitio.
+            <p className="mb-2">
+              © 2024-2025 Probióticos Para Todos. Todos los derechos reservados.
+            </p>
+            <p className="text-center">
+              Contenido original creado con fines educativos sobre salud digestiva y probióticos.
             </p>
           </div>
         </div>

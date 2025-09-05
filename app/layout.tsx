@@ -10,6 +10,7 @@ import Verification from "./components/Verification";
 import GlobalSchema from "./components/GlobalSchema";
 import HrefLangTags from "./components/HrefLangTags";
 import InternationalSEO from "./components/InternationalSEO";
+import AdLayout from "./components/AdLayout";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -111,7 +112,9 @@ export default function RootLayout({
           <Navbar />
           <Breadcrumbs />
           <main className="flex-grow">
-        {children}
+            <AdLayout>
+              {children}
+            </AdLayout>
           </main>
           <Footer />
         </div>
