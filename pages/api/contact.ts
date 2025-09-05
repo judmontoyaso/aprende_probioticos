@@ -26,7 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       html: `<p><strong>Nombre:</strong> ${nombre}</p><p><strong>Email:</strong> ${email}</p><p><strong>Tipo:</strong> ${tipo}</p><p><strong>Mensaje:</strong><br/>${mensaje}</p>`
     });
     return res.status(200).json({ ok: true });
-  } catch (error) {
+  } catch {
     return res.status(500).json({ ok: false, error: 'No se pudo enviar el correo.' });
   }
 }
