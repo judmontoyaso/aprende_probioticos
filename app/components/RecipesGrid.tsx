@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import OptimizedImagePlaceholder from '../components/OptimizedImagePlaceholder';
 import RecipeOptimizedImage from '../components/RecipeOptimizedImage';
 import { recetasData, recetaSlugs } from '../recetas/data';
 import RecipeFilters from '../components/RecipeFilters';

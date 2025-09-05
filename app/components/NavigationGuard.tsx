@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, ReactNode } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 interface NavigationGuardProps {
   children: ReactNode;
