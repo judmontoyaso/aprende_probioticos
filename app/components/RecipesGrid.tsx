@@ -58,13 +58,13 @@ export default function RecipesGrid() {
 
       {/* Grid de recetas */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-        {recetasFiltradas.map((slug) => {
+        {recetasFiltradas.map((slug, index) => {
           const receta = recetasData[slug];
           if (!receta) return null;
 
           return (
             <Link 
-              key={slug}
+              key={`${slug}-${index}`}
               href={`/recetas/${slug}`}
               className="group block bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
             >

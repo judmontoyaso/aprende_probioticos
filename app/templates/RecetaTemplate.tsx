@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import SafeImage from '../components/SafeImage';
+import SEOSchema from '../components/SEOSchema';
 // import AdBanner from '../components/AdBanner';
 // import SEOSchema from '../components/SEOSchema';
 
@@ -52,7 +53,7 @@ export default function RecetaTemplate({
   titulo,
   descripcion,
   imagenPrincipal,
-  // fechaPublicacion, // comentado temporalmente
+  fechaPublicacion, 
   tiempoPreparacion,
   dificultad,
   porciones,
@@ -66,8 +67,7 @@ export default function RecetaTemplate({
   variaciones,
   faq
 }: RecetaTemplateProps) {
-  /* Temporarily disabled data structures for SEO
-  // Datos estructurados para el esquema de artículo/receta
+  //Datos estructurados para el esquema de artículo/receta
   const recipeData = {
     title: titulo,
     description: descripcion,
@@ -75,19 +75,19 @@ export default function RecetaTemplate({
     author: "Probióticos Para Todos",
     image: `https://www.probioticosparatodos.com${imagenPrincipal.src}`,
     url: `https://www.probioticosparatodos.com/recetas/${titulo.toLowerCase().replace(/\s+/g, '-')}`,
-    // Datos específicos para Recipe Schema
+    //Datos específicos para Recipe Schema
     prepTime: tiempoPreparacion,
     recipeYield: `${porciones} porciones`,
     recipeIngredient: ingredientes.map(ing => `${ing.cantidad} ${ing.nombre}`),
     recipeInstructions: instrucciones.map(inst => inst.paso)
   };
 
-  // Datos estructurados para el esquema FAQ
+  //Datos estructurados para el esquema FAQ
   const faqData = faq.map(item => ({
     question: item.pregunta,
     answer: item.respuesta
   }));
-  */
+
 
   // Función para obtener color según dificultad
   const getDifficultyColor = () => {
@@ -102,7 +102,7 @@ export default function RecetaTemplate({
   return (
     <div>
   {/* Schema.org estructurado (temporalmente desactivado para depurar) */}
-  {/** <SEOSchema type="both" data={{ article: recipeData, faq: faqData }} /> **/}
+<SEOSchema type="both" data={{ article: recipeData, faq: faqData }} /> 
       
       {/* Header */}
       <header className="bg-green-600 text-white py-8 sm:py-12">
@@ -361,4 +361,4 @@ export default function RecetaTemplate({
       </div>
     </div>
   );
-} 
+}
