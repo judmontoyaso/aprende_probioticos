@@ -40,14 +40,8 @@ export function useNavigationSafety() {
     const handlePopState = (event: PopStateEvent) => {
       isNavigatingRef.current = true;
       
-      // Prevenir el comportamiento por defecto temporalmente
-      event.preventDefault();
-      
-      // Usar setTimeout para permitir que React limpie antes de navegar
-      setTimeout(() => {
-        // Ahora permitir la navegación
-        window.history.go(-1);
-      }, 50);
+      // No prevenir el comportamiento por defecto - esto causa problemas
+      // Solo marcar que estamos navegando para que otros componentes lo sepan
     };
 
     // Escuchar eventos de navegación

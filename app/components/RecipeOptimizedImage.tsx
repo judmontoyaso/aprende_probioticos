@@ -87,30 +87,6 @@ export default function RecipeOptimizedImage({
           height: 'auto',
         }}
       />
-      
-      {/* Metadatos estructurados para la imagen */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ImageObject",
-            "url": `https://www.probioticosparatodos.com${src}`,
-            "width": width,
-            "height": height,
-            "caption": alt,
-            "description": alt,
-            "encodingFormat": "image/png",
-            "license": "https://www.probioticosparatodos.com/licencia",
-            "acquireLicensePage": "https://www.probioticosparatodos.com/contacto",
-            "creditText": "Probióticos Para Todos",
-            "creator": {
-              "@type": "Organization",
-              "name": "Probióticos Para Todos"
-            }
-          })
-        }}
-      />
     </div>
   );
 }
