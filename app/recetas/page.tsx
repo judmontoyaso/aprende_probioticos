@@ -237,6 +237,7 @@ export default function RecetasIndexPage() {
                 </div>
               </div>
             ))}
+
           </div>
         </div>
       </section>
@@ -321,6 +322,7 @@ export default function RecetasIndexPage() {
                         {receta.descripcion}
                       </p>
                       
+
                       {/* Beneficios destacados */}
                       {receta.beneficiosPrincipales && (
                         <div className="mb-4">
@@ -350,6 +352,7 @@ export default function RecetasIndexPage() {
                 </Link>
               );
             })}
+
           </div>
         </div>
       </section>
@@ -511,4 +514,4 @@ export default function RecetasIndexPage() {
       </main>
     </>
   );
-} 
+}

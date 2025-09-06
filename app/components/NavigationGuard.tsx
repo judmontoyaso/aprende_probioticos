@@ -25,32 +25,6 @@ export default function NavigationGuard({ children }: NavigationGuardProps) {
       if (cleanupTimeoutRef.current) {
         clearTimeout(cleanupTimeoutRef.current);
       }
-      
-      // Dar tiempo para limpieza antes de permitir navegación
-      setTimeout(() => {
-        // Forzar limpieza del contenedor
-        if (containerRef.current) {
-          try {
-            const container = containerRef.current;
-            // Remover todos los event listeners
-            const allElements = container.querySelectorAll('*');
-            allElements.forEach(el => {
-              const element = el as HTMLElement;
-              try {
-                // Clonar y reemplazar para remover todos los listeners
-                const newElement = element.cloneNode(true);
-                if (element.parentNode) {
-                  element.parentNode.replaceChild(newElement, element);
-                }
-              } catch {
-                // Ignorar errores de limpieza
-              }
-            });
-          } catch {
-            // Ignorar errores de limpieza
-          }
-        }
-      }, 10);
     };
 
     const handleBeforeUnload = () => {
@@ -78,25 +52,7 @@ export default function NavigationGuard({ children }: NavigationGuardProps) {
         clearTimeout(cleanupTimeoutRef.current);
       }
       
-      // Limpieza segura del contenedor
-      const container = containerRef.current;
-      if (container) {
-        try {
-          // Timeout para permitir que React limpie primero
-          cleanupTimeoutRef.current = setTimeout(() => {
-            if (container && container.parentNode && isUnmountingRef.current) {
-              try {
-                // Solo intentar limpiar si aún existe
-                container.innerHTML = '';
-              } catch {
-                // Ignorar errores de limpieza tardía
-              }
-            }
-          }, 0);
-        } catch {
-          // Ignorar errores de limpieza
-        }
-      }
+      // No es necesario limpiar el contenedor directamente, React se encarga de ello.
     };
   }, [pathname]);
 
