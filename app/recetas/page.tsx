@@ -1,121 +1,39 @@
-'use client';
+import { Metadata } from 'next';
+import { recetasData } from './data';
 
-import Link from 'next/link';
-import { useState } from 'react';
-import OptimizedImagePlaceholder from '../components/OptimizedImagePlaceholder';
-import RecipeOptimizedImage from '../components/RecipeOptimizedImage';
-import { recetasData, recetaSlugs } from './data';
-import RecipesSchema from '../components/RecipesSchema';
-import { faqData, faqSchema } from './seo-data';
-
-// Categorías disponibles para filtrar
-const CATEGORIAS = ['Todas', 'Lácteos', 'Vegetales', 'Bebidas', 'Fermentados'];
-
-// Función para categorizar recetas
-const categorizarReceta = (slug: string) => {
-  switch (slug) {
-    case 'yogur-casero':
-      return ['Lácteos', 'Fermentados'];
-    case 'yogur-cultivos-puros':
-      return ['Lácteos', 'Fermentados'];
-    case 'kefir-agua':
-      return ['Bebidas', 'Fermentados'];
-    case 'chucrut-casero':
-      return ['Vegetales', 'Fermentados'];
-    case 'kombucha-casa':
-      return ['Bebidas', 'Fermentados'];
-    case 'miso-casero':
-      return ['Fermentados'];
-    default:
-      return ['Fermentados'];
+export const metadata: Metadata = {
+  title: 'Recetas Probióticas Caseras | Alimentos Fermentados Naturales',
+  description: 'Descubre recetas fáciles de alimentos fermentados caseros: yogur, kéfir, chucrut, kombucha y más. Guías paso a paso para crear probióticos naturales en casa.',
+  keywords: 'recetas probióticas, alimentos fermentados, yogur casero, kéfir, chucrut, kombucha, probióticos naturales',
+  openGraph: {
+    title: 'Recetas Probióticas Caseras | Alimentos Fermentados',
+    description: 'Aprende a preparar alimentos fermentados ricos en probióticos con nuestras recetas detalladas y fáciles de seguir.',
+    type: 'website',
+    images: ['/images/hero-recetas.png']
   }
 };
 
 export default function RecetasIndexPage() {
-  const [categoriaActiva, setCategoriaActiva] = useState('Todas');
-
-  // Filtrar recetas según la categoría seleccionada
-  const recetasFiltradas = categoriaActiva === 'Todas' 
-    ? recetaSlugs 
-    : recetaSlugs.filter(slug => {
-        const categorias = categorizarReceta(slug);
-        return categorias.includes(categoriaActiva);
-      });
+  const recetaSlugs = Object.keys(recetasData);
 
   return (
-    <>
-      {/* Datos estructurados JSON-LD */}
-      <script 
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": "Recetas Probióticas Caseras",
-            "description": "Colección completa de recetas de alimentos fermentados caseros con beneficios probióticos",
-            "url": "https://www.probioticosparatodos.com/recetas",
-            "mainEntity": {
-              "@type": "ItemList",
-              "name": "Recetas de Alimentos Fermentados",
-              "numberOfItems": recetaSlugs.length,
-              "itemListElement": recetaSlugs.map((slug, index) => ({
-                "@type": "Recipe",
-                "position": index + 1,
-                "name": recetasData[slug].titulo,
-                "url": `https://www.probioticosparatodos.com/recetas/${slug}`,
-                "description": recetasData[slug].descripcion,
-                "prepTime": recetasData[slug].tiempoPreparacion,
-                "recipeYield": recetasData[slug].porciones
-              }))
-            },
-            "breadcrumb": {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Inicio",
-                  "item": "https://www.probioticosparatodos.com"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Recetas Probióticas",
-                  "item": "https://www.probioticosparatodos.com/recetas"
-                }
-              ]
-            }
-          })
-        }}
-      />
-
-      {/* Datos estructurados JSON-LD optimizados para SEO */}
-      <RecipesSchema />
-
-      {/* Header moderno con gradient */}
-      <header className="bg-gradient-to-r from-apple to-st-tropaz text-white py-16 relative overflow-hidden" role="banner">
+    <div className="min-h-screen bg-gradient-to-br from-aqua-squeeze to-gossip">
+      {/* Header con gradiente */}
+      <header className="bg-gradient-to-r from-apple to-st-tropaz text-white py-16 relative overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-10"></div>
         <div className="container mx-auto px-4 relative z-10">
           {/* Breadcrumbs */}
-          <nav aria-label="Navegación de migas de pan" className="mb-8">
-            <ol className="flex items-center space-x-2 text-sm">
-              <li>
-                <Link href="/" className="text-seagull hover:text-white transition-colors">
-                  Inicio
-                </Link>
-              </li>
-              <li>
-                <span className="text-seagull mx-2">›</span>
-              </li>
-              <li>
-                <span className="text-white font-medium">Recetas Probióticas</span>
-              </li>
-            </ol>
+          <nav aria-label="Navegación" className="mb-8">
+            <div className="flex items-center space-x-2 text-sm">
+              <a href="/" className="text-seagull hover:text-white transition-colors">
+                Inicio
+              </a>
+              <span className="text-seagull mx-2">›</span>
+              <span className="text-white font-medium">Recetas Probióticas</span>
+            </div>
           </nav>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            
-            {/* Contenido del header */}
             <div className="text-center lg:text-left">
               <h1 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
                 Recetas Probióticas
@@ -125,7 +43,7 @@ export default function RecetasIndexPage() {
                 Transforma tu cocina en un laboratorio de salud. Descubre el arte ancestral de la fermentación con recetas fáciles y científicamente respaldadas.
               </p>
               
-              {/* Estadísticas destacadas */}
+              {/* Estadísticas */}
               <div className="grid grid-cols-3 gap-4 mb-8">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-de-york">{recetaSlugs.length}+</div>
@@ -148,26 +66,24 @@ export default function RecetasIndexPage() {
                 >
                   Ver Recetas
                 </a>
-                <Link 
+                <a 
                   href="/tipos" 
                   className="border-2 border-white text-white font-semibold px-8 py-3 rounded-full hover:bg-white hover:text-apple transition-all duration-300"
                 >
                   Conocer Probióticos
-                </Link>
+                </a>
               </div>
             </div>
 
             {/* Imagen hero */}
             <div className="order-first lg:order-last">
-              <div className="relative w-full max-w-md mx-auto lg:max-w-lg leading-none">
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl inline-block">
-                  <OptimizedImagePlaceholder 
+              <div className="relative w-full max-w-md mx-auto lg:max-w-lg">
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                  <img 
                     src="/images/hero-recetas.png"
                     alt="Recetas probióticas caseras - alimentos fermentados naturales"
-                    width={400}
-                    height={400}
-                    className="object-cover block"
-                    priority={true}
+                    className="w-full h-auto object-cover"
+                    loading="eager"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
@@ -178,7 +94,7 @@ export default function RecetasIndexPage() {
       </header>
 
       {/* Sección de beneficios */}
-      <section className="py-16 bg-aqua-squeeze">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-biscay mb-4">
@@ -194,106 +110,53 @@ export default function RecetasIndexPage() {
               {
                 icon: "🧬",
                 titulo: "Mayor Potencia Probiótica",
-                descripcion: "Hasta 10x más bacterias vivas que productos comerciales pasteurizados.",
-                detalle: "100 mil millones+ UFC por porción vs 1-10 mil millones en productos comerciales"
+                descripcion: "Hasta 10x más bacterias vivas que productos comerciales pasteurizados."
               },
               {
                 icon: "🌿",
                 titulo: "Ingredientes 100% Naturales",
-                descripcion: "Control total sobre ingredientes, sin conservantes ni aditivos artificiales.",
-                detalle: "Solo materias primas naturales seleccionadas por ti"
+                descripcion: "Control total sobre ingredientes, sin conservantes ni aditivos artificiales."
               },
               {
                 icon: "💰",
                 titulo: "Ahorro Económico",
-                descripcion: "Reduce costos hasta 75% comparado con productos premium comerciales.",
-                detalle: "Inversión inicial se recupera en 2-3 meses de preparación regular"
-              },
-              {
-                icon: "🌍",
-                titulo: "Sostenibilidad Ambiental",
-                descripcion: "Reduce envases plásticos y huella de carbono del transporte.",
-                detalle: "Hasta 90% menos residuos de packaging"
-              },
-              {
-                icon: "🏺",
-                titulo: "Tradición Ancestral",
-                descripcion: "Conecta con técnicas milenarias de conservación y nutrición.",
-                detalle: "Métodos utilizados por civilizaciones durante más de 9,000 años"
-              },
-              {
-                icon: "🔬",
-                titulo: "Calidad Personalizada",
-                descripcion: "Adapta sabores, textura y concentración según tus preferencias.",
-                detalle: "Controla tiempo de fermentación y tipo de cultivos específicos"
+                descripcion: "Reduce costos hasta 75% comparado con productos premium comerciales."
               }
             ].map((beneficio, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+              <div key={index} className="bg-aqua-squeeze p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                 <div className="text-4xl mb-4 text-center">{beneficio.icon}</div>
                 <h3 className="text-xl font-bold text-biscay mb-3 text-center">{beneficio.titulo}</h3>
-                <p className="text-gray-600 mb-3 text-center">{beneficio.descripcion}</p>
-                <div className="bg-gossip p-3 rounded-lg">
-                  <p className="text-sm text-apple font-medium text-center">{beneficio.detalle}</p>
-                </div>
+                <p className="text-gray-600 text-center">{beneficio.descripcion}</p>
               </div>
             ))}
-
           </div>
         </div>
       </section>
 
       {/* Grid de recetas mejorado */}
       <main>
-        <section id="recetas" className="py-16" aria-labelledby="recetas-heading">
+        <section id="recetas" className="py-16 bg-gradient-to-br from-gossip to-aqua-squeeze">
           <div className="container mx-auto px-4">
-            <header className="text-center mb-12">
-              <h2 id="recetas-heading" className="text-3xl lg:text-4xl font-bold text-biscay mb-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl lg:text-4xl font-bold text-biscay mb-4">
                 Nuestras Recetas Probióticas
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Cada receta incluye guía paso a paso, consejos de experto, información nutricional y beneficios específicos para la salud.
               </p>
-              <p className="text-sm text-gray-500 mb-8" role="status" aria-live="polite">
-                {categoriaActiva === 'Todas' 
-                  ? `Mostrando todas las ${recetasFiltradas.length} recetas` 
-                  : `Mostrando ${recetasFiltradas.length} recetas de ${categoriaActiva.toLowerCase()}`
-                }
-              </p>
-              
-              {/* Filtros por categoría */}
-              <nav aria-label="Filtrar recetas por categoría" className="mb-8">
-                <div className="flex flex-wrap justify-center gap-3">
-                  {CATEGORIAS.map((categoria) => (
-                    <button 
-                      key={categoria}
-                      onClick={() => setCategoriaActiva(categoria)}
-                      aria-pressed={categoria === categoriaActiva}
-                      className={`px-4 py-2 rounded-full font-medium transition-all duration-300 ${
-                        categoria === categoriaActiva
-                          ? 'bg-apple text-white shadow-lg' 
-                          : 'bg-ghost text-gray-600 hover:bg-apple hover:text-white'
-                      }`}
-                    >
-                      {categoria}
-                    </button>
-                  ))}
-                </div>
-              </nav>
-            </header>
+            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" role="list">{recetasFiltradas.map((slug) => {
-              const receta = recetasData[slug];
-              return (
-                <Link href={`/recetas/${slug}`} key={slug} className="group">
-                  <article className="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:translate-y-[-8px] border border-gray-100 h-[460px] flex flex-col">
-                    <div className="relative w-full h-56 overflow-hidden flex-shrink-0">
-                      <RecipeOptimizedImage 
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {recetaSlugs.map((slug) => {
+                const receta = recetasData[slug];
+                return (
+                  <article key={slug} className="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:translate-y-[-8px] border border-gray-100">
+                    <div className="relative h-56 overflow-hidden">
+                      <img 
                         src={receta.imagenPrincipal.src} 
                         alt={receta.imagenPrincipal.alt}
-                        width={400}
-                        height={224}
-                        className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                        loading="lazy"
                       />
                       <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-apple text-xs font-bold px-3 py-1 rounded-full">
                         {receta.dificultad}
@@ -306,212 +169,265 @@ export default function RecetasIndexPage() {
                           {receta.tiempoPreparacion}
                           <span className="mx-2">•</span>
                           <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9 12a1 1 0 002 0V6.414l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 6.414V12z"/>
-                            <path d="M9 18a1 1 0 002 0v-3a1 1 0 00-2 0v3z"/>
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
                           {receta.porciones} porciones
                         </div>
                       </div>
                     </div>
                     
-                    <div className="p-6 flex flex-col flex-grow">
-                      <h3 className="text-xl font-bold mb-3 text-biscay group-hover:text-apple transition-colors leading-tight">
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-biscay mb-3 hover:text-apple transition-colors">
                         {receta.titulo}
                       </h3>
-                      <p className="text-gray-600 text-sm mb-4 line-clamp-3 leading-relaxed flex-grow">
+                      <p className="text-gray-600 text-sm mb-4 line-clamp-3">
                         {receta.descripcion}
                       </p>
                       
-
-                      {/* Beneficios destacados */}
-                      {receta.beneficiosPrincipales && (
-                        <div className="mb-4">
-                          <div className="flex flex-wrap gap-2">
-                            {receta.beneficiosPrincipales.slice(0, 2).map((beneficio, index) => (
-                              <span key={index} className="bg-gossip text-apple text-xs px-2 py-1 rounded-full font-medium">
-                                {beneficio}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                      
-                      <div className="flex items-center justify-between mt-auto">
-                        <div className="flex items-center text-apple text-sm font-bold">
-                          Ver Receta Completa
-                          <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
-                        </div>
-                        <div className="text-xs text-gray-400">
-                          Leer más →
-                        </div>
+                      {/* Beneficios principales */}
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {receta.beneficiosPrincipales?.slice(0, 2).map((beneficio, index) => (
+                          <span 
+                            key={index}
+                            className="bg-gossip text-apple text-xs px-2 py-1 rounded-full font-medium"
+                          >
+                            {beneficio}
+                          </span>
+                        ))}
                       </div>
+                      
+                      <a 
+                        href={`/recetas/${slug}`}
+                        className="inline-block w-full text-center bg-gradient-to-r from-apple to-st-tropaz text-white font-semibold py-3 px-6 rounded-full hover:from-st-tropaz hover:to-apple transition-all duration-300 transform hover:scale-105 shadow-lg"
+                      >
+                        Ver Receta →
+                      </a>
                     </div>
                   </article>
-                </Link>
-              );
-            })}
-
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
-      {/* Sección científica */}
+      {/* FAQ Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl lg:text-4xl font-bold text-biscay mb-6">
-                Ciencia de la Fermentación
-              </h2>
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="bg-apple/10 p-3 rounded-full flex-shrink-0">
-                    <svg className="w-6 h-6 text-apple" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M6.672 1.911a1 1 0 10-1.932.518l.259.966a1 1 0 001.932-.518l-.26-.966zM2.429 4.74a1 1 0 10-.517 1.932l.966.259a1 1 0 00.517-1.932l-.966-.26zm8.814-.569a1 1 0 00-1.415-1.414l-.707.707a1 1 0 101.415 1.415l.707-.708zm-7.071 7.072l.707-.707A1 1 0 003.465 9.12l-.708.707a1 1 0 001.415 1.415zm3.2-5.171a1 1 0 00-1.3 1.3l4 10a1 1 0 001.823.075l1.38-2.759 3.018 3.02a1 1 0 001.414-1.415l-3.019-3.02 2.76-1.379a1 1 0 00-.076-1.822l-10-4z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-lg text-biscay mb-2">Lactofermentación</h3>
-                    <p className="text-gray-600">Las bacterias del ácido láctico convierten azúcares en ácido láctico, creando un ambiente hostil para patógenos y preservando nutrientes.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <div className="bg-st-tropaz/10 p-3 rounded-full flex-shrink-0">
-                    <svg className="w-6 h-6 text-st-tropaz" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9 12a1 1 0 002 0V6.414l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 6.414V12z"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-lg text-biscay mb-2">Biodisponibilidad</h3>
-                    <p className="text-gray-600">La fermentación pre-digiere proteínas y descompone antinutrientes, aumentando la absorción de vitaminas B, K2 y minerales.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <div className="bg-seagull/10 p-3 rounded-full flex-shrink-0">
-                    <svg className="w-6 h-6 text-seagull" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-lg text-biscay mb-2">Microbiota Diversa</h3>
-                    <p className="text-gray-600">Cada alimento fermentado aporta cepas únicas de probióticos, creando un ecosistema intestinal más robusto y resiliente.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="relative">
-              <div className="bg-gradient-to-br from-aqua-squeeze to-gossip p-8 rounded-2xl">
-                <h3 className="text-2xl font-bold text-biscay mb-4">Datos Científicos</h3>
-                <div className="space-y-4">
-                  <div className="bg-white/80 p-4 rounded-xl">
-                    <div className="text-2xl font-bold text-apple mb-1">10,000x</div>
-                    <div className="text-sm text-gray-600">Mayor concentración probiótica vs suplementos</div>
-                  </div>
-                  <div className="bg-white/80 p-4 rounded-xl">
-                    <div className="text-2xl font-bold text-st-tropaz mb-1">400%</div>
-                    <div className="text-sm text-gray-600">Aumento en absorción de minerales</div>
-                  </div>
-                  <div className="bg-white/80 p-4 rounded-xl">
-                    <div className="text-2xl font-bold text-seagull mb-1">50+</div>
-                    <div className="text-sm text-gray-600">Cepas probióticas diferentes en alimentos fermentados</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Sección FAQ para SEO */}
-      <section className="py-16 bg-white" aria-labelledby="faq-heading">
-        <div className="container mx-auto px-4">
-          <header className="text-center mb-12">
-            <h2 id="faq-heading" className="text-3xl lg:text-4xl font-bold text-biscay mb-4">
-              Preguntas Frecuentes sobre Fermentados Caseros
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-biscay mb-4">
+              Preguntas Frecuentes sobre Recetas Probióticas
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Resolvemos las dudas más comunes sobre la preparación de alimentos fermentados en casa
+              Resolvemos las dudas más comunes sobre la preparación de alimentos fermentados en casa.
             </p>
-          </header>
+          </div>
 
           <div className="max-w-4xl mx-auto">
-            <div className="grid gap-6">
-              {faqData.map((faq, index) => (
-                <details key={index} className="bg-aqua-squeeze rounded-lg p-6 group">
-                  <summary className="cursor-pointer font-semibold text-lg text-biscay group-hover:text-apple transition-colors flex items-center justify-between">
-                    {faq.question}
-                    <svg className="w-5 h-5 transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </summary>
-                  <div className="mt-4 text-gray-700 leading-relaxed">
-                    {faq.answer}
-                  </div>
-                </details>
+            <div className="space-y-6">
+              {[
+                {
+                  pregunta: "¿Es seguro hacer alimentos fermentados en casa?",
+                  respuesta: "Sí, es completamente seguro cuando sigues las recetas correctamente. Los alimentos fermentados tienen miles de años de historia y las técnicas caseras son muy seguras si mantienes condiciones básicas de higiene y sigues las proporciones de sal/azúcar indicadas."
+                },
+                {
+                  pregunta: "¿Qué equipos necesito para comenzar?",
+                  respuesta: "Para la mayoría de recetas solo necesitas frascos de vidrio, sal marina sin refinar, y los ingredientes base. No requieres equipos especializados costosos. Un termómetro de cocina es útil para yogur, pero muchas fermentaciones se hacen a temperatura ambiente."
+                },
+                {
+                  pregunta: "¿Cuánto tiempo duran los alimentos fermentados caseros?",
+                  respuesta: "Depende del tipo: el yogur dura 1-2 semanas refrigerado, el chucrut puede durar 6 meses, el kéfir se mantiene fresco por 1-2 semanas, y la kombucha dura 2-4 semanas. Su acidez natural los preserva."
+                },
+                {
+                  pregunta: "¿Cómo sé si mi fermentación está funcionando correctamente?",
+                  respuesta: "Busca signos como burbujas, aroma ácido agradable (no putrefacto), cambio en textura y sabor. Cada receta tiene indicadores específicos, pero en general, un olor desagradable o moho peludo indican problemas."
+                },
+                {
+                  pregunta: "¿Puedo usar agua del grifo para las fermentaciones?",
+                  respuesta: "Es mejor usar agua filtrada o dejar reposar el agua del grifo 24 horas para que se evapore el cloro. El cloro puede inhibir las bacterias beneficiosas necesarias para la fermentación."
+                },
+                {
+                  pregunta: "¿Los probióticos caseros son mejores que los suplementos?",
+                  respuesta: "Los alimentos fermentados caseros suelen contener mayor diversidad de cepas probióticas y están en su forma natural con cofactores nutricionales. Además, son más económicos y no requieren refrigeración especial hasta estar listos."
+                }
+              ].map((faq, index) => (
+                <div key={index} className="bg-aqua-squeeze rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                  <h3 className="text-xl font-bold text-biscay mb-3">
+                    {faq.pregunta}
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed">
+                    {faq.respuesta}
+                  </p>
+                </div>
               ))}
             </div>
           </div>
-
-          {/* Schema estructurado para FAQ */}
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(faqSchema)
-            }}
-          />
         </div>
       </section>
 
-      {/* CTA mejorado */}
-      <section className="py-16 bg-gradient-to-r from-biscay to-st-tropaz text-white">
+      {/* Transformation Banner */}
+      <section className="py-16 bg-gradient-to-br from-gossip to-aqua-squeeze">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto text-center">
+            <h2 className="text-3xl lg:text-4xl font-bold text-biscay mb-6">
+              Comienza tu Transformación de Salud Hoy
+            </h2>
+            <p className="text-xl text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed">
+              No necesitas ser un experto en fermentación. Nuestras recetas incluyen todo lo que necesitas saber para crear alimentos probióticos de calidad profesional en tu propia cocina.
+            </p>
+
+            {/* Features Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+              <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <div className="text-4xl mb-4">📚</div>
+                <h3 className="text-xl font-bold text-biscay mb-3">Guías Completas</h3>
+                <p className="text-gray-600">Instrucciones paso a paso con fotos</p>
+              </div>
+              
+              <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <div className="text-4xl mb-4">🔬</div>
+                <h3 className="text-xl font-bold text-biscay mb-3">Base Científica</h3>
+                <p className="text-gray-600">Información respaldada por investigación</p>
+              </div>
+              
+              <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <div className="text-4xl mb-4">💡</div>
+                <h3 className="text-xl font-bold text-biscay mb-3">Consejos de Experto</h3>
+                <p className="text-gray-600">Trucos para resultados garantizados</p>
+              </div>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a 
+                href="/tipos" 
+                className="bg-gradient-to-r from-apple to-st-tropaz text-white font-semibold px-8 py-3 rounded-full hover:from-st-tropaz hover:to-apple transition-all duration-300 transform hover:scale-105 shadow-lg"
+              >
+                Conocer los Probióticos
+              </a>
+              <a 
+                href="/como-elegir" 
+                className="bg-white text-apple font-semibold px-8 py-3 rounded-full hover:bg-gray-50 transition-all duration-300 transform hover:scale-105 shadow-lg border-2 border-apple"
+              >
+                Guía para Elegir
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-gradient-to-r from-apple to-st-tropaz text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-            Comienza tu Transformación de Salud Hoy
+            ¿Listo para Comenzar tu Aventura Probiótica?
           </h2>
-          <p className="text-xl mb-8 max-w-3xl mx-auto text-gray-100">
-            No necesitas ser un experto en fermentación. Nuestras recetas incluyen todo lo que necesitas saber para crear alimentos probióticos de calidad profesional en tu propia cocina.
+          <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-100">
+            Únete a miles de personas que han transformado su salud digestiva con alimentos fermentados caseros.
           </p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl">
-              <div className="text-3xl mb-3">📚</div>
-              <h3 className="font-bold mb-2">Guías Completas</h3>
-              <p className="text-sm text-gray-200">Instrucciones paso a paso con fotos</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl">
-              <div className="text-3xl mb-3">🔬</div>
-              <h3 className="font-bold mb-2">Base Científica</h3>
-              <p className="text-sm text-gray-200">Información respaldada por investigación</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl">
-              <div className="text-3xl mb-3">💡</div>
-              <h3 className="font-bold mb-2">Consejos de Experto</h3>
-              <p className="text-sm text-gray-200">Trucos para resultados garantizados</p>
-            </div>
-          </div>
-
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              href="/tipos" 
-              className="bg-white text-biscay font-bold px-8 py-4 rounded-full hover:bg-aqua-squeeze transition-all duration-300 transform hover:scale-105 shadow-lg"
-            >
-              Conocer los Probióticos
-            </Link>
-            <Link 
+            <a 
               href="/como-elegir" 
-              className="border-2 border-white text-white font-bold px-8 py-4 rounded-full hover:bg-white hover:text-biscay transition-all duration-300"
+              className="bg-white text-apple font-semibold px-8 py-3 rounded-full hover:bg-aqua-squeeze transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
-              Guía para Elegir
-            </Link>
+              Guía para Principiantes
+            </a>
+            <a 
+              href="/beneficios" 
+              className="border-2 border-white text-white font-semibold px-8 py-3 rounded-full hover:bg-white hover:text-apple transition-all duration-300"
+            >
+              Conocer Beneficios
+            </a>
           </div>
         </div>
       </section>
-      </main>
-    </>
+
+      {/* JSON-LD Schema - Agregado de forma segura */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": "Recetas Probióticas Caseras",
+            "description": "Colección de recetas de alimentos fermentados ricos en probióticos naturales",
+            "url": "https://probioticos-nicho.com/recetas",
+            "mainEntity": {
+              "@type": "ItemList",
+              "numberOfItems": recetaSlugs.length,
+              "itemListElement": recetaSlugs.map((slug, index) => ({
+                "@type": "Recipe",
+                "position": index + 1,
+                "name": recetasData[slug].titulo,
+                "description": recetasData[slug].descripcion,
+                "url": `https://probioticos-nicho.com/recetas/${slug}`,
+                "image": recetasData[slug].imagenPrincipal.src
+              }))
+            }
+          })
+        }}
+      />
+
+      {/* FAQ Schema JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "¿Es seguro hacer alimentos fermentados en casa?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sí, es completamente seguro cuando sigues las recetas correctamente. Los alimentos fermentados tienen miles de años de historia y las técnicas caseras son muy seguras si mantienes condiciones básicas de higiene y sigues las proporciones de sal/azúcar indicadas."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Qué equipos necesito para comenzar?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Para la mayoría de recetas solo necesitas frascos de vidrio, sal marina sin refinar, y los ingredientes base. No requieres equipos especializados costosos. Un termómetro de cocina es útil para yogur, pero muchas fermentaciones se hacen a temperatura ambiente."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Cuánto tiempo duran los alimentos fermentados caseros?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Depende del tipo: el yogur dura 1-2 semanas refrigerado, el chucrut puede durar 6 meses, el kéfir se mantiene fresco por 1-2 semanas, y la kombucha dura 2-4 semanas. Su acidez natural los preserva."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Cómo sé si mi fermentación está funcionando correctamente?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Busca signos como burbujas, aroma ácido agradable (no putrefacto), cambio en textura y sabor. Cada receta tiene indicadores específicos, pero en general, un olor desagradable o moho peludo indican problemas."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Puedo usar agua del grifo para las fermentaciones?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Es mejor usar agua filtrada o dejar reposar el agua del grifo 24 horas para que se evapore el cloro. El cloro puede inhibir las bacterias beneficiosas necesarias para la fermentación."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Los probióticos caseros son mejores que los suplementos?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Los alimentos fermentados caseros suelen contener mayor diversidad de cepas probióticas y están en su forma natural con cofactores nutricionales. Además, son más económicos y no requieren refrigeración especial hasta estar listos."
+                }
+              }
+            ]
+          })
+        }}
+      />
+    </div>
   );
 }

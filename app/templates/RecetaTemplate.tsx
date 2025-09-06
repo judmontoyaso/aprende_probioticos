@@ -4,69 +4,32 @@ import SEOSchema from '../components/SEOSchema';
 // import AdBanner from '../components/AdBanner';
 // import SEOSchema from '../components/SEOSchema';
 
+import { RecetaData } from '../recetas/data';
+
 interface RecetaTemplateProps {
-  titulo: string;
-  descripcion: string;
-  imagenPrincipal: {
-    src: string;
-    alt: string;
-  };
-  fechaPublicacion: string;
-  tiempoPreparacion: string;
-  dificultad: 'Fácil' | 'Media' | 'Difícil';
-  porciones: number;
-  introduccion: string;
-  ingredientes: {
-    nombre: string;
-    cantidad: string;
-    nota?: string;
-  }[];
-  materialesRequeridos?: string[];
-  instrucciones: {
-    paso: string;
-    descripcion: string;
-    imagen?: {
-      src: string;
-      alt: string;
-    };
-  }[];
-  consejos?: string[];
-  beneficios: {
-    titulo: string;
-    descripcion: string;
-  }[];
-  probioticosPresentes: {
-    nombre: string;
-    descripcion: string;
-  }[];
-  variaciones?: {
-    titulo: string;
-    descripcion: string;
-  }[];
-  faq: {
-    pregunta: string;
-    respuesta: string;
-  }[];
+  receta: RecetaData;
+  slug: string;
 }
 
-export default function RecetaTemplate({
-  titulo,
-  descripcion,
-  imagenPrincipal,
-  fechaPublicacion, 
-  tiempoPreparacion,
-  dificultad,
-  porciones,
-  introduccion,
-  ingredientes,
-  materialesRequeridos,
-  instrucciones,
-  consejos,
-  beneficios,
-  probioticosPresentes,
-  variaciones,
-  faq
-}: RecetaTemplateProps) {
+export default function RecetaTemplate({ receta, slug }: RecetaTemplateProps) {
+  const {
+    titulo,
+    descripcion,
+    imagenPrincipal,
+    fechaPublicacion, 
+    tiempoPreparacion,
+    dificultad,
+    porciones,
+    introduccion,
+    ingredientes,
+    materialesRequeridos,
+    instrucciones,
+    consejos,
+    beneficios,
+    probioticosPresentes,
+    variaciones,
+    faq
+  } = receta;
   //Datos estructurados para el esquema de artículo/receta
   const recipeData = {
     title: titulo,
@@ -74,7 +37,7 @@ export default function RecetaTemplate({
     publishDate: fechaPublicacion,
     author: "Probióticos Para Todos",
     image: `https://www.probioticosparatodos.com${imagenPrincipal.src}`,
-    url: `https://www.probioticosparatodos.com/recetas/${titulo.toLowerCase().replace(/\s+/g, '-')}`,
+    url: `https://www.probioticosparatodos.com/recetas/${slug}`,
     //Datos específicos para Recipe Schema
     prepTime: tiempoPreparacion,
     recipeYield: `${porciones} porciones`,
@@ -102,7 +65,7 @@ export default function RecetaTemplate({
   return (
     <div>
   {/* Schema.org estructurado (temporalmente desactivado para depurar) */}
-<SEOSchema type="both" data={{ article: recipeData, faq: faqData }} /> 
+{/* <SEOSchema type="both" data={{ article: recipeData, faq: faqData }} /> */} 
       
       {/* Header */}
       <header className="bg-green-600 text-white py-8 sm:py-12">
