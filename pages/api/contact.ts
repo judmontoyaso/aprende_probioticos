@@ -19,14 +19,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     await transporter.sendMail({
-      from: `"${nombre}" <${email}>`,
+      from: process.env.SMTP_USER,
       to: process.env.CONTACT_TO || process.env.SMTP_USER,
       subject: `Nuevo mensaje de contacto (${tipo})`,
       text: mensaje,
       html: `<p><strong>Nombre:</strong> ${nombre}</p><p><strong>Email:</strong> ${email}</p><p><strong>Tipo:</strong> ${tipo}</p><p><strong>Mensaje:</strong><br/>${mensaje}</p>`
     });
     return res.status(200).json({ ok: true });
-  } catch {
+  } catch (error) {
+    console.error('Error al enviar correo:', error);
     return res.status(500).json({ ok: false, error: 'No se pudo enviar el correo.' });
   }
 }
