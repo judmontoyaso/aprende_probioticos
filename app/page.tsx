@@ -122,85 +122,128 @@ export default function Home() {
         <HorizontalBanner className="max-w-full" alt="Banner horizontal Probióticos Para Todos - Móvil" />
       </div>
 
-      <header className="bg-gradient-to-br from-green-600 via-green-700 to-emerald-800 text-white py-20 relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute inset-0 bg-gradient-to-r from-green-600/20 to-emerald-600/20"></div>
-        <div className="absolute top-0 left-0 w-full h-full">
-          <div className="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
-          <div className="absolute bottom-10 right-10 w-40 h-40 bg-green-300/20 rounded-full blur-xl"></div>
-          <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-emerald-400/15 rounded-full blur-lg"></div>
-        </div>
+      {/* Modern Hero Section */}
+      <section className="py-12 bg-aqua-squeeze relative overflow-hidden">
+        {/* Background decorations */}
+        <div className="absolute inset-0 bg-gradient-to-br from-green-50/50 to-emerald-50/50"></div>
+        <div className="absolute top-10 left-10 w-32 h-32 bg-green-200/20 rounded-full blur-xl"></div>
+        <div className="absolute bottom-10 right-10 w-40 h-40 bg-emerald-200/20 rounded-full blur-xl"></div>
         
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            {/* Logo principal de Probióticos Para Todos */}
-            <div className="mb-8 relative">
-              <div className="absolute inset-0 bg-white/20 rounded-full blur-2xl transform scale-110"></div>
-              <Image 
-                src="/images/logo_transparente.png"
-                alt="Probióticos Para Todos - Logo oficial con bacterias probióticas beneficiosas"
-                width={300}
-                height={300}
-                priority={true}
-                className="w-64 h-64 mx-auto drop-shadow-2xl relative z-10 hover:scale-105 transition-transform duration-300"
-              />
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Content Column */}
+              <div className="space-y-8">
+                <div className="space-y-6">
+                  <span className="inline-block px-4 py-2 bg-green-100 text-green-700 font-medium rounded-full text-sm">
+                    🧬 Ciencia • Salud • Bienestar
+                  </span>
+                  
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-biscay leading-tight">
+                    Probióticos Para
+                    <span className="block bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+                      Todos
+                    </span>
+                  </h1>
+                  
+                  <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
+                    Tu guía completa sobre probióticos y salud intestinal basada en evidencia científica. 
+                    Descubre cómo mejorar tu bienestar digestivo, inmunológico y mental.
+                  </p>
+                </div>
+
+                {/* CTA Buttons */}
+                <div className="flex flex-wrap gap-4">
+                  <Link 
+                    href="/que-son" 
+                    className="group bg-apple text-white px-8 py-4 rounded-xl font-semibold hover:bg-apple/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center"
+                  >
+                    ¿Qué son los probióticos?
+                    <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </Link>
+                  <Link 
+                    href="/beneficios" 
+                    className="group bg-white text-apple px-8 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl border-2 border-apple/20 flex items-center"
+                  >
+                    Ver beneficios
+                    <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </Link>
+                </div>
+
+                {/* Trust Indicators */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+                  <div className="flex items-center text-sm text-gray-600">
+                    <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                      <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <span>Respaldo científico</span>
+                  </div>
+                  <div className="flex items-center text-sm text-gray-600">
+                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                      <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <span>Actualizado regularmente</span>
+                  </div>
+                  <div className="flex items-center text-sm text-gray-600">
+                    <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+                      <svg className="w-4 h-4 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <span>Guías prácticas</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Image Column */}
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-emerald-400/20 rounded-2xl blur-2xl"></div>
+                <div className="relative bg-white p-8 rounded-2xl shadow-2xl">
+                  <Image 
+                    src="/images/logo_transparente.png"
+                    alt="Probióticos Para Todos - Logo oficial con bacterias probióticas beneficiosas"
+                    width={400}
+                    height={400}
+                    priority={true}
+                    className="w-full h-auto hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              </div>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-green-100 bg-clip-text text-transparent">
-              Probióticos Para Todos
-            </h1>
-            <p className="text-xl md:text-2xl text-green-100 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Tu guía completa sobre probióticos y salud intestinal basada en ciencia
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
-              <Link href="/que-son" className="bg-white text-green-600 px-8 py-4 rounded-xl font-semibold hover:bg-green-50 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                ¿Qué son los probióticos?
-              </Link>
-              <Link href="/beneficios" className="bg-green-700 text-white px-8 py-4 rounded-xl font-semibold hover:bg-green-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                Ver beneficios
-              </Link>
-            </div>
-            
-            {/* Trust indicators */}
-            <div className="flex flex-wrap justify-center items-center gap-6 text-green-200 text-sm mb-8">
-              <div className="flex items-center">
-                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
-                Información respaldada científicamente
+
+            {/* Medical Disclaimer */}
+            <div className="mt-12 max-w-4xl mx-auto">
+              <div className="bg-gradient-to-r from-yellow-50 to-orange-50 border-2 border-yellow-200 rounded-xl p-6">
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center mr-4">
+                    <svg className="w-5 h-5 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-yellow-800 mb-2">Aviso Médico Importante</h3>
+                    <p className="text-yellow-700 text-sm leading-relaxed mb-3">
+                      Este sitio web es únicamente informativo y educativo. No proporciona consejo médico. 
+                      Consulte siempre con un profesional de la salud antes de tomar probióticos o realizar cambios en su dieta.
+                    </p>
+                    <Link href="/descargo-responsabilidad" className="text-yellow-800 font-medium hover:text-yellow-900 transition-colors text-sm underline">
+                      Leer descargo completo →
+                    </Link>
+                  </div>
+                </div>
               </div>
-              <div className="flex items-center">
-                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
-                Contenido actualizado regularmente
-              </div>
-              <div className="flex items-center">
-                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
-                Guías prácticas y fáciles de seguir
-              </div>
-            </div>
-            
-            {/* Disclaimer médico prominente */}
-            <div className="mt-8 bg-yellow-100 border-2 border-yellow-300 text-yellow-800 p-4 rounded-lg text-sm max-w-2xl mx-auto">
-              <div className="flex items-center justify-center mb-2">
-                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-                </svg>
-                <strong>Aviso Médico Importante</strong>
-              </div>
-              <p>
-                Este sitio web es únicamente informativo y educativo. No proporciona consejo médico. 
-                Consulte siempre con un profesional de la salud antes de tomar probióticos o realizar cambios en su dieta.
-              </p>
-              <Link href="/descargo-responsabilidad" className="underline hover:text-yellow-900 font-medium">
-                Leer descargo completo →
-              </Link>
             </div>
           </div>
         </div>
-      </header>
+      </section>
       
       <div className="container mx-auto px-4">
         <ArticleBanner className="max-w-4xl mx-auto" alt="Banner promocional artículos científicos sobre probióticos" />
