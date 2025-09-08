@@ -36,17 +36,26 @@ export default function DondeComprarClient() {
 
   // Get filtered retailers
   const filteredRetailers = useMemo(() => {
-    interface Retailer {
+    interface BaseRetailer {
+      id: string;
       name: string;
       address: string;
+      phone: string | null;
+      whatsapp: string | null;
+      website: string;
+      productUrl: string | null;
+      hours: string | null;
       probioticTypes: string[];
       brands: string[];
-      onlineStore?: boolean;
-      delivery?: boolean;
-      reliability?: string;
+      priceExample: string | null;
+      paymentMethods: string[];
+      onlineStore: boolean;
+      delivery: boolean;
+      reliability: string;
+      reliabilityNote: string;
     }
 
-    interface FilteredRetailer extends Retailer {
+    interface FilteredRetailer extends BaseRetailer {
       countryName: string;
       countryKey: string;
       cityName: string;
@@ -81,6 +90,18 @@ export default function DondeComprarClient() {
             cityName: city.name,
             cityKey,
             province: city.province,
+            id: retailer.id || '',
+            phone: retailer.phone || null,
+            whatsapp: retailer.whatsapp || null,
+            website: retailer.website || '',
+            productUrl: retailer.productUrl || null,
+            hours: retailer.hours || null,
+            priceExample: retailer.priceExample || null,
+            paymentMethods: retailer.paymentMethods || [],
+            reliabilityNote: retailer.reliabilityNote || '',
+            onlineStore: retailer.onlineStore || false,
+            delivery: retailer.delivery || false,
+            reliability: retailer.reliability || 'Media',
           });
         });
       });
