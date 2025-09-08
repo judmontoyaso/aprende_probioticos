@@ -9,7 +9,7 @@ export default function TestMinimal() {
       <h1 className="text-3xl font-bold mb-6">Página de Prueba Mínima</h1>
       
       <div className="space-y-4">
-        <p>Esta es una página mínima para probar la navegación sin componentes complejos.</p>
+        <p>Si ves esto, la navegación &quot;funciona&quot; correctamente.</p>
         
         <div className="flex gap-4">
           <Link 

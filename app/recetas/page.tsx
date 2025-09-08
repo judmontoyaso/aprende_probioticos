@@ -26,8 +26,8 @@ export default function RecetasIndexPage() {
           {/* Breadcrumbs */}
           <nav aria-label="Navegación" className="mb-8">
             <div className="flex items-center space-x-2 text-sm">
-              <Link href="/" className="text-green-600 hover:text-green-800 underline">
-                Inicio
+              <Link href="/tipos/" className="text-green-600 hover:text-green-800 font-medium transition-colors duration-200">
+                Ver todos los tipos de probióticos
               </Link>
               <span className="text-seagull mx-2">›</span>
               <span className="text-white font-medium">Recetas Probióticas</span>
@@ -67,12 +67,9 @@ export default function RecetasIndexPage() {
                 >
                   Ver Recetas
                 </a>
-                <a 
-                  href="/tipos" 
-                  className="border-2 border-white text-white font-semibold px-8 py-3 rounded-full hover:bg-white hover:text-apple transition-all duration-300"
-                >
-                  Conocer Probióticos
-                </a>
+                <Link href="/tipos/" className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors duration-200">
+                  Explorar Tipos de Probióticos
+                </Link>
               </div>
             </div>
 

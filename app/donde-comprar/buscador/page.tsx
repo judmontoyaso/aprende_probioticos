@@ -5,7 +5,7 @@ import { Metadata } from 'next';
 // Metadatos para SEO
 export const metadata: Metadata = {
   title: 'Buscador de Tiendas de Probióticos: Encuentra Tu Tienda Ideal | Probióticos Para Todos',
-  description: 'Busca y filtra tiendas de probióticos por país, ciudad y tipo. Encuentra herbolarios, farmacias y tiendas naturales verificadas con nuestro buscador avanzado.',
+  description: 'Busca y filtra tiendas de probióticos con nuestro buscador avanzado.',
   keywords: ['buscador probióticos', 'filtrar tiendas probióticos', 'encontrar herbolarios', 'tiendas naturales cerca', 'directorio probióticos', 'búsqueda avanzada probióticos'],
   openGraph: {
     title: 'Buscador Avanzado de Tiendas de Probióticos',
@@ -44,8 +44,8 @@ export const metadata: Metadata = {
 };
 
 export default function BuscadorPage() {
-  const paises = [...new Set(tiendasData.map(t => t.pais))];
-  const tiposEstablecimiento = [...new Set(tiendasData.flatMap(t => t.tiposProbioticos || []))];
+  // const paises = [...new Set(tiendasData.map(t => t.pais))];
+  // const tiposEstablecimiento = [...new Set(tiendasData.flatMap(t => t.tiposProbioticos || []))];
 
   // Search Schema
   const searchSchema = {

@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import CountrySelector from '../components/CountrySelector';
-import RetailerCard from '../components/RetailerCard';
+// import RetailerCard from '../components/RetailerCard';
 import AdBanner from '../components/AdBanner';
 import retailersData from '../data/retailers.json';
 
@@ -121,8 +121,7 @@ export default function DondeComprarClient() {
               Dónde Comprar Probióticos en Países Hispanohablantes
             </h1>
             <p className="text-lg sm:text-xl mb-8 text-green-100">
-              Encuentra las mejores tiendas, herbolarios y farmacias especializadas en probióticos. 
-              Directorio completo con información verificada, precios y disponibilidad.
+              Encuentra probióticos de calidad en herbolarios &quot;verificados&quot; cerca de ti. Directorio completo con información verificada, precios y disponibilidad.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
               <div className="bg-white/10 rounded-lg p-4">
