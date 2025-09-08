@@ -40,7 +40,7 @@ export default function TestMinimal() {
             <li>Navega a una receta usando el enlace</li>
             <li>Usa el botón atrás del navegador</li>
             <li>Observa si aparece el error removeChild en la consola</li>
-            <li>Prueba también con el botón "Botón Atrás" de arriba</li>
+            <li>Prueba también con el botón &quot;Botón Atrás&quot; de arriba</li>
           </ol>
         </div>
       </div>

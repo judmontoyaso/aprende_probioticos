@@ -30,12 +30,12 @@ interface Retailer {
   province?: string;
 }
 
-interface City {
-  key: string;
-  name: string;
-  province: string;
-  retailerCount: number;
-}
+// interface City {
+//   key: string;
+//   name: string;
+//   province: string;
+//   retailerCount: number;
+// }
 
 export default function DondeComprarClient() {
   const [selectedCountry, setSelectedCountry] = useState('');
