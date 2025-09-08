@@ -50,12 +50,11 @@ export default function NavigationGuard({ children }: NavigationGuardProps) {
         window.removeEventListener('beforeunload', handleBeforeUnload);
       }
       
-      const timeoutId = cleanupTimeoutRef.current;
-      if (timeoutId) {
-        clearTimeout(timeoutId);
+      // Capturar el valor actual del ref en una variable local
+      const currentCleanupTimeout = cleanupTimeoutRef.current;
+      if (currentCleanupTimeout) {
+        clearTimeout(currentCleanupTimeout);
       }
-      
-      // No es necesario limpiar el contenedor directamente, React se encarga de ello.
     };
   }, [pathname]);
 

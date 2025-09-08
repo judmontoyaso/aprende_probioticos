@@ -38,9 +38,10 @@ export function useNavigationSafety() {
       window.removeEventListener('beforeunload', handleBeforeUnload);
       window.removeEventListener('popstate', handlePopState);
       
-      const timeoutId = cleanupTimeoutRef.current;
-      if (timeoutId) {
-        clearTimeout(timeoutId);
+      // Capturar el valor actual del ref en una variable local
+      const currentCleanupTimeout = cleanupTimeoutRef.current;
+      if (currentCleanupTimeout) {
+        clearTimeout(currentCleanupTimeout);
       }
     };
   }, []);
