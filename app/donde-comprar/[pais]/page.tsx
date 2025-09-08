@@ -1,4 +1,4 @@
-import { tiendasData } from '../data';
+import { tiendasData, Tienda } from '../data';
 import Link from 'next/link';
 import { slugify } from '../utils';
 import OptimizedImagePlaceholder from '../../components/OptimizedImagePlaceholder';
@@ -6,22 +6,9 @@ import ArticleBanner from '../../components/ArticleBanner';
 import SEOSchema from '../../components/SEOSchema';
 import { Metadata } from 'next';
 
-interface Tienda {
-  nombre: string;
-  direccion: string;
-  ciudad: string;
-  pais: string;
-  whatsapp?: string;
-  web?: string;
-  horarios?: string;
-  confiabilidad: string;
-  fechaVerificacion: string;
-  tiposProbioticos: string[];
-}
-
 // Función para generar metadatos dinámicos
-export async function generateMetadata({ params }: { params: Promise<{ pais: string }> }): Promise<Metadata> {
-  const { pais: paisSlug } = await params;
+export async function generateMetadata({ params }: { params: { pais: string } }): Promise<Metadata> {
+  const paisSlug = params.pais;
   const pais = paisSlug.charAt(0).toUpperCase() + paisSlug.slice(1).replace('-', ' ');
   
   const countryImageMap: { [key: string]: string } = {
@@ -77,39 +64,25 @@ export async function generateMetadata({ params }: { params: Promise<{ pais: str
 
 export default async function PaisPage({ params }: { params: Promise<{ pais: string }> }) {
   const { pais: paisSlug } = await params;
-  const pais = paisSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+
+  const pais = tiendasData.find(
+    (tienda: Tienda) => slugify(tienda.pais) === paisSlug
+  )?.pais;
+
+  const ciudades = [...new Set(tiendasData.filter((t: Tienda) => t.pais === pais).map((t: Tienda) => t.ciudad))].sort();
+
+  // Configurar structured data para SEO
+  const tiendasPais = tiendasData.filter((t: Tienda) => t.pais === pais);
   
-  const tiendasDelPais = tiendasData.filter(tienda => 
-    slugify(tienda.pais) === paisSlug
-  );
-
-  if (tiendasDelPais.length === 0) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-800 mb-4">País no encontrado</h1>
-          <p className="text-gray-600 mb-8">No se encontraron tiendas para este país.</p>
-          <Link href="/donde-comprar" className="bg-apple text-white px-6 py-3 rounded-lg hover:bg-apple/90 transition-colors">
-            Volver al directorio
-          </Link>
-        </div>
-      </div>
-    );
-  }
-
-  const ciudades = [...new Set(tiendasDelPais.map(t => t.ciudad))];
-
-  // Agrupar tiendas por ciudad
-
   // Schema.org para LocalBusiness por país
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
     "name": `Tiendas de Probióticos en ${pais}`,
-    "description": `Directorio de tiendas verificadas donde comprar probióticos en ${pais}`,
+    "description": `Directorio completo de herbolarios y tiendas naturales donde comprar probióticos en ${pais}`,
     "url": `https://www.probioticosparatodos.com/donde-comprar/${paisSlug}`,
-    "numberOfItems": tiendasDelPais.length,
-    "itemListElement": tiendasDelPais.map((tienda, index) => ({
+    "numberOfItems": tiendasPais.length,
+    "itemListElement": tiendasPais.map((tienda: Tienda, index: number) => ({
       "@type": "LocalBusiness",
       "position": index + 1,
       "name": tienda.nombre,
@@ -119,9 +92,8 @@ export default async function PaisPage({ params }: { params: Promise<{ pais: str
         "addressLocality": tienda.ciudad,
         "addressCountry": tienda.pais
       },
-      "telephone": tienda.whatsapp || undefined,
+      "telephone": tienda.telefono || undefined,
       "url": tienda.web || undefined,
-      "openingHours": tienda.horarios || undefined,
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": tienda.confiabilidad === 'Muy Alta' ? '5' : tienda.confiabilidad === 'Alta' ? '4' : '3',
@@ -215,40 +187,10 @@ export default async function PaisPage({ params }: { params: Promise<{ pais: str
       />
 
       <main className="min-h-screen bg-gray-50">
+
         {/* Schema.org estructurado */}
         <SEOSchema type="article" data={articleData} />
         
-        {/* Breadcrumb Schema */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Inicio",
-                  "item": "https://www.probioticosparatodos.com"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Dónde Comprar",
-                  "item": "https://www.probioticosparatodos.com/donde-comprar"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": pais,
-                  "item": `https://www.probioticosparatodos.com/donde-comprar/${paisSlug}`
-                }
-              ]
-            })
-          }}
-        />
-
         {/* Hero section moderna */}
         <section className="py-12 bg-aqua-squeeze" itemScope itemType="https://schema.org/Article">
           <div className="container mx-auto px-4">

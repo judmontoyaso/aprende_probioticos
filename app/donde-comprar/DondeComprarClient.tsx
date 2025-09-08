@@ -2,40 +2,10 @@
 
 import { useState, useMemo } from 'react';
 import CountrySelector from '../components/CountrySelector';
-// import RetailerCard from '../components/RetailerCard';
+import RetailerCard from '../components/RetailerCard';
 import AdBanner from '../components/AdBanner';
 import retailersData from '../data/retailers.json';
 
-interface Retailer {
-  id: string;
-  name: string;
-  address: string;
-  probioticTypes: string[];
-  brands: string[];
-  onlineStore: boolean;
-  delivery: boolean;
-  reliability: string;
-  phone?: string | null;
-  whatsapp?: string | null;
-  website?: string | null;
-  productUrl?: string | null;
-  reliabilityNote?: string | null;
-  hours?: string | null;
-  priceExample?: string | null;
-  paymentMethods?: string[] | null;
-  countryName?: string;
-  countryKey?: string;
-  cityName?: string;
-  cityKey?: string;
-  province?: string;
-}
-
-// interface City {
-//   key: string;
-//   name: string;
-//   province: string;
-//   retailerCount: number;
-// }
 
 export default function DondeComprarClient() {
   const [selectedCountry, setSelectedCountry] = useState('');
@@ -66,7 +36,7 @@ export default function DondeComprarClient() {
 
   // Get filtered retailers
   const filteredRetailers = useMemo(() => {
-    const allRetailers: Retailer[] = [];
+    const allRetailers: any[] = [];
 
     Object.entries(retailersData.countries).forEach(([countryKey, country]) => {
       if (selectedCountry && selectedCountry !== countryKey) return;
@@ -104,6 +74,7 @@ export default function DondeComprarClient() {
   // Get statistics
   const stats = useMemo(() => {
     const totalRetailers = filteredRetailers.length;
+    const handleFiltroChange = (filtro: string, valor: string) => {};
     const onlineStores = filteredRetailers.filter(r => r.onlineStore).length;
     const withDelivery = filteredRetailers.filter(r => r.delivery).length;
     const highReliability = filteredRetailers.filter(r => r.reliability === 'Muy Alta').length;
@@ -118,10 +89,11 @@ export default function DondeComprarClient() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-              Dónde Comprar Probióticos en Países Hispanohablantes
+              Encuentra &quot;Probióticos de Calidad&quot; cerca de ti en países hispanohablantes
             </h1>
             <p className="text-lg sm:text-xl mb-8 text-green-100">
-              Encuentra probióticos de calidad en herbolarios &quot;verificados&quot; cerca de ti. Directorio completo con información verificada, precios y disponibilidad.
+              Encuentra las mejores tiendas, herbolarios y farmacias especializadas en probióticos. 
+              Directorio completo con información verificada, precios y disponibilidad.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
               <div className="bg-white/10 rounded-lg p-4">
@@ -242,7 +214,7 @@ export default function DondeComprarClient() {
                 )}
                 {searchTerm && (
                   <span className="inline-flex items-center gap-1 bg-purple-100 text-purple-800 text-sm px-2 py-1 rounded-full">
-                    &quot;{searchTerm}&quot;
+                    "{searchTerm}"
                     <button onClick={() => setSearchTerm('')} className="ml-1 hover:text-purple-600">×</button>
                   </span>
                 )}
@@ -275,7 +247,7 @@ export default function DondeComprarClient() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                   </svg>
                 </div>
-                <h2 className="text-2xl font-bold text-gray-800 mb-4">Encuentra &quot;Probióticos&quot; cerca de ti</h2>
+                <h3 className="text-lg font-medium text-gray-900 mb-2">No se encontraron resultados</h3>
                 <p className="text-gray-600 mb-4">Intenta ajustar los filtros o términos de búsqueda</p>
                 <button
                   onClick={() => {
@@ -290,10 +262,14 @@ export default function DondeComprarClient() {
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {/* Temporarily disabled to fix build */}
-                <div className="text-center text-gray-500 col-span-full">
-                  Funcionalidad temporalmente deshabilitada para corregir errores de compilación
-                </div>
+                {filteredRetailers.map((retailer) => (
+                  <RetailerCard
+                    key={`${retailer.countryKey}-${retailer.cityKey}-${retailer.id}`}
+                    retailer={retailer}
+                    cityName={retailer.cityName}
+                    countryName={retailer.countryName}
+                  />
+                ))}
               </div>
             )}
           </div>
@@ -320,8 +296,8 @@ export default function DondeComprarClient() {
               <div className="bg-white p-6 rounded-lg shadow-sm">
                 <h3 className="text-lg font-semibold mb-3 text-blue-600">Especialistas Online</h3>
                 <p className="text-gray-700 text-sm">
-                  Tiendas como Probiotico.cl y Naturista Virtual ofrecen catálogos extensos 
-                  y envío nacional especializado.
+                  ProVida, Laboratorios Nale y Nutralie lideran el mercado online 
+                  con envíos nacionales y productos especializados.
                 </p>
               </div>
               

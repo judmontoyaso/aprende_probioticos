@@ -6,7 +6,7 @@ import SafeImage from './SafeImage';
 export function AdSpace({ position, title }: { position: string; title: string }) {
   return (
     <div className="bg-gray-100 border-2 border-dashed border-gray-300 p-4 text-center text-gray-500 rounded my-4">
-      <div className="text-sm font-medium mb-1"> {title}</div>
+      <div className="text-sm font-medium mb-1">📢 {title}</div>
       <div className="text-xs">Espacio publicitario - {position}</div>
       <div className="text-xs mt-1 text-gray-400">Reservado para futura publicidad</div>
     </div>
@@ -32,9 +32,9 @@ export function TemporaryBanner({ className = "", alt = "Banner promocional Prob
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <Link
             href="/donde-comprar/buscador"
-            className="inline-block bg-apple text-white px-6 py-3 rounded-lg font-semibold hover:bg-apple/90 transition-colors"
+            className="inline-flex items-center px-6 py-3 bg-apple text-white font-semibold rounded-xl hover:bg-apple/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-sm"
           >
-            Buscar tiendas
+            🔍 Buscar Tiendas
           </Link>
         </div>
       </div>
@@ -59,21 +59,21 @@ export function NewBannerProfessional({ className = "", alt = "Banner profesiona
               </svg>
             </div>
             <div>
-              <h3 className="text-xl font-bold text-gray-800"> Probióticos Para Todos</h3>
+              <h3 className="text-xl font-bold text-gray-800">🧬 Probióticos Para Todos</h3>
               <p className="text-sm text-gray-600">Ciencia, bienestar y salud digestiva</p>
             </div>
           </div>
           <div className="hidden md:flex items-center space-x-6 text-sm text-gray-700">
             <div className="text-center">
-              <div className="font-bold text-blue-600"> </div>
+              <div className="font-bold text-blue-600">📚</div>
               <div>Guías Gratuitas</div>
             </div>
             <div className="text-center">
-              <div className="font-bold text-green-600"> </div>
+              <div className="font-bold text-green-600">🥗</div>
               <div>Recetas Fáciles</div>
             </div>
             <div className="text-center">
-              <div className="font-bold text-purple-600"> </div>
+              <div className="font-bold text-purple-600">🎯</div>
               <div>Resultados Reales</div>
             </div>
           </div>
@@ -135,23 +135,21 @@ export function ArticleBanner({ className = "", alt = "Banner artículos Probió
               </svg>
             </div>
             <div>
-              <h3 className="text-xl font-bold text-gray-800"> Artículos Científicos</h3>
+              <h3 className="text-xl font-bold text-gray-800">📖 Artículos Científicos</h3>
               <p className="text-sm text-gray-600">Información respaldada por investigación</p>
             </div>
           </div>
           <div className="hidden md:flex items-center space-x-6 text-sm text-gray-700">
-            <Link
-              href="/donde-comprar/buscador/"
-              className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
-            >
-              Buscar tiendas
-            </Link>
             <div className="text-center">
-              <div className="font-bold text-blue-600"> </div>
+              <div className="font-bold text-green-600">🔬</div>
+              <div>Estudios</div>
+            </div>
+            <div className="text-center">
+              <div className="font-bold text-blue-600">📊</div>
               <div>Evidencia</div>
             </div>
             <div className="text-center">
-              <div className="font-bold text-purple-600"> </div>
+              <div className="font-bold text-purple-600">✅</div>
               <div>Verificado</div>
             </div>
           </div>

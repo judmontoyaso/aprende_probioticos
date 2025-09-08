@@ -1,9 +1,7 @@
 import Link from 'next/link';
-import React from 'react';
-// import { Metadata } from 'next';
-import OptimizedImagePlaceholder from '../components/OptimizedImagePlaceholder';
-// import ArticleBanner from '../components/ArticleBanner';
 import SafeImage from '../components/SafeImage';
+// import AdBanner from '../components/AdBanner';
+// import SEOSchema from '../components/SEOSchema';
 
 import { RecetaData } from '../recetas/data';
 
@@ -12,12 +10,11 @@ interface RecetaTemplateProps {
   slug: string;
 }
 
-export default function RecetaTemplate({ receta }: RecetaTemplateProps) {
+export default function RecetaTemplate({ receta }: { receta: any }) {
   const {
     titulo,
     descripcion,
     imagenPrincipal,
-    // fechaPublicacion, 
     tiempoPreparacion,
     dificultad,
     porciones,
@@ -31,32 +28,7 @@ export default function RecetaTemplate({ receta }: RecetaTemplateProps) {
     variaciones,
     faq
   } = receta;
-  //Datos estructurados para el esquema de artículo/receta
-  // const recipeData = {
-  //   title: titulo,
-  //   description: descripcion,
-  //   publishDate: fechaPublicacion,
-  //   author: "Probióticos Para Todos",
-  //   image: `https://www.probioticosparatodos.com${imagenPrincipal.src}`,
-  //   url: `https://www.probioticosparatodos.com/recetas/${slug}`,
-  //   //Datos específicos para Recipe Schema
-  //   prepTime: tiempoPreparacion,
-  //   recipeYield: `${porciones} porciones`,
-  //   recipeIngredient: ingredientes.map(ing => `${ing.cantidad} ${ing.nombre}`),
-  //   recipeInstructions: instrucciones.map((inst, index) => ({
-  //     "@type": "HowToStep",
-  //     "name": inst.paso,
-  //     "text": inst.descripcion,
-  //     "position": index + 1
-  //   })),
-  //   difficulty: dificultad
-  // };
 
-  //Datos estructurados para el esquema FAQ
-  // const faqData = faq.map(item => ({
-  //   question: item.pregunta,
-  //   answer: item.respuesta
-  // }));
 
 
   // Función para obtener color según dificultad
@@ -180,11 +152,11 @@ export default function RecetaTemplate({ receta }: RecetaTemplateProps) {
                       
                       {instruccion.imagen && (
                         <div className="relative w-full max-w-md mx-auto aspect-square mt-3 mb-4">
-                          <OptimizedImagePlaceholder 
+                          <SafeImage 
                             src={instruccion.imagen.src} 
                             alt={instruccion.imagen.alt}
-                            width={400}
-                            height={400}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 400px"
                             className="rounded-lg object-cover"
                           />
                         </div>

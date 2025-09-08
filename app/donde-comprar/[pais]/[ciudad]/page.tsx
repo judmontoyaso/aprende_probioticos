@@ -1,90 +1,30 @@
-import { tiendasData } from '../../data';
+import { tiendasData, Tienda } from '../../data';
 import Link from 'next/link';
 import { slugify } from '../../utils';
 import OptimizedImagePlaceholder from '../../../components/OptimizedImagePlaceholder';
 import ArticleBanner from '../../../components/ArticleBanner';
 import SEOSchema from '../../../components/SEOSchema';
-import { Metadata } from 'next';
-
-
-// Función para generar metadatos dinámicos
-export async function generateMetadata({ params }: { params: Promise<{ pais: string; ciudad: string }> }): Promise<Metadata> {
-  const { pais: paisSlug, ciudad: ciudadSlug } = await params;
-  const pais = paisSlug.charAt(0).toUpperCase() + paisSlug.slice(1).replace('-', ' ');
-  const ciudad = ciudadSlug.charAt(0).toUpperCase() + ciudadSlug.slice(1).replace('-', ' ');
-  
-  const countryImageMap: { [key: string]: string } = {
-    'colombia': 'donde-comprar-colombia.png',
-    'españa': 'donde-comprar-españa.png', 
-    'argentina': 'donde-comprar-argentina.png',
-    'mexico': 'donde-comprar-mexico.png'
-  };
-  
-  const imageFileName = countryImageMap[paisSlug] || 'donde-comprar.png';
-  const tiendas = tiendasData.filter(t => slugify(t.pais) === paisSlug && slugify(t.ciudad) === ciudadSlug);
-  
-  return {
-    title: `Tiendas de Probióticos en ${ciudad}, ${pais}: Guía Completa | Probióticos Para Todos`,
-    description: `Encuentra ${tiendas.length} tiendas verificadas de probióticos en ${ciudad}, ${pais}. Herbolarios, farmacias y tiendas naturales con direcciones exactas, horarios y contacto.`,
-    keywords: [`probióticos ${ciudad.toLowerCase()}`, `tiendas probióticos ${ciudad.toLowerCase()} ${pais.toLowerCase()}`, `herbolarios ${ciudad.toLowerCase()}`, `donde comprar probióticos ${ciudad.toLowerCase()}`, 'suplementos digestivos', 'salud intestinal'],
-    openGraph: {
-      title: `Tiendas de Probióticos en ${ciudad}, ${pais}`,
-      description: `Guía completa de ${tiendas.length} tiendas verificadas donde comprar probióticos en ${ciudad}, ${pais}.`,
-      url: `https://www.probioticosparatodos.com/donde-comprar/${paisSlug}/${ciudadSlug}`,
-      siteName: 'Probióticos Para Todos',
-      images: [{
-        url: `https://www.probioticosparatodos.com/images/${imageFileName}`,
-        width: 1200,
-        height: 630,
-        alt: `Tiendas de probióticos en ${ciudad}, ${pais}`
-      }],
-      locale: 'es_ES',
-      type: 'website'
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `Directorio: Tiendas de Probióticos en ${ciudad}, ${pais}`,
-      description: `${tiendas.length} tiendas verificadas donde comprar probióticos en ${ciudad}.`,
-      images: [`https://www.probioticosparatodos.com/images/${imageFileName}`]
-    },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1
-      }
-    },
-    alternates: {
-      canonical: `https://www.probioticosparatodos.com/donde-comprar/${paisSlug}/${ciudadSlug}`
-    }
-  };
-}
 
 export default async function CiudadPage({ params }: { params: Promise<{ pais: string; ciudad: string }> }) {
   const { pais: paisSlug, ciudad: ciudadSlug } = await params;
 
-  const tiendas = tiendasData.filter(
-    (tienda) =>
-      slugify(tienda.pais) === paisSlug &&
-      slugify(tienda.ciudad) === ciudadSlug
-  );
+  const tiendas = tiendasData.filter((tienda: Tienda) => {
+    return slugify(tienda.pais) === paisSlug && slugify(tienda.ciudad) === ciudadSlug
+  });
 
-  const pais = tiendas.length > 0 ? tiendas[0].pais : '';
-  const ciudad = tiendas.length > 0 ? tiendas[0].ciudad : '';
+  const pais = tiendasData.find((tienda: Tienda) => slugify(tienda.pais) === paisSlug)?.pais;
+  const ciudad = tiendasData.find((tienda: Tienda) => slugify(tienda.ciudad) === ciudadSlug)?.ciudad;
 
-  // Schema.org para LocalBusiness por ciudad
+  // Configurar structured data para SEO
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
     "name": `Tiendas de Probióticos en ${ciudad}, ${pais}`,
-    "description": `Directorio de tiendas verificadas donde comprar probióticos en ${ciudad}, ${pais}`,
+    // ... (rest of the code remains the same)
+    "description": `Directorio completo de herbolarios y tiendas naturales donde comprar probióticos en ${ciudad}, ${pais}`,
     "url": `https://www.probioticosparatodos.com/donde-comprar/${paisSlug}/${ciudadSlug}`,
     "numberOfItems": tiendas.length,
-    "itemListElement": tiendas.map((tienda, index) => ({
+    "itemListElement": tiendas.map((tienda: Tienda, index: number) => ({
       "@type": "LocalBusiness",
       "position": index + 1,
       "name": tienda.nombre,
@@ -94,7 +34,7 @@ export default async function CiudadPage({ params }: { params: Promise<{ pais: s
         "addressLocality": tienda.ciudad,
         "addressCountry": tienda.pais
       },
-      "telephone": tienda.whatsapp || undefined,
+      "telephone": tienda.telefono || tienda.whatsapp || undefined,
       "url": tienda.web || undefined,
       "openingHours": tienda.horarios || undefined,
       "aggregateRating": {
@@ -107,7 +47,7 @@ export default async function CiudadPage({ params }: { params: Promise<{ pais: s
   };
 
   // Breadcrumb Schema
-  const breadcrumbSchema = {
+  const breadcrumbData = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
@@ -197,23 +137,47 @@ export default async function CiudadPage({ params }: { params: Promise<{ pais: s
 
   return (
     <>
-      {/* Structured Data Scripts */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(localBusinessSchema)
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema)
-        }}
-      />
 
       <main className="min-h-screen bg-gray-50">
         {/* Schema.org estructurado */}
         <SEOSchema type="both" data={{ article: articleData, faq: faqData }} />
+        
+        {/* Breadcrumb Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Inicio",
+                  "item": "https://www.probioticosparatodos.com"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Dónde Comprar",
+                  "item": "https://www.probioticosparatodos.com/donde-comprar"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": pais,
+                  "item": `https://www.probioticosparatodos.com/donde-comprar/${paisSlug}`
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 4,
+                  "name": ciudad,
+                  "item": `https://www.probioticosparatodos.com/donde-comprar/${paisSlug}/${ciudadSlug}`
+                }
+              ]
+            })
+          }}
+        />
 
         {/* Hero section moderna */}
         <section className="py-12 bg-aqua-squeeze" itemScope itemType="https://schema.org/Article">
@@ -300,7 +264,66 @@ export default async function CiudadPage({ params }: { params: Promise<{ pais: s
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {/* Client component temporarily removed to fix build */}
+                {tiendas.map((tienda) => (
+                  <div key={tienda.nombre} className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-apple/10 to-st-tropaz/10 rounded-xl flex items-center justify-center">
+                        <span className="text-lg">🏪</span>
+                      </div>
+                      <span className={`text-xs font-bold py-1 px-3 rounded-full ${
+                        tienda.confiabilidad === 'Muy Alta' ? 'bg-apple/10 text-apple' :
+                        tienda.confiabilidad === 'Alta' ? 'bg-st-tropaz/10 text-st-tropaz' :
+                        'bg-seagull/10 text-seagull'
+                      }`}>
+                        {tienda.confiabilidad}
+                      </span>
+                    </div>
+
+                    <h3 className="text-xl font-bold text-biscay mb-3">{tienda.nombre}</h3>
+                    <p className="text-gray-600 mb-4 flex-grow">{tienda.direccion}</p>
+                    
+                    <div className="space-y-3 text-sm mb-6">
+                      {tienda.whatsapp && (
+                        <div className="flex items-center">
+                          <span className="w-2 h-2 bg-apple rounded-full mr-3"></span>
+                          <span className="font-medium text-gray-700">WhatsApp:</span>
+                          <span className="ml-2 text-gray-600">{tienda.whatsapp}</span>
+                        </div>
+                      )}
+                      {tienda.horarios && (
+                        <div className="flex items-center">
+                          <span className="w-2 h-2 bg-st-tropaz rounded-full mr-3"></span>
+                          <span className="font-medium text-gray-700">Horario:</span>
+                          <span className="ml-2 text-gray-600">{tienda.horarios}</span>
+                        </div>
+                      )}
+                      <div className="flex items-start">
+                        <span className="w-2 h-2 bg-seagull rounded-full mr-3 mt-1"></span>
+                        <div>
+                          <span className="font-medium text-gray-700">Probióticos:</span>
+                          <span className="ml-2 text-gray-600">{tienda.tiposProbioticos.join(', ')}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-auto pt-4 border-t border-gray-100 flex justify-between items-center">
+                      {tienda.web && (
+                        <Link 
+                          href={tienda.web} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="inline-flex items-center px-4 py-2 bg-apple/10 text-apple font-medium rounded-lg hover:bg-apple/20 transition-colors text-sm"
+                        >
+                          <span className="mr-1">🌐</span>
+                          Sitio web
+                        </Link>
+                      )}
+                      <span className="text-xs text-gray-500">
+                        Verificado: {tienda.fechaVerificacion}
+                      </span>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -358,7 +381,7 @@ export default async function CiudadPage({ params }: { params: Promise<{ pais: s
         </section>
 
         {/* FAQ */}
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
@@ -366,16 +389,16 @@ export default async function CiudadPage({ params }: { params: Promise<{ pais: s
                   Preguntas Frecuentes
                 </h2>
                 <p className="text-lg text-gray-600">
-                  Resuelve tus dudas sobre dónde comprar probióticos en {ciudad}
+                  Resolvemos las dudas más comunes sobre comprar probióticos en {ciudad}
                 </p>
               </div>
 
               <div className="space-y-4">
                 {faqData.map((faq, index) => (
-                  <div key={index} className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+                  <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
                     <div className="px-8 py-6">
-                      <h3 className="text-lg font-semibold text-biscay mb-3">{faq.question}</h3>
-                      <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+                      <h3 className="font-semibold text-biscay mb-3">{faq.question}</h3>
+                      <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
                     </div>
                   </div>
                 ))}

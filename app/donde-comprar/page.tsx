@@ -1,9 +1,10 @@
-import { tiendasData } from './data';
+import { Metadata } from 'next';
 import Link from 'next/link';
+import { slugify } from './utils';
 import OptimizedImagePlaceholder from '../components/OptimizedImagePlaceholder';
 import ArticleBanner from '../components/ArticleBanner';
 import SEOSchema from '../components/SEOSchema';
-import { Metadata } from 'next';
+import { tiendasData, Tienda } from './data';
 
 // Metadatos para SEO
 export const metadata: Metadata = {
@@ -47,12 +48,8 @@ export const metadata: Metadata = {
 };
 
 export default function DondeComprarPage() {
-  // const paises = [...new Set(tiendasData.map(t => t.pais))];
+  const paises = [...new Set(tiendasData.map((t: Tienda) => t.pais))] as string[];
 
-  // const ciudadesPorPais = paises.reduce((acc, pais) => {
-  //   acc[pais] = [...new Set(tiendasData.filter(t => t.pais === pais).map(t => t.ciudad))];
-  //   return acc;
-  // }, {} as Record<string, string[]>);
 
   // Schema.org para LocalBusiness directory
   const localBusinessSchema = {
@@ -62,7 +59,7 @@ export default function DondeComprarPage() {
     "description": "Directorio completo de herbolarios, tiendas naturales y mercados orgánicos donde comprar probióticos de calidad",
     "url": "https://www.probioticosparatodos.com/donde-comprar",
     "numberOfItems": tiendasData.length,
-    "itemListElement": tiendasData.map((tienda, index) => ({
+    "itemListElement": tiendasData.map((tienda: Tienda, index: number) => ({
       "@type": "LocalBusiness",
       "position": index + 1,
       "name": tienda.nombre,
@@ -72,9 +69,8 @@ export default function DondeComprarPage() {
         "addressLocality": tienda.ciudad,
         "addressCountry": tienda.pais
       },
-      "telephone": tienda.whatsapp || undefined,
+      "telephone": tienda.telefono || undefined,
       "url": tienda.web || undefined,
-      "openingHours": tienda.horarios || undefined,
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": tienda.confiabilidad === 'Muy Alta' ? '5' : tienda.confiabilidad === 'Alta' ? '4' : '3',
@@ -130,7 +126,8 @@ export default function DondeComprarPage() {
           image: "https://www.probioticosparatodos.com/images/donde-comprar.png",
           url: "https://www.probioticosparatodos.com/donde-comprar"
         }} />
-        
+
+
         {/* Hero section moderna */}
         <section className="py-12 bg-aqua-squeeze" itemScope itemType="https://schema.org/Article">
           <div className="container mx-auto px-4">
@@ -262,7 +259,41 @@ export default function DondeComprarPage() {
         {/* Banner de artículo */}
         <ArticleBanner />
 
-        {/* Client component temporarily removed to fix build */}
+        {/* Sección de países */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl lg:text-4xl font-bold text-biscay mb-4">
+                  Busca por País
+                </h2>
+                <p className="text-lg text-gray-600">
+                  Selecciona tu país para ver el directorio completo de tiendas disponibles
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {paises.map((pais: string) => (
+                  <Link
+                    key={pais}
+                    href={`/donde-comprar/${slugify(pais)}`}
+                    className="group bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
+                  >
+                    <div className="space-y-4">
+                      <div className="w-16 h-16 bg-gradient-to-br from-apple/10 to-st-tropaz/10 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
+                        <span className="text-2xl">🏪</span>
+                      </div>
+                      <div>
+                        <span className="block text-lg text-gray-600 mb-2">Probióticos en</span>
+                        <span className="block text-2xl font-bold text-biscay group-hover:text-apple transition-colors duration-300">{pais}</span>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Sección de beneficios */}
         <section className="py-16 bg-white">

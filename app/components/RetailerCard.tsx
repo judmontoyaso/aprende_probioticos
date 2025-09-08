@@ -191,7 +191,7 @@ export default function RetailerCard({ retailer, cityName, countryName }: Retail
         </button>
         {retailer.productUrl && (
           <button 
-            onClick={() => handleContactClick('website', retailer.productUrl || '')}
+            onClick={() => handleContactClick('website', retailer.productUrl)}
             className="flex-1 bg-white text-green-600 text-sm font-medium py-2 px-4 rounded-md border border-green-600 hover:bg-green-50 transition-colors duration-200"
           >
             Ver probióticos
