@@ -20,8 +20,8 @@ interface Tienda {
 }
 
 // Función para generar metadatos dinámicos
-export async function generateMetadata({ params }: { params: { pais: string } }): Promise<Metadata> {
-  const paisSlug = params.pais;
+export async function generateMetadata({ params }: { params: Promise<{ pais: string }> }): Promise<Metadata> {
+  const { pais: paisSlug } = await params;
   const pais = paisSlug.charAt(0).toUpperCase() + paisSlug.slice(1).replace('-', ' ');
   
   const countryImageMap: { [key: string]: string } = {
@@ -75,8 +75,8 @@ export async function generateMetadata({ params }: { params: { pais: string } })
   };
 }
 
-export default function PaisPage({ params }: { params: { pais: string } }) {
-  const paisSlug = params.pais;
+export default async function PaisPage({ params }: { params: Promise<{ pais: string }> }) {
+  const { pais: paisSlug } = await params;
   const pais = paisSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
   
   const tiendasDelPais = tiendasData.filter(tienda => 
