@@ -3,8 +3,13 @@ export interface Retailer {
   name: string;
   address: string;
   phone?: string;
-  whatsapp?: string;
+  whatsapp?: string | null;
   website?: string;
+  productUrl?: string | null;
+  hours?: string | null;
+  priceExample?: string | null;
+  paymentMethods?: string[];
+  reliabilityNote?: string;
   probioticTypes: string[];
   brands: string[];
   onlineStore?: boolean;

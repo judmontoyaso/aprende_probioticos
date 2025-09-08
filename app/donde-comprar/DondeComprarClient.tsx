@@ -1,10 +1,13 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import CountrySelector from '../components/CountrySelector';
+import CountrySelector from '@/app/components/CountrySelector';
 import RetailerCard from '../components/RetailerCard';
 import AdBanner from '../components/AdBanner';
-import retailersData from '../data/retailers.json';
+import type { RetailersData, Retailer } from '../types/retailers';
+import retailersDataRaw from '../data/retailers.json';
+
+const retailersData = retailersDataRaw as unknown as RetailersData;
 
 
 export default function DondeComprarClient() {
