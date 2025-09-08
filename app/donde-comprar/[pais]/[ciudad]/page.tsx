@@ -8,6 +8,17 @@ import { slugify } from '../../utils';
 
 export default function CiudadPage() {
   const params = useParams();
+  const paisSlug = params ? (Array.isArray(params.pais) ? params.pais[0] : params.pais) : '';
+  const ciudadSlug = params ? (Array.isArray(params.ciudad) ? params.ciudad[0] : params.ciudad) : '';
+
+  const tiendas = useMemo(() => {
+    if (!params) return [];
+    return tiendasData.filter(
+      (tienda) =>
+        slugify(tienda.pais) === paisSlug &&
+        slugify(tienda.ciudad) === ciudadSlug
+    );
+  }, [params, paisSlug, ciudadSlug]);
 
   if (!params) {
     return (
@@ -16,17 +27,6 @@ export default function CiudadPage() {
         </div>
     );
   }
-
-  const paisSlug = Array.isArray(params.pais) ? params.pais[0] : params.pais;
-  const ciudadSlug = Array.isArray(params.ciudad) ? params.ciudad[0] : params.ciudad;
-
-  const tiendas = useMemo(() => {
-    return tiendasData.filter(
-      (tienda) =>
-        slugify(tienda.pais) === paisSlug &&
-        slugify(tienda.ciudad) === ciudadSlug
-    );
-  }, [paisSlug, ciudadSlug]);
 
   const pais = tiendas.length > 0 ? tiendas[0].pais : '';
   const ciudad = tiendas.length > 0 ? tiendas[0].ciudad : '';

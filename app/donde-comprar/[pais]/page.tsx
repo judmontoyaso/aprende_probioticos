@@ -8,7 +8,23 @@ import { slugify } from '../utils';
 
 export default function PaisPage() {
   const params = useParams();
-  
+  const paisSlug = params ? (Array.isArray(params.pais) ? params.pais[0] : params.pais) : '';
+
+  const pais = useMemo(() => {
+    if (!params) return '';
+    return tiendasData.find(
+      (tienda: Tienda) => slugify(tienda.pais) === paisSlug
+    )?.pais;
+  }, [params, paisSlug]);
+
+  const ciudades = useMemo(() => {
+    if (!params) return [];
+    const ciudadesDelPais = tiendasData
+      .filter((tienda: Tienda) => slugify(tienda.pais) === paisSlug)
+      .map((tienda: Tienda) => tienda.ciudad);
+    return [...new Set(ciudadesDelPais)];
+  }, [params, paisSlug]);
+
   if (!params) {
     return (
         <div className="container mx-auto px-4 py-12 text-center">
@@ -16,21 +32,6 @@ export default function PaisPage() {
         </div>
     );
   }
-
-  const paisSlug = Array.isArray(params.pais) ? params.pais[0] : params.pais;
-
-  const pais = useMemo(() => {
-    return tiendasData.find(
-      (tienda: Tienda) => slugify(tienda.pais) === paisSlug
-    )?.pais;
-  }, [paisSlug]);
-
-  const ciudades = useMemo(() => {
-    const ciudadesDelPais = tiendasData
-      .filter((tienda: Tienda) => slugify(tienda.pais) === paisSlug)
-      .map((tienda: Tienda) => tienda.ciudad);
-    return [...new Set(ciudadesDelPais)];
-  }, [paisSlug]);
 
   if (!pais) {
     return (
