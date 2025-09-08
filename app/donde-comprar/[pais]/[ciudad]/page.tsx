@@ -1,412 +1,140 @@
-import { tiendasData, Tienda } from '../../data';
+'use client';
+
+import { useMemo } from 'react';
+import { tiendasData } from '../../data';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import { slugify } from '../../utils';
-import OptimizedImagePlaceholder from '../../../components/OptimizedImagePlaceholder';
-import ArticleBanner from '../../../components/ArticleBanner';
-import SEOSchema from '../../../components/SEOSchema';
 
-export default async function CiudadPage({ params }: { params: Promise<{ pais: string; ciudad: string }> }) {
-  const { pais: paisSlug, ciudad: ciudadSlug } = await params;
+export default function CiudadPage() {
+  const params = useParams();
 
-  const tiendas = tiendasData.filter((tienda: Tienda) => {
-    return slugify(tienda.pais) === paisSlug && slugify(tienda.ciudad) === ciudadSlug
-  });
-
-  const pais = tiendasData.find((tienda: Tienda) => slugify(tienda.pais) === paisSlug)?.pais;
-  const ciudad = tiendasData.find((tienda: Tienda) => slugify(tienda.ciudad) === ciudadSlug)?.ciudad;
-
-  // Configurar structured data para SEO
-  const localBusinessSchema = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": `Tiendas de Probióticos en ${ciudad}, ${pais}`,
-    // ... (rest of the code remains the same)
-    "description": `Directorio completo de herbolarios y tiendas naturales donde comprar probióticos en ${ciudad}, ${pais}`,
-    "url": `https://www.probioticosparatodos.com/donde-comprar/${paisSlug}/${ciudadSlug}`,
-    "numberOfItems": tiendas.length,
-    "itemListElement": tiendas.map((tienda: Tienda, index: number) => ({
-      "@type": "LocalBusiness",
-      "position": index + 1,
-      "name": tienda.nombre,
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": tienda.direccion,
-        "addressLocality": tienda.ciudad,
-        "addressCountry": tienda.pais
-      },
-      "telephone": tienda.telefono || tienda.whatsapp || undefined,
-      "url": tienda.web || undefined,
-      "openingHours": tienda.horarios || undefined,
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": tienda.confiabilidad === 'Muy Alta' ? '5' : tienda.confiabilidad === 'Alta' ? '4' : '3',
-        "bestRating": "5",
-        "worstRating": "1"
-      }
-    }))
-  };
-
-  // Breadcrumb Schema
-  const breadcrumbData = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Inicio",
-        "item": "https://www.probioticosparatodos.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Dónde Comprar",
-        "item": "https://www.probioticosparatodos.com/donde-comprar"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": pais,
-        "item": `https://www.probioticosparatodos.com/donde-comprar/${paisSlug}`
-      },
-      {
-        "@type": "ListItem",
-        "position": 4,
-        "name": ciudad,
-        "item": `https://www.probioticosparatodos.com/donde-comprar/${paisSlug}/${ciudadSlug}`
-      }
-    ]
-  };
-
-  if (tiendas.length === 0) {
+  if (!params) {
     return (
-      <main className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center max-w-md mx-auto px-4">
-          <div className="w-20 h-20 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <span className="text-3xl">🔍</span>
-          </div>
-          <h1 className="text-3xl font-bold text-biscay mb-4">No se encontraron tiendas</h1>
-          <p className="text-gray-600 mb-8">No tenemos datos para la ciudad o país especificado en nuestro directorio.</p>
-          <Link 
-            href="/donde-comprar" 
-            className="inline-flex items-center px-8 py-4 bg-apple text-white font-semibold rounded-2xl hover:bg-apple/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-          >
-            <span className="mr-2">🏠</span>
-            Volver al Directorio
-          </Link>
+        <div className="container mx-auto px-4 py-12 text-center">
+            <h1 className="text-4xl font-bold text-gray-800">Cargando...</h1>
         </div>
-      </main>
     );
   }
 
-  // Mapeo de países a nombres de archivos de imagen
-  const countryImageMap: { [key: string]: string } = {
-    'colombia': 'donde-comprar-colombia.png',
-    'españa': 'donde-comprar-españa.png', 
-    'argentina': 'donde-comprar-argentina.png',
-    'mexico': 'donde-comprar-mexico.png'
-  };
+  const paisSlug = Array.isArray(params.pais) ? params.pais[0] : params.pais;
+  const ciudadSlug = Array.isArray(params.ciudad) ? params.ciudad[0] : params.ciudad;
 
-  const imageFileName = countryImageMap[paisSlug] || 'donde-comprar.png';
+  const tiendas = useMemo(() => {
+    return tiendasData.filter(
+      (tienda) =>
+        slugify(tienda.pais) === paisSlug &&
+        slugify(tienda.ciudad) === ciudadSlug
+    );
+  }, [paisSlug, ciudadSlug]);
 
-  // Datos estructurados para el artículo
-  const articleData = {
-    title: `Tiendas de Probióticos en ${ciudad}, ${pais}`,
-    description: `Guía completa de herbolarios, tiendas naturales y mercados orgánicos donde comprar probióticos en ${ciudad}, ${pais}. Direcciones, contactos y productos disponibles.`,
-    publishDate: "2024-09-08T10:00:00+00:00",
-    author: "Probióticos Para Todos",
-    image: `https://www.probioticosparatodos.com/images/${imageFileName}`,
-    url: `https://www.probioticosparatodos.com/donde-comprar/${paisSlug}/${ciudadSlug}`
-  };
+  const pais = tiendas.length > 0 ? tiendas[0].pais : '';
+  const ciudad = tiendas.length > 0 ? tiendas[0].ciudad : '';
 
-  // Datos para FAQ
-  const faqData = [
-    {
-      question: "¿Qué diferencia hay entre un probiótico alimentario y uno en cápsula?",
-      answer: "Los alimentarios (kéfir, kombucha) contienen consorcios microbianos naturales; las cápsulas suelen contener cepas específicas y dosis estandarizadas."
-    },
-    {
-      question: "¿Puedo encontrar marcas internacionales en estas tiendas?",
-      answer: "Sí, muchas de las tiendas listadas ofrecen tanto marcas nacionales como internacionales. Revisa la ficha de cada una para más detalles."
-    },
-    {
-      question: "¿Cómo sé si la información es confiable?",
-      answer: "Cada ficha incluye la fuente de verificación (sitio oficial, Google Maps, etc.) y la fecha de nuestra última comprobación para asegurar la mayor precisión posible."
-    }
-  ];
+  if (tiendas.length === 0) {
+    return (
+      <div className="container mx-auto px-4 py-12 text-center">
+        <h1 className="text-4xl font-bold text-gray-800">No se encontraron tiendas</h1>
+        <p className="text-xl text-gray-600 mt-4">
+          No tenemos datos para la ciudad o país especificado.
+        </p>
+        <Link href="/donde-comprar" className="mt-8 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg">
+            Volver al directorio
+        </Link>
+      </div>
+    );
+  }
 
   return (
-    <>
-
-      <main className="min-h-screen bg-gray-50">
-        {/* Schema.org estructurado */}
-        <SEOSchema type="both" data={{ article: articleData, faq: faqData }} />
-        
-        {/* Breadcrumb Schema */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Inicio",
-                  "item": "https://www.probioticosparatodos.com"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Dónde Comprar",
-                  "item": "https://www.probioticosparatodos.com/donde-comprar"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": pais,
-                  "item": `https://www.probioticosparatodos.com/donde-comprar/${paisSlug}`
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 4,
-                  "name": ciudad,
-                  "item": `https://www.probioticosparatodos.com/donde-comprar/${paisSlug}/${ciudadSlug}`
-                }
-              ]
-            })
-          }}
-        />
-
-        {/* Hero section moderna */}
-        <section className="py-12 bg-aqua-squeeze" itemScope itemType="https://schema.org/Article">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                {/* Columna de texto */}
-                <div className="space-y-6">
-                  <div className="space-y-4">
-                    <span className="inline-block px-4 py-2 bg-apple/10 text-apple font-medium rounded-full text-sm">
-                      {ciudad}, {pais}
-                    </span>
-                    <h1 className="text-4xl lg:text-5xl font-bold text-biscay leading-tight" itemProp="headline">
-                      Tiendas de Probióticos en {ciudad}
-                    </h1>
-                    <p className="text-lg text-gray-600 leading-relaxed" itemProp="description">
-                      Guía detallada de herbolarios, tiendas naturales y mercados especializados en probióticos en {ciudad}.
-                    </p>
-                    <meta itemProp="author" content="Probióticos Para Todos" />
-                    <meta itemProp="datePublished" content="2024-09-08T10:00:00+00:00" />
-                  </div>
-                  
-                  {/* Estadísticas */}
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-white/60 p-4 rounded-lg text-center">
-                      <div className="text-2xl font-bold text-apple">{tiendas.length}</div>
-                      <div className="text-sm text-gray-600">Tiendas verificadas</div>
-                    </div>
-                    <div className="bg-white/60 p-4 rounded-lg text-center">
-                      <div className="text-2xl font-bold text-st-tropaz">
-                        {[...new Set(tiendas.flatMap(t => t.tiposProbioticos))].length}
-                      </div>
-                      <div className="text-sm text-gray-600">Tipos disponibles</div>
-                    </div>
-                  </div>
-
-                  {/* Navegación */}
-                  <div className="flex flex-wrap gap-3 pt-4">
-                    <Link 
-                      href={`/donde-comprar/${paisSlug}`}
-                      className="inline-flex items-center px-4 py-2 bg-white/80 text-biscay font-medium rounded-xl hover:bg-white transition-all duration-300 shadow-md hover:shadow-lg text-sm"
-                    >
-                      <span className="mr-2">←</span>
-                      {pais}
-                    </Link>
-                    <Link 
-                      href="/donde-comprar" 
-                      className="inline-flex items-center px-4 py-2 bg-white/80 text-biscay font-medium rounded-xl hover:bg-white transition-all duration-300 shadow-md hover:shadow-lg text-sm"
-                    >
-                      <span className="mr-2">🏠</span>
-                      Directorio
-                    </Link>
-                  </div>
-                </div>
-
-                {/* Columna de imagen */}
-                <div className="order-first lg:order-last">
-                  <figure className="relative w-full max-w-xs mx-auto lg:max-w-sm">
-                    <OptimizedImagePlaceholder 
-                      src={`/images/${imageFileName}`}
-                      alt={`Tiendas de probióticos en ${ciudad}, ${pais}`}
-                      width={350}
-                      height={400}
-                      className="w-full h-[310px] sm:h-[342px] lg:h-[350px] object-cover rounded-2xl shadow-2xl transition-transform duration-300 hover:scale-105 bg-white"
-                    />
-                  </figure>
-                </div>
-              </div>
-            </div>
-          </div>
+    <main className="min-h-screen bg-gray-50">
+        <div className="container mx-auto px-4 py-12">
+        <section className="text-center mb-16">
+            <h1 className="text-4xl font-bold mb-4 text-gray-800">
+                Dónde Comprar Probióticos en {ciudad}, {pais}
+            </h1>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Guía detallada de tiendas, herbolarios y mercados en {ciudad}. Encuentra productos de calidad cerca de ti.
+            </p>
         </section>
 
-        {/* Sección de tiendas */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl lg:text-4xl font-bold text-biscay mb-4">
-                  Tiendas Verificadas
-                </h2>
-                <p className="text-lg text-gray-600">
-                  Herbolarios y tiendas naturales especializadas en probióticos
-                </p>
-              </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {tiendas.map((tienda) => (
+            <div key={tienda.nombre} className="bg-white rounded-lg shadow-md p-6 border border-gray-100 hover:shadow-lg transition-shadow duration-300 flex flex-col">
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">{tienda.nombre}</h3>
+                <p className="text-gray-600 mb-4 flex-grow">{tienda.direccion}</p>
+                
+                <div className="space-y-2 text-sm mb-4">
+                {tienda.whatsapp && <p><span className="font-semibold">WhatsApp:</span> {tienda.whatsapp}</p>}
+                {tienda.horarios && <p><span className="font-semibold">Horario:</span> {tienda.horarios}</p>}
+                <p><span className="font-semibold">Tipos de Probióticos:</span> {tienda.tiposProbioticos.join(', ')}</p>
+                {tienda.web && (
+                    <Link href={tienda.web} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline font-semibold">
+                    Visitar sitio web →
+                    </Link>
+                )}
+                </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {tiendas.map((tienda) => (
-                  <div key={tienda.nombre} className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col">
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-apple/10 to-st-tropaz/10 rounded-xl flex items-center justify-center">
-                        <span className="text-lg">🏪</span>
-                      </div>
-                      <span className={`text-xs font-bold py-1 px-3 rounded-full ${
-                        tienda.confiabilidad === 'Muy Alta' ? 'bg-apple/10 text-apple' :
-                        tienda.confiabilidad === 'Alta' ? 'bg-st-tropaz/10 text-st-tropaz' :
-                        'bg-seagull/10 text-seagull'
-                      }`}>
+                <div className="mt-auto pt-4 border-t border-gray-200 flex justify-between items-center">
+                    <span className={`text-xs font-bold py-1 px-2 rounded-full ${
+                        tienda.confiabilidad === 'Muy Alta' ? 'bg-green-100 text-green-800' :
+                        tienda.confiabilidad === 'Alta' ? 'bg-blue-100 text-blue-800' :
+                        'bg-yellow-100 text-yellow-800'
+                    }`}>
                         {tienda.confiabilidad}
-                      </span>
-                    </div>
-
-                    <h3 className="text-xl font-bold text-biscay mb-3">{tienda.nombre}</h3>
-                    <p className="text-gray-600 mb-4 flex-grow">{tienda.direccion}</p>
-                    
-                    <div className="space-y-3 text-sm mb-6">
-                      {tienda.whatsapp && (
-                        <div className="flex items-center">
-                          <span className="w-2 h-2 bg-apple rounded-full mr-3"></span>
-                          <span className="font-medium text-gray-700">WhatsApp:</span>
-                          <span className="ml-2 text-gray-600">{tienda.whatsapp}</span>
-                        </div>
-                      )}
-                      {tienda.horarios && (
-                        <div className="flex items-center">
-                          <span className="w-2 h-2 bg-st-tropaz rounded-full mr-3"></span>
-                          <span className="font-medium text-gray-700">Horario:</span>
-                          <span className="ml-2 text-gray-600">{tienda.horarios}</span>
-                        </div>
-                      )}
-                      <div className="flex items-start">
-                        <span className="w-2 h-2 bg-seagull rounded-full mr-3 mt-1"></span>
-                        <div>
-                          <span className="font-medium text-gray-700">Probióticos:</span>
-                          <span className="ml-2 text-gray-600">{tienda.tiposProbioticos.join(', ')}</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="mt-auto pt-4 border-t border-gray-100 flex justify-between items-center">
-                      {tienda.web && (
-                        <Link 
-                          href={tienda.web} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="inline-flex items-center px-4 py-2 bg-apple/10 text-apple font-medium rounded-lg hover:bg-apple/20 transition-colors text-sm"
-                        >
-                          <span className="mr-1">🌐</span>
-                          Sitio web
-                        </Link>
-                      )}
-                      <span className="text-xs text-gray-500">
+                    </span>
+                    <span className="text-xs text-gray-500">
                         Verificado: {tienda.fechaVerificacion}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
+                    </span>
+                </div>
             </div>
-          </div>
+            ))}
+        </div>
+
+        <section className="my-16 p-8 bg-aqua-squeeze rounded-lg border">
+            <h2 className="text-2xl font-bold text-center mb-6 text-gray-700">Consejos rápidos antes de comprar en {ciudad}</h2>
+            <ul className="space-y-4 text-gray-700 max-w-2xl mx-auto">
+                <li className="flex items-start">
+                    <svg className="w-5 h-5 text-blue-500 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>
+                    <span>Revisa la fecha de caducidad y las condiciones de almacenamiento, especialmente para productos refrigerados.</span>
+                </li>
+                <li className="flex items-start">
+                    <svg className="w-5 h-5 text-blue-500 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>
+                    <span>Para suplementos, prefiere aquellos con descripción de cepas y UFC (Unidades Formadoras de Colonias).</span>
+                </li>
+                <li className="flex items-start">
+                    <svg className="w-5 h-5 text-blue-500 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>
+                    <span>Para alimentos fermentados, pregunta si son pasteurizados (los no pasteurizados conservan más cultivos vivos).</span>
+                </li>
+            </ul>
         </section>
 
-        {/* Banner de artículo */}
-        <ArticleBanner />
-
-        {/* Sección de consejos */}
-        <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl lg:text-4xl font-bold text-biscay mb-4">
-                  Consejos Antes de Comprar en {ciudad}
-                </h2>
-                <p className="text-lg text-gray-600">
-                  Recomendaciones para elegir los mejores probióticos
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
-                  <div className="w-16 h-16 bg-apple/10 rounded-2xl flex items-center justify-center mb-6">
-                    <span className="text-2xl">📅</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-biscay mb-4">Fecha de Caducidad</h3>
-                  <p className="text-gray-600">
-                    Revisa la fecha de caducidad y las condiciones de almacenamiento, especialmente para productos refrigerados.
-                  </p>
-                </div>
-
-                <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
-                  <div className="w-16 h-16 bg-st-tropaz/10 rounded-2xl flex items-center justify-center mb-6">
-                    <span className="text-2xl">🧬</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-biscay mb-4">Cepas y UFC</h3>
-                  <p className="text-gray-600">
-                    Para suplementos, prefiere aquellos con descripción de cepas y UFC (Unidades Formadoras de Colonias).
-                  </p>
-                </div>
-
-                <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
-                  <div className="w-16 h-16 bg-seagull/10 rounded-2xl flex items-center justify-center mb-6">
-                    <span className="text-2xl">🌿</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-biscay mb-4">Alimentos Fermentados</h3>
-                  <p className="text-gray-600">
-                    Para alimentos fermentados, pregunta si son pasteurizados (los no pasteurizados conservan más cultivos vivos).
-                  </p>
-                </div>
-              </div>
+        <section className="my-16">
+            <h2 className="text-2xl font-bold text-center mb-8 text-gray-700">Preguntas Frecuentes</h2>
+            <div className="max-w-3xl mx-auto space-y-4">
+                <details className="p-6 border rounded-lg bg-white group" name="faq">
+                    <summary className="font-semibold cursor-pointer flex justify-between items-center">
+                        ¿Qué diferencia hay entre un probiótico alimentario y uno en cápsula?
+                        <svg className="w-5 h-5 transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <p className="mt-4 text-gray-600">Los alimentarios (kéfir, kombucha) contienen consorcios microbianos naturales; las cápsulas suelen contener cepas específicas y dosis estandarizadas.</p>
+                </details>
+                <details className="p-6 border rounded-lg bg-white group" name="faq">
+                    <summary className="font-semibold cursor-pointer flex justify-between items-center">
+                        ¿Puedo encontrar marcas internacionales en estas tiendas?
+                        <svg className="w-5 h-5 transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <p className="mt-4 text-gray-600">Sí, muchas de las tiendas listadas ofrecen tanto marcas nacionales como internacionales. Revisa la ficha de cada una para más detalles.</p>
+                </details>
+                <details className="p-6 border rounded-lg bg-white group" name="faq">
+                    <summary className="font-semibold cursor-pointer flex justify-between items-center">
+                        ¿Cómo sé si la información es confiable?
+                        <svg className="w-5 h-5 transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <p className="mt-4 text-gray-600">Cada ficha incluye la fuente de verificación (sitio oficial, Google Maps, etc.) y la fecha de nuestra última comprobación para asegurar la mayor precisión posible.</p>
+                </details>
             </div>
-          </div>
         </section>
-
-        {/* FAQ */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl lg:text-4xl font-bold text-biscay mb-4">
-                  Preguntas Frecuentes
-                </h2>
-                <p className="text-lg text-gray-600">
-                  Resolvemos las dudas más comunes sobre comprar probióticos en {ciudad}
-                </p>
-              </div>
-
-              <div className="space-y-4">
-                {faqData.map((faq, index) => (
-                  <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
-                    <div className="px-8 py-6">
-                      <h3 className="font-semibold text-biscay mb-3">{faq.question}</h3>
-                      <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-    </>
+        </div>
+    </main>
   );
 }

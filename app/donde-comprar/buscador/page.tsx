@@ -1,212 +1,122 @@
+'use client';
+
+import { useState, useMemo } from 'react';
+import { tiendasData } from '../data';
 import Link from 'next/link';
-import { Metadata } from 'next';
-import BuscadorClient from './BuscadorClient';
-import SEOSchema from '../../components/SEOSchema';
 
-// Metadatos para SEO
-export const metadata: Metadata = {
-  title: 'Buscador de Tiendas de Probióticos: Encuentra Tu Tienda Ideal | Probióticos Para Todos',
-  description: 'Busca y filtra tiendas de probióticos por país, ciudad y tipo de establecimiento. Encuentra herbolarios, farmacias y tiendas naturales verificadas con nuestro buscador avanzado.',
-  keywords: ['buscador probióticos', 'filtrar tiendas probióticos', 'encontrar herbolarios', 'tiendas naturales cerca', 'directorio probióticos', 'búsqueda avanzada probióticos', 'filtro por país', 'filtro por ciudad', 'tipo establecimiento'],
-  openGraph: {
-    title: 'Buscador Avanzado de Tiendas de Probióticos',
-    description: 'Encuentra la tienda de probióticos perfecta con nuestro buscador. Filtra por país, ciudad y tipo de establecimiento.',
-    url: 'https://www.probioticosparatodos.com/donde-comprar/buscador',
-    siteName: 'Probióticos Para Todos',
-    images: [{
-      url: 'https://www.probioticosparatodos.com/images/buscador-probioticos.png',
-      width: 1200,
-      height: 630,
-      alt: 'Buscador de tiendas de probióticos'
-    }],
-    locale: 'es_ES',
-    type: 'website'
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Buscador: Encuentra Tu Tienda de Probióticos Ideal',
-    description: 'Busca y filtra tiendas verificadas de probióticos por país, ciudad y tipo.',
-    images: ['https://www.probioticosparatodos.com/images/buscador-probioticos.png']
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1
+export default function BuscadorTiendasPage() {
+  const [selectedPais, setSelectedPais] = useState('');
+  const [selectedCiudad, setSelectedCiudad] = useState('');
+
+  const paises = useMemo(() => [...new Set(tiendasData.map(t => t.pais))], []);
+  const ciudades = useMemo(() => {
+    if (!selectedPais) return [];
+    return [...new Set(tiendasData.filter(t => t.pais === selectedPais).map(t => t.ciudad))];
+  }, [selectedPais]);
+
+  const filteredTiendas = useMemo(() => {
+    let tiendas = tiendasData;
+    if (selectedPais) {
+      tiendas = tiendas.filter(t => t.pais === selectedPais);
     }
-  },
-  alternates: {
-    canonical: 'https://www.probioticosparatodos.com/donde-comprar/buscador'
-  }
-};
-
-export default function BuscadorPage() {
-  // Search Schema
-  const searchSchema = {
-    "@context": "https://schema.org",
-    "@type": "SearchAction",
-    "target": {
-      "@type": "EntryPoint",
-      "urlTemplate": "https://www.probioticosparatodos.com/donde-comprar/buscador?q={search_term_string}"
-    },
-    "query-input": "required name=search_term_string"
-  };
-
-  // Breadcrumb Schema
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Inicio",
-        "item": "https://www.probioticosparatodos.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Dónde Comprar",
-        "item": "https://www.probioticosparatodos.com/donde-comprar"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Buscador",
-        "item": "https://www.probioticosparatodos.com/donde-comprar/buscador"
+    if (selectedCiudad) {
+      tiendas = tiendas.filter(t => t.ciudad === selectedCiudad);
+    }
+    return tiendas.reduce((acc, tienda) => {
+      if (!acc[tienda.pais]) {
+        acc[tienda.pais] = [];
       }
-    ]
+      acc[tienda.pais].push(tienda);
+      return acc;
+    }, {} as Record<string, typeof tiendasData>);
+  }, [selectedPais, selectedCiudad]);
+
+  const handlePaisChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedPais(e.target.value);
+    setSelectedCiudad(''); // Reset city when country changes
   };
 
   return (
-    <>
-      {/* Structured Data Scripts */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(searchSchema)
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema)
-        }}
-      />
+    <main className="min-h-screen bg-gray-50">
+        <div className="container mx-auto px-4 py-12">
+        <h1 className="text-4xl font-bold text-center mb-4 text-gray-800">Buscador de Tiendas de Probióticos</h1>
+        <p className="text-xl text-center text-gray-600 mb-12 max-w-3xl mx-auto">
+            Utiliza nuestros filtros para encontrar fácilmente tiendas, herbolarios y mercados de probióticos en tu área. Explora el listado completo a continuación.
+        </p>
 
-      <main className="min-h-screen bg-gradient-to-br from-aqua-squeeze to-white">
-        {/* Schema.org estructurado */}
-        <SEOSchema type="article" data={{
-          title: "Buscador de Tiendas de Probióticos: Encuentra Tu Tienda Ideal",
-          description: "Busca y filtra tiendas de probióticos por país, ciudad y tipo de establecimiento. Encuentra herbolarios, farmacias y tiendas naturales verificadas.",
-          publishDate: "2024-09-08T10:00:00+00:00",
-          author: "Probióticos Para Todos",
-          image: "https://www.probioticosparatodos.com/images/buscador-probioticos.png",
-          url: "https://www.probioticosparatodos.com/donde-comprar/buscador"
-        }} />
-
-        {/* Hero Section */}
-        <section className="bg-gradient-to-r from-biscay to-apple text-white py-16">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="mb-6">
-                <span className="inline-block px-4 py-2 bg-white/20 text-white font-medium rounded-full text-sm backdrop-blur-sm">
-                  🔍 Buscador Inteligente
-                </span>
-              </div>
-              <h1 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-                Encuentra Tu Tienda de Probióticos Ideal
-              </h1>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
-                Descubre herbolarios, tiendas naturales y mercados orgánicos verificados donde comprar probióticos de calidad. Filtra por país, ciudad y tipo de establecimiento.
-              </p>
-              
-              {/* Breadcrumb */}
-              <nav className="flex justify-center items-center space-x-2 text-white/80">
-                <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
-                <span>→</span>
-                <Link href="/donde-comprar" className="hover:text-white transition-colors">Dónde Comprar</Link>
-                <span>→</span>
-                <span className="text-white">Buscador</span>
-              </nav>
+        {/* Filtros */}
+        <div className="flex flex-col md:flex-row gap-4 mb-12 p-6 bg-white rounded-lg border shadow-sm">
+            <div className="flex-1">
+            <label htmlFor="pais-filter" className="block text-sm font-medium text-gray-700 mb-1">Filtrar por País</label>
+            <select
+                id="pais-filter"
+                value={selectedPais}
+                onChange={handlePaisChange}
+                className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            >
+                <option value="">Todos los países</option>
+                {paises.map(p => <option key={p} value={p}>{p}</option>)}
+            </select>
             </div>
-          </div>
-        </section>
-
-        {/* Sección de búsqueda y filtros */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <BuscadorClient />
-          </div>
-        </section>
-
-        {/* Sección informativa */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl lg:text-4xl font-bold text-biscay mb-4">
-                  ¿Cómo usar nuestro buscador?
-                </h2>
-                <p className="text-lg text-gray-600">
-                  Encuentra fácilmente las mejores tiendas de probióticos con nuestros filtros avanzados
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-apple/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl">🌍</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-biscay mb-3">Filtra por Ubicación</h3>
-                  <p className="text-gray-600">
-                    Selecciona tu país y ciudad para encontrar tiendas cerca de ti. Los filtros se actualizan automáticamente.
-                  </p>
-                </div>
-
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-st-tropaz/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl">🏪</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-biscay mb-3">Tipo de Establecimiento</h3>
-                  <p className="text-gray-600">
-                    Filtra por herbolarios, farmacias, tiendas naturales, supermercados o mercados orgánicos según tus preferencias.
-                  </p>
-                </div>
-
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-apple/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl">🔍</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-biscay mb-3">Búsqueda por Texto</h3>
-                  <p className="text-gray-600">
-                    Busca por nombre de tienda, dirección o cualquier palabra clave para encontrar exactamente lo que necesitas.
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-12 bg-gradient-to-r from-apple/10 to-st-tropaz/10 rounded-2xl p-8 text-center">
-                <h3 className="text-2xl font-bold text-biscay mb-4">
-                  ¿No encuentras tu tienda favorita?
-                </h3>
-                <p className="text-gray-600 mb-6">
-                  Ayúdanos a mejorar nuestro directorio sugiriendo nuevas tiendas de probióticos verificadas.
-                </p>
-                <Link
-                  href="/contacto"
-                  className="inline-flex items-center px-6 py-3 bg-apple text-white font-semibold rounded-lg hover:bg-apple/90 transition-colors"
-                >
-                  📧 Sugerir una tienda
-                </Link>
-              </div>
+            <div className="flex-1">
+            <label htmlFor="ciudad-filter" className="block text-sm font-medium text-gray-700 mb-1">Filtrar por Ciudad</label>
+            <select
+                id="ciudad-filter"
+                value={selectedCiudad}
+                onChange={(e) => setSelectedCiudad(e.target.value)}
+                disabled={!selectedPais}
+                className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-200"
+            >
+                <option value="">Todas las ciudades</option>
+                {ciudades.map(c => <option key={c} value={c}>{c}</option>)}
+            </select>
             </div>
-          </div>
-        </section>
-      </main>
-    </>
+        </div>
+
+        {Object.keys(filteredTiendas).length === 0 && (
+            <div className="text-center py-16">
+                <p className="text-gray-600 text-lg">No se encontraron tiendas con los filtros seleccionados.</p>
+            </div>
+        )}
+
+        {Object.entries(filteredTiendas).map(([pais, tiendas]) => (
+            <section key={pais} className="mb-16">
+            <h2 className="text-3xl font-bold mb-8 border-b-2 border-gray-200 pb-4 text-gray-700">{pais}</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {tiendas.map((tienda) => (
+                <div key={tienda.nombre} className="bg-white rounded-lg shadow-md p-6 border border-gray-100 hover:shadow-lg transition-shadow duration-300 flex flex-col">
+                    <h3 className="text-xl font-semibold mb-2 text-gray-800">{tienda.nombre}</h3>
+                    <p className="text-gray-600 mb-4 flex-grow">{tienda.direccion}</p>
+                    
+                    <div className="space-y-2 text-sm mb-4">
+                    {tienda.whatsapp && <p><span className="font-semibold">WhatsApp:</span> {tienda.whatsapp}</p>}
+                    {tienda.horarios && <p><span className="font-semibold">Horario:</span> {tienda.horarios}</p>}
+                    <p><span className="font-semibold">Tipos de Probióticos:</span> {tienda.tiposProbioticos.join(', ')}</p>
+                    {tienda.web && (
+                        <Link href={tienda.web} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline font-semibold">
+                        Visitar sitio web →
+                        </Link>
+                    )}
+                    </div>
+
+                    <div className="mt-auto pt-4 border-t border-gray-200 flex justify-between items-center">
+                        <span className={`text-xs font-bold py-1 px-2 rounded-full ${
+                            tienda.confiabilidad === 'Muy Alta' ? 'bg-green-100 text-green-800' :
+                            tienda.confiabilidad === 'Alta' ? 'bg-blue-100 text-blue-800' :
+                            'bg-yellow-100 text-yellow-800'
+                        }`}>
+                            {tienda.confiabilidad}
+                        </span>
+                        <span className="text-xs text-gray-500">
+                            Verificado: {tienda.fechaVerificacion}
+                        </span>
+                    </div>
+                </div>
+                ))}
+            </div>
+            </section>
+        ))}
+        </div>
+    </main>
   );
 }

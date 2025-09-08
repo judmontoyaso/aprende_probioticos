@@ -1,0 +1,29 @@
+{
+  "countries": {
+    "es": {
+      "name": "España",
+      "flag": "🇪🇸",
+      "cities": {
+        "madrid": {
+          "name": "Madrid",
+          "province": "Comunidad de Madrid",
+          "retailers": [
+            {
+              "id": "herbolario-navarro-madrid",
+              "name": "Herbolario Navarro",
+              "address": "Calle Gran Vía, 45",
+              "phone": "+34 915 321 456",
+              "website": "https://herbolarionavarro.es",
+              "probioticTypes": ["Suplementos", "Alimentos fermentados"],
+              "brands": ["VSL#3", "Symprove", "Yogi Tea"],
+              "onlineStore": true,
+              "delivery": true,
+              "reliability": "Muy Alta",
+              "description": "Cadena líder en productos naturales y probióticos"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

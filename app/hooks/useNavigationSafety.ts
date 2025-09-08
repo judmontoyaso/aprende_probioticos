@@ -13,12 +13,20 @@ export function useNavigationSafety() {
   const cleanupTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
+    const currentCleanupTimeout = cleanupTimeoutRef.current;
+    
     const handlePopState = () => {
       isNavigatingRef.current = true;
+      if (currentCleanupTimeout) {
+        clearTimeout(currentCleanupTimeout);
+      }
     };
 
     const handleBeforeUnload = () => {
       isNavigatingRef.current = true;
+      if (currentCleanupTimeout) {
+        clearTimeout(currentCleanupTimeout);
+      }
     };
 
     // Escuchar eventos de navegación
@@ -30,8 +38,9 @@ export function useNavigationSafety() {
       window.removeEventListener('beforeunload', handleBeforeUnload);
       window.removeEventListener('popstate', handlePopState);
       
-      if (cleanupTimeoutRef.current) {
-        clearTimeout(cleanupTimeoutRef.current);
+      const timeoutId = cleanupTimeoutRef.current;
+      if (timeoutId) {
+        clearTimeout(timeoutId);
       }
     };
   }, []);

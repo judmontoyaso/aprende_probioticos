@@ -1,383 +1,66 @@
-import { Metadata } from 'next';
+'use client';
+
+import { useMemo } from 'react';
+import { tiendasData } from './data';
 import Link from 'next/link';
 import { slugify } from './utils';
-import OptimizedImagePlaceholder from '../components/OptimizedImagePlaceholder';
-import ArticleBanner from '../components/ArticleBanner';
-import SEOSchema from '../components/SEOSchema';
-import { tiendasData, Tienda } from './data';
-
-// Metadatos para SEO
-export const metadata: Metadata = {
-  title: 'Dónde Comprar Probióticos: Directorio de Tiendas Verificadas | Probióticos Para Todos',
-  description: 'Encuentra herbolarios, tiendas naturales y mercados orgánicos donde comprar probióticos de calidad. Directorio verificado con información actualizada por país y ciudad.',
-  keywords: ['donde comprar probióticos', 'tiendas probióticos', 'herbolarios', 'mercados orgánicos', 'directorio tiendas naturales', 'probióticos España', 'probióticos México', 'probióticos Colombia', 'probióticos Argentina'],
-  openGraph: {
-    title: 'Directorio de Tiendas de Probióticos por País',
-    description: 'Encuentra herbolarios y tiendas naturales verificadas donde comprar probióticos de calidad en países hispanohablantes.',
-    url: 'https://www.probioticosparatodos.com/donde-comprar',
-    siteName: 'Probióticos Para Todos',
-    images: [{
-      url: 'https://www.probioticosparatodos.com/images/donde-comprar.png',
-      width: 1200,
-      height: 630,
-      alt: 'Directorio de tiendas de probióticos'
-    }],
-    locale: 'es_ES',
-    type: 'website'
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Directorio: Dónde Comprar Probióticos por País',
-    description: 'Encuentra herbolarios y tiendas naturales verificadas donde comprar probióticos de calidad.',
-    images: ['https://www.probioticosparatodos.com/images/donde-comprar.png']
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1
-    }
-  },
-  alternates: {
-    canonical: 'https://www.probioticosparatodos.com/donde-comprar'
-  }
-};
 
 export default function DondeComprarPage() {
-  const paises = [...new Set(tiendasData.map((t: Tienda) => t.pais))] as string[];
-
-
-  // Schema.org para LocalBusiness directory
-  const localBusinessSchema = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Directorio de Tiendas de Probióticos",
-    "description": "Directorio completo de herbolarios, tiendas naturales y mercados orgánicos donde comprar probióticos de calidad",
-    "url": "https://www.probioticosparatodos.com/donde-comprar",
-    "numberOfItems": tiendasData.length,
-    "itemListElement": tiendasData.map((tienda: Tienda, index: number) => ({
-      "@type": "LocalBusiness",
-      "position": index + 1,
-      "name": tienda.nombre,
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": tienda.direccion,
-        "addressLocality": tienda.ciudad,
-        "addressCountry": tienda.pais
-      },
-      "telephone": tienda.telefono || undefined,
-      "url": tienda.web || undefined,
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": tienda.confiabilidad === 'Muy Alta' ? '5' : tienda.confiabilidad === 'Alta' ? '4' : '3',
-        "bestRating": "5",
-        "worstRating": "1"
-      }
-    }))
-  };
-
-  // Breadcrumb Schema
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Inicio",
-        "item": "https://www.probioticosparatodos.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Dónde Comprar",
-        "item": "https://www.probioticosparatodos.com/donde-comprar"
-      }
-    ]
-  };
+  const paises = useMemo(() => {
+    const paisesUnicos = tiendasData.map(t => t.pais);
+    return [...new Set(paisesUnicos)];
+  }, []);
 
   return (
-    <>
-      {/* Structured Data Scripts */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(localBusinessSchema)
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema)
-        }}
-      />
+    <main className="min-h-screen bg-gray-50">
+        <div className="container mx-auto px-4 py-12">
+        <h1 className="text-4xl font-bold text-center mb-4 text-gray-800">Dónde comprar probióticos — Directorio por país</h1>
+        <p className="text-xl text-center text-gray-600 mb-12 max-w-3xl mx-auto">
+            Bienvenido a nuestro directorio verificado y práctico para encontrar herbolarios, mercados orgánicos y tiendas naturales donde comprar probióticos en países hispanohablantes.
+        </p>
 
-      <main className="min-h-screen bg-gray-50">
-        {/* Schema.org estructurado */}
-        <SEOSchema type="article" data={{
-          title: "Dónde Comprar Probióticos: Directorio de Tiendas por País",
-          description: "Directorio completo y verificado de herbolarios, tiendas naturales y mercados orgánicos donde comprar probióticos de calidad en países hispanohablantes.",
-          publishDate: "2024-09-08T10:00:00+00:00",
-          author: "Probióticos Para Todos",
-          image: "https://www.probioticosparatodos.com/images/donde-comprar.png",
-          url: "https://www.probioticosparatodos.com/donde-comprar"
-        }} />
+        <div className="text-center mb-12">
+            <Link href="/donde-comprar/buscador" className="inline-block bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors">
+                Ir al Buscador de Tiendas
+            </Link>
+        </div>
 
-
-        {/* Hero section moderna */}
-        <section className="py-12 bg-aqua-squeeze" itemScope itemType="https://schema.org/Article">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                {/* Columna de texto */}
-                <div className="space-y-6">
-                  <div className="space-y-4">
-                    <span className="inline-block px-4 py-2 bg-apple/10 text-apple font-medium rounded-full text-sm">
-                      Directorio Verificado
-                    </span>
-                    <h1 className="text-4xl lg:text-5xl font-bold text-biscay leading-tight" itemProp="headline">
-                      Dónde Comprar Probióticos
-                    </h1>
-                    <p className="text-lg text-gray-600 leading-relaxed" itemProp="description">
-                      Directorio completo de herbolarios, tiendas naturales y mercados orgánicos donde encontrar probióticos de calidad en países hispanohablantes.
-                    </p>
-                    <meta itemProp="author" content="Probióticos Para Todos" />
-                    <meta itemProp="datePublished" content="2024-09-08T10:00:00+00:00" />
-                    <meta itemProp="dateModified" content="2024-09-08T10:00:00+00:00" />
-                  </div>
-                  
-                  {/* Puntos clave */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {[
-                      'Tiendas verificadas',
-                      'Información actualizada',
-                      'Múltiples países',
-                      'Asesoría especializada'
-                    ].map((punto, index) => (
-                      <div key={index} className="flex items-center space-x-3 p-3 bg-white/60 rounded-lg">
-                        <div className="w-2 h-2 bg-apple rounded-full flex-shrink-0"></div>
-                        <span className="text-biscay font-medium text-sm">{punto}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* CTA principal */}
-                  <div className="pt-4">
-                    <Link 
-                      href="/donde-comprar/buscador" 
-                      className="inline-flex items-center px-8 py-4 bg-apple text-white font-semibold rounded-2xl hover:bg-apple/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                    >
-                      <span className="mr-2">🔍</span>
-                      Ir al Buscador de Tiendas
-                    </Link>
-                  </div>
-                </div>
-
-                {/* Columna de imagen */}
-                <div className="order-first lg:order-last">
-                  <figure className="relative w-full max-w-xs mx-auto lg:max-w-sm">
-                    <OptimizedImagePlaceholder 
-                      src="/images/donde-comprar.png"
-                      alt="Persona comprando probióticos en herbolario especializado"
-                      width={350}
-                      height={400}
-                      className="w-full h-[310px] sm:h-[342px] lg:h-[350px] object-cover rounded-2xl shadow-2xl transition-transform duration-300 hover:scale-105 bg-white"
-                    />
-                  </figure>
-                </div>
-              </div>
-            </div>
-          </div>
+        <section className="my-16 p-8 bg-aqua-squeeze rounded-lg border">
+            <h2 className="text-2xl font-bold text-center mb-6 text-gray-700">¿Qué encontrarás en este directorio?</h2>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700 max-w-4xl mx-auto">
+                <li className="flex items-start">
+                    <svg className="w-6 h-6 text-blue-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>
+                    <span><strong>Fichas por tienda:</strong> Dirección, web o redes sociales y tipos de probióticos disponibles.</span>
+                </li>
+                <li className="flex items-start">
+                    <svg className="w-6 h-6 text-blue-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>
+                    <span><strong>Tiendas seleccionadas:</strong> Herbolarios, mercados orgánicos y tiendas saludables (priorizamos estos canales sobre farmacias masivas).</span>
+                </li>
+                <li className="flex items-start">
+                    <svg className="w-6 h-6 text-blue-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>
+                    <span><strong>Información práctica:</strong> Marcas destacadas, formatos (alimentos fermentados / suplementos) y si realizan venta online.</span>
+                </li>
+                <li className="flex items-start">
+                    <svg className="w-6 h-6 text-blue-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>
+                    <span><strong>Última verificación:</strong> 8 de septiembre de 2025.</span>
+                </li>
+            </ul>
         </section>
 
-        {/* Sección de características del directorio */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl lg:text-4xl font-bold text-biscay mb-4">
-                  ¿Qué Encontrarás en Este Directorio?
-                </h2>
-                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                  Información completa y verificada para encontrar los mejores lugares donde comprar probióticos
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {/* Característica 1 */}
-                <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 border border-apple/10">
-                  <div className="w-16 h-16 bg-apple/10 rounded-2xl flex items-center justify-center mb-6">
-                    <span className="text-2xl">🏪</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-biscay mb-4">Fichas Detalladas</h3>
-                  <p className="text-gray-600 text-sm">
-                    Dirección completa, contacto, web o redes sociales y tipos de probióticos disponibles en cada tienda.
-                  </p>
-                </div>
-
-                {/* Característica 2 */}
-                <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 border border-st-tropaz/10">
-                  <div className="w-16 h-16 bg-st-tropaz/10 rounded-2xl flex items-center justify-center mb-6">
-                    <span className="text-2xl">🌿</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-biscay mb-4">Tiendas Especializadas</h3>
-                  <p className="text-gray-600 text-sm">
-                    Herbolarios, mercados orgánicos y tiendas naturales seleccionadas por su calidad y especialización.
-                  </p>
-                </div>
-
-                {/* Característica 3 */}
-                <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 border border-seagull/10">
-                  <div className="w-16 h-16 bg-seagull/10 rounded-2xl flex items-center justify-center mb-6">
-                    <span className="text-2xl">📋</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-biscay mb-4">Información Práctica</h3>
-                  <p className="text-gray-600 text-sm">
-                    Marcas disponibles, formatos (fermentados/suplementos), venta online y horarios de atención.
-                  </p>
-                </div>
-
-                {/* Característica 4 */}
-                <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 border border-san-marino/10">
-                  <div className="w-16 h-16 bg-san-marino/10 rounded-2xl flex items-center justify-center mb-6">
-                    <span className="text-2xl">✅</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-biscay mb-4">Verificado</h3>
-                  <p className="text-gray-600 text-sm">
-                    Información actualizada y verificada. Última revisión: septiembre 2025.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Banner de artículo */}
-        <ArticleBanner />
-
-        {/* Sección de países */}
-        <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl lg:text-4xl font-bold text-biscay mb-4">
-                  Busca por País
-                </h2>
-                <p className="text-lg text-gray-600">
-                  Selecciona tu país para ver el directorio completo de tiendas disponibles
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {paises.map((pais: string) => (
-                  <Link
-                    key={pais}
-                    href={`/donde-comprar/${slugify(pais)}`}
-                    className="group bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
-                  >
-                    <div className="space-y-4">
-                      <div className="w-16 h-16 bg-gradient-to-br from-apple/10 to-st-tropaz/10 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
-                        <span className="text-2xl">🏪</span>
-                      </div>
-                      <div>
-                        <span className="block text-lg text-gray-600 mb-2">Probióticos en</span>
-                        <span className="block text-2xl font-bold text-biscay group-hover:text-apple transition-colors duration-300">{pais}</span>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Sección de beneficios */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl lg:text-4xl font-bold text-biscay mb-4">
-                  ¿Por Qué Comprar en Tiendas Especializadas?
-                </h2>
-                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                  Las ventajas de elegir herbolarios y tiendas naturales para tus probióticos
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Beneficio 1 */}
-                <div className="bg-gradient-to-r from-apple/5 to-apple/10 p-8 rounded-2xl border-l-4 border-apple">
-                  <h3 className="text-xl font-bold text-biscay mb-4 flex items-center">
-                    <span className="w-8 h-8 bg-apple text-white rounded-full flex items-center justify-center text-sm mr-3">🎯</span>
-                    Selección Especializada
-                  </h3>
-                  <p className="text-gray-700">
-                    Marcas de calidad premium y productos artesanales difíciles de encontrar en supermercados convencionales.
-                  </p>
-                </div>
-
-                {/* Beneficio 2 */}
-                <div className="bg-gradient-to-r from-st-tropaz/5 to-st-tropaz/10 p-8 rounded-2xl border-l-4 border-st-tropaz">
-                  <h3 className="text-xl font-bold text-biscay mb-4 flex items-center">
-                    <span className="w-8 h-8 bg-st-tropaz text-white rounded-full flex items-center justify-center text-sm mr-3">👨‍⚕️</span>
-                    Asesoría Personalizada
-                  </h3>
-                  <p className="text-gray-700">
-                    Personal capacitado que puede orientarte según tus necesidades específicas de salud y bienestar.
-                  </p>
-                </div>
-
-                {/* Beneficio 3 */}
-                <div className="bg-gradient-to-r from-seagull/5 to-seagull/10 p-8 rounded-2xl border-l-4 border-seagull">
-                  <h3 className="text-xl font-bold text-biscay mb-4 flex items-center">
-                    <span className="w-8 h-8 bg-seagull text-white rounded-full flex items-center justify-center text-sm mr-3">🌱</span>
-                    Productos Frescos y Locales
-                  </h3>
-                  <p className="text-gray-700">
-                    Acceso a alimentos fermentados elaborados por productores locales, apoyando la economía regional.
-                  </p>
-                </div>
-
-                {/* Beneficio 4 */}
-                <div className="bg-gradient-to-r from-san-marino/5 to-san-marino/10 p-8 rounded-2xl border-l-4 border-san-marino">
-                  <h3 className="text-xl font-bold text-biscay mb-4 flex items-center">
-                    <span className="w-8 h-8 bg-san-marino text-white rounded-full flex items-center justify-center text-sm mr-3">📦</span>
-                    Variedad de Formatos
-                  </h3>
-                  <p className="text-gray-700">
-                    Desde kéfir y kombucha caseros hasta fórmulas específicas en cápsulas, polvos y líquidos.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Call to action final */}
-        <section className="py-16 bg-gossip/20">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="bg-white rounded-2xl shadow-lg p-8">
-                <h2 className="text-2xl font-bold text-biscay mb-4">¿Conoces una Tienda que Deberíamos Incluir?</h2>
-                <p className="text-gray-600 mb-6">
-                  Ayúdanos a mejorar nuestro directorio. Todas las propuestas se verifican con fuentes públicas antes de ser publicadas.
-                </p>
-                <Link 
-                  href="/contacto" 
-                  className="inline-flex items-center px-8 py-4 bg-apple text-white font-semibold rounded-2xl hover:bg-apple/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                >
-                  <span className="mr-2">📧</span>
-                  Sugerir una Tienda
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-    </>
+        <h2 className="text-3xl font-bold text-center mb-8 text-gray-700">Busca por país</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {paises.map((pais) => (
+            <Link
+                key={pais}
+                href={`/donde-comprar/${slugify(pais)}`}
+                className="bg-white p-8 rounded-lg shadow-md text-center text-2xl font-bold text-gray-800 hover:bg-blue-50 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            >
+                <span className="block">Probióticos en</span>
+                <span className="block text-blue-600">{pais}</span>
+            </Link>
+            ))}
+        </div>
+        </div>
+    </main>
   );
 }

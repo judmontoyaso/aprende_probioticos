@@ -36,7 +36,25 @@ export default function DondeComprarClient() {
 
   // Get filtered retailers
   const filteredRetailers = useMemo(() => {
-    const allRetailers: any[] = [];
+    interface Retailer {
+      name: string;
+      address: string;
+      probioticTypes: string[];
+      brands: string[];
+      onlineStore?: boolean;
+      delivery?: boolean;
+      reliability?: string;
+    }
+
+    interface FilteredRetailer extends Retailer {
+      countryName: string;
+      countryKey: string;
+      cityName: string;
+      cityKey: string;
+      province: string;
+    }
+
+    const allRetailers: FilteredRetailer[] = [];
 
     Object.entries(retailersData.countries).forEach(([countryKey, country]) => {
       if (selectedCountry && selectedCountry !== countryKey) return;
@@ -72,14 +90,11 @@ export default function DondeComprarClient() {
   }, [selectedCountry, selectedCity, searchTerm]);
 
   // Get statistics
-  const stats = useMemo(() => {
+    const stats = useMemo(() => {
     const totalRetailers = filteredRetailers.length;
-    const handleFiltroChange = (filtro: string, valor: string) => {};
     const onlineStores = filteredRetailers.filter(r => r.onlineStore).length;
     const withDelivery = filteredRetailers.filter(r => r.delivery).length;
-    const highReliability = filteredRetailers.filter(r => r.reliability === 'Muy Alta').length;
-
-    return { totalRetailers, onlineStores, withDelivery, highReliability };
+    const highReliability = filteredRetailers.filter(r => r.reliability === 'Muy Alta').length;    return { totalRetailers, onlineStores, withDelivery, highReliability };
   }, [filteredRetailers]);
 
   return (
@@ -158,7 +173,7 @@ export default function DondeComprarClient() {
                 <CountrySelector
                   countries={countries}
                   selectedCountry={selectedCountry}
-                  onCountryChange={(country) => {
+                  onCountryChange={(country: string) => {
                     setSelectedCountry(country);
                     setSelectedCity(''); // Reset city when country changes
                   }}
@@ -214,7 +229,7 @@ export default function DondeComprarClient() {
                 )}
                 {searchTerm && (
                   <span className="inline-flex items-center gap-1 bg-purple-100 text-purple-800 text-sm px-2 py-1 rounded-full">
-                    "{searchTerm}"
+                    &quot;{searchTerm}&quot;
                     <button onClick={() => setSearchTerm('')} className="ml-1 hover:text-purple-600">×</button>
                   </span>
                 )}

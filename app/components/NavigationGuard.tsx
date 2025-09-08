@@ -16,21 +16,23 @@ export default function NavigationGuard({ children }: NavigationGuardProps) {
   useEffect(() => {
     isUnmountingRef.current = false;
     
+    const currentCleanupTimeout = cleanupTimeoutRef.current;
+    
     // Interceptar navegación del navegador
     const handlePopState = () => {
       // Marcar que estamos navegando
       isUnmountingRef.current = true;
       
       // Limpiar inmediatamente cualquier timeout
-      if (cleanupTimeoutRef.current) {
-        clearTimeout(cleanupTimeoutRef.current);
+      if (currentCleanupTimeout) {
+        clearTimeout(currentCleanupTimeout);
       }
     };
 
     const handleBeforeUnload = () => {
       isUnmountingRef.current = true;
-      if (cleanupTimeoutRef.current) {
-        clearTimeout(cleanupTimeoutRef.current);
+      if (currentCleanupTimeout) {
+        clearTimeout(currentCleanupTimeout);
       }
     };
 
@@ -48,8 +50,9 @@ export default function NavigationGuard({ children }: NavigationGuardProps) {
         window.removeEventListener('beforeunload', handleBeforeUnload);
       }
       
-      if (cleanupTimeoutRef.current) {
-        clearTimeout(cleanupTimeoutRef.current);
+      const timeoutId = cleanupTimeoutRef.current;
+      if (timeoutId) {
+        clearTimeout(timeoutId);
       }
       
       // No es necesario limpiar el contenedor directamente, React se encarga de ello.
