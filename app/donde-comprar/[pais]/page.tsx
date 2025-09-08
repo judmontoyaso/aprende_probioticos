@@ -78,16 +78,33 @@ export async function generateMetadata({ params }: { params: { pais: string } })
 
 export default function PaisPage({ params }: { params: { pais: string } }) {
   const paisSlug = params.pais;
+  const pais = paisSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  
+  const tiendasDelPais = tiendasData.filter(tienda => 
+    slugify(tienda.pais) === paisSlug
+  );
 
-  const tiendas = tiendasData.filter((tienda) => slugify(tienda.pais) === paisSlug);
-  const pais = tiendas.length > 0 ? tiendas[0].pais : '';
+  if (tiendasDelPais.length === 0) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-800 mb-4">País no encontrado</h1>
+          <p className="text-gray-600 mb-8">No se encontraron tiendas para este país.</p>
+          <Link href="/donde-comprar" className="bg-apple text-white px-6 py-3 rounded-lg hover:bg-apple/90 transition-colors">
+            Volver al directorio
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
-  const ciudades = (() => {
-    const ciudadesDelPais = tiendasData
-      .filter((tienda) => slugify(tienda.pais) === paisSlug)
-      .map((tienda) => tienda.ciudad);
-    return [...new Set(ciudadesDelPais)];
-  })();
+  const ciudades = [...new Set(tiendasDelPais.map(t => t.ciudad))];
+
+  // Agrupar tiendas por ciudad
+  const tiendasPorCiudad = ciudades.reduce((acc, ciudad) => {
+    acc[ciudad] = tiendasDelPais.filter(t => t.ciudad === ciudad);
+    return acc;
+  }, {} as Record<string, typeof tiendasDelPais>);
 
   // Schema.org para LocalBusiness por país
   const localBusinessSchema = {
@@ -96,8 +113,8 @@ export default function PaisPage({ params }: { params: { pais: string } }) {
     "name": `Tiendas de Probióticos en ${pais}`,
     "description": `Directorio de tiendas verificadas donde comprar probióticos en ${pais}`,
     "url": `https://www.probioticosparatodos.com/donde-comprar/${paisSlug}`,
-    "numberOfItems": tiendas.length,
-    "itemListElement": tiendas.map((tienda, index) => ({
+    "numberOfItems": tiendasDelPais.length,
+    "itemListElement": tiendasDelPais.map((tienda, index) => ({
       "@type": "LocalBusiness",
       "position": index + 1,
       "name": tienda.nombre,

@@ -1,23 +1,7 @@
 import { tiendasData } from '../data';
 import Link from 'next/link';
-import { slugify } from '../utils';
-import OptimizedImagePlaceholder from '../../components/OptimizedImagePlaceholder';
-import ArticleBanner from '../../components/ArticleBanner';
 import { Metadata } from 'next';
 import BuscadorPageClient from './BuscadorPageClient';
-
-interface Tienda {
-  nombre: string;
-  direccion: string;
-  ciudad: string;
-  pais: string;
-  whatsapp?: string;
-  web?: string;
-  horarios?: string;
-  confiabilidad: string;
-  fechaVerificacion: string;
-  tiposProbioticos: string[];
-}
 
 // Metadatos para SEO
 export const metadata: Metadata = {

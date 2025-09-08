@@ -206,14 +206,14 @@ export default function Home() {
               {/* Image Column */}
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-emerald-400/20 rounded-2xl blur-2xl"></div>
-                <div className="relative bg-white p-8 rounded-2xl shadow-2xl">
+                <div className="relative">
                   <Image 
                     src="/images/logo_transparente.png"
                     alt="Probióticos Para Todos - Logo oficial con bacterias probióticas beneficiosas"
                     width={400}
                     height={400}
                     priority={true}
-                    className="w-full h-auto hover:scale-105 transition-transform duration-300"
+                    className="w-full h-auto hover:scale-105 transition-transform duration-300 drop-shadow-2xl"
                   />
                 </div>
               </div>

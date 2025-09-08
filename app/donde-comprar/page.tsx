@@ -1,6 +1,5 @@
 import { tiendasData } from './data';
 import Link from 'next/link';
-import { slugify } from './utils';
 import OptimizedImagePlaceholder from '../components/OptimizedImagePlaceholder';
 import ArticleBanner from '../components/ArticleBanner';
 import SEOSchema from '../components/SEOSchema';
