@@ -8,9 +8,8 @@ import { Metadata } from 'next';
 
 
 // Función para generar metadatos dinámicos
-export async function generateMetadata({ params }: { params: { pais: string; ciudad: string } }): Promise<Metadata> {
-  const paisSlug = params.pais;
-  const ciudadSlug = params.ciudad;
+export async function generateMetadata({ params }: { params: Promise<{ pais: string; ciudad: string }> }): Promise<Metadata> {
+  const { pais: paisSlug, ciudad: ciudadSlug } = await params;
   const pais = paisSlug.charAt(0).toUpperCase() + paisSlug.slice(1).replace('-', ' ');
   const ciudad = ciudadSlug.charAt(0).toUpperCase() + ciudadSlug.slice(1).replace('-', ' ');
   
@@ -65,9 +64,8 @@ export async function generateMetadata({ params }: { params: { pais: string; ciu
   };
 }
 
-export default function CiudadPage({ params }: { params: { pais: string; ciudad: string } }) {
-  const paisSlug = params.pais;
-  const ciudadSlug = params.ciudad;
+export default async function CiudadPage({ params }: { params: Promise<{ pais: string; ciudad: string }> }) {
+  const { pais: paisSlug, ciudad: ciudadSlug } = await params;
 
   const tiendas = tiendasData.filter(
     (tienda) =>
