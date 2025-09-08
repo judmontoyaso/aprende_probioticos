@@ -15,15 +15,27 @@ export function AdSpace({ position, title }: { position: string; title: string }
 export function TemporaryBanner({ className = "", alt = "Banner promocional Probióticos Para Todos" }: { className?: string; alt?: string }) {
   return (
     <div className={`my-4 ${className}`}>
-      <SafeImage
-        src="/images/banner.png?v=2024"
-        alt={alt}
-        width={300}
-        height={600}
-        className="w-full h-auto rounded-lg hover:scale-105 transition-transform cursor-pointer"
-        priority={false}
-        style={{ objectFit: 'contain' }}
-      />
+      <div className="relative group">
+        <SafeImage
+          src="/images/banner.png?v=2024"
+          alt={alt}
+          width={300}
+          height={600}
+          className="w-full h-auto rounded-lg hover:scale-105 transition-transform cursor-pointer"
+          priority={false}
+          style={{ objectFit: 'contain' }}
+        />
+        
+        {/* Botón superpuesto */}
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <a
+            href="/donde-comprar/buscador"
+            className="inline-flex items-center px-4 py-2 bg-apple text-white text-sm font-semibold rounded-lg shadow-lg hover:bg-apple/90 transition-all duration-300 transform hover:scale-105 backdrop-blur-sm"
+          >
+            🔍 Buscar Tiendas
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
