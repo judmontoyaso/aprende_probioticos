@@ -39,7 +39,9 @@ export default function RetailerCard({ retailer, cityName, countryName }: Retail
     }
   };
 
-  const handleContactClick = (type: 'phone' | 'whatsapp' | 'website', value: string) => {
+  const handleContactClick = (type: 'phone' | 'whatsapp' | 'website', value: string | null) => {
+    if (!value) return;
+    
     if (type === 'phone') {
       window.open(`tel:${value}`, '_self');
     } else if (type === 'whatsapp') {
@@ -183,12 +185,14 @@ export default function RetailerCard({ retailer, cityName, countryName }: Retail
 
       {/* Actions */}
       <div className="flex gap-2 pt-4 border-t border-gray-200">
-        <button 
-          onClick={() => handleContactClick('website', retailer.website)}
-          className="flex-1 bg-green-600 text-white text-sm font-medium py-2 px-4 rounded-md hover:bg-green-700 transition-colors duration-200"
-        >
-          Visitar sitio web
-        </button>
+        {retailer.website && (
+          <button 
+            onClick={() => handleContactClick('website', retailer.website)}
+            className="flex-1 bg-green-600 text-white text-sm font-medium py-2 px-4 rounded-md hover:bg-green-700 transition-colors duration-200"
+          >
+            Visitar sitio web
+          </button>
+        )}
         {retailer.productUrl && (
           <button 
             onClick={() => handleContactClick('website', retailer.productUrl)}
