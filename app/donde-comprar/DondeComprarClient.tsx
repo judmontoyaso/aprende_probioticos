@@ -279,7 +279,7 @@ export default function DondeComprarClient() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredRetailers.map((retailer) => (
                   <RetailerCard
-                    key={`${retailer.countryKey}-${retailer.cityKey}-${retailer.id}`}
+                    key={`${retailer.countryKey}-${retailer.cityKey}-${retailer.name}`}
                     retailer={retailer}
                     cityName={retailer.cityName}
                     countryName={retailer.countryName}
