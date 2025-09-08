@@ -5,7 +5,12 @@ import SafeImage from '../components/SafeImage';
 
 import { RecetaData } from '../recetas/data';
 
-export default function RecetaTemplate({ receta }: { receta: RecetaData }) {
+interface RecetaTemplateProps {
+  receta: RecetaData;
+  slug?: string;
+}
+
+export default function RecetaTemplate({ receta, slug }: RecetaTemplateProps) {
   const {
     titulo,
     descripcion,
