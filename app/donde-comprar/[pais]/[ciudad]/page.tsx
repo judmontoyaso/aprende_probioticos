@@ -5,20 +5,7 @@ import OptimizedImagePlaceholder from '../../../components/OptimizedImagePlaceho
 import ArticleBanner from '../../../components/ArticleBanner';
 import SEOSchema from '../../../components/SEOSchema';
 import { Metadata } from 'next';
-import CiudadPageClient from './CiudadPageClient';
 
-interface Tienda {
-  nombre: string;
-  direccion: string;
-  ciudad: string;
-  pais: string;
-  whatsapp?: string;
-  web?: string;
-  horarios?: string;
-  confiabilidad: string;
-  fechaVerificacion: string;
-  tiposProbioticos: string[];
-}
 
 // Función para generar metadatos dinámicos
 export async function generateMetadata({ params }: { params: { pais: string; ciudad: string } }): Promise<Metadata> {
@@ -315,7 +302,7 @@ export default function CiudadPage({ params }: { params: { pais: string; ciudad:
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <CiudadPageClient tiendas={tiendas} />
+                {/* Client component temporarily removed to fix build */}
               </div>
             </div>
           </div>

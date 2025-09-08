@@ -1,6 +1,6 @@
 'use client';
 
-import { recetasData, RecetaData } from '../recetas/data';
+import React from 'react';
 
 export default function RecipesSchema() {
   // Temporarily disabled to debug removeChild error

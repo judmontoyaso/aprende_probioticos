@@ -13,35 +13,12 @@ export function useNavigationSafety() {
   const cleanupTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    const handleBeforeUnload = () => {
+    const handlePopState = () => {
       isNavigatingRef.current = true;
-      
-      // Limpiar cualquier timeout pendiente
-      if (cleanupTimeoutRef.current) {
-        clearTimeout(cleanupTimeoutRef.current);
-      }
-      
-      // Dar tiempo para que React limpie normalmente antes de forzar
-      cleanupTimeoutRef.current = setTimeout(() => {
-        // Forzar limpieza de cualquier referencia DOM colgante
-        const allElements = document.querySelectorAll('[data-react-component]');
-        allElements.forEach(el => {
-          try {
-            if (el.parentNode) {
-              // Solo limpiar si es seguro
-            }
-          } catch {
-            // Ignorar errores de limpieza
-          }
-        });
-      }, 100);
     };
 
-    const handlePopState = (event: PopStateEvent) => {
+    const handleBeforeUnload = () => {
       isNavigatingRef.current = true;
-      
-      // No prevenir el comportamiento por defecto - esto causa problemas
-      // Solo marcar que estamos navegando para que otros componentes lo sepan
     };
 
     // Escuchar eventos de navegación

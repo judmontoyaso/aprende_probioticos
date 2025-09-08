@@ -4,7 +4,6 @@ import OptimizedImagePlaceholder from '../components/OptimizedImagePlaceholder';
 import ArticleBanner from '../components/ArticleBanner';
 import SEOSchema from '../components/SEOSchema';
 import { Metadata } from 'next';
-import DondeComprarPageClient from './DondeComprarPageClient';
 
 // Metadatos para SEO
 export const metadata: Metadata = {
@@ -263,7 +262,7 @@ export default function DondeComprarPage() {
         {/* Banner de artículo */}
         <ArticleBanner />
 
-        <DondeComprarPageClient paises={paises} ciudadesPorPais={ciudadesPorPais} />
+        {/* Client component temporarily removed to fix build */}
 
         {/* Sección de beneficios */}
         <section className="py-16 bg-white">

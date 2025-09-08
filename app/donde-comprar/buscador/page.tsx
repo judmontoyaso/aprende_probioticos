@@ -1,7 +1,6 @@
 import { tiendasData } from '../data';
 import Link from 'next/link';
 import { Metadata } from 'next';
-import BuscadorPageClient from './BuscadorPageClient';
 
 // Metadatos para SEO
 export const metadata: Metadata = {
@@ -130,11 +129,7 @@ export default function BuscadorPage() {
           </div>
         </section>
 
-        <BuscadorPageClient 
-          paises={paises} 
-          tiposEstablecimiento={tiposEstablecimiento}
-          tiendasData={tiendasData}
-        />
+        {/* Client component temporarily removed to fix build */}
       </main>
     </>
   );

@@ -1,8 +1,9 @@
 import Link from 'next/link';
+import React from 'react';
+import { Metadata } from 'next';
+import OptimizedImagePlaceholder from '../components/OptimizedImagePlaceholder';
+import ArticleBanner from '../components/ArticleBanner';
 import SafeImage from '../components/SafeImage';
-import SEOSchema from '../components/SEOSchema';
-// import AdBanner from '../components/AdBanner';
-// import SEOSchema from '../components/SEOSchema';
 
 import { RecetaData } from '../recetas/data';
 
@@ -173,11 +174,11 @@ export default function RecetaTemplate({ receta, slug }: RecetaTemplateProps) {
                       
                       {instruccion.imagen && (
                         <div className="relative w-full max-w-md mx-auto aspect-square mt-3 mb-4">
-                          <SafeImage 
+                          <OptimizedImagePlaceholder 
                             src={instruccion.imagen.src} 
                             alt={instruccion.imagen.alt}
-                            fill
-                            sizes="(max-width: 768px) 100vw, 400px"
+                            width={400}
+                            height={400}
                             className="rounded-lg object-cover"
                           />
                         </div>

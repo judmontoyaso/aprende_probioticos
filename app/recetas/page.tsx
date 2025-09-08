@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
 import { recetasData } from './data';
 
 export const metadata: Metadata = {
@@ -25,9 +26,9 @@ export default function RecetasIndexPage() {
           {/* Breadcrumbs */}
           <nav aria-label="Navegación" className="mb-8">
             <div className="flex items-center space-x-2 text-sm">
-              <a href="/" className="text-seagull hover:text-white transition-colors">
+              <Link href="/" className="text-green-600 hover:text-green-800 underline">
                 Inicio
-              </a>
+              </Link>
               <span className="text-seagull mx-2">›</span>
               <span className="text-white font-medium">Recetas Probióticas</span>
             </div>
