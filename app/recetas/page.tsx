@@ -297,18 +297,18 @@ export default function RecetasIndexPage() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
+              <Link 
                 href="/tipos" 
                 className="bg-gradient-to-r from-apple to-st-tropaz text-white font-semibold px-8 py-3 rounded-full hover:from-st-tropaz hover:to-apple transition-all duration-300 transform hover:scale-105 shadow-lg"
               >
                 Conocer los Probióticos
-              </a>
-              <a 
+              </Link>
+              <Link 
                 href="/como-elegir" 
                 className="bg-white text-apple font-semibold px-8 py-3 rounded-full hover:bg-gray-50 transition-all duration-300 transform hover:scale-105 shadow-lg border-2 border-apple"
               >
                 Guía para Elegir
-              </a>
+              </Link>
             </div>
           </div>
         </div>

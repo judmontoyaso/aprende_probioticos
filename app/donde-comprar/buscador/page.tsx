@@ -1,4 +1,4 @@
-import { tiendasData } from '../data';
+// import { tiendasData } from '../data';
 import Link from 'next/link';
 import { Metadata } from 'next';
 

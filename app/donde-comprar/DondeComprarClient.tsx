@@ -242,7 +242,7 @@ export default function DondeComprarClient() {
                 )}
                 {searchTerm && (
                   <span className="inline-flex items-center gap-1 bg-purple-100 text-purple-800 text-sm px-2 py-1 rounded-full">
-                    "{searchTerm}"
+                    &quot;{searchTerm}&quot;
                     <button onClick={() => setSearchTerm('')} className="ml-1 hover:text-purple-600">×</button>
                   </span>
                 )}

@@ -47,7 +47,7 @@ export const metadata: Metadata = {
 };
 
 export default function DondeComprarPage() {
-  const paises = [...new Set(tiendasData.map(t => t.pais))];
+  // const paises = [...new Set(tiendasData.map(t => t.pais))];
 
   // const ciudadesPorPais = paises.reduce((acc, pais) => {
   //   acc[pais] = [...new Set(tiendasData.filter(t => t.pais === pais).map(t => t.ciudad))];

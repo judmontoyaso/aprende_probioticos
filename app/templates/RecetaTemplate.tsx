@@ -12,12 +12,12 @@ interface RecetaTemplateProps {
   slug: string;
 }
 
-export default function RecetaTemplate({ receta, slug }: RecetaTemplateProps) {
+export default function RecetaTemplate({ receta }: RecetaTemplateProps) {
   const {
     titulo,
     descripcion,
     imagenPrincipal,
-    fechaPublicacion, 
+    // fechaPublicacion, 
     tiempoPreparacion,
     dificultad,
     porciones,
