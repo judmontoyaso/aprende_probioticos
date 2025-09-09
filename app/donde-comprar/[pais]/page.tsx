@@ -4,7 +4,6 @@ import { slugify } from '../utils';
 import OptimizedImagePlaceholder from '../../components/OptimizedImagePlaceholder';
 import ArticleBanner from '../../components/ArticleBanner';
 import SEOSchema from '../../components/SEOSchema';
-import { Metadata } from 'next';
 
 interface Tienda {
   nombre: string;
@@ -20,20 +19,21 @@ interface Tienda {
 }
 
 // Función para generar metadatos dinámicos
-export async function generateMetadata({ params }: { params: { pais: string } }): Promise<Metadata> {
-  const paisSlug = params.pais;
+export async function generateMetadata({ params }: { params: Promise<{ pais: string }> }) {
+  const resolvedParams = await params;
+  const paisSlug = resolvedParams.pais;
   const pais = paisSlug.charAt(0).toUpperCase() + paisSlug.slice(1).replace('-', ' ');
-  
+
   const countryImageMap: { [key: string]: string } = {
     'colombia': 'donde-comprar-colombia.png',
     'españa': 'donde-comprar-españa.png', 
     'argentina': 'donde-comprar-argentina.png',
     'mexico': 'donde-comprar-mexico.png'
   };
-  
+
   const imageFileName = countryImageMap[paisSlug] || 'donde-comprar.png';
   const tiendas = tiendasData.filter(t => slugify(t.pais) === paisSlug);
-  
+
   return {
     title: `Tiendas de Probióticos en ${pais}: Directorio Completo | Probióticos Para Todos`,
     description: `Encuentra ${tiendas.length} tiendas verificadas de probióticos en ${pais}. Herbolarios, farmacias y tiendas naturales con direcciones, horarios y contacto actualizado.`,

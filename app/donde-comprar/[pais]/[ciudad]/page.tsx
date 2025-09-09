@@ -6,9 +6,21 @@ import ArticleBanner from '../../../components/ArticleBanner';
 import SEOSchema from '../../../components/SEOSchema';
 import CiudadPageClient from './CiudadPageClient';
 
+// Define a custom type for the page props
+export type CiudadPageProps = {
+  params: Promise<{
+    pais: string;
+    ciudad: string;
+  }>;
+};
+
+// Override the default PageProps type
+export const dynamicParams = false;
+
 // Función para generar metadatos dinámicos
-export async function generateMetadata({ params }: { params: { pais: string; ciudad: string } }) {
-  const { pais, ciudad } = params;
+export async function generateMetadata({ params }: CiudadPageProps) {
+  const resolvedParams = await params;
+  const { pais, ciudad } = resolvedParams;
   const paisSlug = pais;
   const ciudadSlug = ciudad;
   const paisCapitalized = paisSlug.charAt(0).toUpperCase() + paisSlug.slice(1).replace('-', ' ');
@@ -65,9 +77,10 @@ export async function generateMetadata({ params }: { params: { pais: string; ciu
   };
 }
 
-export default function CiudadPage({ params }: { params: { pais: string; ciudad: string } }) {
-  const paisSlug = params.pais;
-  const ciudadSlug = params.ciudad;
+export default async function CiudadPage({ params }: CiudadPageProps) {
+  const resolvedParams = await params;
+  const paisSlug = resolvedParams.pais;
+  const ciudadSlug = resolvedParams.ciudad;
 
   const tiendas = tiendasData.filter(
     (tienda) =>
