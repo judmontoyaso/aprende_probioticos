@@ -5,12 +5,43 @@ import CountrySelector from '../components/CountrySelector';
 import RetailerCard from '../components/RetailerCard';
 import AdBanner from '../components/AdBanner';
 import retailersData from '../data/retailers.json';
+const typedRetailersData = retailersData as RetailersData;
+
+interface Retailer {
+  id: string;
+  name: string;
+  address: string;
+  phone: string | null;
+  whatsapp: string | null;
+  website: string | null;
+  productUrl: string | null;
+  onlineStore: boolean;
+  delivery: boolean;
+  reliability: string;
+  reliabilityNote: string | null;
+  hours: string | null;
+  priceExample: string | null;
+  paymentMethods: string[] | null;
+  probioticTypes: string[];
+  brands: string[];
+  type: string | null;
+}
 
 interface City {
   key: string;
   name: string;
   province: string;
-  retailerCount: number;
+  retailers: Retailer[];
+}
+
+interface Country {
+  name: string;
+  flag: string;
+  cities: { [key: string]: City };
+}
+
+interface RetailersData {
+  countries: { [key: string]: Country };
 }
 
 export default function DondeComprarClient() {
@@ -19,7 +50,7 @@ export default function DondeComprarClient() {
   const [searchTerm, setSearchTerm] = useState('');
 
   // Process data for easier handling
-  const countries = Object.entries(retailersData.countries).map(([key, country]) => ({
+  const countries = Object.entries(typedRetailersData.countries).map(([key, country]) => ({
     key,
     name: country.name,
     flag: country.flag,
@@ -29,7 +60,7 @@ export default function DondeComprarClient() {
   const cities = useMemo(() => {
     if (!selectedCountry) return [];
     
-    const country = retailersData.countries[selectedCountry as keyof typeof retailersData.countries];
+    const country = typedRetailersData.countries[selectedCountry];
     if (!country) return [];
 
     return Object.entries(country.cities).map(([key, city]) => ({
@@ -41,10 +72,18 @@ export default function DondeComprarClient() {
   }, [selectedCountry]);
 
   // Get filtered retailers
-  const filteredRetailers = useMemo(() => {
-    let allRetailers: any[] = [];
+  interface FilteredRetailer extends Retailer {
+    countryName: string;
+    cityName: string;
+    province: string;
+    countryKey: string;
+    cityKey: string;
+  }
 
-    Object.entries(retailersData.countries).forEach(([countryKey, country]) => {
+  const filteredRetailers = useMemo(() => {
+    const allRetailers: FilteredRetailer[] = [];
+
+    Object.entries(typedRetailersData.countries).forEach(([countryKey, country]) => {
       if (selectedCountry && selectedCountry !== countryKey) return;
 
       Object.entries(country.cities).forEach(([cityKey, city]) => {
@@ -163,7 +202,7 @@ export default function DondeComprarClient() {
                 <CountrySelector
                   countries={countries}
                   selectedCountry={selectedCountry}
-                  onCountryChange={(country) => {
+                  onCountryChange={(country: string) => {
                     setSelectedCountry(country);
                     setSelectedCity(''); // Reset city when country changes
                   }}
@@ -219,7 +258,7 @@ export default function DondeComprarClient() {
                 )}
                 {searchTerm && (
                   <span className="inline-flex items-center gap-1 bg-purple-100 text-purple-800 text-sm px-2 py-1 rounded-full">
-                    "{searchTerm}"
+                    &quot;{searchTerm}&quot;
                     <button onClick={() => setSearchTerm('')} className="ml-1 hover:text-purple-600">×</button>
                   </span>
                 )}

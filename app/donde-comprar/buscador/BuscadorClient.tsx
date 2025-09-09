@@ -20,7 +20,7 @@ interface Tienda {
 }
 
 export default function BuscadorClient() {
-  const [filtroConfiabilidad, setFiltroConfiabilidad] = useState<string>('');
+  // const [filtroConfiabilidad, setFiltroConfiabilidad] = useState<string>(''); // Removed unused state
   const [filtros, setFiltros] = useState({
     pais: '',
     ciudad: '',
@@ -179,7 +179,7 @@ export default function BuscadorClient() {
               )}
               {filtros.busqueda && (
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-apple/10 text-apple">
-                  Búsqueda: "{filtros.busqueda}"
+                  Búsqueda: &quot;{filtros.busqueda}&quot;
                   <button
                     onClick={() => setTerminoBusqueda('')}
                     className="ml-2 text-apple hover:text-apple/70"

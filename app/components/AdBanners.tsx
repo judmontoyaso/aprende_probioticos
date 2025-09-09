@@ -1,4 +1,5 @@
 import SafeImage from './SafeImage';
+import Link from 'next/link';
 
 // Componente para espacios reservados de publicidad futura
 export function AdSpace({ position, title }: { position: string; title: string }) {
@@ -28,12 +29,12 @@ export function TemporaryBanner({ className = "", alt = "Banner promocional Prob
         
         {/* Botón superpuesto */}
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <a
+          <Link
             href="/donde-comprar/buscador"
             className="inline-flex items-center px-4 py-2 bg-apple text-white text-sm font-semibold rounded-lg shadow-lg hover:bg-apple/90 transition-all duration-300 transform hover:scale-105 backdrop-blur-sm"
           >
             🔍 Buscar Tiendas
-          </a>
+          </Link>
         </div>
       </div>
     </div>
