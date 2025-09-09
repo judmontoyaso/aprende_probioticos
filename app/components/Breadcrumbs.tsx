@@ -2,6 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { getCountryNameFromSlug, getCityNameFromSlug } from '../donde-comprar/utils';
 
 export default function Breadcrumbs() {
   const pathname = usePathname();
@@ -29,8 +30,21 @@ export default function Breadcrumbs() {
     { name: 'Inicio', path: '/' },
     ...pathSegments.map((segment, index) => {
       const path = `/${pathSegments.slice(0, index + 1).join('/')}`;
+      let name = routeMap[segment] || segment;
+
+      // Lógica para "Dónde comprar"
+      if (pathSegments[0] === 'donde-comprar' && index > 0) {
+          if (index === 1) { // Es un país
+              name = getCountryNameFromSlug(segment);
+          }
+          if (index === 2) { // Es una ciudad
+              const countrySlug = pathSegments[1];
+              name = getCityNameFromSlug(segment, countrySlug);
+          }
+      }
+
       return {
-        name: routeMap[segment] || segment,
+        name,
         path,
       };
     }),
@@ -77,4 +91,4 @@ export default function Breadcrumbs() {
       </nav>
     </>
   );
-} 
+}

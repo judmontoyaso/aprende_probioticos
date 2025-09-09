@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/beneficios', priority: 0.9, changeFreq: 'monthly' },
     { path: '/como-elegir', priority: 0.9, changeFreq: 'monthly' },
     { path: '/tipos', priority: 0.8, changeFreq: 'monthly' },
+    { path: '/donde-comprar', priority: 0.8, changeFreq: 'monthly' },
     { path: '/recetas', priority: 0.8, changeFreq: 'weekly' },
     { path: '/alimentos-fermentados', priority: 0.8, changeFreq: 'monthly' },
     { path: '/blog', priority: 0.8, changeFreq: 'weekly' },

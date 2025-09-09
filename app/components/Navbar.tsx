@@ -8,25 +8,29 @@ import Image from 'next/image';
 const Navbar = () => {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const [isGuiasOpen, setIsGuiasOpen] = useState(false);
 
   const isActiveRoute = (route: string) => {
     return pathname === route;
   };
 
-  // const isActiveGroup = (routes: string[]) => {
-  //   return routes.some(route => pathname.startsWith(route));
-  // };
+  const isActiveGroup = (routes: string[]) => {
+    return pathname ? routes.some(route => pathname.startsWith(route)) : false;
+  };
 
   const mainRoutes = [
     { path: '/', label: 'Inicio' },
     { path: '/que-son', label: '¿Qué son?' },
     { path: '/beneficios', label: 'Beneficios' },
     { path: '/tipos', label: 'Tipos' },
-    { path: '/como-elegir', label: 'Cómo elegir' },
     { path: '/recetas', label: 'Recetas' },
     { path: '/blog', label: 'Blog' },
     { path: '/contacto', label: 'Contacto' },
+  ];
+
+  const guiasRoutes = [
+    { path: '/como-elegir', label: 'Cómo Elegir' },
+    { path: '/donde-comprar', label: 'Dónde Comprar' },
   ];
 
   return (
@@ -61,6 +65,48 @@ const Navbar = () => {
               {route.label}
             </Link>
           ))}
+          
+          {/* Guías Dropdown */}
+          <div className="relative">
+            <button
+              onClick={() => setIsGuiasOpen(!isGuiasOpen)}
+              onBlur={() => setTimeout(() => setIsGuiasOpen(false), 150)}
+              className={`transition-colors px-3 py-2 rounded-md font-medium flex items-center ${
+                isActiveGroup(['/como-elegir', '/donde-comprar'])
+                  ? 'text-white bg-green-600 shadow-md'
+                  : 'text-green-700 hover:text-green-600 hover:bg-green-50'
+              }`}
+            >
+              Guías
+              <svg 
+                className={`ml-1 w-4 h-4 transition-transform ${isGuiasOpen ? 'rotate-180' : ''}`} 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            
+            {isGuiasOpen && (
+              <div className="absolute top-full left-0 mt-1 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-50">
+                {guiasRoutes.map(route => (
+                  <Link
+                    key={route.path}
+                    href={route.path}
+                    className={`block px-4 py-2 text-sm transition-colors first:rounded-t-md last:rounded-b-md ${
+                      isActiveRoute(route.path)
+                        ? 'bg-green-600 text-white'
+                        : 'text-green-700 hover:bg-green-50'
+                    }`}
+                    onClick={() => setIsGuiasOpen(false)}
+                  >
+                    {route.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Mobile Navigation Button */}
@@ -92,6 +138,25 @@ const Navbar = () => {
                 {route.label}
               </Link>
             ))}
+            
+            {/* Mobile Guías Section */}
+            <div className="pt-2 border-t border-green-200 mt-2">
+              <div className="text-green-600 font-semibold text-sm px-3 py-1 mb-2">Guías</div>
+              {guiasRoutes.map(route => (
+                <Link
+                  key={route.path}
+                  href={route.path}
+                  className={`block px-6 py-2 rounded-md transition-colors font-medium ${
+                    isActiveRoute(route.path)
+                      ? 'bg-green-600 text-white shadow-md'
+                      : 'text-green-700 hover:bg-green-100'
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {route.label}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       )}
