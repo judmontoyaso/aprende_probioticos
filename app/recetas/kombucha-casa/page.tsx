@@ -9,7 +9,7 @@ export default function KombuchaCasaPage() {
     notFound();
   }
 
-  return <RecetaTemplate receta={receta} slug="kombucha-casa" />;
+  return <RecetaTemplate receta={receta} />;
 }
 
 export async function generateMetadata() {

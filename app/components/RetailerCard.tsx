@@ -4,9 +4,9 @@ interface Retailer {
   id: string;
   name: string;
   address: string;
-  phone?: string;
-  whatsapp?: string;
-  website?: string;
+  phone?: string | null;
+  whatsapp?: string | null;
+  website?: string | null;
   productUrl?: string;
   hours?: string;
   probioticTypes?: string[];
@@ -189,7 +189,7 @@ export default function RetailerCard({ retailer, cityName, countryName }: Retail
       {/* Actions */}
       <div className="flex gap-2 pt-4 border-t border-gray-200">
         <button 
-          onClick={() => retailer.website && handleContactClick('website', retailer.website)}
+          onClick={() => retailer.website && handleContactClick('website', retailer.website!)}
           className="flex-1 bg-green-600 text-white text-sm font-medium py-2 px-4 rounded-md hover:bg-green-700 transition-colors duration-200"
         >
           Visitar sitio web

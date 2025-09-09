@@ -75,10 +75,11 @@ export async function generateMetadata({ params }: { params: Promise<{ pais: str
   };
 }
 
-export default function PaisPage({ params }: { params: { pais: string } }) {
-  const paisSlug = params.pais;
+export default async function PaisPage({ params }: { params: Promise<{ pais: string }> }) {
+  const resolvedParams = await params;
+  const paisSlug = resolvedParams.pais;
   const pais = paisSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-  
+
   const tiendasDelPais = tiendasData.filter(tienda => 
     slugify(tienda.pais) === paisSlug
   );

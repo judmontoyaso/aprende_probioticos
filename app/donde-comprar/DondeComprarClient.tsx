@@ -1,11 +1,11 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import CountrySelector from '../components/CountrySelector';
 import RetailerCard from '../components/RetailerCard';
 import AdBanner from '../components/AdBanner';
-import retailersData from '../data/retailers.json';
-const typedRetailersData = retailersData as RetailersData;
+import { marketData } from './marketData';
+
+const typedRetailersData = marketData.countries;
 
 interface Retailer {
   id: string;
@@ -15,33 +15,11 @@ interface Retailer {
   whatsapp: string | null;
   website: string | null;
   productUrl: string | null;
-  onlineStore: boolean;
-  delivery: boolean;
-  reliability: string;
-  reliabilityNote: string | null;
-  hours: string | null;
-  priceExample: string | null;
-  paymentMethods: string[] | null;
-  probioticTypes: string[];
-  brands: string[];
-  type: string | null;
-}
-
-interface City {
-  key: string;
-  name: string;
-  province: string;
-  retailers: Retailer[];
-}
-
-interface Country {
-  name: string;
-  flag: string;
-  cities: { [key: string]: City };
-}
-
-interface RetailersData {
-  countries: { [key: string]: Country };
+  onlineStore?: boolean;
+  delivery?: boolean;
+  reliability?: string;
+  probioticTypes?: string[];
+  brands?: string[];
 }
 
 export default function DondeComprarClient() {
@@ -50,7 +28,7 @@ export default function DondeComprarClient() {
   const [searchTerm, setSearchTerm] = useState('');
 
   // Process data for easier handling
-  const countries = Object.entries(typedRetailersData.countries).map(([key, country]) => ({
+  const countries = Object.entries(typedRetailersData).map(([key, country]) => ({
     key,
     name: country.name,
     flag: country.flag,
@@ -60,10 +38,11 @@ export default function DondeComprarClient() {
   const cities = useMemo(() => {
     if (!selectedCountry) return [];
     
-    const country = typedRetailersData.countries[selectedCountry];
+    // Add explicit type annotations to resolve implicit 'any' errors
+    const country = typedRetailersData[selectedCountry as keyof typeof typedRetailersData];
     if (!country) return [];
 
-    return Object.entries(country.cities).map(([key, city]) => ({
+    return Object.entries(country.cities).map(([key, city]: [string, { name: string; province: string; retailers: Retailer[] }]) => ({
       key,
       name: city.name,
       province: city.province,
@@ -72,7 +51,8 @@ export default function DondeComprarClient() {
   }, [selectedCountry]);
 
   // Get filtered retailers
-  interface FilteredRetailer extends Retailer {
+  interface FilteredRetailer extends Omit<Retailer, 'productUrl'> {
+    productUrl?: string; // Align with Retailer type
     countryName: string;
     cityName: string;
     province: string;
@@ -83,38 +63,28 @@ export default function DondeComprarClient() {
   const filteredRetailers = useMemo(() => {
     const allRetailers: FilteredRetailer[] = [];
 
-    Object.entries(typedRetailersData.countries).forEach(([countryKey, country]) => {
+    Object.entries(typedRetailersData).forEach(([countryKey, country]) => {
       if (selectedCountry && selectedCountry !== countryKey) return;
 
       Object.entries(country.cities).forEach(([cityKey, city]) => {
         if (selectedCity && selectedCity !== cityKey) return;
 
-        city.retailers.forEach(retailer => {
-          if (searchTerm) {
-            const searchLower = searchTerm.toLowerCase();
-            const matchesSearch = 
-              retailer.name.toLowerCase().includes(searchLower) ||
-              retailer.address.toLowerCase().includes(searchLower) ||
-              retailer.probioticTypes.some(type => type.toLowerCase().includes(searchLower)) ||
-              retailer.brands.some(brand => brand.toLowerCase().includes(searchLower));
-            
-            if (!matchesSearch) return;
-          }
-
+        city.retailers.forEach((retailer: Retailer) => {
           allRetailers.push({
             ...retailer,
+            productUrl: retailer.productUrl ?? undefined, // Ensure compatibility with Retailer type
             countryName: country.name,
-            countryKey,
             cityName: city.name,
-            cityKey,
             province: city.province,
+            countryKey,
+            cityKey,
           });
         });
       });
     });
 
     return allRetailers;
-  }, [selectedCountry, selectedCity, searchTerm]);
+  }, [selectedCountry, selectedCity]);
 
   // Get statistics
   const stats = useMemo(() => {
@@ -199,14 +169,20 @@ export default function DondeComprarClient() {
               {/* Country Selector */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">País</label>
-                <CountrySelector
-                  countries={countries}
-                  selectedCountry={selectedCountry}
-                  onCountryChange={(country: string) => {
-                    setSelectedCountry(country);
+                <select
+                  value={selectedCountry}
+                  onChange={(e) => {
+                    setSelectedCountry(e.target.value);
                     setSelectedCity(''); // Reset city when country changes
                   }}
-                />
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                >
+                  {countries.map((country) => (
+                    <option key={country.key} value={country.key}>
+                      {country.name}
+                    </option>
+                  ))}
+                </select>
               </div>
 
               {/* City Selector */}

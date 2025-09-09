@@ -9,7 +9,7 @@ export default function KefirAguaPage() {
     notFound();
   }
 
-  return <RecetaTemplate receta={receta} slug="kefir-agua" />;
+  return <RecetaTemplate receta={receta} />;
 }
 
 export async function generateMetadata() {
