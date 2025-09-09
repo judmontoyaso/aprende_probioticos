@@ -15,5 +15,5 @@ export default async function RecetaPage({ params }: PageProps) {
     notFound();
   }
 
-  return <RecetaTemplate {...recetaData} />;
-} 
+  return <RecetaTemplate receta={recetaData} {...recetaData} />;
+}

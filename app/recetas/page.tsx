@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
 import { recetasData } from './data';
+import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Recetas Probióticas Caseras | Alimentos Fermentados Naturales',
@@ -25,9 +27,9 @@ export default function RecetasIndexPage() {
           {/* Breadcrumbs */}
           <nav aria-label="Navegación" className="mb-8">
             <div className="flex items-center space-x-2 text-sm">
-              <a href="/" className="text-seagull hover:text-white transition-colors">
+              <Link href="/" className="text-seagull hover:text-white transition-colors">
                 Inicio
-              </a>
+              </Link>
               <span className="text-seagull mx-2">›</span>
               <span className="text-white font-medium">Recetas Probióticas</span>
             </div>
@@ -66,12 +68,12 @@ export default function RecetasIndexPage() {
                 >
                   Ver Recetas
                 </a>
-                <a 
+                <Link 
                   href="/tipos" 
                   className="border-2 border-white text-white font-semibold px-8 py-3 rounded-full hover:bg-white hover:text-apple transition-all duration-300"
                 >
                   Conocer Probióticos
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -79,11 +81,13 @@ export default function RecetasIndexPage() {
             <div className="order-first lg:order-last">
               <div className="relative w-full max-w-md mx-auto lg:max-w-lg">
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                  <img 
+                  <Image 
                     src="/images/hero-recetas.png"
                     alt="Recetas probióticas caseras - alimentos fermentados naturales"
                     className="w-full h-auto object-cover"
-                    loading="eager"
+                    width={800}
+                    height={600}
+                    priority
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
@@ -152,11 +156,12 @@ export default function RecetasIndexPage() {
                 return (
                   <article key={slug} className="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:translate-y-[-8px] border border-gray-100">
                     <div className="relative h-56 overflow-hidden">
-                      <img 
+                      <Image 
                         src={receta.imagenPrincipal.src} 
                         alt={receta.imagenPrincipal.alt}
                         className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                        loading="lazy"
+                        width={400}
+                        height={300}
                       />
                       <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-apple text-xs font-bold px-3 py-1 rounded-full">
                         {receta.dificultad}
@@ -299,12 +304,12 @@ export default function RecetasIndexPage() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
+              <Link 
                 href="/tipos" 
                 className="bg-gradient-to-r from-apple to-st-tropaz text-white font-semibold px-8 py-3 rounded-full hover:from-st-tropaz hover:to-apple transition-all duration-300 transform hover:scale-105 shadow-lg"
               >
                 Conocer los Probióticos
-              </a>
+              </Link>
               <a 
                 href="/como-elegir" 
                 className="bg-white text-apple font-semibold px-8 py-3 rounded-full hover:bg-gray-50 transition-all duration-300 transform hover:scale-105 shadow-lg border-2 border-apple"

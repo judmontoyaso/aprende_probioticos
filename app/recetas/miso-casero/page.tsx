@@ -9,7 +9,7 @@ export default function MisoCaseroPage() {
     notFound();
   }
 
-  return <RecetaTemplate receta={receta} slug="miso-casero" />;
+  return <RecetaTemplate receta={receta} />;
 }
 
 export async function generateMetadata() {

@@ -9,7 +9,7 @@ export default function YogurCultivosPurosPage() {
     notFound();
   }
 
-  return <RecetaTemplate receta={receta} slug="yogur-cultivos-puros" />;
+  return <RecetaTemplate receta={receta} />;
 }
 
 export async function generateMetadata() {

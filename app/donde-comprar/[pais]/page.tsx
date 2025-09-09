@@ -4,8 +4,6 @@ import { slugify } from '../utils';
 import OptimizedImagePlaceholder from '../../components/OptimizedImagePlaceholder';
 import ArticleBanner from '../../components/ArticleBanner';
 import SEOSchema from '../../components/SEOSchema';
-import { Metadata } from 'next';
-import PaisPageClient from './PaisPageClient';
 
 interface Tienda {
   nombre: string;
@@ -21,20 +19,21 @@ interface Tienda {
 }
 
 // Función para generar metadatos dinámicos
-export async function generateMetadata({ params }: { params: { pais: string } }): Promise<Metadata> {
-  const paisSlug = params.pais;
+export async function generateMetadata({ params }: { params: Promise<{ pais: string }> }) {
+  const resolvedParams = await params;
+  const paisSlug = resolvedParams.pais;
   const pais = paisSlug.charAt(0).toUpperCase() + paisSlug.slice(1).replace('-', ' ');
-  
+
   const countryImageMap: { [key: string]: string } = {
     'colombia': 'donde-comprar-colombia.png',
     'españa': 'donde-comprar-españa.png', 
     'argentina': 'donde-comprar-argentina.png',
     'mexico': 'donde-comprar-mexico.png'
   };
-  
+
   const imageFileName = countryImageMap[paisSlug] || 'donde-comprar.png';
   const tiendas = tiendasData.filter(t => slugify(t.pais) === paisSlug);
-  
+
   return {
     title: `Tiendas de Probióticos en ${pais}: Directorio Completo | Probióticos Para Todos`,
     description: `Encuentra ${tiendas.length} tiendas verificadas de probióticos en ${pais}. Herbolarios, farmacias y tiendas naturales con direcciones, horarios y contacto actualizado.`,
@@ -76,10 +75,11 @@ export async function generateMetadata({ params }: { params: { pais: string } })
   };
 }
 
-export default function PaisPage({ params }: { params: { pais: string } }) {
-  const paisSlug = params.pais;
+export default async function PaisPage({ params }: { params: Promise<{ pais: string }> }) {
+  const resolvedParams = await params;
+  const paisSlug = resolvedParams.pais;
   const pais = paisSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-  
+
   const tiendasDelPais = tiendasData.filter(tienda => 
     slugify(tienda.pais) === paisSlug
   );
@@ -99,12 +99,6 @@ export default function PaisPage({ params }: { params: { pais: string } }) {
   }
 
   const ciudades = [...new Set(tiendasDelPais.map(t => t.ciudad))];
-
-  // Agrupar tiendas por ciudad
-  const tiendasPorCiudad = ciudades.reduce((acc, ciudad) => {
-    acc[ciudad] = tiendasDelPais.filter(t => t.ciudad === ciudad);
-    return acc;
-  }, {} as Record<string, typeof tiendasDelPais>);
 
   // Schema.org para LocalBusiness por país
   const localBusinessSchema = {

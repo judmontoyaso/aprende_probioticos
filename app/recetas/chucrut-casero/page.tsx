@@ -9,7 +9,7 @@ export default function ChucrutCaseroPage() {
     notFound();
   }
 
-  return <RecetaTemplate receta={receta} slug="chucrut-casero" />;
+  return <RecetaTemplate receta={receta} />;
 }
 
 export async function generateMetadata() {

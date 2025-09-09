@@ -9,7 +9,7 @@ export default function YogurCaseroPage() {
     notFound();
   }
 
-  return <RecetaTemplate receta={receta} slug="yogur-casero" />;
+  return <RecetaTemplate receta={receta} />;
 }
 
 export async function generateMetadata() {
