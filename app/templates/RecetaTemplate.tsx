@@ -6,15 +6,14 @@ import { RecetaData } from '../recetas/data';
 
 interface RecetaTemplateProps {
   receta: RecetaData;
-  slug: string;
 }
 
-export default function RecetaTemplate({ receta, slug }: RecetaTemplateProps) {
+export default function RecetaTemplate({ receta }: RecetaTemplateProps) {
   const {
     titulo,
     descripcion,
     imagenPrincipal,
-    fechaPublicacion, 
+    fechaPublicacion,
     tiempoPreparacion,
     dificultad,
     porciones,
@@ -26,10 +25,10 @@ export default function RecetaTemplate({ receta, slug }: RecetaTemplateProps) {
     beneficios,
     probioticosPresentes,
     variaciones,
-    faq
+    faq,
+    notas,
+    beneficiosPrincipales,
   } = receta;
-  // Note: Recipe and FAQ data removed as they're not currently being used
-
 
   // Función para obtener color según dificultad
   const getDifficultyColor = () => {
@@ -42,7 +41,7 @@ export default function RecetaTemplate({ receta, slug }: RecetaTemplateProps) {
   };
 
   return (
-    <div>
+    <div className="bg-gray-50">
   {/* Schema.org estructurado (temporalmente desactivado para depurar) */}
 {/* <SEOSchema type="both" data={{ article: recipeData, faq: faqData }} /> */} 
       

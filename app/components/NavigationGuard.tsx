@@ -40,6 +40,8 @@ export default function NavigationGuard({ children }: NavigationGuardProps) {
       window.addEventListener('beforeunload', handleBeforeUnload, { passive: true });
     }
     
+    const currentTimeoutId = cleanupTimeoutRef.current; // Capture the current value
+
     return () => {
       isUnmountingRef.current = true;
       
@@ -48,8 +50,8 @@ export default function NavigationGuard({ children }: NavigationGuardProps) {
         window.removeEventListener('beforeunload', handleBeforeUnload);
       }
       
-      if (cleanupTimeoutRef.current) {
-        clearTimeout(cleanupTimeoutRef.current);
+      if (currentTimeoutId) { // Use the captured value
+        clearTimeout(currentTimeoutId);
       }
       
       // No es necesario limpiar el contenedor directamente, React se encarga de ello.

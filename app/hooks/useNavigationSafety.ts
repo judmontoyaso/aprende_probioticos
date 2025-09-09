@@ -37,7 +37,7 @@ export function useNavigationSafety() {
       }, 100);
     };
 
-    const handlePopState = (event: PopStateEvent) => {
+    const handlePopState = () => {
       isNavigatingRef.current = true;
       
       // No prevenir el comportamiento por defecto - esto causa problemas
