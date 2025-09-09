@@ -4,15 +4,15 @@ import { slugify } from '../../utils';
 import OptimizedImagePlaceholder from '../../../components/OptimizedImagePlaceholder';
 import ArticleBanner from '../../../components/ArticleBanner';
 import SEOSchema from '../../../components/SEOSchema';
-import { Metadata } from 'next';
 import CiudadPageClient from './CiudadPageClient';
 
 // Función para generar metadatos dinámicos
-export async function generateMetadata({ params }: { params: { pais: string; ciudad: string } }): Promise<Metadata> {
-  const paisSlug = params.pais;
-  const ciudadSlug = params.ciudad;
-  const pais = paisSlug.charAt(0).toUpperCase() + paisSlug.slice(1).replace('-', ' ');
-  const ciudad = ciudadSlug.charAt(0).toUpperCase() + ciudadSlug.slice(1).replace('-', ' ');
+export async function generateMetadata({ params }: { params: { pais: string; ciudad: string } }) {
+  const { pais, ciudad } = params;
+  const paisSlug = pais;
+  const ciudadSlug = ciudad;
+  const paisCapitalized = paisSlug.charAt(0).toUpperCase() + paisSlug.slice(1).replace('-', ' ');
+  const ciudadCapitalized = ciudadSlug.charAt(0).toUpperCase() + ciudadSlug.slice(1).replace('-', ' ');
   
   const countryImageMap: { [key: string]: string } = {
     'colombia': 'donde-comprar-colombia.png',
@@ -25,27 +25,27 @@ export async function generateMetadata({ params }: { params: { pais: string; ciu
   const tiendas = tiendasData.filter(t => slugify(t.pais) === paisSlug && slugify(t.ciudad) === ciudadSlug);
   
   return {
-    title: `Tiendas de Probióticos en ${ciudad}, ${pais}: Guía Completa | Probióticos Para Todos`,
-    description: `Encuentra ${tiendas.length} tiendas verificadas de probióticos en ${ciudad}, ${pais}. Herbolarios, farmacias y tiendas naturales con direcciones exactas, horarios y contacto.`,
-    keywords: [`probióticos ${ciudad.toLowerCase()}`, `tiendas probióticos ${ciudad.toLowerCase()} ${pais.toLowerCase()}`, `herbolarios ${ciudad.toLowerCase()}`, `donde comprar probióticos ${ciudad.toLowerCase()}`, 'suplementos digestivos', 'salud intestinal'],
+    title: `Tiendas de Probióticos en ${ciudadCapitalized}, ${paisCapitalized}: Guía Completa | Probióticos Para Todos`,
+    description: `Encuentra ${tiendas.length} tiendas verificadas de probióticos en ${ciudadCapitalized}, ${paisCapitalized}. Herbolarios, farmacias y tiendas naturales con direcciones exactas, horarios y contacto.`,
+    keywords: [`probióticos ${ciudadCapitalized.toLowerCase()}`, `tiendas probióticos ${ciudadCapitalized.toLowerCase()} ${paisCapitalized.toLowerCase()}`, `herbolarios ${ciudadCapitalized.toLowerCase()}`, `donde comprar probióticos ${ciudadCapitalized.toLowerCase()}`, 'suplementos digestivos', 'salud intestinal'],
     openGraph: {
-      title: `Tiendas de Probióticos en ${ciudad}, ${pais}`,
-      description: `Guía completa de ${tiendas.length} tiendas verificadas donde comprar probióticos en ${ciudad}, ${pais}.`,
+      title: `Tiendas de Probióticos en ${ciudadCapitalized}, ${paisCapitalized}`,
+      description: `Guía completa de ${tiendas.length} tiendas verificadas donde comprar probióticos en ${ciudadCapitalized}, ${paisCapitalized}.`,
       url: `https://www.probioticosparatodos.com/donde-comprar/${paisSlug}/${ciudadSlug}`,
       siteName: 'Probióticos Para Todos',
       images: [{
         url: `https://www.probioticosparatodos.com/images/${imageFileName}`,
         width: 1200,
         height: 630,
-        alt: `Tiendas de probióticos en ${ciudad}, ${pais}`
+        alt: `Tiendas de probióticos en ${ciudadCapitalized}, ${paisCapitalized}`
       }],
       locale: 'es_ES',
       type: 'website'
     },
     twitter: {
       card: 'summary_large_image',
-      title: `Directorio: Tiendas de Probióticos en ${ciudad}, ${pais}`,
-      description: `${tiendas.length} tiendas verificadas donde comprar probióticos en ${ciudad}.`,
+      title: `Directorio: Tiendas de Probióticos en ${ciudadCapitalized}, ${paisCapitalized}`,
+      description: `${tiendas.length} tiendas verificadas donde comprar probióticos en ${ciudadCapitalized}.`,
       images: [`https://www.probioticosparatodos.com/images/${imageFileName}`]
     },
     robots: {
