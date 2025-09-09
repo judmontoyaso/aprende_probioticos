@@ -5,7 +5,6 @@ import OptimizedImagePlaceholder from '../../components/OptimizedImagePlaceholde
 import ArticleBanner from '../../components/ArticleBanner';
 import SEOSchema from '../../components/SEOSchema';
 import { Metadata } from 'next';
-import PaisPageClient from './PaisPageClient';
 
 interface Tienda {
   nombre: string;
@@ -99,12 +98,6 @@ export default function PaisPage({ params }: { params: { pais: string } }) {
   }
 
   const ciudades = [...new Set(tiendasDelPais.map(t => t.ciudad))];
-
-  // Agrupar tiendas por ciudad
-  const tiendasPorCiudad = ciudades.reduce((acc, ciudad) => {
-    acc[ciudad] = tiendasDelPais.filter(t => t.ciudad === ciudad);
-    return acc;
-  }, {} as Record<string, typeof tiendasDelPais>);
 
   // Schema.org para LocalBusiness por país
   const localBusinessSchema = {

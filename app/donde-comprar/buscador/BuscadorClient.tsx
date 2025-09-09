@@ -7,20 +7,17 @@ import Link from 'next/link';
 
 interface Tienda {
   nombre: string;
+  confiabilidad: 'Muy Alta' | 'Alta' | 'Media';
   direccion: string;
   ciudad: string;
   pais: string;
   whatsapp?: string;
   web?: string;
   horarios?: string;
-  confiabilidad: string;
-  fechaVerificacion: string;
-  tiposProbioticos: string[];
-  tipoEstablecimiento?: string;
+  tiposProbioticos?: string[];
 }
 
 export default function BuscadorClient() {
-  // const [filtroConfiabilidad, setFiltroConfiabilidad] = useState<string>(''); // Removed unused state
   const [filtros, setFiltros] = useState({
     pais: '',
     ciudad: '',
@@ -53,17 +50,6 @@ export default function BuscadorClient() {
       return cumplePais && cumpleCiudad && cumpleBusqueda;
     });
   }, [filtros]);
-
-  const handleFiltroChange = (campo: string, valor: string) => {
-    setFiltros(prev => {
-      const nuevos = { ...prev, [campo]: valor };
-      // Si cambia el país, resetear la ciudad
-      if (campo === 'pais') {
-        nuevos.ciudad = '';
-      }
-      return nuevos;
-    });
-  };
 
   const limpiarFiltros = () => {
     setFiltros({
@@ -220,7 +206,7 @@ export default function BuscadorClient() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {tiendasFiltradas.map((tienda: any, index: number) => (
+            {tiendasFiltradas.map((tienda: Tienda, index: number) => (
               <div key={index} className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 border border-gray-100">
                 <div className="flex items-start justify-between mb-4">
                   <h3 className="text-lg font-bold text-biscay pr-2">{tienda.nombre}</h3>
@@ -320,13 +306,13 @@ export default function BuscadorClient() {
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-apple mb-2">
-              {[...new Set(tiendasData.map((t: any) => t.ciudad))].length}
+              {[...new Set(tiendasData.map((t: Tienda) => t.ciudad))].length}
             </div>
             <div className="text-sm text-gray-600">Ciudades</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-st-tropaz mb-2">
-              {tiendasData.filter((t: any) => t.confiabilidad === 'Muy Alta').length}
+              {tiendasData.filter((t: Tienda) => t.confiabilidad === 'Muy Alta').length}
             </div>
             <div className="text-sm text-gray-600">Verificadas</div>
           </div>

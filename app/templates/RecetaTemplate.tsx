@@ -13,7 +13,6 @@ export default function RecetaTemplate({ receta }: RecetaTemplateProps) {
     titulo,
     descripcion,
     imagenPrincipal,
-    fechaPublicacion,
     tiempoPreparacion,
     dificultad,
     porciones,
@@ -26,8 +25,6 @@ export default function RecetaTemplate({ receta }: RecetaTemplateProps) {
     probioticosPresentes,
     variaciones,
     faq,
-    notas,
-    beneficiosPrincipales,
   } = receta;
 
   // Función para obtener color según dificultad
@@ -223,8 +220,6 @@ export default function RecetaTemplate({ receta }: RecetaTemplateProps) {
                 ))}
               </div>
             </section>
-            
-            {/* Notas */}
             
             {/* FAQ */}
             <section className="bg-white p-8 rounded-lg shadow-sm mb-8">

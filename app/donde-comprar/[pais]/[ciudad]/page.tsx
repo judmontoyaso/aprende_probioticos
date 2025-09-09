@@ -7,19 +7,6 @@ import SEOSchema from '../../../components/SEOSchema';
 import { Metadata } from 'next';
 import CiudadPageClient from './CiudadPageClient';
 
-interface Tienda {
-  nombre: string;
-  direccion: string;
-  ciudad: string;
-  pais: string;
-  whatsapp?: string;
-  web?: string;
-  horarios?: string;
-  confiabilidad: string;
-  fechaVerificacion: string;
-  tiposProbioticos: string[];
-}
-
 // Función para generar metadatos dinámicos
 export async function generateMetadata({ params }: { params: { pais: string; ciudad: string } }): Promise<Metadata> {
   const paisSlug = params.pais;
