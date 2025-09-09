@@ -1,8 +1,6 @@
 import Link from 'next/link';
 import SafeImage from '../components/SafeImage';
-import SEOSchema from '../components/SEOSchema';
 // import AdBanner from '../components/AdBanner';
-// import SEOSchema from '../components/SEOSchema';
 
 import { RecetaData } from '../recetas/data';
 
@@ -30,26 +28,7 @@ export default function RecetaTemplate({ receta, slug }: RecetaTemplateProps) {
     variaciones,
     faq
   } = receta;
-  //Datos estructurados para el esquema de artículo/receta
-  const recipeData = {
-    title: titulo,
-    description: descripcion,
-    publishDate: fechaPublicacion,
-    author: "Probióticos Para Todos",
-    image: `https://www.probioticosparatodos.com${imagenPrincipal.src}`,
-    url: `https://www.probioticosparatodos.com/recetas/${slug}`,
-    //Datos específicos para Recipe Schema
-    prepTime: tiempoPreparacion,
-    recipeYield: `${porciones} porciones`,
-    recipeIngredient: ingredientes.map(ing => `${ing.cantidad} ${ing.nombre}`),
-    recipeInstructions: instrucciones.map(inst => inst.paso)
-  };
-
-  //Datos estructurados para el esquema FAQ
-  const faqData = faq.map(item => ({
-    question: item.pregunta,
-    answer: item.respuesta
-  }));
+  // Note: Recipe and FAQ data removed as they're not currently being used
 
 
   // Función para obtener color según dificultad
