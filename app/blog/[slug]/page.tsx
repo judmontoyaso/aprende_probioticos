@@ -31,7 +31,7 @@ async function getArticleContent(slug: string) {
     htmlContent = enhanceHTMLContent(htmlContent);
     
     return htmlContent;
-  } catch (error) {
+  } catch {
     return null;
   }
 }
