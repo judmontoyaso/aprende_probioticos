@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import OptimizedImagePlaceholder from './components/OptimizedImagePlaceholder';
 import { HorizontalBanner, ImageBannerProfessional, ArticleBanner } from './components/AdBanners';
+import VideosSection from './components/VideosSection';
 
 export const metadata: Metadata = {
   title: 'Probióticos: Tu Guía Completa para la Salud Digestiva | Probióticos Para Todos',
@@ -307,6 +308,9 @@ export default function Home() {
             </p>
           </div>
         </div>
+
+        {/* Sección de Videos */}
+        <VideosSection />
 
         {/* Beneficios principales con imagen centralizada */}
         <div className="mb-16 relative">

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
+import { articles } from './articles';
 
 export const metadata: Metadata = {
   title: 'Blog de Probióticos | Investigación y Análisis Científicos',
@@ -30,49 +31,18 @@ interface ArticleCard {
 }
 
 export default function BlogPage() {
-  const articlesContent: ArticleCard[] = [
-    {
-      title: 'Probióticos en la salud humana: de la microbiota a la dieta',
-      description: 'Un análisis integral del papel fundamental de los probióticos en la salud digestiva, inmunológica y general del ser humano, incluyendo definiciones oficiales y aplicaciones prácticas.',
-      imageSrc: '/images/blog-salud.png',
-      imageAlt: 'Probióticos y salud humana',
-      href: '/blog/salud-humana',
-      category: 'Salud Humana',
-      date: '10 de mayo, 2023',
-      readTime: '15 min'
-    },
-    {
-      title: 'Enciclopedia de alimentos fermentados',
-      description: 'Un recorrido completo por los alimentos fermentados tradicionales y modernos, sus beneficios probióticos y métodos de preparación casera y comercial.',
-      imageSrc: '/images/probiotic_foods.png',
-      imageAlt: 'Variedad de alimentos fermentados',
-      href: '/blog/alimentos-fermentados',
-      category: 'Alimentación',
-      date: '13 de agosto, 2023',
-      readTime: '12 min',
-      featured: true
-    },
-    {
-      title: 'Nutrición animal con probióticos: guía completa',
-      description: 'Análisis integral del uso de probióticos en mascotas y ganadería para optimizar la salud y el rendimiento animal, con protocolos específicos para diferentes especies.',
-      imageSrc: '/images/blog-animales.png',
-      imageAlt: 'Animales saludables con alimentación probiótica',
-      href: '/blog/nutricion-animal',
-      category: 'Nutrición Animal',
-      date: '22 de junio, 2023',
-      readTime: '18 min'
-    },
-    {
-      title: 'Agricultura sostenible: probióticos para el cultivo',
-      description: 'Cómo los probióticos revolucionan los cultivos mediante biofertilizantes y mejoradores de suelo basados en microorganismos, incrementando rendimiento y sostenibilidad.',
-      imageSrc: '/images/blog-agricultura.png',
-      imageAlt: 'Campo agrícola tratado con probióticos',
-      href: '/blog/agricultura-sostenible',
-      category: 'Agricultura',
-      date: '5 de julio, 2023',
-      readTime: '20 min'
-    }
-  ];
+  // Mapear artículos a ArticleCard para mantener compatibilidad con el diseño existente
+  const articlesContent: ArticleCard[] = articles.map(article => ({
+    title: article.title,
+    description: article.description,
+    imageSrc: article.imageSrc,
+    imageAlt: article.imageAlt,
+    href: `/blog/${article.slug}`,
+    category: article.category,
+    date: article.date,
+    readTime: article.readTime,
+    featured: article.featured
+  }));
 
   return (
     <div className="min-h-screen bg-[#eef8f2]">
