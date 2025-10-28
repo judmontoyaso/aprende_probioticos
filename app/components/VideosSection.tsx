@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 interface Video {
   id: string;
   title: string;
@@ -149,7 +151,7 @@ export default function VideosSection() {
           <p className="text-gray-300 text-lg mb-6">
             Más contenido educativo en nuestro blog
           </p>
-          <a
+          <Link
             href="/blog"
             className="inline-flex items-center justify-center bg-gradient-to-r from-[#48a537] to-[#5cb844] text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-[#48a537]/50 transform hover:scale-105 transition-all duration-300"
           >
@@ -157,7 +159,7 @@ export default function VideosSection() {
             <svg className="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

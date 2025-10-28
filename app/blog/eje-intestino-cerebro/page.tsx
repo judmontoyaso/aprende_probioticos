@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
-import Breadcrumbs from "@/app/components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "¿Puede un probiótico mejorar tu estado de ánimo? La ciencia detrás del eje intestino-cerebro",
@@ -36,8 +34,6 @@ export const metadata: Metadata = {
 export default function EjeIntestinoCerebroPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      <Breadcrumbs />
-
       <article className="max-w-4xl mx-auto px-4 py-8">
         {/* Header */}
         <header className="mb-8">
