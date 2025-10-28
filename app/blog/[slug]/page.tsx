@@ -9,9 +9,9 @@ import { remark } from "remark";
 import html from "remark-html";
 
 interface ArticleTemplateProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 // Función para leer el contenido Markdown
@@ -119,7 +119,8 @@ function enhanceHTMLContent(html: string): string {
 }
 
 export async function generateMetadata({ params }: ArticleTemplateProps): Promise<Metadata> {
-  const article = articles.find((a) => a.slug === params.slug);
+  const { slug } = await params;
+  const article = articles.find((a) => a.slug === slug);
 
   if (!article) {
     return {
@@ -152,13 +153,14 @@ export async function generateMetadata({ params }: ArticleTemplateProps): Promis
 }
 
 export default async function ArticleTemplate({ params }: ArticleTemplateProps) {
-  const article = articles.find((a) => a.slug === params.slug);
+  const { slug } = await params;
+  const article = articles.find((a) => a.slug === slug);
 
   if (!article) {
     notFound();
   }
 
-  const content = await getArticleContent(params.slug);
+  const content = await getArticleContent(slug);
 
   if (!content) {
     notFound();
