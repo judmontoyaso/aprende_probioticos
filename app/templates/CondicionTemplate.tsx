@@ -55,8 +55,8 @@ export default function CondicionTemplate({
     description: descripcion,
     publishDate: fechaPublicacion,
     author: "Probióticos Para Todos",
-    image: `https://www.probioticosparatodos.com${imagenPrincipal.src}`,
-    url: `https://www.probioticosparatodos.com/condiciones/${titulo.toLowerCase().replace(/\s+/g, '-')}`
+    image: `https://probioticosparatodos.com${imagenPrincipal.src}`,
+    url: `https://probioticosparatodos.com/condiciones/${titulo.toLowerCase().replace(/\s+/g, '-')}`
   };
 
   // Datos estructurados para el esquema FAQ

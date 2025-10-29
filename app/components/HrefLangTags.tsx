@@ -31,7 +31,7 @@ interface HrefLangTagsProps {
   baseUrl?: string;
 }
 
-export default function HrefLangTags({ baseUrl = 'https://www.probioticosparatodos.com' }: HrefLangTagsProps) {
+export default function HrefLangTags({ baseUrl = 'https://probioticosparatodos.com' }: HrefLangTagsProps) {
   const pathname = usePathname();
 
   useEffect(() => {

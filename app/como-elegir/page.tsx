@@ -41,8 +41,8 @@ export default function ComoElegir() {
     description: "Guía basada en evidencia científica para seleccionar los probióticos adecuados según tus necesidades específicas. Aprende a identificar cepas, verificar potencia UFC y elegir entre suplementos y alimentos fermentados.",
     publishDate: "2024-05-15T10:00:00+00:00",
     author: "Probióticos Para Todos",
-    image: "https://www.probioticosparatodos.com/images/hermo_como_elegir.png?v=2",
-    url: "https://www.probioticosparatodos.com/como-elegir"
+    image: "https://probioticosparatodos.com/images/hermo_como_elegir.png?v=2",
+    url: "https://probioticosparatodos.com/como-elegir"
   };
 
   // Datos estructurados expandidos para FAQ
@@ -77,7 +77,7 @@ export default function ComoElegir() {
   const howToData = {
     name: "Cómo elegir el probiótico adecuado",
     description: "Guía paso a paso para seleccionar el probiótico más adecuado según tus necesidades específicas de salud",
-    image: "https://www.probioticosparatodos.com/images/infografia_como_elegir.png",
+    image: "https://probioticosparatodos.com/images/infografia_como_elegir.png",
     totalTime: "PT15M",
     estimatedCost: {
       currency: "USD",
@@ -87,27 +87,27 @@ export default function ComoElegir() {
       {
         name: "Identifica tu objetivo de salud",
         text: "Define específicamente qué quieres lograr: mejorar digestión, fortalecer inmunidad, o tratar una condición particular",
-        image: "https://www.probioticosparatodos.com/images/hermo_como_elegir.png"
+        image: "https://probioticosparatodos.com/images/hermo_como_elegir.png"
       },
       {
         name: "Busca evidencia científica",
         text: "Investiga qué cepas específicas han demostrado efectividad para tu condición en estudios clínicos",
-        image: "https://www.probioticosparatodos.com/images/infografia_como_elegir.png"
+        image: "https://probioticosparatodos.com/images/infografia_como_elegir.png"
       },
       {
         name: "Verifica calidad y potencia",
         text: "Asegúrate de que el producto garantice la cantidad de UFC hasta la fecha de vencimiento",
-        image: "https://www.probioticosparatodos.com/images/infografia_como_elegir.png"
+        image: "https://probioticosparatodos.com/images/infografia_como_elegir.png"
       },
       {
         name: "Compara opciones disponibles",
         text: "Evalúa diferentes marcas y productos basándote en los criterios establecidos",
-        image: "https://www.probioticosparatodos.com/images/hermo_como_elegir.png"
+        image: "https://probioticosparatodos.com/images/hermo_como_elegir.png"
       },
       {
         name: "Toma la decisión informada",
         text: "Selecciona el probiótico que mejor se ajuste a tus necesidades específicas y presupuesto",
-        image: "https://www.probioticosparatodos.com/images/hermo_como_elegir.png"
+        image: "https://probioticosparatodos.com/images/hermo_como_elegir.png"
       }
     ]
   };
@@ -119,8 +119,8 @@ export default function ComoElegir() {
         {/* Open Graph */}
         <meta property="og:title" content="Cómo Elegir el Probiótico Adecuado: Guía Completa" />
         <meta property="og:description" content="Guía experta para seleccionar probióticos basada en evidencia científica. Aprende criterios de calidad, cepas específicas y comparación de productos." />
-        <meta property="og:image" content="https://www.probioticosparatodos.com/images/hermo_como_elegir.png" />
-        <meta property="og:url" content="https://www.probioticosparatodos.com/como-elegir" />
+        <meta property="og:image" content="https://probioticosparatodos.com/images/hermo_como_elegir.png" />
+        <meta property="og:url" content="https://probioticosparatodos.com/como-elegir" />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Probióticos Para Todos" />
         <meta property="og:locale" content="es_ES" />
@@ -129,10 +129,10 @@ export default function ComoElegir() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Guía Completa: Cómo Elegir el Probiótico Adecuado" />
         <meta name="twitter:description" content="Aprende a elegir probióticos con criterios científicos. Guía experta con infografía incluida." />
-        <meta name="twitter:image" content="https://www.probioticosparatodos.com/images/hermo_como_elegir.png" />
+        <meta name="twitter:image" content="https://probioticosparatodos.com/images/hermo_como_elegir.png" />
         
         {/* Canonical URL */}
-        <link rel="canonical" href="https://www.probioticosparatodos.com/como-elegir" />
+        <link rel="canonical" href="https://probioticosparatodos.com/como-elegir" />
         
         {/* Robots */}
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -182,13 +182,13 @@ export default function ComoElegir() {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Inicio",
-                "item": "https://www.probioticosparatodos.com"
+                "item": "https://probioticosparatodos.com"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Cómo Elegir Probióticos",
-                "item": "https://www.probioticosparatodos.com/como-elegir"
+                "item": "https://probioticosparatodos.com/como-elegir"
               }
             ]
           })

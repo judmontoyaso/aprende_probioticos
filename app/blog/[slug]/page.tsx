@@ -5,8 +5,8 @@ import { articles } from "../articles";
 import { notFound } from "next/navigation";
 import fs from "fs";
 import path from "path";
-import { remark } from "remark";
-import html from "remark-html";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import { mdxComponents } from "../components/MDXComponents";
 
 interface ArticleTemplateProps {
   params: Promise<{
@@ -14,109 +14,48 @@ interface ArticleTemplateProps {
   }>;
 }
 
-// Función para leer el contenido Markdown
-async function getArticleContent(slug: string) {
+interface ProcessedContent {
+  title: string;
+  description: string;
+  content: string;
+}
+
+// Función para leer y procesar el contenido MDX
+async function getArticleContent(slug: string): Promise<ProcessedContent | null> {
   try {
-    const filePath = path.join(process.cwd(), "app/blog/content", `${slug}.md`);
+    const filePath = path.join(process.cwd(), "app/blog/content", `${slug}.mdx`);
     const fileContent = fs.readFileSync(filePath, "utf8");
     
-    // Convertir Markdown a HTML con procesamiento mejorado
-    const processedContent = await remark()
-      .use(html, { sanitize: false })
-      .process(fileContent);
+    // Parsear frontmatter simple
+    const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
+    const match = fileContent.match(frontmatterRegex);
     
-    let htmlContent = processedContent.toString();
+    if (!match) {
+      return null;
+    }
     
-    // Post-procesar para agregar estilos y componentes visuales
-    htmlContent = enhanceHTMLContent(htmlContent);
+    const frontmatterText = match[1];
+    const content = match[2];
     
-    return htmlContent;
-  } catch {
+    // Extraer title y description del frontmatter
+    const titleMatch = frontmatterText.match(/title:\s*["'](.+?)["']/);
+    const descriptionMatch = frontmatterText.match(/description:\s*["'](.+?)["']/);
+    
+    const title = titleMatch ? titleMatch[1] : '';
+    const description = descriptionMatch ? descriptionMatch[1] : '';
+    
+    return {
+      title,
+      description,
+      content
+    };
+  } catch (error) {
+    console.error(`Error loading MDX for slug ${slug}:`, error);
     return null;
   }
 }
 
-// Función para mejorar el contenido HTML
-function enhanceHTMLContent(html: string): string {
-  // Convertir h2 en secciones destacadas
-  html = html.replace(
-    /<h2>(.*?)<\/h2>/g,
-    '<div class="section-header"><h2 class="text-3xl md:text-4xl font-bold text-[#163660] mb-6 pb-4 border-b-4 border-[#48a537] flex items-center"><span class="w-2 h-12 bg-[#48a537] mr-4 rounded"></span>$1</h2></div>'
-  );
 
-  // Convertir h3 en subsecciones con icono
-  html = html.replace(
-    /<h3>(.*?)<\/h3>/g,
-    '<h3 class="text-2xl md:text-3xl font-bold text-[#275b9e] mb-4 mt-8 flex items-center"><svg class="w-6 h-6 mr-3 text-[#48a537]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>$1</h3>'
-  );
-
-  // Convertir listas no ordenadas en listas con iconos personalizados
-  html = html.replace(
-    /<ul>([\s\S]*?)<\/ul>/g,
-    '<ul class="space-y-3 my-6">$1</ul>'
-  );
-
-  html = html.replace(
-    /<li>(.*?)<\/li>/g,
-    '<li class="flex items-start"><svg class="w-5 h-5 text-[#48a537] mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span class="text-gray-700 leading-relaxed">$1</span></li>'
-  );
-
-  // Convertir listas ordenadas
-  html = html.replace(
-    /<ol>([\s\S]*?)<\/ol>/g,
-    '<ol class="space-y-3 my-6 counter-reset list-counter">$1</ol>'
-  );
-
-  // Mejorar blockquotes para que parezcan tarjetas de información
-  html = html.replace(
-    /<blockquote>([\s\S]*?)<\/blockquote>/g,
-    '<div class="my-8 bg-gradient-to-r from-blue-50 to-green-50 border-l-4 border-[#4071b4] p-6 rounded-r-xl shadow-lg"><div class="flex"><svg class="w-8 h-8 text-[#4071b4] mr-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg><blockquote class="text-lg text-gray-800 italic">$1</blockquote></div></div>'
-  );
-
-  // Mejorar párrafos
-  html = html.replace(
-    /<p>(.*?)<\/p>/g,
-    '<p class="text-lg text-gray-700 leading-relaxed mb-6">$1</p>'
-  );
-
-  // Convertir strong (negrita) en texto destacado
-  html = html.replace(
-    /<strong>(.*?)<\/strong>/g,
-    '<strong class="font-bold text-[#163660]">$1</strong>'
-  );
-
-  // Convertir em (cursiva) en texto enfatizado
-  html = html.replace(
-    /<em>(.*?)<\/em>/g,
-    '<em class="italic text-gray-800">$1</em>'
-  );
-
-  // Mejorar código inline
-  html = html.replace(
-    /<code>(.*?)<\/code>/g,
-    '<code class="bg-gray-100 text-[#163660] px-2 py-1 rounded font-mono text-sm">$1</code>'
-  );
-
-  // Agregar cajas de información especiales para secciones de evidencia
-  html = html.replace(
-    /<p>(.*?Evidencia.*?:<\/strong>)(.*?)<\/p>/gi,
-    '<div class="my-6 bg-white border-2 border-[#48a537] rounded-xl p-6 shadow-md"><div class="flex items-start"><svg class="w-6 h-6 text-[#48a537] mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><p class="text-lg text-gray-700 leading-relaxed">$1$2</p></div></div>'
-  );
-
-  // Agregar cajas especiales para recomendaciones prácticas
-  html = html.replace(
-    /<p>(.*?Recomendación práctica.*?:<\/strong>)(.*?)<\/p>/gi,
-    '<div class="my-6 bg-gradient-to-r from-green-50 to-blue-50 border-l-4 border-[#48a537] rounded-r-xl p-6 shadow-md"><div class="flex items-start"><svg class="w-6 h-6 text-[#48a537] mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg><p class="text-lg text-gray-700 leading-relaxed">$1$2</p></div></div>'
-  );
-
-  // Mejorar las secciones de referencias científicas
-  html = html.replace(
-    /<h2>(.*?Referencias.*?)<\/h2>/gi,
-    '<div class="mt-16 mb-8"><div class="flex items-center"><div class="flex-grow border-t-2 border-gray-300"></div><h2 class="text-2xl md:text-3xl font-bold text-[#163660] px-6 flex items-center"><svg class="w-7 h-7 text-[#48a537] mr-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/></svg>$1</h2><div class="flex-grow border-t-2 border-gray-300"></div></div></div>'
-  );
-
-  return html;
-}
 
 export async function generateMetadata({ params }: ArticleTemplateProps): Promise<Metadata> {
   const { slug } = await params;
@@ -128,8 +67,11 @@ export async function generateMetadata({ params }: ArticleTemplateProps): Promis
     };
   }
 
+  const content = await getArticleContent(slug);
+  const title = content?.title || article.title;
+
   return {
-    title: article.title,
+    title: title,
     description: article.description,
     keywords: [
       "probióticos",
@@ -139,7 +81,7 @@ export async function generateMetadata({ params }: ArticleTemplateProps): Promis
       "bacterias beneficiosas",
     ],
     openGraph: {
-      title: article.title,
+      title: title,
       description: article.description,
       type: "article",
       authors: ["Equipo de Probióticos"],
@@ -193,7 +135,7 @@ export default async function ArticleTemplate({ params }: ArticleTemplateProps) 
 
           {/* Título */}
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            {article.title}
+            {content.title}
           </h1>
 
           {/* Metadata */}
@@ -235,11 +177,10 @@ export default async function ArticleTemplate({ params }: ArticleTemplateProps) 
           </p>
         </div>
 
-        {/* Contenido del artículo desde Markdown */}
-        <div
-          className="article-content max-w-none mb-12"
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
+        {/* Contenido MDX */}
+        <div className="article-content max-w-none mb-12 prose prose-lg prose-headings:text-[#163660] prose-h2:text-3xl prose-h2:font-bold prose-h2:mb-6 prose-h3:text-2xl prose-h3:font-bold prose-h3:text-[#275b9e] prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-[#4071b4] prose-a:no-underline hover:prose-a:underline prose-strong:text-[#163660] prose-strong:font-bold">
+          <MDXRemote source={content.content} components={mdxComponents} />
+        </div>
 
         {/* Artículos relacionados */}
         {relatedArticles.length > 0 && (

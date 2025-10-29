@@ -23,16 +23,16 @@ export default function QueSon() {
       "name": "Probióticos Para Todos",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.probioticosparatodos.com/images/logo_transparente.png"
+        "url": "https://probioticosparatodos.com/images/logo_transparente.png"
       }
     },
     "datePublished": "2024-06-01T08:00:00+00:00",
     "dateModified": "2024-12-01T08:00:00+00:00",
-    "image": "https://www.probioticosparatodos.com/images/mujer_exlpicando_probioticos.png",
-    "url": "https://www.probioticosparatodos.com/que-son",
+    "image": "https://probioticosparatodos.com/images/mujer_exlpicando_probioticos.png",
+    "url": "https://probioticosparatodos.com/que-son",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://www.probioticosparatodos.com/que-son"
+      "@id": "https://probioticosparatodos.com/que-son"
     },
     "articleSection": "Educación en Salud",
     "keywords": "probióticos, microbioma, Lactobacillus, Bifidobacterium, salud digestiva"

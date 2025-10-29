@@ -245,6 +245,67 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Banner de Descarga Kéfir Diary */}
+      <section className="py-8 bg-gradient-to-r from-green-600 via-teal-600 to-blue-600">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 border-2 border-white/20">
+              <div className="grid md:grid-cols-2 gap-6 items-center">
+                <div className="text-white">
+                  <div className="inline-flex items-center bg-yellow-400 text-green-900 px-4 py-2 rounded-full text-sm font-bold mb-4">
+                    <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z" clipRule="evenodd" />
+                    </svg>
+                    DESCARGA GRATUITA
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-extrabold mb-3">
+                    Kéfir Diary: Tu Bitácora de Fermentación
+                  </h2>
+                  <p className="text-lg text-green-50 mb-4 leading-relaxed">
+                    Bitácora imprimible con plantillas de registro, instrucciones de fermentación y 5 recetas deliciosas. ¡100% GRATIS!
+                  </p>
+                  <ul className="space-y-2 mb-6">
+                    <li className="flex items-center text-green-50">
+                      <svg className="w-5 h-5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      Plantillas para registrar cada lote
+                    </li>
+                    <li className="flex items-center text-green-50">
+                      <svg className="w-5 h-5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      Instrucciones paso a paso de fermentación
+                    </li>
+                    <li className="flex items-center text-green-50">
+                      <svg className="w-5 h-5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      5 recetas: bizcocho, arepas, marinados
+                    </li>
+                  </ul>
+                </div>
+                <div className="text-center md:text-right">
+                  <div className="inline-block bg-white rounded-2xl p-6 shadow-2xl transform hover:scale-105 transition-all">
+                    <div className="text-7xl mb-4">📥</div>
+                    <Link
+                      href="/recursos/kefir-diary"
+                      className="inline-flex items-center gap-2 bg-yellow-400 text-green-900 px-8 py-4 rounded-full text-lg font-bold hover:bg-yellow-300 transition-all shadow-lg hover:shadow-xl"
+                    >
+                      Descargar Ahora
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </Link>
+                    <p className="text-gray-600 text-sm mt-3">Sin registro • PDF descargable</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       
       <div className="container mx-auto px-4">
         <ArticleBanner className="max-w-4xl mx-auto" alt="Banner promocional artículos científicos sobre probióticos" />

@@ -9,7 +9,7 @@ interface InternationalSEOProps {
 }
 
 export default function InternationalSEO({ 
-  baseUrl = 'https://www.probioticosparatodos.com',
+  baseUrl = 'https://probioticosparatodos.com',
   defaultLanguage = 'es',
   siteName = 'Probióticos Para Todos'
 }: InternationalSEOProps) {

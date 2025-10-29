@@ -1,73 +1,217 @@
 import { MetadataRoute } from 'next';
+import { articles } from './blog/articles';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://probioticosparatodos.com';
+  const currentDate = new Date();
   
   // Páginas principales
-  const mainRoutes = [
-    { path: '', priority: 1.0, changeFreq: 'weekly' },
-    { path: '/que-son', priority: 0.9, changeFreq: 'monthly' },
-    { path: '/beneficios', priority: 0.9, changeFreq: 'monthly' },
-    { path: '/como-elegir', priority: 0.9, changeFreq: 'monthly' },
-    { path: '/tipos', priority: 0.8, changeFreq: 'monthly' },
-    { path: '/donde-comprar', priority: 0.8, changeFreq: 'monthly' },
-    { path: '/recetas', priority: 0.8, changeFreq: 'weekly' },
-    { path: '/alimentos-fermentados', priority: 0.8, changeFreq: 'monthly' },
-    { path: '/blog', priority: 0.8, changeFreq: 'weekly' },
-    { path: '/agricultura', priority: 0.6, changeFreq: 'monthly' },
+  const mainPages: MetadataRoute.Sitemap = [
+    {
+      url: baseUrl,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/que-son`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/beneficios`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/como-elegir`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/tipos`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/donde-comprar`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/recetas`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/condiciones`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
   ];
 
-  // Páginas de tipos de probióticos (dinámicas - solo las que existen)
-  const tiposRoutes = [
-    { path: '/tipos/lactobacillus', priority: 0.7, changeFreq: 'monthly' },
+  // Páginas de blog (dinámicas desde articles.ts)
+  const blogPages: MetadataRoute.Sitemap = articles.map((article) => ({
+    url: `${baseUrl}/blog/${article.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: article.featured ? 0.9 : 0.7,
+  }));
+
+  // Categorías de blog con páginas propias
+  const blogCategories: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/blog/alimentos-fermentados`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/salud-humana`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/nutricion-animal`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/agricultura-sostenible`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
   ];
 
-  // Páginas de recetas (dinámicas - solo las que existen)
-  const recetasRoutes = [
-    { path: '/recetas/yogur-casero', priority: 0.6, changeFreq: 'monthly' },
-    { path: '/recetas/kefir-agua', priority: 0.6, changeFreq: 'monthly' },
-    { path: '/recetas/chucrut-casero', priority: 0.6, changeFreq: 'monthly' },
-    { path: '/recetas/kombucha-casa', priority: 0.6, changeFreq: 'monthly' },
-    { path: '/recetas/miso-casero', priority: 0.5, changeFreq: 'monthly' },
-    { path: '/recetas/yogur-cultivos-puros', priority: 0.5, changeFreq: 'monthly' },
+  // Recetas específicas
+  const recipePages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/recetas/yogur-casero`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/recetas/kefir-agua`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/recetas/chucrut-casero`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/recetas/kombucha-casa`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/recetas/miso-casero`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/recetas/yogur-cultivos-puros`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
   ];
 
-  // Páginas del blog
-  const blogRoutes = [
-    { path: '/blog/alimentos-fermentados', priority: 0.7, changeFreq: 'monthly' },
-    { path: '/blog/salud-humana', priority: 0.7, changeFreq: 'monthly' },
-    { path: '/blog/nutricion-animal', priority: 0.6, changeFreq: 'monthly' },
-    { path: '/blog/agricultura-sostenible', priority: 0.6, changeFreq: 'monthly' },
+  // Recursos
+  const resourcePages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/recursos/kefir-diary`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+  ];
+
+  // Condiciones de salud
+  const conditionPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/condiciones/digestiva`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
   ];
 
   // Páginas institucionales
-  const institutionalRoutes = [
-    { path: '/sobre-nosotros', priority: 0.5, changeFreq: 'yearly' },
-    { path: '/contacto', priority: 0.6, changeFreq: 'monthly' },
+  const institutionalPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/sobre-nosotros`,
+      lastModified: currentDate,
+      changeFrequency: 'yearly',
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/contacto`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
   ];
 
   // Páginas legales
-  const legalRoutes = [
-    { path: '/politica-privacidad', priority: 0.3, changeFreq: 'yearly' },
-    { path: '/cookies', priority: 0.3, changeFreq: 'yearly' },
-    { path: '/terminos-servicio', priority: 0.3, changeFreq: 'yearly' },
-    { path: '/descargo-responsabilidad', priority: 0.3, changeFreq: 'yearly' },
+  const legalPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/politica-privacidad`,
+      lastModified: currentDate,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/cookies`,
+      lastModified: currentDate,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/terminos-servicio`,
+      lastModified: currentDate,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/descargo-responsabilidad`,
+      lastModified: currentDate,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
   ];
 
-  // Combinar todas las rutas
-  const allRoutes = [
-    ...mainRoutes,
-    ...tiposRoutes,
-    ...recetasRoutes,
-    ...blogRoutes,
-    ...institutionalRoutes,
-    ...legalRoutes,
-  ].map((route) => ({
-    url: `${baseUrl}${route.path}`,
-    lastModified: new Date(),
-    changeFrequency: route.changeFreq as 'weekly' | 'monthly' | 'yearly',
-    priority: route.priority,
-  }));
-
-  return allRoutes;
+  // Combinar todas las páginas
+  return [
+    ...mainPages,
+    ...blogPages,
+    ...blogCategories,
+    ...recipePages,
+    ...resourcePages,
+    ...conditionPages,
+    ...institutionalPages,
+    ...legalPages,
+  ];
 } 

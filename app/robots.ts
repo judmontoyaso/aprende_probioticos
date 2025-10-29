@@ -1,25 +1,27 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
+  const baseUrl = 'https://probioticosparatodos.com';
+  
   return {
     rules: [
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/admin/', '/_next/'],
+        disallow: ['/api/', '/_next/', '/admin/'],
       },
       {
         userAgent: 'Googlebot',
         allow: '/',
-        disallow: ['/admin/', '/_next/'],
+        disallow: ['/api/', '/_next/', '/admin/'],
       },
       {
         userAgent: 'Bingbot',
         allow: '/',
-        disallow: ['/admin/', '/_next/'],
+        disallow: ['/api/', '/_next/', '/admin/'],
       }
     ],
-    sitemap: 'https://www.probioticosparatodos.com/sitemap.xml',
-    host: 'https://www.probioticosparatodos.com',
+    sitemap: `${baseUrl}/sitemap.xml`,
+    host: baseUrl,
   };
 } 

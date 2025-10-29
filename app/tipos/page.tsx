@@ -18,14 +18,14 @@ export default function TiposIndexPage() {
     "author": {
       "@type": "Organization",
       "name": "Probióticos Para Todos",
-      "url": "https://www.probioticosparatodos.com"
+      "url": "https://probioticosparatodos.com"
     },
     "publisher": {
       "@type": "Organization",
       "name": "Probióticos Para Todos",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.probioticosparatodos.com/images/logo_transparente.png",
+        "url": "https://probioticosparatodos.com/images/logo_transparente.png",
         "width": 200,
         "height": 200
       }
@@ -34,15 +34,15 @@ export default function TiposIndexPage() {
     "dateModified": "2024-12-01T08:00:00+00:00",
     "image": {
       "@type": "ImageObject",
-      "url": "https://www.probioticosparatodos.com/images/tipos_probioticos.png",
+      "url": "https://probioticosparatodos.com/images/tipos_probioticos.png",
       "width": 1200,
       "height": 630,
       "alt": "Tipos y clasificación de probióticos"
     },
-    "url": "https://www.probioticosparatodos.com/tipos",
+    "url": "https://probioticosparatodos.com/tipos",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://www.probioticosparatodos.com/tipos"
+      "@id": "https://probioticosparatodos.com/tipos"
     },
     "articleSection": "Educación en Salud",
     "keywords": [

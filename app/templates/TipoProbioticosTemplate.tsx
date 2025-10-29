@@ -82,7 +82,7 @@ export default function TipoProbioticosTemplate({
       "description": descripcion,
       "image": {
         "@type": "ImageObject",
-        "url": `https://www.probioticosparatodos.com${imagenPrincipal.src}`,
+        "url": `https://probioticosparatodos.com${imagenPrincipal.src}`,
         "width": 1200,
         "height": 630,
         "alt": imagenPrincipal.alt
@@ -90,21 +90,21 @@ export default function TipoProbioticosTemplate({
       "author": {
         "@type": "Organization",
         "name": "Probióticos Para Todos",
-        "url": "https://www.probioticosparatodos.com"
+        "url": "https://probioticosparatodos.com"
       },
       "publisher": {
         "@type": "Organization",
         "name": "Probióticos Para Todos",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://www.probioticosparatodos.com/images/logo_transparente.png"
+          "url": "https://probioticosparatodos.com/images/logo_transparente.png"
         }
       },
       "datePublished": fechaPublicacion,
       "dateModified": lastModified,
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": `https://www.probioticosparatodos.com/tipos/${titulo.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`
+        "@id": `https://probioticosparatodos.com/tipos/${titulo.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`
       },
       "articleSection": "Tipos de Probióticos",
       "keywords": titulo.includes('Saccharomyces') 

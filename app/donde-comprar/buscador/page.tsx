@@ -11,10 +11,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Buscador Avanzado de Tiendas de Probióticos',
     description: 'Encuentra la tienda de probióticos perfecta con nuestro buscador. Filtra por país, ciudad y tipo de establecimiento.',
-    url: 'https://www.probioticosparatodos.com/donde-comprar/buscador',
+    url: 'https://probioticosparatodos.com/donde-comprar/buscador',
     siteName: 'Probióticos Para Todos',
     images: [{
-      url: 'https://www.probioticosparatodos.com/images/buscador-probioticos.png',
+      url: 'https://probioticosparatodos.com/images/buscador-probioticos.png',
       width: 1200,
       height: 630,
       alt: 'Buscador de tiendas de probióticos'
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Buscador: Encuentra Tu Tienda de Probióticos Ideal',
     description: 'Busca y filtra tiendas verificadas de probióticos por país, ciudad y tipo.',
-    images: ['https://www.probioticosparatodos.com/images/buscador-probioticos.png']
+    images: ['https://probioticosparatodos.com/images/buscador-probioticos.png']
   },
   robots: {
     index: true,
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     }
   },
   alternates: {
-    canonical: 'https://www.probioticosparatodos.com/donde-comprar/buscador'
+    canonical: 'https://probioticosparatodos.com/donde-comprar/buscador'
   }
 };
 
@@ -51,7 +51,7 @@ export default function BuscadorPage() {
     "@type": "SearchAction",
     "target": {
       "@type": "EntryPoint",
-      "urlTemplate": "https://www.probioticosparatodos.com/donde-comprar/buscador?q={search_term_string}"
+      "urlTemplate": "https://probioticosparatodos.com/donde-comprar/buscador?q={search_term_string}"
     },
     "query-input": "required name=search_term_string"
   };
@@ -65,19 +65,19 @@ export default function BuscadorPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Inicio",
-        "item": "https://www.probioticosparatodos.com"
+        "item": "https://probioticosparatodos.com"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Dónde Comprar",
-        "item": "https://www.probioticosparatodos.com/donde-comprar"
+        "item": "https://probioticosparatodos.com/donde-comprar"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": "Buscador",
-        "item": "https://www.probioticosparatodos.com/donde-comprar/buscador"
+        "item": "https://probioticosparatodos.com/donde-comprar/buscador"
       }
     ]
   };
@@ -105,8 +105,8 @@ export default function BuscadorPage() {
           description: "Busca y filtra tiendas de probióticos por país, ciudad y tipo de establecimiento. Encuentra herbolarios, farmacias y tiendas naturales verificadas.",
           publishDate: "2024-09-08T10:00:00+00:00",
           author: "Probióticos Para Todos",
-          image: "https://www.probioticosparatodos.com/images/buscador-probioticos.png",
-          url: "https://www.probioticosparatodos.com/donde-comprar/buscador"
+          image: "https://probioticosparatodos.com/images/buscador-probioticos.png",
+          url: "https://probioticosparatodos.com/donde-comprar/buscador"
         }} />
 
         {/* Hero Section */}

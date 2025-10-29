@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     images: ['/images/beneficios de los probioticos.png'],
   },
   alternates: {
-    canonical: 'https://www.probioticosparatodos.com/beneficios',
+    canonical: 'https://probioticosparatodos.com/beneficios',
   },
 };
 
@@ -39,17 +39,17 @@ export default function Beneficios() {
       "author": {
         "@type": "Organization",
         "name": "Probióticos Para Todos",
-        "url": "https://www.probioticosparatodos.com"
+        "url": "https://probioticosparatodos.com"
       },
       "publisher": {
         "@type": "Organization",
         "name": "Probióticos Para Todos",
-        "url": "https://www.probioticosparatodos.com"
+        "url": "https://probioticosparatodos.com"
       },
       "datePublished": "2024-06-01T08:00:00+00:00",
       "dateModified": "2024-12-01T08:00:00+00:00",
-      "image": "https://www.probioticosparatodos.com/images/beneficios de los probioticos.png",
-      "url": "https://www.probioticosparatodos.com/beneficios"
+      "image": "https://probioticosparatodos.com/images/beneficios de los probioticos.png",
+      "url": "https://probioticosparatodos.com/beneficios"
     },
     "medicalAudience": {
       "@type": "MedicalAudience",

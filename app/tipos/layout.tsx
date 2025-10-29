@@ -37,11 +37,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Tipos de Probióticos: Guía Completa de Géneros y Especies',
     description: 'Explora los diferentes tipos de probióticos, desde Lactobacillus hasta Saccharomyces. Conoce sus beneficios específicos y aplicaciones.',
-    url: 'https://www.probioticosparatodos.com/tipos',
+    url: 'https://probioticosparatodos.com/tipos',
     siteName: 'Probióticos Para Todos',
     images: [
       {
-        url: 'https://www.probioticosparatodos.com/images/tipos_probioticos.png',
+        url: 'https://probioticosparatodos.com/images/tipos_probioticos.png',
         width: 1200,
         height: 630,
         alt: 'Tipos y clasificación de probióticos - Géneros principales',
@@ -54,11 +54,11 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Tipos de Probióticos: Guía Completa de Géneros y Especies',
     description: 'Descubre los diferentes tipos de probióticos y sus beneficios específicos para la salud.',
-    images: ['https://www.probioticosparatodos.com/images/tipos_probioticos.png'],
+    images: ['https://probioticosparatodos.com/images/tipos_probioticos.png'],
     creator: '@probioticosparatodos',
   },
   alternates: {
-    canonical: 'https://www.probioticosparatodos.com/tipos',
+    canonical: 'https://probioticosparatodos.com/tipos',
   },
   verification: {
     google: 'tu-codigo-de-verificacion-google',
