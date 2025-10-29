@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { HorizontalBanner, ImageBannerProfessional, ArticleBanner } from '../components/AdBanners';
 
 interface TableOfContentsItem {
   id: string;
@@ -91,9 +92,9 @@ export default function BlogArticleTemplate({
         </div>
       </div>
 
-      {/* AdBanner Top (temporarily disabled) */}
-      <div className="container mx-auto px-4 py-6">
-        {/* <AdBanner position="top" /> */}
+      {/* Banner superior móvil */}
+      <div className="block md:hidden container mx-auto px-4 py-6">
+        <HorizontalBanner className="max-w-full" alt="Banner artículo probióticos" />
       </div>
 
       {/* Article Content */}
@@ -121,7 +122,10 @@ export default function BlogArticleTemplate({
           {/* Sidebar */}
           <div className="lg:w-1/4">
             <div className="sticky top-6">
-              {/* <AdBanner position="sidebar" className="mb-6" /> */}
+              {/* Banner lateral para desktop */}
+              <div className="hidden md:block mb-6">
+                <ArticleBanner className="w-full" alt="Banner lateral artículo probióticos" />
+              </div>
               
               <div className="bg-[#eef8f2] p-4 sm:p-6 rounded-lg shadow-sm border border-[#c4ccd7] mb-6">
                 <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-[#163660]">¿Sabías que...?</h3>
@@ -161,9 +165,9 @@ export default function BlogArticleTemplate({
         </div>
       </div>
       
-      {/* Ad Banner Bottom */}
-      <div className="container mx-auto px-4 py-6">
-        {/* <AdBanner position="bottom" /> */}
+      {/* Banner inferior profesional */}
+      <div className="container mx-auto px-4 py-8">
+        <ImageBannerProfessional className="max-w-5xl mx-auto" alt="Banner profesional artículos probióticos" />
       </div>
     </div>
   );

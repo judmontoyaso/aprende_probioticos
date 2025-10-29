@@ -26,6 +26,7 @@ const Navbar = () => {
     { path: '/tipos', label: 'Tipos' },
     { path: '/recetas', label: 'Recetas' },
     { path: '/blog', label: 'Blog' },
+    { path: '/aprende', label: 'Aprende' },
     { path: '/contacto', label: 'Contacto' },
   ];
 
