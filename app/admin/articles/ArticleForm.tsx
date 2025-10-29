@@ -112,7 +112,22 @@ export default function ArticleForm({ article, onSave, onCancel }: ArticleFormPr
       const publishedAtISO = new Date(formData.published_at).toISOString();
 
       // Preparar datos para guardar (excluir campos auto-generados)
-      const articleData = {
+      const articleData: {
+        slug: string;
+        title: string;
+        description: string;
+        content: string;
+        image_url: string;
+        image_alt: string;
+        category: string;
+        published_at: string;
+        read_time: string;
+        author: string;
+        meta_keywords: string[];
+        status: 'draft' | 'published' | 'archived';
+        featured: boolean;
+        use_template: boolean;
+      } = {
         slug,
         title: formData.title,
         description: formData.description,
@@ -136,7 +151,7 @@ export default function ArticleForm({ article, onSave, onCancel }: ArticleFormPr
         console.log('📝 Actualizando artículo existente:', article.slug);
         const { data: updatedData, error } = await supabase
           .from('articles')
-          .update(articleData)
+          .update(articleData as never)
           .eq('slug', article.slug)
           .select();
 
@@ -161,7 +176,7 @@ export default function ArticleForm({ article, onSave, onCancel }: ArticleFormPr
         console.log('📝 Creando nuevo artículo');
         const { data: newData, error } = await supabase
           .from('articles')
-          .insert([articleData])
+          .insert([articleData as never])
           .select();
 
         if (error) {

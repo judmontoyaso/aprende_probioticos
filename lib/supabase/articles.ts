@@ -227,7 +227,7 @@ export async function getArticleCount(): Promise<number> {
 export async function createArticle(articleData: Partial<Article>): Promise<Article> {
   const { data, error } = await supabase
     .from('articles')
-    .insert([articleData])
+    .insert([articleData as never])
     .select()
     .single();
     
@@ -245,7 +245,7 @@ export async function createArticle(articleData: Partial<Article>): Promise<Arti
 export async function updateArticle(slug: string, articleData: Partial<Article>): Promise<Article> {
   const { data, error } = await supabase
     .from('articles')
-    .update(articleData)
+    .update(articleData as never)
     .eq('slug', slug)
     .select()
     .single();
