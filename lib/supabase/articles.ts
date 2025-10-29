@@ -216,3 +216,76 @@ export async function getArticleCount(): Promise<number> {
   
   return count || 0;
 }
+
+// =====================================================
+// FUNCIONES DE ADMINISTRACIÓN (CREATE, UPDATE, DELETE)
+// =====================================================
+
+/**
+ * Crear un nuevo artículo
+ */
+export async function createArticle(articleData: Partial<Article>): Promise<Article> {
+  const { data, error } = await supabase
+    .from('articles')
+    .insert([articleData])
+    .select()
+    .single();
+    
+  if (error) {
+    console.error('Error creating article:', error);
+    throw error;
+  }
+  
+  return data;
+}
+
+/**
+ * Actualizar un artículo existente
+ */
+export async function updateArticle(slug: string, articleData: Partial<Article>): Promise<Article> {
+  const { data, error } = await supabase
+    .from('articles')
+    .update(articleData)
+    .eq('slug', slug)
+    .select()
+    .single();
+    
+  if (error) {
+    console.error('Error updating article:', error);
+    throw error;
+  }
+  
+  return data;
+}
+
+/**
+ * Eliminar un artículo
+ */
+export async function deleteArticle(slug: string): Promise<void> {
+  const { error } = await supabase
+    .from('articles')
+    .delete()
+    .eq('slug', slug);
+    
+  if (error) {
+    console.error('Error deleting article:', error);
+    throw error;
+  }
+}
+
+/**
+ * Obtener todos los artículos (incluyendo borradores) - Solo para admin
+ */
+export async function getAllArticlesAdmin(): Promise<Article[]> {
+  const { data, error } = await supabase
+    .from('articles')
+    .select('*')
+    .order('created_at', { ascending: false });
+    
+  if (error) {
+    console.error('Error fetching all articles:', error);
+    throw error;
+  }
+  
+  return data;
+}
