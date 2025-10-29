@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
-import { articles } from './articles';
+import { getArticles, getFeaturedArticles } from '@/lib/supabase/articles';
 
 export const metadata: Metadata = {
   title: 'Blog de Probióticos | Investigación y Análisis Científicos',
@@ -18,31 +18,19 @@ export const metadata: Metadata = {
   },
 };
 
-interface ArticleCard {
-  title: string;
-  description: string;
-  imageSrc: string;
-  imageAlt: string;
-  href: string;
-  category: string;
-  date: string;
-  readTime: string;
-  featured?: boolean;
-}
+export default async function BlogPage() {
+  // Obtener artículos desde Supabase
+  const allArticles = await getArticles();
+  const featuredArticles = await getFeaturedArticles(1);
 
-export default function BlogPage() {
-  // Mapear artículos a ArticleCard para mantener compatibilidad con el diseño existente
-  const articlesContent: ArticleCard[] = articles.map(article => ({
-    title: article.title,
-    description: article.description,
-    imageSrc: article.imageSrc,
-    imageAlt: article.imageAlt,
-    href: `/blog/${article.slug}`,
-    category: article.category,
-    date: article.date,
-    readTime: article.readTime,
-    featured: article.featured
-  }));
+  // Convertir fecha ISO a formato legible
+  const formatDate = (isoDate: string) => {
+    return new Date(isoDate).toLocaleDateString('es-ES', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  };
 
   return (
     <div className="min-h-screen bg-[#eef8f2]">
@@ -95,14 +83,14 @@ export default function BlogPage() {
             <div className="w-24 h-1 bg-[#48a537] mx-auto"></div>
           </div>
           <div className="max-w-6xl mx-auto">
-            {articlesContent.filter(article => article.featured).map((article, index) => (
-              <article key={index} className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-[#c4ccd7]/30">
+            {featuredArticles.map((article) => (
+              <article key={article.id} className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-[#c4ccd7]/30">
                 <div className="lg:flex">
                   <div className="lg:w-1/2">
                     <div className="relative h-64 lg:h-full">
                       <Image
-                        src={article.imageSrc}
-                        alt={article.imageAlt}
+                        src={article.image_url}
+                        alt={article.image_alt}
                         fill
                         className="object-cover"
                       />
@@ -118,12 +106,12 @@ export default function BlogPage() {
                       <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
                       </svg>
-                      {article.date}
+                      {formatDate(article.published_at)}
                       <span className="mx-3">•</span>
                       <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                       </svg>
-                      {article.readTime} de lectura
+                      {article.read_time} de lectura
                     </div>
                     <h3 className="text-2xl lg:text-3xl font-bold text-[#163660] mb-4">
                       {article.title}
@@ -132,7 +120,7 @@ export default function BlogPage() {
                       {article.description}
                     </p>
                     <Link 
-                      href={article.href}
+                      href={`/blog/${article.slug}`}
                       className="inline-flex items-center bg-[#163660] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#275b9e] transition-all duration-300 transform hover:scale-105"
                     >
                       Leer artículo completo
@@ -161,16 +149,16 @@ export default function BlogPage() {
 
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {articlesContent.filter(article => !article.featured).map((article, index) => (
+              {allArticles.filter(article => !article.featured).map((article) => (
                 <article 
-                  key={index}
+                  key={article.id}
                   className="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
                 >
-                  <Link href={article.href}>
+                  <Link href={`/blog/${article.slug}`}>
                     <div className="relative h-48 overflow-hidden">
                       <Image
-                        src={article.imageSrc}
-                        alt={article.imageAlt}
+                        src={article.image_url}
+                        alt={article.image_alt}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-500"
                       />
@@ -187,12 +175,12 @@ export default function BlogPage() {
                       <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
                       </svg>
-                      {article.date}
+                      {formatDate(article.published_at)}
                       <span className="mx-2">•</span>
-                      {article.readTime}
+                      {article.read_time}
                     </div>
                     
-                    <Link href={article.href} className="block mb-3">
+                    <Link href={`/blog/${article.slug}`} className="block mb-3">
                       <h3 className="text-xl font-bold text-[#163660] group-hover:text-[#275b9e] transition-colors leading-tight">
                         {article.title}
                       </h3>
@@ -203,7 +191,7 @@ export default function BlogPage() {
                     </p>
                     
                     <Link 
-                      href={article.href}
+                      href={`/blog/${article.slug}`}
                       className="inline-flex items-center text-[#48a537] font-semibold hover:text-[#163660] transition-colors"
                     >
                       Leer más

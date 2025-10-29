@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { articles } from "../articles";
 import { notFound } from "next/navigation";
-import fs from "fs";
-import path from "path";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { mdxComponents } from "../components/MDXComponents";
+import { getArticleBySlug, getRelatedArticles, getAllArticleSlugs } from "@/lib/supabase/articles";
 
 interface ArticleTemplateProps {
   params: Promise<{
@@ -14,52 +12,20 @@ interface ArticleTemplateProps {
   }>;
 }
 
-interface ProcessedContent {
-  title: string;
-  description: string;
-  content: string;
-}
-
-// Función para leer y procesar el contenido MDX
-async function getArticleContent(slug: string): Promise<ProcessedContent | null> {
-  try {
-    const filePath = path.join(process.cwd(), "app/blog/content", `${slug}.mdx`);
-    const fileContent = fs.readFileSync(filePath, "utf8");
-    
-    // Parsear frontmatter simple
-    const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
-    const match = fileContent.match(frontmatterRegex);
-    
-    if (!match) {
-      return null;
-    }
-    
-    const frontmatterText = match[1];
-    const content = match[2];
-    
-    // Extraer title y description del frontmatter
-    const titleMatch = frontmatterText.match(/title:\s*["'](.+?)["']/);
-    const descriptionMatch = frontmatterText.match(/description:\s*["'](.+?)["']/);
-    
-    const title = titleMatch ? titleMatch[1] : '';
-    const description = descriptionMatch ? descriptionMatch[1] : '';
-    
-    return {
-      title,
-      description,
-      content
-    };
-  } catch (error) {
-    console.error(`Error loading MDX for slug ${slug}:`, error);
-    return null;
-  }
+/**
+ * Eliminar frontmatter del contenido MDX
+ */
+function removeFrontmatter(content: string): string {
+  // Eliminar frontmatter (entre --- al inicio)
+  const frontmatterRegex = /^---\s*\n[\s\S]*?\n---\s*\n/;
+  return content.replace(frontmatterRegex, '').trim();
 }
 
 
 
 export async function generateMetadata({ params }: ArticleTemplateProps): Promise<Metadata> {
   const { slug } = await params;
-  const article = articles.find((a) => a.slug === slug);
+  const article = await getArticleBySlug(slug);
 
   if (!article) {
     return {
@@ -67,11 +33,8 @@ export async function generateMetadata({ params }: ArticleTemplateProps): Promis
     };
   }
 
-  const content = await getArticleContent(slug);
-  const title = content?.title || article.title;
-
   return {
-    title: title,
+    title: article.title,
     description: article.description,
     keywords: [
       "probióticos",
@@ -81,12 +44,12 @@ export async function generateMetadata({ params }: ArticleTemplateProps): Promis
       "bacterias beneficiosas",
     ],
     openGraph: {
-      title: title,
+      title: article.title,
       description: article.description,
       type: "article",
-      authors: ["Equipo de Probióticos"],
+      authors: [article.author],
       url: `https://www.probioticos.info/blog/${article.slug}`,
-      images: [article.imageSrc],
+      images: [article.image_url],
     },
     alternates: {
       canonical: `https://www.probioticos.info/blog/${article.slug}`,
@@ -96,30 +59,23 @@ export async function generateMetadata({ params }: ArticleTemplateProps): Promis
 
 export default async function ArticleTemplate({ params }: ArticleTemplateProps) {
   const { slug } = await params;
-  const article = articles.find((a) => a.slug === slug);
+  const article = await getArticleBySlug(slug);
 
-  if (!article) {
+  if (!article || !article.use_template) {
     notFound();
   }
 
-  const content = await getArticleContent(slug);
-
-  if (!content) {
+  // Si no tiene contenido en la BD, mostrar error
+  if (!article.content) {
+    console.error(`Article ${slug} has use_template=true but no content in database`);
     notFound();
   }
 
-  // Obtener artículos relacionados (mismo categoría, excluyendo el actual)
-  const relatedArticles = articles
-    .filter((a) => a.category === article.category && a.slug !== article.slug)
-    .slice(0, 2);
+  // Obtener artículos relacionados
+  const relatedArticles = await getRelatedArticles(slug, 2);
 
-  // Si no hay suficientes de la misma categoría, agregar otros
-  if (relatedArticles.length < 2) {
-    const moreArticles = articles
-      .filter((a) => a.slug !== article.slug && !relatedArticles.includes(a))
-      .slice(0, 2 - relatedArticles.length);
-    relatedArticles.push(...moreArticles);
-  }
+  // Limpiar frontmatter del contenido
+  const cleanContent = removeFrontmatter(article.content);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-green-50">
@@ -135,7 +91,7 @@ export default async function ArticleTemplate({ params }: ArticleTemplateProps) 
 
           {/* Título */}
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            {content.title}
+            {article.title}
           </h1>
 
           {/* Metadata */}
@@ -144,14 +100,14 @@ export default async function ArticleTemplate({ params }: ArticleTemplateProps) 
               <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
               </svg>
-              <time>{article.date}</time>
+              <time>{new Date(article.published_at).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
             </div>
             <span>•</span>
             <div className="flex items-center">
               <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
               </svg>
-              <span>{article.readTime} de lectura</span>
+              <span>{article.read_time} de lectura</span>
             </div>
           </div>
         </div>
@@ -161,8 +117,8 @@ export default async function ArticleTemplate({ params }: ArticleTemplateProps) 
         {/* Imagen destacada */}
         <div className="relative w-full h-64 md:h-96 rounded-2xl overflow-hidden shadow-2xl mb-8 -mt-20">
           <Image
-            src={article.imageSrc}
-            alt={article.imageAlt}
+            src={article.image_url}
+            alt={article.image_alt}
             fill
             className="object-cover"
             priority
@@ -179,7 +135,7 @@ export default async function ArticleTemplate({ params }: ArticleTemplateProps) 
 
         {/* Contenido MDX */}
         <div className="article-content max-w-none mb-12 prose prose-lg prose-headings:text-[#163660] prose-h2:text-3xl prose-h2:font-bold prose-h2:mb-6 prose-h3:text-2xl prose-h3:font-bold prose-h3:text-[#275b9e] prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-[#4071b4] prose-a:no-underline hover:prose-a:underline prose-strong:text-[#163660] prose-strong:font-bold">
-          <MDXRemote source={content.content} components={mdxComponents} />
+          <MDXRemote source={cleanContent} components={mdxComponents} />
         </div>
 
         {/* Artículos relacionados */}
@@ -202,8 +158,8 @@ export default async function ArticleTemplate({ params }: ArticleTemplateProps) 
                   <div className="flex gap-4">
                     <div className="relative w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden shadow-md">
                       <Image
-                        src={relArticle.imageSrc}
-                        alt={relArticle.imageAlt}
+                        src={relArticle.image_url}
+                        alt={relArticle.image_alt || relArticle.title}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-300"
                       />
@@ -219,7 +175,7 @@ export default async function ArticleTemplate({ params }: ArticleTemplateProps) 
                         <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                         </svg>
-                        {relArticle.readTime}
+                        {relArticle.read_time}
                       </div>
                     </div>
                   </div>
@@ -271,9 +227,9 @@ export default async function ArticleTemplate({ params }: ArticleTemplateProps) 
 
 // Generar rutas estáticas para todos los artículos que usan plantilla
 export async function generateStaticParams() {
-  return articles
-    .filter((article) => article.useTemplate)
-    .map((article) => ({
-      slug: article.slug,
-    }));
+  const slugs = await getAllArticleSlugs();
+  
+  return slugs.map((slug) => ({
+    slug,
+  }));
 }

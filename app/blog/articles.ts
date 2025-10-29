@@ -136,5 +136,15 @@ export const articles: Article[] = [
     date: '29 de octubre, 2025',
     readTime: '10 min',
     useTemplate: true
+  },{
+    slug: 'probioticos-aliados',
+    title: 'Probióticos y Sistema Inmunológico: ¿Aliados de tus Defensas?',
+    description: 'Descubre cómo los probióticos interactúan con tu sistema inmune y qué dice la ciencia sobre su capacidad para reforzar tus defensas naturales.',
+    imageSrc: '/images/probioticos_kids.png',
+    imageAlt: 'Probióticos como aliados del sistema inmunológico',
+    category: 'Salud',
+    date: '29 de mayo, 2025',
+    readTime: '10 min',
+    useTemplate: true
   },
 ];
