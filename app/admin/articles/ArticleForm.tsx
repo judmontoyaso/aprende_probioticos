@@ -376,7 +376,7 @@ export default function ArticleForm({ article, onSave, onCancel }: ArticleFormPr
             </label>
             <select
               value={formData.status}
-              onChange={(e) => setFormData({ ...formData, status: e.target.value as any })}
+              onChange={(e) => setFormData({ ...formData, status: e.target.value as 'draft' | 'published' | 'archived' })}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#48a537] focus:border-transparent"
             >
               <option value="draft">Borrador</option>

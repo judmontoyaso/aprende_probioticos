@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import { supabase } from '@/lib/supabase/client';
 
 interface ImageUploaderProps {
   currentImage: string;
@@ -10,8 +9,7 @@ interface ImageUploaderProps {
   onFileSelect?: (file: File, fileName: string) => void; // Incluir el nombre deseado
 }
 
-export default function ImageUploader({ currentImage, onImageChange, onFileSelect }: ImageUploaderProps) {
-  const [uploading, setUploading] = useState(false);
+export default function ImageUploader({ currentImage, onFileSelect }: ImageUploaderProps) {
   const [preview, setPreview] = useState(currentImage);
   const [imageNameInput, setImageNameInput] = useState('');
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -154,8 +152,7 @@ export default function ImageUploader({ currentImage, onImageChange, onFileSelec
         <button
           type="button"
           onClick={() => fileInputRef.current?.click()}
-          disabled={uploading}
-          className="w-full inline-flex items-center justify-center px-4 py-3 border-2 border-[#48a537] rounded-lg text-sm font-medium text-[#48a537] bg-white hover:bg-green-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="w-full inline-flex items-center justify-center px-4 py-3 border-2 border-[#48a537] rounded-lg text-sm font-medium text-[#48a537] bg-white hover:bg-green-50 transition-colors"
         >
           <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
