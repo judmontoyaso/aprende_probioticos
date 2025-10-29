@@ -7,13 +7,18 @@
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "migrate": "tsx scripts/migrate-to-supabase.ts",
+    "migrate:images": "tsx scripts/migrate-to-supabase.ts --images",
+    "migrate:all": "tsx scripts/migrate-all.ts"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "^16.0.1",
+    "@supabase/supabase-js": "^2.77.0",
     "@types/mdx": "^2.0.13",
+    "dotenv": "^17.2.3",
     "framer-motion": "^12.23.12",
     "gray-matter": "^4.0.3",
     "next": "^15.5.2",
@@ -22,7 +27,8 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "remark": "^15.0.1",
-    "remark-html": "^16.0.1"
+    "remark-html": "^16.0.1",
+    "tsx": "^4.20.6"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

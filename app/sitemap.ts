@@ -1,9 +1,12 @@
 import { MetadataRoute } from 'next';
-import { articles } from './blog/articles';
+import { getArticles } from '@/lib/supabase/articles';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://probioticosparatodos.com';
   const currentDate = new Date();
+  
+  // Obtener artículos desde Supabase
+  const articles = await getArticles();
   
   // Páginas principales
   const mainPages: MetadataRoute.Sitemap = [

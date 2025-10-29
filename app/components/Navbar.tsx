@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import Image from 'next/image';
+import GoogleTranslateWidget from './GoogleTranslateWidget';
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -107,6 +108,11 @@ const Navbar = () => {
               </div>
             )}
           </div>
+          
+          {/* Widget de traducción */}
+          <div className="ml-2">
+            <GoogleTranslateWidget />
+          </div>
         </div>
 
         {/* Mobile Navigation Button */}
@@ -156,6 +162,14 @@ const Navbar = () => {
                   {route.label}
                 </Link>
               ))}
+            </div>
+            
+            {/* Widget de traducción móvil */}
+            <div className="pt-3 border-t border-green-200 mt-3">
+              <div className="text-green-600 font-semibold text-sm px-3 py-1 mb-2">🌍 Traducir</div>
+              <div className="px-3">
+                <GoogleTranslateWidget />
+              </div>
             </div>
           </div>
         </div>

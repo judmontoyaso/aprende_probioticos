@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import Breadcrumbs from "@/app/components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Probióticos para el cabello y la piel: ¿La belleza comienza en el intestino?",
@@ -36,8 +35,6 @@ export const metadata: Metadata = {
 export default function ProbioticosCabelloPielPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50">
-      <Breadcrumbs />
-
       {/* Hero Section con imagen destacada */}
       <div className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-purple-900/90 via-pink-900/80 to-rose-900/70 z-10"></div>
