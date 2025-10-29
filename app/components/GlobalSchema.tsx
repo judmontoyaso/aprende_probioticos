@@ -12,12 +12,12 @@ export default function GlobalSchema() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": "https://www.probioticosparatodos.com/#organization",
+    "@id": "https://probioticosparatodos.com/#organization",
     "name": "Probióticos Para Todos",
-    "url": "https://www.probioticosparatodos.com",
+    "url": "https://probioticosparatodos.com",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.probioticosparatodos.com/images/logo.png",
+      "url": "https://probioticosparatodos.com/images/logo.png",
       "width": 260,
       "height": 60
     },
@@ -32,16 +32,16 @@ export default function GlobalSchema() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "https://www.probioticosparatodos.com/#website",
-    "url": "https://www.probioticosparatodos.com",
+    "@id": "https://probioticosparatodos.com/#website",
+    "url": "https://probioticosparatodos.com",
     "name": "Probióticos Para Todos",
     "description": "Información basada en evidencia científica sobre probióticos",
     "publisher": {
-      "@id": "https://www.probioticosparatodos.com/#organization"
+      "@id": "https://probioticosparatodos.com/#organization"
     },
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://www.probioticosparatodos.com/?s={search_term_string}",
+      "target": "https://probioticosparatodos.com/?s={search_term_string}",
       "query-input": "required name=search_term_string"
     },
     "inLanguage": "es"

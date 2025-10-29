@@ -14,10 +14,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Directorio de Tiendas de Probióticos por País',
     description: 'Encuentra herbolarios y tiendas naturales verificadas donde comprar probióticos de calidad en países hispanohablantes.',
-    url: 'https://www.probioticosparatodos.com/donde-comprar',
+    url: 'https://probioticosparatodos.com/donde-comprar',
     siteName: 'Probióticos Para Todos',
     images: [{
-      url: 'https://www.probioticosparatodos.com/images/donde-comprar.png',
+      url: 'https://probioticosparatodos.com/images/donde-comprar.png',
       width: 1200,
       height: 630,
       alt: 'Directorio de tiendas de probióticos'
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Directorio: Dónde Comprar Probióticos por País',
     description: 'Encuentra herbolarios y tiendas naturales verificadas donde comprar probióticos de calidad.',
-    images: ['https://www.probioticosparatodos.com/images/donde-comprar.png']
+    images: ['https://probioticosparatodos.com/images/donde-comprar.png']
   },
   robots: {
     index: true,
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     }
   },
   alternates: {
-    canonical: 'https://www.probioticosparatodos.com/donde-comprar'
+    canonical: 'https://probioticosparatodos.com/donde-comprar'
   }
 };
 
@@ -61,7 +61,7 @@ export default function DondeComprarPage() {
     "@type": "ItemList",
     "name": "Directorio de Tiendas de Probióticos",
     "description": "Directorio completo de herbolarios, tiendas naturales y mercados orgánicos donde comprar probióticos de calidad",
-    "url": "https://www.probioticosparatodos.com/donde-comprar",
+    "url": "https://probioticosparatodos.com/donde-comprar",
     "numberOfItems": tiendasData.length,
     "itemListElement": tiendasData.map((tienda, index) => ({
       "@type": "LocalBusiness",
@@ -94,13 +94,13 @@ export default function DondeComprarPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Inicio",
-        "item": "https://www.probioticosparatodos.com"
+        "item": "https://probioticosparatodos.com"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Dónde Comprar",
-        "item": "https://www.probioticosparatodos.com/donde-comprar"
+        "item": "https://probioticosparatodos.com/donde-comprar"
       }
     ]
   };
@@ -128,8 +128,8 @@ export default function DondeComprarPage() {
           description: "Directorio completo y verificado de herbolarios, tiendas naturales y mercados orgánicos donde comprar probióticos de calidad en países hispanohablantes.",
           publishDate: "2024-09-08T10:00:00+00:00",
           author: "Probióticos Para Todos",
-          image: "https://www.probioticosparatodos.com/images/donde-comprar.png",
-          url: "https://www.probioticosparatodos.com/donde-comprar"
+          image: "https://probioticosparatodos.com/images/donde-comprar.png",
+          url: "https://probioticosparatodos.com/donde-comprar"
         }} />
         
         {/* Hero section moderna */}

@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   poweredByHeader: false,
   async headers() {
     return [
@@ -56,6 +57,7 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Redirects de estructura antigua
       {
         source: '/recursos/articulos',
         destination: '/blog',
@@ -64,6 +66,75 @@ const nextConfig: NextConfig = {
       {
         source: '/recursos/articulos/:path*',
         destination: '/blog/:path*',
+        permanent: true,
+      },
+      // Redirect de agricultura a blog
+      {
+        source: '/agricultura',
+        destination: '/blog/agricultura-sostenible',
+        permanent: true,
+      },
+      // Redirects de recetas antiguas
+      {
+        source: '/recetas/yogur-casero-con-cultivos-profesionales',
+        destination: '/recetas/yogur-cultivos-puros',
+        permanent: true,
+      },
+      {
+        source: '/recetas/kefir-de-agua',
+        destination: '/recetas/kefir-agua',
+        permanent: true,
+      },
+      {
+        source: '/recetas/kefir-de-leche',
+        destination: '/recetas/kefir-agua',
+        permanent: true,
+      },
+      {
+        source: '/recetas/chucrut-casero-tradicional',
+        destination: '/recetas/chucrut-casero',
+        permanent: true,
+      },
+      {
+        source: '/recetas/kombucha-casera---té-fermentado',
+        destination: '/recetas/kombucha-casa',
+        permanent: true,
+      },
+      {
+        source: '/recetas/kombucha-casera-te-fermentado',
+        destination: '/recetas/kombucha-casa',
+        permanent: true,
+      },
+      {
+        source: '/recetas/miso-casero---pasta-de-soya-fermentada',
+        destination: '/recetas/miso-casero',
+        permanent: true,
+      },
+      {
+        source: '/recetas/miso-casero-pasta-de-soya-fermentada',
+        destination: '/recetas/miso-casero',
+        permanent: true,
+      },
+      {
+        source: '/recetas/kéfir-de-agua-con-aguapanela',
+        destination: '/recetas/kefir-agua',
+        permanent: true,
+      },
+      // Redirect de alimentos-fermentados
+      {
+        source: '/alimentos-fermentados',
+        destination: '/blog/alimentos-fermentados',
+        permanent: true,
+      },
+      // Redirect genérico de & y caracteres especiales
+      {
+        source: '/&',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/blog/agricultura',
+        destination: '/blog/agricultura-sostenible',
         permanent: true,
       },
     ];

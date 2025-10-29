@@ -27,11 +27,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Recetas Probióticas Caseras: Fermentados Naturales para tu Salud',
     description: 'Guías completas para preparar alimentos fermentados en casa. Yogur, kéfir, kombucha, chucrut y más recetas probióticas con beneficios para la salud.',
-    url: 'https://www.probioticosparatodos.com/recetas',
+    url: 'https://probioticosparatodos.com/recetas',
     siteName: 'Probióticos Para Todos',
     images: [
       {
-        url: 'https://www.probioticosparatodos.com/images/hero-recetas.png',
+        url: 'https://probioticosparatodos.com/images/hero-recetas.png',
         width: 1200,
         height: 630,
         alt: 'Recetas probióticas caseras - alimentos fermentados naturales',
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Recetas Probióticas Caseras: Fermentados Naturales para tu Salud',
     description: 'Guías completas para preparar alimentos fermentados en casa con beneficios probióticos.',
-    images: ['https://www.probioticosparatodos.com/images/hero-recetas.png'],
+    images: ['https://probioticosparatodos.com/images/hero-recetas.png'],
     creator: '@probioticosparatodos',
     site: '@probioticosparatodos',
   },
@@ -60,10 +60,10 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://www.probioticosparatodos.com/recetas',
+    canonical: 'https://probioticosparatodos.com/recetas',
     languages: {
-      'es-ES': 'https://www.probioticosparatodos.com/recetas',
-      'es': 'https://www.probioticosparatodos.com/recetas',
+      'es-ES': 'https://probioticosparatodos.com/recetas',
+      'es': 'https://probioticosparatodos.com/recetas',
     },
   },
   verification: {
@@ -93,9 +93,9 @@ export const metadata: Metadata = {
     'article:section': 'Recetas de Salud',
     'article:tag': 'probióticos, fermentados, salud digestiva, recetas caseras',
     'og:see_also': [
-      'https://www.probioticosparatodos.com/beneficios',
-      'https://www.probioticosparatodos.com/tipos',
-      'https://www.probioticosparatodos.com/como-elegir'
+      'https://probioticosparatodos.com/beneficios',
+      'https://probioticosparatodos.com/tipos',
+      'https://probioticosparatodos.com/como-elegir'
     ].join(',')
   }
 };

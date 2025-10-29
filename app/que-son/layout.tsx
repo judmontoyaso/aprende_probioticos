@@ -37,11 +37,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: '¿Qué son los Probióticos? Guía Científica Completa',
     description: 'Descubre todo sobre los probióticos: definición, tipos, beneficios y aplicaciones. Guía respaldada por evidencia científica.',
-    url: 'https://www.probioticosparatodos.com/que-son',
+    url: 'https://probioticosparatodos.com/que-son',
     siteName: 'Probióticos Para Todos',
     images: [
       {
-        url: 'https://www.probioticosparatodos.com/images/mujer_exlpicando_probioticos.png',
+        url: 'https://probioticosparatodos.com/images/mujer_exlpicando_probioticos.png',
         width: 1200,
         height: 630,
         alt: 'Mujer explicando qué son los probióticos - Guía completa',
@@ -54,11 +54,11 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: '¿Qué son los Probióticos? Guía Científica Completa',
     description: 'Descubre todo sobre los probióticos: definición, tipos, beneficios y aplicaciones.',
-    images: ['https://www.probioticosparatodos.com/images/mujer_exlpicando_probioticos.png'],
+    images: ['https://probioticosparatodos.com/images/mujer_exlpicando_probioticos.png'],
     creator: '@probioticosparatodos',
   },
   alternates: {
-    canonical: 'https://www.probioticosparatodos.com/que-son',
+    canonical: 'https://probioticosparatodos.com/que-son',
   },
   verification: {
     google: 'tu-codigo-de-verificacion-google',

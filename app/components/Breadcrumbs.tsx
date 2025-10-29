@@ -58,7 +58,7 @@ export default function Breadcrumbs() {
       '@type': 'ListItem',
       'position': index + 1,
       'name': crumb.name,
-      'item': `https://www.probioticosparatodos.com${crumb.path}`,
+      'item': `https://probioticosparatodos.com${crumb.path}`,
     })),
   };
 

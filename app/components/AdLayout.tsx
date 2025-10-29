@@ -1,4 +1,5 @@
-import { NewBannerProfessional, TemporaryBanner, HorizontalBanner } from './AdBanners';
+import { NewBannerProfessional, HorizontalBanner } from './AdBanners';
+import FloatingKefirBanner from './FloatingKefirBanner';
 
 export default function AdLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -10,12 +11,8 @@ export default function AdLayout({ children }: { children: React.ReactNode }) {
         </div>
       </div>
 
-      {/* Banner lateral flotante */}
-      <div className="hidden xl:block fixed right-4 top-1/2 transform -translate-y-1/2 z-20">
-        <div className="w-72">
-          <TemporaryBanner className="w-full" alt="Banner promocional Probióticos Para Todos - Lateral" />
-        </div>
-      </div>
+      {/* Banner lateral flotante - Kéfir Diary */}
+      <FloatingKefirBanner />
 
       {/* Contenido principal */}
       <div className="relative">

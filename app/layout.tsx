@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Probióticos Para Todos - Información basada en evidencia científica",
     description: "Todo lo que necesitas saber sobre probióticos, sus beneficios y cómo elegir los mejores para tu salud digestiva.",
-    url: "https://www.probioticosparatodos.com",
+    url: "https://probioticosparatodos.com",
     siteName: "Probióticos Para Todos",
     locale: "es_ES",
     type: "website",
@@ -59,14 +59,14 @@ export const metadata: Metadata = {
     images: ["/images/probiotics-hero.png"],
   },
   alternates: {
-    canonical: "https://www.probioticosparatodos.com",
+    canonical: "https://probioticosparatodos.com",
   },
   icons: {
     icon: '/las-bacterias-intestinales.ico',
     shortcut: '/las-bacterias-intestinales.ico',
     apple: '/las-bacterias-intestinales.ico',
   },
-  metadataBase: new URL('https://www.probioticosparatodos.com'),
+  metadataBase: new URL('https://probioticosparatodos.com'),
 };
 
 export default function RootLayout({
