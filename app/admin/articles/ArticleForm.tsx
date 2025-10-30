@@ -170,6 +170,22 @@ export default function ArticleForm({ article, onSave, onCancel }: ArticleFormPr
         }
 
         console.log('✅ Artículo actualizado exitosamente');
+        
+        // Revalidar la página del artículo en producción
+        try {
+          await fetch('/api/revalidate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              path: `/blog/${articleData.slug}`,
+              secret: process.env.NEXT_PUBLIC_REVALIDATE_SECRET || 'dev-secret-change-in-production'
+            })
+          });
+          console.log('🔄 Página revalidada en caché');
+        } catch (revalidateError) {
+          console.warn('⚠️ Error al revalidar (no crítico):', revalidateError);
+        }
+        
         alert('✅ Artículo actualizado exitosamente');
       } else {
         // Create new
@@ -192,6 +208,22 @@ export default function ArticleForm({ article, onSave, onCancel }: ArticleFormPr
         }
 
         console.log('✅ Artículo creado exitosamente:', newData);
+        
+        // Revalidar la página del artículo y el listado del blog
+        try {
+          await fetch('/api/revalidate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              path: `/blog/${articleData.slug}`,
+              secret: process.env.NEXT_PUBLIC_REVALIDATE_SECRET || 'dev-secret-change-in-production'
+            })
+          });
+          console.log('🔄 Página revalidada en caché');
+        } catch (revalidateError) {
+          console.warn('⚠️ Error al revalidar (no crítico):', revalidateError);
+        }
+        
         alert('✅ Artículo creado exitosamente');
       }
 
