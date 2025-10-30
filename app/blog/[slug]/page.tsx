@@ -6,6 +6,9 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { mdxComponents } from "../components/MDXComponents";
 import { getArticleBySlug, getRelatedArticles, getAllArticleSlugs } from "@/lib/supabase/articles";
 
+// Revalidar cada 1 hora (3600 segundos)
+export const revalidate = 3600;
+
 interface ArticleTemplateProps {
   params: Promise<{
     slug: string;

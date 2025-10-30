@@ -3,6 +3,9 @@ import Image from 'next/image';
 import { Metadata } from 'next';
 import { getArticles, getFeaturedArticles } from '@/lib/supabase/articles';
 
+// Revalidar cada 1 hora (3600 segundos)
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: 'Blog de Probióticos | Investigación y Análisis Científicos',
   description: 'Descubre el mundo de los probióticos con nuestros análisis científicos profundos. Investigación sobre salud digestiva, microbioma, nutrición animal y agricultura sostenible.',
